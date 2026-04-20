@@ -140,13 +140,12 @@ export default function App() {
           model:"claude-sonnet-4-20250514",
           max_tokens:1000,
           system:`You have SharePoint access via M365 tools.
-Step 1: Call M365:sharepoint_search with query "Connected CMMS Project Status" to find the file.
-Step 2: Call M365:read_resource with the URI of the most recently modified result.
-Step 3: From the spreadsheet content, extract active and in-hypercare projects.
-Step 4: Respond with ONLY a JSON array. Your entire response must be NOTHING but the array starting with [ and ending with ].
+Step 1: Call M365:read_resource with the URI: https://facilio958-my.sharepoint.com/:x:/g/personal/shivaraj_facilio_com/IQB6lxWOZaPkSLrCt_VqoDbNAf2PxvaWO5scW1KuVOAxTbg?e=ICNWZP
+Step 2: From the spreadsheet content, extract active and in-hypercare projects.
+Step 3: Respond with ONLY a JSON array. Your entire response must be NOTHING but the array starting with [ and ending with ].
 
 Array format — each element: {"n":"account name","v":"CRE|IFM|Hospital|Retail|Edu","r":"region","p":"Data Gathering|BRD Cycle|Configuration|Early Access Testing|UAT|Hypercare|Go-Live","g":"Green|Amber|Red","s":"Active|Hypercare","l":"lead name","c":"status in 60 chars max"}`,
-          messages:[{ role:"user", content:"Fetch Connected CMMS Project Status from SharePoint. Reply with ONLY the JSON array, nothing else." }],
+          messages:[{ role:"user", content:"Fetch data from the Connected CMMS Project Status Excel file at https://facilio958-my.sharepoint.com/:x:/g/personal/shivaraj_facilio_com/IQB6lxWOZaPkSLrCt_VqoDbNAf2PxvaWO5scW1KuVOAxTbg?e=ICNWZP. Reply with ONLY the JSON array, nothing else." }],
           mcp_servers:[{ type:"url", url:"https://microsoft365.mcp.claude.com/mcp", name:"M365" }]
         })
       });
