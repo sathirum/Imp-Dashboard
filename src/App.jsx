@@ -1,45 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 
-// ── Fallback data (parsed from SharePoint Apr 20 2026) ─────────────────────────
-const FALLBACK = [
-  { account:"Trinity Health", vertical:"Hospital", region:"US", phase:"Early Access Testing", rag:"Green", status:"Active", lead:"Sangavi", consultant:"Jhimlee Datta", comments:"UAT initiated Mar 24. Go-live for first 2 sites June 2, 2025." },
-  { account:"Limbach", vertical:"IFM", region:"US", phase:"UAT", rag:"Amber", status:"Active", lead:"Sangavi", consultant:"Jhimlee Datta", comments:"UAT extended to mid-June. Client adapting from older CMMS." },
-  { account:"ICD BP Phase-2", vertical:"CRE", region:"UAE", phase:"UAT", rag:"Red", status:"Active", lead:"Ashwin", consultant:"Harish/Robin/Dinesh", comments:"Integration blocked by API dependency from client. On hold." },
-  { account:"Al Mujama Wave 2", vertical:"CRE", region:"UAE", phase:"Configuration", rag:"Amber", status:"Active", lead:"Ashwin", consultant:"Harish M", comments:"Integration with Anacity delayed. Timeline TBD." },
-  { account:"IEM", vertical:"IFM", region:"UK", phase:"Hypercare", rag:"Red", status:"Active", lead:"Inbaraj", consultant:"Deepika/Krishna", comments:"M1 partially live. M2 yet to start. Functional testing in progress." },
-  { account:"Al-bawani CAFM", vertical:"IFM", region:"UAE", phase:"UAT", rag:"Amber", status:"Active", lead:"Ashwin", consultant:"Robin/Riya", comments:"Phase 3 UAT in progress." },
-  { account:"JSY-PAHAYTC", vertical:"IFM", region:"APAC", phase:"UAT", rag:"Green", status:"Active", lead:"Inbaraj", consultant:"Nivetha", comments:"Go-live agreed. Awaiting confirmation from DARe." },
-  { account:"Saudi Tabreed Phase 1", vertical:"CRE", region:"UAE", phase:"UAT", rag:"Green", status:"Active", lead:"Inbaraj", consultant:"Nivetha", comments:"UAT in progress. Go-live planned May 9, 2025." },
-  { account:"Saudi Tabreed Phase 2", vertical:"CRE", region:"UAE", phase:"UAT", rag:"Green", status:"Active", lead:"Inbaraj", consultant:"Nivetha", comments:"UAT in progress." },
-  { account:"Al Kholi", vertical:"IFM", region:"ME", phase:"UAT", rag:"Green", status:"Active", lead:"Inbaraj", consultant:"Anantha Sai", comments:"Early UAT completed Apr 14. Functional testing ongoing." },
-  { account:"MAF Al Zahia", vertical:"CRE", region:"UAE", phase:"UAT", rag:"Green", status:"Active", lead:"Inbaraj", consultant:"Nivetha", comments:"Module demos complete. Internal testing in progress." },
-  { account:"Roberto Cavalli", vertical:"CRE", region:"UAE", phase:"UAT", rag:"Green", status:"Active", lead:"Ashwin", consultant:"Riyavarshini", comments:"UAT started May 8. BRD steering committee approval pending." },
-  { account:"MHA", vertical:"CRE", region:"UK", phase:"BRD Cycle", rag:"Red", status:"Active", lead:"Ashwin", consultant:"Dinesh", comments:"BRD under internal review. Sign-off expected soon." },
-  { account:"QSP Site & Power", vertical:"CRE", region:"UAE", phase:"BRD Cycle", rag:"Red", status:"Active", lead:"Ashwin", consultant:"Harish M", comments:"BRD under management review. Sign-off expected May 7." },
-  { account:"Avar Phase 2", vertical:"IFM", region:"ME", phase:"Configuration", rag:"Green", status:"Active", lead:"Inbaraj", consultant:"Ananth/Livin/Nivetha", comments:"BRD approved. Implementation started." },
-  { account:"Dalkia Misk City", vertical:"IFM", region:"ME", phase:"UAT", rag:"Green", status:"Active", lead:"Ashwin", consultant:"Harish", comments:"UAT in progress. Go-live planned July 8." },
-  { account:"Cognita", vertical:"CRE", region:"UAE", phase:"Configuration", rag:"Green", status:"Active", lead:"Ashwin", consultant:"Nivetha/Krishna", comments:"Data gathering complete for 3 campuses. Configuration in progress." },
-  { account:"Ace Hardware", vertical:"Retail", region:"US", phase:"Data Gathering", rag:"Green", status:"Active", lead:"Mithun", consultant:"Manoj", comments:"Data gathering in progress." },
-  { account:"Silal", vertical:"CRE", region:"UAE", phase:"Configuration", rag:"Amber", status:"Active", lead:"Ashwin", consultant:"William Stordeur", comments:"BRD under review. Implementation pending sign-off." },
-  { account:"Metro Maintenance Phase 2", vertical:"IFM", region:"US", phase:"UAT", rag:"Red", status:"Active", lead:"Ashwin", consultant:"Vasanth V", comments:"Phase 2 yet to start." },
-  { account:"Unilodge Phase 2", vertical:"CRE", region:"AUS", phase:"UAT", rag:"Green", status:"Active", lead:"Ashwin", consultant:"Dinesh", comments:"UAT in progress. Wave 1 go-live June 19." },
-  { account:"Skeens Phase 2", vertical:"IFM", region:"US", phase:"UAT", rag:"Amber", status:"Active", lead:"Ashwin", consultant:"Robin", comments:"UAT in progress." },
-  { account:"MAF Tilal Al Ghaf", vertical:"CRE", region:"UAE", phase:"UAT", rag:"Green", status:"Active", lead:"Inbaraj", consultant:"Nivetha", comments:"All use case BRDs signed off. Portfolio demo done." },
-  { account:"Cushman & Wakefield", vertical:"IFM", region:"US", phase:"UAT", rag:"Green", status:"Active", lead:"Vaibhav", consultant:"Bala Kiruthika", comments:"UAT in progress." },
-  { account:"ICD BP Phase-1", vertical:"CRE", region:"UAE", phase:"Go-Live", rag:"Green", status:"Hypercare", lead:"Ashwin", consultant:"Sandhiya/Harish/Robin", comments:"Phase-1 live. Phase-02 adoption in progress." },
-  { account:"Al Mujama Wave 1", vertical:"CRE", region:"UAE", phase:"Go-Live", rag:"Green", status:"Hypercare", lead:"Ashwin", consultant:"Harish M", comments:"Live since Mar 4. Using for maintenance and PPM activities." },
-  { account:"Kingsmede", vertical:"CRE", region:"AUS", phase:"Hypercare", rag:"Green", status:"Hypercare", lead:"Inbaraj", consultant:"Anantha Sai", comments:"Live since March 3. Hypercare support ongoing." },
-  { account:"Deyaar DCM", vertical:"CRE", region:"UAE", phase:"Hypercare", rag:"Green", status:"Hypercare", lead:"Inbaraj", consultant:"Nivetha", comments:"Live. Phase 2 implementation started April 10." },
-  { account:"Deyaar DPM", vertical:"CRE", region:"UAE", phase:"Hypercare", rag:"Green", status:"Hypercare", lead:"Inbaraj", consultant:"Nivetha", comments:"Ready to go-live but on hold due to internal vendor disputes." },
-  { account:"Charter Hall", vertical:"CRE", region:"AUS", phase:"Go-Live", rag:"Green", status:"Hypercare", lead:"Inbaraj", consultant:"Riyavarshini", comments:"Go-live complete. Support transition in progress." },
-  { account:"Mansions", vertical:"CRE", region:"UAE", phase:"Hypercare", rag:"Green", status:"Hypercare", lead:"Ashwin", consultant:"Riyavarshini", comments:"Live April 7. Support transition in progress." },
-  { account:"Metro Maintenance Phase 1", vertical:"IFM", region:"US", phase:"Go-Live", rag:"Green", status:"Hypercare", lead:"Ashwin", consultant:"Vasanth V", comments:"All regions live. KT for support handover planned." },
-  { account:"Chicago Maintenance", vertical:"IFM", region:"UAE", phase:"Hypercare", rag:"Green", status:"Hypercare", lead:"Ashwin", consultant:"Robin", comments:"All modules configured. Go-live confirmation pending from CMC." },
-  { account:"The Tile Shop", vertical:"Retail", region:"US", phase:"Hypercare", rag:"Green", status:"Hypercare", lead:"Sangavi", consultant:"Bala Kiruthika", comments:"Live. Overall stores (117) went live Sept 20 2024." },
-  { account:"Acorn Early Years", vertical:"Edu", region:"UK", phase:"Hypercare", rag:"Amber", status:"Hypercare", lead:"Inbaraj", consultant:"Anantha Sai", comments:"In hypercare. Working on PPM data with customer." },
-  { account:"RA International Phase 1", vertical:"IFM", region:"UAE", phase:"Hypercare", rag:"Green", status:"Hypercare", lead:"Ashwin", consultant:"Vasanth", comments:"Live. Hypercare in progress." },
-  { account:"PAL Cooling Phase I", vertical:"CRE", region:"UAE", phase:"Hypercare", rag:"Green", status:"Hypercare", lead:"Ashwin", consultant:"Nivetha", comments:"UAT complete. Go-live Feb 11." },
-];
+// ── Fallback data (empty - will be populated by sync) ─────────────────────────
+const FALLBACK = [];
 
 // ── Config ──────────────────────────────────────────────────────────────────────
 const PHASES = ["Data Gathering","BRD Cycle","Configuration","Early Access Testing","UAT","Hypercare","Go-Live"];
@@ -141,8 +103,9 @@ export default function App() {
 Step 1: Call M365:read_resource with the URI: https://facilio958-my.sharepoint.com/:x:/g/personal/shivaraj_facilio_com/IQB6lxWOZaPkSLrCt_VqoDbNAf2PxvaWO5scW1KuVOAxTbg?e=ICNWZP
 Step 2: Read ONLY from the "In Progress" tab/sheet in the Excel file.
 Step 3: Examine the Excel spreadsheet structure and identify column headers.
-Step 4: Extract all rows where the Manager/Lead column contains "Deepak".
-Step 5: Map the columns to our format. Look for these equivalent column names:
+Step 4: Extract ONLY rows where the Manager/Lead column EXACTLY matches "Deepak Simon".
+Step 5: If no exact matches found, try case-insensitive match for "deepak simon".
+Step 6: Map the columns to our format. Look for these equivalent column names:
    - Account/Project Name: "Account", "Project", "Client", "Customer", etc.
    - Vertical: "Vertical", "Business Unit", "BU", "Type", etc.
    - Region: "Region", "Location", "Area", etc.
@@ -152,10 +115,10 @@ Step 5: Map the columns to our format. Look for these equivalent column names:
    - Lead/Manager: "Lead", "Manager", "Owner", "PM", etc.
    - Consultant: "Consultant", "Developer", "Engineer", etc.
    - Comments: "Comments", "Notes", "Description", etc.
-Step 6: Respond with ONLY a JSON array. Your entire response must be NOTHING but the array starting with [ and ending with ].
+Step 7: Respond with ONLY a JSON array. Your entire response must be NOTHING but the array starting with [ and ending with ].
 
 Array format — each element: {"n":"account name","v":"vertical","r":"region","p":"phase","g":"Green|Amber|Red","s":"Active|Hypercare","l":"lead/manager name","co":"consultant name","c":"comments"}`,
-          messages:[{ role:"user", content:"Read ONLY from the 'In Progress' tab in the Connected CMMS Project Status Excel file. Extract only projects where the Manager/Lead is 'Deepak'. Map the actual column headers to our required format. Return ONLY the JSON array with the filtered and mapped data." }],
+          messages:[{ role:"user", content:"Read ONLY from the 'In Progress' tab in the Connected CMMS Project Status Excel file. Extract ONLY projects where the Manager/Lead column EXACTLY matches 'Deepak Simon'. Do not include any other managers' projects. Map the actual column headers to our required format. Return ONLY the JSON array with Deepak Simon's projects." }],
           mcp_servers:[{ type:"url", url:"https://microsoft365.mcp.claude.com/mcp", name:"M365" }]
         })
       });
