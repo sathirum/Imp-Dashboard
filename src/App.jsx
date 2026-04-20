@@ -58,8 +58,6 @@ const RAG_META = {
   Red:   { color:"#ef4444", bg:"#ef444415", label:"Critical" },
 };
 const VERT_COLORS = { CRE:"#60a5fa", IFM:"#34d399", Hospital:"#f472b6", Retail:"#fb923c", Edu:"#a78bfa" };
-const CACHE_KEY = "cmms-projects-v2";
-const CACHE_TS  = "cmms-ts-v2";
 const TWELVE_HRS = 12 * 60 * 60 * 1000;
 
 // ── Helpers ─────────────────────────────────────────────────────────────────────
@@ -201,7 +199,6 @@ Array format — each element: {"n":"account name","v":"vertical","r":"region","
         }));
         setProjects(mapped);
         const ts = Date.now(); setLastUpdated(ts);
-        try { await window.storage.set(CACHE_KEY, JSON.stringify(mapped)); await window.storage.set(CACHE_TS, String(ts)); } catch {}
         setSyncMsg({ ok:true, text:`Synced ${mapped.length} projects from SharePoint` });
       } else {
         setSyncMsg({ ok:false, text:"Parse failed — showing debug info", showDbg:true });
@@ -214,19 +211,9 @@ Array format — each element: {"n":"account name","v":"vertical","r":"region","
     } finally { setSyncing(false); }
   }, []);
 
-  // ── Init: load cache or fetch ─────────────────────────────────────────────────
+  // ── Init: always fetch fresh data ─────────────────────────────────────────────
   useEffect(() => {
-    (async () => {
-      try {
-        const [c, t] = await Promise.all([window.storage.get(CACHE_KEY), window.storage.get(CACHE_TS)]);
-        if (c && t && Date.now() - Number(t.value) < TWELVE_HRS) {
-          setProjects(JSON.parse(c.value)); setLastUpdated(Number(t.value));
-          setSyncMsg({ ok:true, text:"Loaded from cache — auto-sync in " + Math.round((TWELVE_HRS - (Date.now()-Number(t.value)))/3600000) + "h" });
-          return;
-        }
-      } catch {}
-      sync();
-    })();
+    sync();
     const iv = setInterval(() => sync(), TWELVE_HRS);
     return () => clearInterval(iv);
   }, [sync]);
