@@ -141,11 +141,22 @@ export default function App() {
           max_tokens:1000,
           system:`You have SharePoint access via M365 tools.
 Step 1: Call M365:read_resource with the URI: https://facilio958-my.sharepoint.com/:x:/g/personal/shivaraj_facilio_com/IQB6lxWOZaPkSLrCt_VqoDbNAf2PxvaWO5scW1KuVOAxTbg?e=ICNWZP
-Step 2: From the spreadsheet content, extract active and in-hypercare projects.
-Step 3: Respond with ONLY a JSON array. Your entire response must be NOTHING but the array starting with [ and ending with ].
+Step 2: Examine the Excel spreadsheet structure and identify column headers.
+Step 3: Extract all rows where Status is "Active" or "Hypercare".
+Step 4: Map the columns to our format. Look for these equivalent column names:
+   - Account/Project Name: "Account", "Project", "Client", "Customer", etc.
+   - Vertical: "Vertical", "Business Unit", "BU", "Type", etc.
+   - Region: "Region", "Location", "Area", etc.
+   - Phase: "Phase", "Stage", "Status", etc.
+   - RAG: "RAG", "Status", "Risk", etc.
+   - Status: "Status", "State", etc.
+   - Lead/Manager: "Lead", "Manager", "Owner", "PM", etc.
+   - Consultant: "Consultant", "Developer", "Engineer", etc.
+   - Comments: "Comments", "Notes", "Description", etc.
+Step 5: Respond with ONLY a JSON array. Your entire response must be NOTHING but the array starting with [ and ending with ].
 
-Array format — each element: {"n":"account name","v":"CRE|IFM|Hospital|Retail|Edu","r":"region","p":"Data Gathering|BRD Cycle|Configuration|Early Access Testing|UAT|Hypercare|Go-Live","g":"Green|Amber|Red","s":"Active|Hypercare","l":"lead name","c":"status in 60 chars max"}`,
-          messages:[{ role:"user", content:"Fetch data from the Connected CMMS Project Status Excel file at https://facilio958-my.sharepoint.com/:x:/g/personal/shivaraj_facilio_com/IQB6lxWOZaPkSLrCt_VqoDbNAf2PxvaWO5scW1KuVOAxTbg?e=ICNWZP. Reply with ONLY the JSON array, nothing else." }],
+Array format — each element: {"n":"account name","v":"vertical","r":"region","p":"phase","g":"Green|Amber|Red","s":"Active|Hypercare","l":"lead/manager name","co":"consultant name","c":"comments"}`,
+          messages:[{ role:"user", content:"Read the Connected CMMS Project Status Excel file and extract project data. Map the actual column headers to our required format. Focus on projects with Active or Hypercare status. Return ONLY the JSON array with the mapped data." }],
           mcp_servers:[{ type:"url", url:"https://microsoft365.mcp.claude.com/mcp", name:"M365" }]
         })
       });
