@@ -141,9 +141,10 @@ export default function App() {
           max_tokens:1000,
           system:`You have SharePoint access via M365 tools.
 Step 1: Call M365:read_resource with the URI: https://facilio958-my.sharepoint.com/:x:/g/personal/shivaraj_facilio_com/IQB6lxWOZaPkSLrCt_VqoDbNAf2PxvaWO5scW1KuVOAxTbg?e=ICNWZP
-Step 2: Examine the Excel spreadsheet structure and identify column headers.
-Step 3: Extract all rows where Status is "Active" or "Hypercare".
-Step 4: Map the columns to our format. Look for these equivalent column names:
+Step 2: Read ONLY from the "In Progress" tab/sheet in the Excel file.
+Step 3: Examine the Excel spreadsheet structure and identify column headers.
+Step 4: Extract all rows where the Manager/Lead column contains "Deepak".
+Step 5: Map the columns to our format. Look for these equivalent column names:
    - Account/Project Name: "Account", "Project", "Client", "Customer", etc.
    - Vertical: "Vertical", "Business Unit", "BU", "Type", etc.
    - Region: "Region", "Location", "Area", etc.
@@ -153,10 +154,10 @@ Step 4: Map the columns to our format. Look for these equivalent column names:
    - Lead/Manager: "Lead", "Manager", "Owner", "PM", etc.
    - Consultant: "Consultant", "Developer", "Engineer", etc.
    - Comments: "Comments", "Notes", "Description", etc.
-Step 5: Respond with ONLY a JSON array. Your entire response must be NOTHING but the array starting with [ and ending with ].
+Step 6: Respond with ONLY a JSON array. Your entire response must be NOTHING but the array starting with [ and ending with ].
 
 Array format — each element: {"n":"account name","v":"vertical","r":"region","p":"phase","g":"Green|Amber|Red","s":"Active|Hypercare","l":"lead/manager name","co":"consultant name","c":"comments"}`,
-          messages:[{ role:"user", content:"Read the Connected CMMS Project Status Excel file and extract project data. Map the actual column headers to our required format. Focus on projects with Active or Hypercare status. Return ONLY the JSON array with the mapped data." }],
+          messages:[{ role:"user", content:"Read ONLY from the 'In Progress' tab in the Connected CMMS Project Status Excel file. Extract only projects where the Manager/Lead is 'Deepak'. Map the actual column headers to our required format. Return ONLY the JSON array with the filtered and mapped data." }],
           mcp_servers:[{ type:"url", url:"https://microsoft365.mcp.claude.com/mcp", name:"M365" }]
         })
       });
