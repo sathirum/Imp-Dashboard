@@ -387,7 +387,7 @@ Array format — each element: {"n":"account name","v":"CRE|IFM|Hospital|Retail|
 
       {/* ── Tabs + Filters ── */}
       <div style={{ ...S.section, paddingTop:20 }}>
-        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:12, flexWrap:"wrap", gap:10 }}>
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"flex-end", marginBottom:12, flexWrap:"wrap", gap:10 }}>
           <div style={S.tabs}>
             {[["active","Active","in Implementation"],["hypercare","Hypercare","post Go-Live"]].map(([k,l,s])=>(
               <button key={k} style={S.tab(tab===k)} onClick={()=>setTab(k)}>
