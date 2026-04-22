@@ -621,31 +621,6 @@ export default function App() {
           </div>
         )}
 
-        {/* ── Regional Summary ── */}
-        <div style={S.section}>
-          <div className="dashboard-section" style={S.sectionCard}>
-            <div style={S.sectionTitle}>Projects by region</div>
-            <div style={{ display:"flex", gap:12, flexWrap:"wrap" }}>
-              {Object.entries(
-                projects.filter(p=>p.status!=="Transitioned").reduce((acc,p)=>{
-                  acc[p.region] = (acc[p.region]||{G:0,A:0,R:0});
-                  acc[p.region][p.rag[0]]++; return acc;
-                }, {})
-              ).sort((a,b)=>Object.values(b[1]).reduce((s,v)=>s+v,0)-Object.values(a[1]).reduce((s,v)=>s+v,0))
-              .map(([reg,counts]) => (
-                <div key={reg} style={S.regionCard}>
-                  <div style={{ fontSize:11, color:"#64748b", marginBottom:8, fontWeight:700, letterSpacing:"0.08em", textTransform:"uppercase" }}>{reg}</div>
-                  <div style={{ display:"flex", gap:6, alignItems:"center" }}>
-                    {counts.G>0 && <span style={S.badge("#059669","#22c55e18")}><RAGDot rag="Green"/>{counts.G}</span>}
-                    {counts.A>0 && <span style={S.badge("#d97706","#f59e0b18")}><RAGDot rag="Amber"/>{counts.A}</span>}
-                    {counts.R>0 && <span style={S.badge("#dc2626","#ef444418")}><RAGDot rag="Red"/>{counts.R}</span>}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   );
