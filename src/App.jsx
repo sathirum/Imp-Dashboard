@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import * as XLSX from "xlsx";
 
+const FACILIO_LOGO = "data:image/png;base64,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";
+
 const FALLBACK = [
   { account:"Trinity Health", vertical:"Hospital", region:"US", phase:"Early Access Testing", rag:"Green", status:"Active", lead:"Sangavi", consultant:"Jhimlee Datta", comments:"UAT initiated Mar 24. Go-live for first 2 sites June 2, 2025." },
   { account:"Limbach", vertical:"IFM", region:"US", phase:"UAT", rag:"Amber", status:"Active", lead:"Sangavi", consultant:"Jhimlee Datta", comments:"UAT extended to mid-June. Client adapting from older CMMS." },
@@ -44,35 +46,35 @@ const FALLBACK = [
 const PHASES = ["Requirement Gathering", "Configuration", "UAT", "Hypercare", "Transitioned to support"];
 
 const PHASE_META = {
-  "Requirement Gathering": { color:"#64748b", bg:"#64748b15" },
-  "Configuration":         { color:"#f59e0b", bg:"#f59e0b15" },
-  "UAT":                   { color:"#22c55e", bg:"#22c55e15" },
-  "Hypercare":             { color:"#f97316", bg:"#f9731615" },
-  "Transitioned to support": { color:"#8b5cf6", bg:"#8b5cf615" }
+  "Requirement Gathering": { color:"#64748b", bg:"#64748b18" },
+  "Configuration":         { color:"#d97706", bg:"#f59e0b18" },
+  "UAT":                   { color:"#059669", bg:"#22c55e18" },
+  "Hypercare":             { color:"#ea580c", bg:"#f9731618" },
+  "Transitioned to support": { color:"#7c3aed", bg:"#8b5cf618" }
 };
 
 const RAG_META = {
-  "Green": { color:"#22c55e", bg:"#22c55e15" },
-  "Amber": { color:"#f59e0b", bg:"#f59e0b15" },
-  "Red": { color:"#ef4444", bg:"#ef444415" }
+  "Green": { color:"#059669", bg:"#22c55e18" },
+  "Amber": { color:"#d97706", bg:"#f59e0b18" },
+  "Red":   { color:"#dc2626", bg:"#ef444418" }
 };
 
 const TWELVE_HRS = 12 * 60 * 60 * 1000;
 
 const VertPill = ({ v }) => {
-  const meta = { "CMMS": { color:"#00c49f", bg:"#00c49f15" }, "EAM": { color:"#0088cc", bg:"#0088cc15" }, "Other": { color:"#64748b", bg:"#64748b15" } };
+  const meta = { "CMMS": { color:"#0d9488", bg:"#0d948818" }, "EAM": { color:"#2563eb", bg:"#2563eb18" }, "Other": { color:"#64748b", bg:"#64748b18" } };
   const m = meta[v] || meta.Other;
-  return <span style={{ fontSize:11, fontWeight:500, padding:"2px 8px", borderRadius:12, color:m.color, background:m.bg }}>{v||"—"}</span>;
+  return <span style={{ fontSize:11, fontWeight:600, padding:"2px 8px", borderRadius:10, color:m.color, background:m.bg }}>{v||"—"}</span>;
 };
 
 const PhasePill = ({ phase }) => {
-  const m = PHASE_META[phase] || { color:"#64748b", bg:"#64748b15" };
-  return <span style={{ fontSize:11, fontWeight:500, padding:"2px 8px", borderRadius:12, color:m.color, background:m.bg }}>{phase||"—"}</span>;
+  const m = PHASE_META[phase] || { color:"#64748b", bg:"#64748b18" };
+  return <span style={{ fontSize:11, fontWeight:600, padding:"2px 8px", borderRadius:10, color:m.color, background:m.bg }}>{phase||"—"}</span>;
 };
 
 const RAGDot = ({ rag }) => {
   const m = RAG_META[rag] || RAG_META.Green;
-  return <span style={{ width:8, height:8, borderRadius:4, background:m.color, display:"inline-block" }}></span>;
+  return <span style={{ width:7, height:7, borderRadius:4, background:m.color, display:"inline-block" }}></span>;
 };
 
 const fmtTime = (ts) => {
@@ -89,10 +91,8 @@ export default function App() {
   const [sortKey, setSortKey]         = useState("account");
   const [sortDir, setSortDir]         = useState(1);
   const [expanded, setExpanded]       = useState(null);
-  const [debugLog, setDebugLog]     = useState(null);
-  const [showDebug, setShowDebug]   = useState(false);
-
-  // ── Live sync from SharePoint Excel ──────────────────
+  const [debugLog, setDebugLog]       = useState(null);
+  const [showDebug, setShowDebug]     = useState(false);
 
   const sync = useCallback(async (force = false) => {
     setSyncing(true); setSyncMsg(null); setDebugLog(null);
@@ -108,11 +108,9 @@ export default function App() {
       const json = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false });
       if (json.length < 2) throw new Error("No data in sheet");
 
-      // Assume first row is headers
       const headers = json[0].map(h => (h || "").toLowerCase().trim());
       const rows = json.slice(1);
 
-      // Map columns (flexible matching)
       const colMap = {};
       const possibleCols = {
         account: ["account", "project", "client", "customer", "name"],
@@ -198,14 +196,12 @@ export default function App() {
     } finally { setSyncing(false); }
   }, []);
 
-  // ── Init: always fetch fresh data ─────────────────────────────────────────────
   useEffect(() => {
     sync();
     const iv = setInterval(() => sync(), TWELVE_HRS);
     return () => clearInterval(iv);
   }, [sync]);
 
-  // ── Computed ──────────────────────────────────────────────────────────────────
   const stats = useMemo(() => {
     const live = projects.filter(p => p.status !== "Transitioned");
     const active = projects.filter(p => p.status === "Active");
@@ -252,54 +248,92 @@ export default function App() {
 
   // ── Styles ────────────────────────────────────────────────────────────────────
   const S = {
-    wrap:  { fontFamily:"'DM Sans', system-ui, sans-serif", background:"#040916", minHeight:"100vh",
-             color:"#e2e8f0", padding:"0 0 40px" },
-    header:{ background:"#070d1f", borderBottom:"1px solid #1a2540", padding:"16px 24px",
-             display:"flex", alignItems:"center", justifyContent:"space-between" },
-    brand: { display:"flex", alignItems:"center", gap:10 },
-    logo:  { width:32, height:32, borderRadius:8, background:"linear-gradient(135deg,#00c49f,#0088cc)",
-             display:"flex", alignItems:"center", justifyContent:"center", fontSize:14, fontWeight:700 },
-    title: { fontSize:16, fontWeight:600, color:"#f1f5f9", letterSpacing:"-0.01em" },
-    sub:   { fontSize:12, color:"#64748b", marginTop:1 },
-    syncBtn:{ background: syncing?"#1e293b":"#00c49f15", border:"1px solid " + (syncing?"#334155":"#00c49f40"),
-              color: syncing?"#64748b":"#00c49f", borderRadius:7, padding:"7px 14px", fontSize:12,
-              fontWeight:500, cursor: syncing?"not-allowed":"pointer", display:"flex", alignItems:"center", gap:6 },
-    kpiRow:{ display:"grid", gridTemplateColumns:"repeat(5,1fr)", gap:12, padding:"20px 24px 0" },
-    kpi:   { background:"#070d1f", border:"1px solid #1a2540", borderRadius:10, padding:"14px 16px" },
-    kpiNum:{ fontSize:28, fontWeight:700, lineHeight:1, letterSpacing:"-0.02em" },
-    kpiLbl:{ fontSize:11, color:"#64748b", marginTop:4, fontWeight:500, letterSpacing:"0.03em", textTransform:"uppercase" },
-    section:{ padding:"20px 24px 0" },
-    sectionTitle:{ fontSize:11, color:"#64748b", fontWeight:600, letterSpacing:"0.06em",
-                   textTransform:"uppercase", marginBottom:10 },
-    pipeline:{ display:"flex", gap:8, alignItems:"stretch", overflowX:"auto" },
-    pipeItem:{ flex:"1 1 0", minWidth:80, background:"#070d1f", border:"1px solid #1a2540",
-               borderRadius:8, padding:"10px 12px", cursor:"pointer", transition:"border-color 0.15s" },
+    wrap:  { fontFamily:"'Manrope', system-ui, sans-serif", minHeight:"100vh", color:"#1e293b", background:"#f0f4f8" },
+
+    // Ribbon — exact match to reference page
+    ribbon: {
+      background:"#1B0E51",
+      borderBottom:"3px solid #301894",
+      padding:"0 32px", height:56,
+      display:"flex", alignItems:"center", justifyContent:"space-between",
+      position:"sticky", top:0, zIndex:50
+    },
+    ribbonLeft:  { display:"flex", alignItems:"center", gap:10 },
+    ribbonRight: { fontSize:12, color:"rgba(255,255,255,0.6)" },
+
+    shell: { maxWidth:1440, margin:"0 auto", padding:"24px 20px 48px" },
+    heroPanel:{ display:"grid", gridTemplateColumns:"1fr", gap:14, alignItems:"stretch" },
+
+    header: {
+      background:"#ffffff", border:"1px solid #e2e8f0", padding:"12px 24px",
+      display:"flex", alignItems:"center", justifyContent:"space-between", gap:20,
+      borderRadius:20, boxShadow:"0 1px 3px rgba(15,23,42,0.06), 0 8px 24px rgba(15,23,42,0.06)"
+    },
+    headerMain:{ position:"relative", overflow:"hidden" },
+    headerGlow:{ display:"none" },
+
+    brand:     { display:"flex", alignItems:"center", gap:12 },
+    logo:      { width:38, height:38, borderRadius:12, background:"linear-gradient(135deg,#14b8a6,#2563eb)", boxShadow:"0 4px 12px rgba(37,99,235,0.22)", display:"flex", alignItems:"center", justifyContent:"center", color:"#ffffff", flexShrink:0 },
+    brandText: { display:"flex", flexDirection:"column", gap:3 },
+    wordmark:  { fontSize:17, fontWeight:800, color:"#0f172a", letterSpacing:"-0.04em", lineHeight:1 },
+    heroText:  { display:"flex", flexDirection:"column", alignItems:"flex-start", gap:8, marginTop:0 },
+    eyebrow:   { fontSize:11, fontWeight:700, color:"#0d9488", letterSpacing:"0.16em", textTransform:"uppercase" },
+    title:     { fontSize:24, fontWeight:800, color:"#0f172a", letterSpacing:"-0.04em", lineHeight:1, whiteSpace:"nowrap" },
+    sub:       { fontSize:13, color:"#64748b", lineHeight:1.55, maxWidth:760 },
+    statLine:  { display:"flex", gap:8, flexWrap:"wrap", marginTop:4 },
+    statChip:  { fontSize:11, color:"#64748b", background:"#f1f5f9", border:"1px solid #e2e8f0", borderRadius:999, padding:"5px 10px" },
+    syncRow:   { display:"flex", gap:10, flexWrap:"wrap", alignItems:"center", marginTop:2 },
+    syncBtn:   {
+      background: syncing?"#f1f5f9":"linear-gradient(135deg,#14b8a6,#2563eb)",
+      border:"1px solid " + (syncing?"#e2e8f0":"transparent"),
+      color: syncing?"#94a3b8":"#ffffff",
+      borderRadius:10, padding:"8px 14px", fontSize:12, fontWeight:600,
+      cursor: syncing?"not-allowed":"pointer", display:"flex", alignItems:"center", gap:6,
+      boxShadow: syncing?"none":"0 2px 8px rgba(37,99,235,0.22)"
+    },
+
+    spotlightCard:  { background:"#1B0E51", border:"1px solid rgba(48,24,148,0.6)", borderRadius:18, padding:"16px 18px", display:"flex", alignItems:"center", justifyContent:"space-between", gap:20, minWidth:380, maxWidth:560, width:"100%", boxShadow:"0 4px 20px rgba(15,23,42,0.12)" },
+    spotlightLabel: { fontSize:10, color:"#67e8f9", fontWeight:700, letterSpacing:"0.16em", textTransform:"uppercase" },
+    spotlightValue: { fontSize:38, fontWeight:800, lineHeight:0.95, letterSpacing:"-0.05em", color:"#ffffff", marginTop:8 },
+    spotlightText:  { fontSize:11, color:"rgba(255,255,255,0.50)", lineHeight:1.5, marginTop:8, maxWidth:200 },
+    spotlightStack: { display:"grid", gridTemplateColumns:"repeat(3,minmax(100px,1fr))", gap:8, flex:1 },
+    spotlightRow:   { display:"flex", flexDirection:"column", alignItems:"flex-start", justifyContent:"space-between", gap:6, padding:"10px 12px", borderRadius:12, background:"rgba(255,255,255,0.06)", border:"1px solid rgba(255,255,255,0.08)", minHeight:80 },
+    spotlightName:  { fontSize:10, fontWeight:700, color:"rgba(255,255,255,0.60)", lineHeight:1.35 },
+    spotlightMeta:  { fontSize:20, fontWeight:800, lineHeight:1, marginTop:"auto" },
+
+    kpiRow: { display:"grid", gridTemplateColumns:"repeat(4,minmax(0,1fr))", gap:14, padding:"16px 0 0" },
+    kpi:    { background:"#ffffff", border:"1px solid #e2e8f0", borderRadius:18, padding:"18px 18px 16px", boxShadow:"0 1px 3px rgba(15,23,42,0.05), 0 4px 16px rgba(15,23,42,0.05)" },
+    kpiNum: { fontSize:28, fontWeight:800, lineHeight:1, letterSpacing:"-0.03em" },
+    kpiLbl: { fontSize:11, color:"#94a3b8", marginTop:8, fontWeight:700, letterSpacing:"0.08em", textTransform:"uppercase" },
+
+    section:     { padding:"16px 0 0" },
+    sectionCard: { background:"#ffffff", border:"1px solid #e2e8f0", borderRadius:20, padding:"18px 20px", boxShadow:"0 1px 3px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.04)" },
+    sectionTitle:{ fontSize:11, color:"#94a3b8", fontWeight:700, letterSpacing:"0.14em", textTransform:"uppercase", marginBottom:12 },
+
+    pipeline: { display:"flex", gap:8, alignItems:"stretch", overflowX:"auto" },
+    pipeItem: { flex:"1 1 0", minWidth:96, background:"#f8fafc", border:"1px solid #e2e8f0", borderRadius:14, padding:"12px 14px", cursor:"pointer", transition:"transform 0.18s, border-color 0.18s, box-shadow 0.18s" },
     pipeCount:{ fontSize:22, fontWeight:700, letterSpacing:"-0.02em" },
-    pipeLabel:{ fontSize:10, color:"#64748b", fontWeight:500, marginTop:2, lineHeight:1.3 },
-    tabs:  { display:"flex", gap:2, background:"#070d1f", borderRadius:8, padding:3,
-             border:"1px solid #1a2540" },
-    tab:   (active) => ({ padding:"7px 16px", borderRadius:6, fontSize:13, fontWeight:500,
-             cursor:"pointer", transition:"all 0.15s",
-             background: active?"#1e293b":"transparent",
-             color: active?"#f1f5f9":"#64748b", border:"none" }),
-    filters:{ display:"flex", gap:8, alignItems:"center", flexWrap:"wrap" },
-    sel:   { background:"#070d1f", border:"1px solid #1a2540", color:"#94a3b8", borderRadius:7,
-             padding:"7px 10px", fontSize:12, outline:"none" },
-    search:{ background:"#070d1f", border:"1px solid #1a2540", color:"#e2e8f0", borderRadius:7,
-             padding:"7px 12px", fontSize:13, outline:"none", flex:1, minWidth:160 },
+    pipeLabel:{ fontSize:10, color:"#94a3b8", fontWeight:700, marginTop:4, lineHeight:1.35, letterSpacing:"0.05em", textTransform:"uppercase" },
+
+    tabs: { display:"flex", gap:3, background:"#f1f5f9", borderRadius:12, padding:3, border:"1px solid #e2e8f0" },
+    tab:  (active) => ({ padding:"7px 14px", borderRadius:9, fontSize:13, fontWeight:600, cursor:"pointer", transition:"all 0.15s", background:active?"#ffffff":"transparent", color:active?"#0f172a":"#64748b", border:"none", boxShadow:active?"0 1px 3px rgba(15,23,42,0.08)":"none" }),
+
+    filters: { display:"flex", gap:8, alignItems:"center", flexWrap:"wrap" },
+    sel:     { background:"#f8fafc", border:"1px solid #e2e8f0", color:"#1e293b", borderRadius:10, padding:"9px 12px", fontSize:12, outline:"none" },
+    search:  { background:"#f8fafc", border:"1px solid #e2e8f0", color:"#1e293b", borderRadius:10, padding:"9px 14px", fontSize:13, outline:"none", flex:1, minWidth:180 },
+
     table: { width:"100%", borderCollapse:"collapse", fontSize:13 },
-    th:    (active) => ({ padding:"9px 12px", textAlign:"left", fontSize:11, fontWeight:600,
-             letterSpacing:"0.04em", textTransform:"uppercase", color: active?"#00c49f":"#475569",
-             background:"#070d1f", borderBottom:"1px solid #1a2540", cursor:"pointer", whiteSpace:"nowrap" }),
-    tr:    (i,exp) => ({ background: exp?"#0d1830":(i%2===0?"#040916":"#070d1f"),
-             borderBottom:"1px solid #0d1829", cursor:"pointer", transition:"background 0.1s" }),
+    th:    (active) => ({ padding:"9px 12px", textAlign:"left", fontSize:11, fontWeight:600, letterSpacing:"0.06em", textTransform:"uppercase", color:active?"#0d9488":"#94a3b8", background:"#f8fafc", borderBottom:"1px solid #e2e8f0", cursor:"pointer", whiteSpace:"nowrap" }),
+    tr:    (i,exp) => ({ background: exp?"#eff6ff":(i%2===0?"#ffffff":"#f8fafc"), borderBottom:"1px solid #f1f5f9", cursor:"pointer", transition:"background 0.12s" }),
     td:    { padding:"10px 12px", verticalAlign:"middle" },
-    expRow:{ background:"#0a1428", borderBottom:"1px solid #1a2540" },
-    badge: (color,bg) => ({ fontSize:11, fontWeight:500, padding:"2px 8px", borderRadius:12,
-             color, background:bg, display:"inline-flex", alignItems:"center", gap:4 }),
-    count: { fontSize:11, color:"#475569", marginLeft:4 },
-    msg:   (ok) => ({ fontSize:12, color: ok?"#22c55e":"#f59e0b", display:"flex", alignItems:"center", gap:4 }),
-    empty: { textAlign:"center", padding:"40px 20px", color:"#475569" },
+    expRow:{ background:"#f0f9ff", borderBottom:"1px solid #e0f2fe" },
+
+    badge: (color,bg) => ({ fontSize:11, fontWeight:600, padding:"2px 8px", borderRadius:10, color, background:bg, display:"inline-flex", alignItems:"center", gap:4 }),
+    count: { fontSize:11, color:"inherit", marginLeft:4, opacity:0.65 },
+    msg:   (ok) => ({ fontSize:12, color:ok?"#166534":"#92400e", background:ok?"#f0fdf4":"#fffbeb", border:"1px solid "+(ok?"#bbf7d0":"#fde68a"), padding:"7px 10px", borderRadius:999, display:"flex", alignItems:"center", gap:4 }),
+    empty: { textAlign:"center", padding:"40px 20px", color:"#94a3b8" },
+    footer:{ padding:"10px 14px", background:"#f8fafc", borderTop:"1px solid #e2e8f0", fontSize:11, color:"#94a3b8", display:"flex", justifyContent:"space-between", gap:10, flexWrap:"wrap" },
+    regionCard: { background:"#ffffff", border:"1px solid #e2e8f0", borderRadius:14, padding:"12px 16px", minWidth:132, boxShadow:"0 1px 4px rgba(15,23,42,0.05)" },
   };
 
   const TH = ({ k, label }) => (
@@ -310,253 +344,308 @@ export default function App() {
 
   return (
     <div style={S.wrap}>
-      {/* ── Load DM Sans ── */}
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
-        *{box-sizing:border-box} input::placeholder{color:#334155}
-        select option{background:#0d1829;color:#e2e8f0}
-        tr:hover td{background:#0a1428!important}
-        .pipe-item:hover{border-color:#00c49f40!important}`}
-      </style>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+        *{box-sizing:border-box}
+        input::placeholder{color:#94a3b8}
+        select option{background:#ffffff;color:#1e293b}
+        tr:hover td{background:#e8f4fe!important}
+        .pipe-item:hover{transform:translateY(-2px);border-color:#14b8a6!important;box-shadow:0 8px 20px rgba(15,23,42,0.10)!important}
+        a{color:inherit}
+        .dashboard-grid{display:grid;gap:14px}
+        .dashboard-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+        .hero-panel{display:grid;grid-template-columns:1fr;gap:14px;align-items:stretch}
+        .hero-header-grid{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+        @media (max-width: 1100px){.dashboard-grid{grid-template-columns:1fr 1fr}}
+        @media (max-width: 1100px){.hero-card-title{font-size:34px}}
+        @media (max-width: 860px){.hero-header-grid{flex-direction:column}.hero-spotlight{max-width:none!important;width:100%}}
+        @media (max-width: 780px){.dashboard-grid{grid-template-columns:1fr}.dashboard-header{padding:18px}.dashboard-section{padding:18px}}
+        @media (max-width: 680px){.dashboard-footer{flex-direction:column}.dashboard-toolbar{justify-content:flex-start}}
+        @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+      `}</style>
 
-      {/* ── Header ── */}
-      <div style={S.header}>
-        <div style={S.brand}>
-          <div style={S.logo}>F</div>
-          <div>
-            <div style={S.title}>Connected CMMS · Implementation Dashboard</div>
-            <div style={S.sub}>
-              {lastUpdated ? `Last synced: ${fmtTime(lastUpdated)}` : "Syncing…"} · Auto-refreshes every 12 hrs
-            </div>
-          </div>
+      {/* ── Ribbon ── */}
+      <div style={S.ribbon}>
+        <div style={S.ribbonLeft}>
+          <img src={FACILIO_LOGO} alt="Facilio" style={{ height:36, width:"auto", objectFit:"contain", display:"block", borderRadius:8 }} />
         </div>
-        <div style={{ display:"flex", alignItems:"center", gap:12 }}>
-          {syncMsg && <div style={S.msg(syncMsg.ok)}>{syncMsg.ok?"✓":"⚠"} {syncMsg.text}</div>}
-          <button style={S.syncBtn} onClick={()=>sync(true)} disabled={syncing}>
-            {syncing ? <span style={{ display:"inline-block", animation:"spin 1s linear infinite" }}>↻</span> : "↻"}
-            {syncing ? "Syncing…" : "Sync Now"}
-          </button>
+        <div style={S.ribbonRight}>
+          {lastUpdated ? `Last synced ${fmtTime(lastUpdated)}` : "Syncing…"}
         </div>
       </div>
-      <style>{`@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}`}</style>
 
-      {/* ── KPI Cards ── */}
-      <div style={S.kpiRow}>
-        {[
-          { num:stats.total,      label:"Total Projects",    color:"#60a5fa", onClick: () => setFilters({rag:"all",phase:"all",region:"all",lead:"all",vertical:"all",search:""}) },
-          { num:stats.green,      label:"On Track (Green)",  color:"#22c55e", onClick: () => setFilter("rag", filters.rag === "Green" ? "all" : "Green") },
-          { num:stats.amber,      label:"At Risk (Amber)",   color:"#f59e0b", onClick: () => setFilter("rag", filters.rag === "Amber" ? "all" : "Amber") },
-          { num:stats.red,        label:"Critical (Red)",    color:"#ef4444", onClick: () => setFilter("rag", filters.rag === "Red" ? "all" : "Red") },
-        ].map(({num,label,color,onClick})=>(
-          <div key={label} style={{...S.kpi, cursor: onClick ? "pointer" : "default"}} onClick={onClick}>
-            <div style={{...S.kpiNum, color}}>{num}</div>
-            <div style={S.kpiLbl}>{label}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* ── Phase Pipeline ── */}
-      <div style={S.section}>
-        <div style={S.sectionTitle}>Implementation pipeline</div>
-<div style={{...S.pipeline, display:"flex", flexDirection:"column", gap:16 }}>
-          {/* Phase cards */}
-          <div style={{display:"flex", gap:8, alignItems:"center", overflowX:"auto"}}>
-            {PHASES.map(ph => {
-              const m = PHASE_META[ph]; const count = stats.phase[ph]||0;
-              const active = filters.phase===ph;
-              return (
-                <div key={ph} className="pipe-item" style={{
-                  ...S.pipeItem,
-                  borderColor: active ? m.color : "#1a2540",
-                  background: active ? m.bg : "#070d1f"
-                }} onClick={()=>setFilter("phase", active?"all":ph)}>
-                  <div style={{...S.pipeCount, color:m.color}}>{count}</div>
-                  <div style={S.pipeLabel}>{ph}</div>
+      <div style={S.shell}>
+        {/* ── Header ── */}
+        <div className="hero-panel" style={S.heroPanel}>
+          <div className="dashboard-header" style={{...S.header, ...S.headerMain}}>
+            <div style={S.headerGlow} />
+            <div className="hero-header-grid" style={{ position:"relative", zIndex:1, width:"100%" }}>
+              <div style={{ flex:1, minWidth:0, display:"flex", alignItems:"center", gap:16, flexWrap:"wrap" }}>
+                <div className="hero-card-title" style={S.title}>Connected CMMS — Implementation Dashboard</div>
+                <div style={S.heroText}>
+                  <span style={S.statChip}>{lastUpdated ? `Last synced ${fmtTime(lastUpdated)}` : "Sync in progress"}</span>
+                  <div style={S.syncRow}>
+                    {syncMsg && <div style={S.msg(syncMsg.ok)}>{syncMsg.ok?"✓":"⚠"} {syncMsg.text}</div>}
+                    <button style={S.syncBtn} onClick={()=>sync(true)} disabled={syncing}>
+                      {syncing ? <span style={{ display:"inline-block", animation:"spin 1s linear infinite" }}>↻</span> : "↻"}
+                      {syncing ? "Syncing…" : "Sync Now"}
+                    </button>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
-          {/* Filters positioned below the cards */}
-          <div style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: 10,
-            alignItems: "center",
-            flexWrap: "wrap"
-          }}>
-            <select style={S.sel} value={filters.region} onChange={e=>setFilter("region",e.target.value)}>
-              <option value="all">All Regions</option>
-              {stats.regions.map(r=><option key={r} value={r}>{r} ({stats.regionCounts[r]||0})</option>)}
-            </select>
-            <select style={S.sel} value={filters.lead} onChange={e=>setFilter("lead",e.target.value)}>
-              <option value="all">All Managers</option>
-              {stats.leads.map(l=><option key={l} value={l}>{l} ({stats.leadCounts[l]||0})</option>)}
-            </select>
-            <select style={S.sel} value={filters.vertical} onChange={e=>setFilter("vertical",e.target.value)}>
-              <option value="all">All Verticals</option>
-              {stats.verticals.map(v=><option key={v} value={v}>{v} ({stats.verticalCounts[v]||0})</option>)}
-            </select>
-            <input style={S.search} placeholder="Search projects, accounts…"
-              value={filters.search} onChange={e=>setFilter("search",e.target.value)} />
-            {(filters.region!=="all"||filters.lead!=="all"||filters.vertical!=="all"||filters.search) &&
-              <button style={{...S.sel,cursor:"pointer",color:"#ef4444"}}
-                onClick={()=>setFilters({rag:"all",phase:"all",region:"all",lead:"all",vertical:"all",search:""})}>
-                Clear ×
-              </button>}
-          </div>
-      </div>
-
-
-        <div style={{ border:"1px solid #1a2540", borderRadius:10, overflow:"hidden" }}>
-          <table style={S.table}>
-            <thead>
-              <tr>
-                <TH k="account"    label="Account" />
-                <TH k="phase"      label="Phase" />
-                <TH k="lead"       label="Manager" />
-                <TH k="vertical"   label="Vertical" />
-                <TH k="region"     label="Region" />
-                <TH k="plannedGoLive" label="Planned Go-Live" />
-                <TH k="actualGoLive"  label="Actual Go-Live" />
-                <TH k="consultant" label="Consultant/S" />
-                <TH k="rag"        label="RAG" />
-                <TH k="comments"   label="Latest Status" />
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.length === 0 ? (
-                <tr><td colSpan={10} style={S.empty}>No projects match the current filters.</td></tr>
-              ) : filtered.map((p,i) => {
-                const isExp = expanded === p.account;
-                const rag = RAG_META[p.rag]||RAG_META.Green;
-                return [
-                  <tr key={p.account} style={S.tr(i,isExp)} onClick={()=>setExpanded(isExp?null:p.account)}>
-                    <td style={{...S.td, fontWeight:500, color:"#f1f5f9"}}>
-                      <div style={{display:"flex",alignItems:"center",gap:6}}>
-                        <span style={{color:"#334155",fontSize:10}}>{isExp?"▼":"▶"}</span>
-                        {p.account}
-                      </div>
-                    </td>
-                    <td style={S.td}><PhasePill phase={p.phase} /></td>
-                    <td style={{...S.td, color:"#94a3b8"}}>{p.lead||"—"}</td>
-                    <td style={S.td}><VertPill v={p.vertical} /></td>
-                    <td style={{...S.td, color:"#94a3b8"}}>{p.region}</td>
-                    <td style={{...S.td, color:"#94a3b8"}}>{p.plannedGoLive||"—"}</td>
-                    <td style={{...S.td, color:"#94a3b8"}}>{p.actualGoLive||"—"}</td>
-                    <td style={{...S.td, color:"#64748b", fontSize:12}}>{p.consultant||"—"}</td>
-                    <td style={S.td}>
-                      <span style={S.badge(rag.color, rag.bg)}>
-                        <RAGDot rag={p.rag} /> {p.rag}
-                      </span>
-                    </td>
-                    <td style={{...S.td, color:"#64748b", fontSize:12, maxWidth:220}}>
-                      <span style={{display:"block",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>
-                        {p.comments||"—"}
-                      </span>
-                    </td>
-                  </tr>,
-                  isExp && (
-                    <tr key={p.account+"-exp"} style={S.expRow}>
-                      <td colSpan={10} style={{ padding:"14px 24px" }}>
-                        <div style={{ display:"flex", gap:32, flexWrap:"wrap" }}>
-                          <div>
-                            <div style={{ fontSize:10, color:"#475569", textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:4 }}>Full Status</div>
-                            <div style={{ fontSize:13, color:"#94a3b8", maxWidth:480, lineHeight:1.6 }}>{p.comments||"No comments."}</div>
-                          </div>
-                          <div style={{ display:"flex", gap:24, flexWrap:"wrap" }}>
-                            {[
-                              ["Client POC", p.clientPOC],
-                              ["SOW Plan Start", p.sowPlanStart],
-                              ["SOW Plan End", p.sowPlanEnd],
-                              ["Planned Start", p.plannedStart],
-                              ["Actual Start", p.actualStart],
-                              ["Planned BRD Submission", p.plannedBRDSub],
-                              ["Actual BRD Submission", p.actualBRDSub],
-                              ["Planned BRD Signoff", p.plannedBRDSignoff],
-                              ["Actual BRD Signoff", p.actualBRDSignoff],
-                              ["Planned UAT Start", p.plannedUATStart],
-                              ["Actual UAT Start", p.actualUATStart],
-                              ["Planned UAT Signoff", p.plannedUATSignoff],
-                              ["Actual UAT Signoff", p.actualUATSignoff]
-                            ].map(([k,v])=>(
-                              <div key={k}>
-                                <div style={{ fontSize:10, color:"#475569", textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:3 }}>{k}</div>
-                                <div style={{ fontSize:13, color:"#e2e8f0", fontWeight:500 }}>{v||"—"}</div>
-                              </div>
-                            ))}
-                          </div>
-                          <div style={{ display:"flex", gap:24, flexWrap:"wrap" }}>
-                            {[
-                              ["Project Plan", p.projectPlan],
-                              ["MSA", p.msa],
-                              ["Governance Folder", p.governanceFolder],
-                              ["BRD", p.brd],
-                              ["WSR", p.wsr],
-                              ["Functional Test Report", p.functionalTestReport]
-                            ].map(([k,v])=>(
-                              <div key={k}>
-                                <div style={{ fontSize:10, color:"#475569", textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:3 }}>{k}</div>
-                                <div style={{ fontSize:13, color:"#e2e8f0", fontWeight:500 }}>
-                                  {v ? <a href={v} target="_blank" rel="noopener noreferrer" style={{color:"#00c49f"}}>Link</a> : "—"}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  )
-                ];
-              })}
-            </tbody>
-          </table>
-          <div style={{ padding:"10px 16px", background:"#070d1f", borderTop:"1px solid #1a2540",
-            fontSize:11, color:"#334155", display:"flex", justifyContent:"space-between" }}>
-            <span>Showing {filtered.length} of {projects.length} projects</span>
-            <span>Source: Connected CMMS Project Status.xlsx · SharePoint · {lastUpdated?fmtTime(lastUpdated):"pending"}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Debug Panel ── */}
-      {debugLog && (
-        <div style={{ ...S.section, paddingTop:16 }}>
-          <button onClick={()=>setShowDebug(v=>!v)}
-            style={{ fontSize:11, color:"#475569", background:"none", border:"1px solid #1a2540",
-              borderRadius:5, padding:"4px 10px", cursor:"pointer" }}>
-            {showDebug?"▲ Hide":"▼ Show"} sync debug log
-          </button>
-          {showDebug && (
-            <pre style={{ fontSize:11, color:"#64748b", background:"#070d1f", border:"1px solid #1a2540",
-              borderRadius:8, padding:"12px 14px", marginTop:8, overflowX:"auto", lineHeight:1.6,
-              whiteSpace:"pre-wrap", wordBreak:"break-word" }}>
-              {debugLog}
-            </pre>
-          )}
-        </div>
-      )}
-
-      {/* ── Regional Summary ── */}
-      <div style={S.section}>
-        <div style={S.sectionTitle}>Projects by region</div>
-        <div style={{ display:"flex", gap:10, flexWrap:"wrap" }}>
-          {Object.entries(
-            projects.filter(p=>p.status!=="Transitioned").reduce((acc,p)=>{
-              acc[p.region] = (acc[p.region]||{G:0,A:0,R:0});
-              acc[p.region][p.rag[0]]++; return acc;
-            }, {})
-          ).sort((a,b)=>Object.values(b[1]).reduce((s,v)=>s+v,0)-Object.values(a[1]).reduce((s,v)=>s+v,0))
-          .map(([reg,counts]) => (
-            <div key={reg} style={{ background:"#070d1f", border:"1px solid #1a2540", borderRadius:8,
-              padding:"10px 14px", minWidth:100 }}>
-              <div style={{ fontSize:11, color:"#64748b", marginBottom:6, fontWeight:600 }}>{reg}</div>
-              <div style={{ display:"flex", gap:6, alignItems:"center" }}>
-                {counts.G>0 && <span style={S.badge("#22c55e","#22c55e15")}><RAGDot rag="Green"/>{counts.G}</span>}
-                {counts.A>0 && <span style={S.badge("#f59e0b","#f59e0b15")}><RAGDot rag="Amber"/>{counts.A}</span>}
-                {counts.R>0 && <span style={S.badge("#ef4444","#ef444415")}><RAGDot rag="Red"/>{counts.R}</span>}
+              </div>
+              <div className="hero-spotlight" style={S.spotlightCard}>
+                <div style={{ minWidth:120 }}>
+                  <div style={S.spotlightLabel}>Portfolio Snapshot</div>
+                  <div style={S.spotlightValue}>{stats.total}</div>
+                  <div style={S.spotlightText}>
+                    Projects
+                  </div>
+                </div>
+                <div style={S.spotlightStack}>
+                  {[["Healthy", stats.green, "#22c55e"], ["Watchlist", stats.amber, "#f59e0b"], ["Needs attention", stats.red, "#ef4444"]].map(([label, value, color]) => (
+                    <div key={label} style={S.spotlightRow}>
+                      <div style={S.spotlightName}>{label}</div>
+                      <div style={{ ...S.spotlightMeta, color }}>{value}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
+
+        {/* ── KPI Cards ── */}
+        <div className="dashboard-grid" style={S.kpiRow}>
+          {[
+            { num:stats.total,  label:"Total Projects", color:"#2563eb", ragKey:null,    onClick: () => setFilters({rag:"all",phase:"all",region:"all",lead:"all",vertical:"all",search:""}) },
+            { num:stats.green,  label:"On Track",       color:"#059669", ragKey:"Green", onClick: () => setFilter("rag", filters.rag === "Green" ? "all" : "Green") },
+            { num:stats.amber,  label:"At Risk",        color:"#d97706", ragKey:"Amber", onClick: () => setFilter("rag", filters.rag === "Amber" ? "all" : "Amber") },
+            { num:stats.red,    label:"Critical",       color:"#dc2626", ragKey:"Red",   onClick: () => setFilter("rag", filters.rag === "Red" ? "all" : "Red") },
+          ].map(({num,label,color,ragKey,onClick})=>{
+            const active = ragKey ? filters.rag === ragKey : (filters.rag==="all" && !filters.phase && !filters.region && !filters.lead && !filters.vertical && !filters.search);
+            return (
+              <div key={label} style={{
+                ...S.kpi,
+                cursor:"pointer",
+                borderTop:`3px solid ${color}`,
+                background: active ? `${color}12` : "#ffffff",
+                boxShadow: active ? `0 0 0 2px ${color}40, 0 4px 16px ${color}20` : S.kpi.boxShadow,
+                transform: active ? "translateY(-1px)" : "none",
+                transition:"all 0.15s"
+              }} onClick={onClick}>
+                <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start" }}>
+                  <div style={{...S.kpiNum, color}}>{num}</div>
+                </div>
+                <div style={S.kpiLbl}>{label}</div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ── Phase Pipeline ── */}
+        <div style={S.section}>
+          <div className="dashboard-section" style={S.sectionCard}>
+            <div style={S.sectionTitle}>Implementation pipeline</div>
+            <div style={{...S.pipeline, display:"flex", flexDirection:"column", gap:18 }}>
+              <div style={{display:"flex", gap:8, alignItems:"center", overflowX:"auto"}}>
+                {PHASES.map(ph => {
+                  const m = PHASE_META[ph]; const count = stats.phase[ph]||0;
+                  const active = filters.phase===ph;
+                  return (
+                    <div key={ph} className="pipe-item" style={{
+                      ...S.pipeItem,
+                      borderColor: active ? m.color : "#e2e8f0",
+                      background: active ? m.bg : "#f8fafc",
+                      borderTopWidth: active ? 2 : 1
+                    }} onClick={()=>setFilter("phase", active?"all":ph)}>
+                      <div style={{...S.pipeCount, color:m.color}}>{count}</div>
+                      <div style={S.pipeLabel}>{ph}</div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="dashboard-toolbar">
+                <div style={S.filters}>
+                  <select style={S.sel} value={filters.region} onChange={e=>setFilter("region",e.target.value)}>
+                    <option value="all">All Regions</option>
+                    {stats.regions.map(r=><option key={r} value={r}>{r} ({stats.regionCounts[r]||0})</option>)}
+                  </select>
+                  <select style={S.sel} value={filters.lead} onChange={e=>setFilter("lead",e.target.value)}>
+                    <option value="all">All Managers</option>
+                    {stats.leads.map(l=><option key={l} value={l}>{l} ({stats.leadCounts[l]||0})</option>)}
+                  </select>
+                  <select style={S.sel} value={filters.vertical} onChange={e=>setFilter("vertical",e.target.value)}>
+                    <option value="all">All Verticals</option>
+                    {stats.verticals.map(v=><option key={v} value={v}>{v} ({stats.verticalCounts[v]||0})</option>)}
+                  </select>
+                  <input style={S.search} placeholder="Search projects, accounts…"
+                    value={filters.search} onChange={e=>setFilter("search",e.target.value)} />
+                  {(filters.region!=="all"||filters.lead!=="all"||filters.vertical!=="all"||filters.search) &&
+                    <button style={{...S.sel,cursor:"pointer",color:"#dc2626",borderColor:"#fecaca",background:"#fff5f5"}}
+                      onClick={()=>setFilters({rag:"all",phase:"all",region:"all",lead:"all",vertical:"all",search:""})}>
+                      Clear ×
+                    </button>}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style={S.section}>
+          <div className="dashboard-section" style={S.sectionCard}>
+            <div style={{ border:"1px solid #e2e8f0", borderRadius:16, overflow:"hidden" }}>
+              <table style={S.table}>
+                <thead>
+                  <tr>
+                    <TH k="account"       label="Account" />
+                    <TH k="phase"         label="Phase" />
+                    <TH k="lead"          label="Manager" />
+                    <TH k="vertical"      label="Vertical" />
+                    <TH k="region"        label="Region" />
+                    <TH k="plannedGoLive" label="Planned Go-Live" />
+                    <TH k="actualGoLive"  label="Actual Go-Live" />
+                    <TH k="consultant"    label="Consultant/S" />
+                    <TH k="rag"           label="RAG" />
+                    <TH k="comments"      label="Latest Status" />
+                  </tr>
+                </thead>
+                <tbody>
+                  {filtered.length === 0 ? (
+                    <tr><td colSpan={10} style={S.empty}>No projects match the current filters.</td></tr>
+                  ) : filtered.map((p,i) => {
+                    const isExp = expanded === p.account;
+                    const rag = RAG_META[p.rag]||RAG_META.Green;
+                    return [
+                      <tr key={p.account} style={S.tr(i,isExp)} onClick={()=>setExpanded(isExp?null:p.account)}>
+                        <td style={{...S.td, fontWeight:600, color:"#0f172a"}}>
+                          <div style={{display:"flex",alignItems:"center",gap:6}}>
+                            <span style={{color:"#94a3b8",fontSize:10}}>{isExp?"▼":"▶"}</span>
+                            {p.account}
+                          </div>
+                        </td>
+                        <td style={S.td}><PhasePill phase={p.phase} /></td>
+                        <td style={{...S.td, color:"#475569"}}>{p.lead||"—"}</td>
+                        <td style={S.td}><VertPill v={p.vertical} /></td>
+                        <td style={{...S.td, color:"#475569"}}>{p.region}</td>
+                        <td style={{...S.td, color:"#475569"}}>{p.plannedGoLive||"—"}</td>
+                        <td style={{...S.td, color:"#475569"}}>{p.actualGoLive||"—"}</td>
+                        <td style={{...S.td, color:"#64748b", fontSize:12}}>{p.consultant||"—"}</td>
+                        <td style={S.td}>
+                          <span style={S.badge(rag.color, rag.bg)}>
+                            <RAGDot rag={p.rag} /> {p.rag}
+                          </span>
+                        </td>
+                        <td style={{...S.td, color:"#64748b", fontSize:12, maxWidth:220}}>
+                          <span style={{display:"block",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>
+                            {p.comments||"—"}
+                          </span>
+                        </td>
+                      </tr>,
+                      isExp && (
+                        <tr key={p.account+"-exp"} style={S.expRow}>
+                          <td colSpan={10} style={{ padding:"14px 24px" }}>
+                            <div style={{ display:"flex", gap:32, flexWrap:"wrap" }}>
+                              <div>
+                                <div style={{ fontSize:10, color:"#64748b", textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:4 }}>Full Status</div>
+                                <div style={{ fontSize:13, color:"#334155", maxWidth:480, lineHeight:1.6 }}>{p.comments||"No comments."}</div>
+                              </div>
+                              <div style={{ display:"flex", gap:24, flexWrap:"wrap" }}>
+                                {[
+                                  ["Client POC", p.clientPOC],
+                                  ["SOW Plan Start", p.sowPlanStart],
+                                  ["SOW Plan End", p.sowPlanEnd],
+                                  ["Planned Start", p.plannedStart],
+                                  ["Actual Start", p.actualStart],
+                                  ["Planned BRD Submission", p.plannedBRDSub],
+                                  ["Actual BRD Submission", p.actualBRDSub],
+                                  ["Planned BRD Signoff", p.plannedBRDSignoff],
+                                  ["Actual BRD Signoff", p.actualBRDSignoff],
+                                  ["Planned UAT Start", p.plannedUATStart],
+                                  ["Actual UAT Start", p.actualUATStart],
+                                  ["Planned UAT Signoff", p.plannedUATSignoff],
+                                  ["Actual UAT Signoff", p.actualUATSignoff]
+                                ].map(([k,v])=>(
+                                  <div key={k}>
+                                    <div style={{ fontSize:10, color:"#64748b", textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:3 }}>{k}</div>
+                                    <div style={{ fontSize:13, color:"#1e293b", fontWeight:500 }}>{v||"—"}</div>
+                                  </div>
+                                ))}
+                              </div>
+                              <div style={{ display:"flex", gap:24, flexWrap:"wrap" }}>
+                                {[
+                                  ["Project Plan", p.projectPlan],
+                                  ["MSA", p.msa],
+                                  ["Governance Folder", p.governanceFolder],
+                                  ["BRD", p.brd],
+                                  ["WSR", p.wsr],
+                                  ["Functional Test Report", p.functionalTestReport]
+                                ].map(([k,v])=>(
+                                  <div key={k}>
+                                    <div style={{ fontSize:10, color:"#64748b", textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:3 }}>{k}</div>
+                                    <div style={{ fontSize:13, color:"#1e293b", fontWeight:500 }}>
+                                      {v ? <a href={v} target="_blank" rel="noopener noreferrer" style={{color:"#0d9488"}}>Link</a> : "—"}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      )
+                    ];
+                  })}
+                </tbody>
+              </table>
+              <div className="dashboard-footer" style={S.footer}>
+                <span>Showing {filtered.length} of {projects.length} projects</span>
+                <span>Source: Connected CMMS Project Status.xlsx · SharePoint · {lastUpdated?fmtTime(lastUpdated):"pending"}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Debug Panel ── */}
+        {debugLog && (
+          <div style={{ ...S.section, paddingTop:16 }}>
+            <button onClick={()=>setShowDebug(v=>!v)}
+              style={{ fontSize:11, color:"#64748b", background:"#f1f5f9", border:"1px solid #e2e8f0",
+                borderRadius:10, padding:"8px 12px", cursor:"pointer" }}>
+              {showDebug?"▲ Hide":"▼ Show"} sync debug log
+            </button>
+            {showDebug && (
+              <pre style={{ fontSize:11, color:"#1e293b", background:"#f8fafc", border:"1px solid #e2e8f0",
+                borderRadius:16, padding:"14px 16px", marginTop:10, overflowX:"auto", lineHeight:1.6,
+                whiteSpace:"pre-wrap", wordBreak:"break-word" }}>
+                {debugLog}
+              </pre>
+            )}
+          </div>
+        )}
+
+        {/* ── Regional Summary ── */}
+        <div style={S.section}>
+          <div className="dashboard-section" style={S.sectionCard}>
+            <div style={S.sectionTitle}>Projects by region</div>
+            <div style={{ display:"flex", gap:12, flexWrap:"wrap" }}>
+              {Object.entries(
+                projects.filter(p=>p.status!=="Transitioned").reduce((acc,p)=>{
+                  acc[p.region] = (acc[p.region]||{G:0,A:0,R:0});
+                  acc[p.region][p.rag[0]]++; return acc;
+                }, {})
+              ).sort((a,b)=>Object.values(b[1]).reduce((s,v)=>s+v,0)-Object.values(a[1]).reduce((s,v)=>s+v,0))
+              .map(([reg,counts]) => (
+                <div key={reg} style={S.regionCard}>
+                  <div style={{ fontSize:11, color:"#64748b", marginBottom:8, fontWeight:700, letterSpacing:"0.08em", textTransform:"uppercase" }}>{reg}</div>
+                  <div style={{ display:"flex", gap:6, alignItems:"center" }}>
+                    {counts.G>0 && <span style={S.badge("#059669","#22c55e18")}><RAGDot rag="Green"/>{counts.G}</span>}
+                    {counts.A>0 && <span style={S.badge("#d97706","#f59e0b18")}><RAGDot rag="Amber"/>{counts.A}</span>}
+                    {counts.R>0 && <span style={S.badge("#dc2626","#ef444418")}><RAGDot rag="Red"/>{counts.R}</span>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
