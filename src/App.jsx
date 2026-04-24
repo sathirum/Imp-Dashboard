@@ -263,6 +263,7 @@ const tickWidthForZoom = (zoom) => (
 
 function ProjectRunway({ projects }) {
   const [zoom, setZoom] = useState("month");
+  const [crossTodayOnly, setCrossTodayOnly] = useState(false);
   const [hoveredRow, setHoveredRow] = useState(null);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
   const frozenRowRefs = useRef([]);
@@ -273,7 +274,15 @@ function ProjectRunway({ projects }) {
     [projects]
   );
   const today = startOfDay(new Date());
-  const filteredRows = rows;
+  const filteredRows = useMemo(() => {
+    if (!crossTodayOnly) return rows;
+    return rows.filter((row) => {
+      const startDate = row.start || row.brd || row.uatStart || row.plannedGoLive || row.goLive;
+      const endDate = row.goLive || row.plannedGoLive || row.uatEnd || row.uatStart || row.brd || row.start;
+      if (!startDate || !endDate) return false;
+      return startOfDay(startDate) <= today && startOfDay(endDate) >= today;
+    });
+  }, [rows, crossTodayOnly, today]);
 
   const { minDate, maxDate } = useMemo(() => {
     const allDates = filteredRows.flatMap((row) => [
@@ -423,6 +432,15 @@ function ProjectRunway({ projects }) {
         <span style={{ fontSize:12, color:"#9fb0c8", marginLeft:"auto" }}>
           {filteredRows.length} project{filteredRows.length !== 1 ? "s" : ""}
         </span>
+        <label style={{ display:"flex", alignItems:"center", gap:6, fontSize:12, color:"#9fb0c8", whiteSpace:"nowrap" }}>
+          <input
+            type="checkbox"
+            checked={crossTodayOnly}
+            onChange={(e) => setCrossTodayOnly(e.target.checked)}
+            style={{ accentColor:"#2dd4bf" }}
+          />
+          Cross Today
+        </label>
         <div style={{ width:1, height:16, background:"#314056" }} />
         <div style={{ fontSize:12, color:"#9fb0c8", fontWeight:700 }}>Zoom:</div>
         <div style={{ display:"flex", border:"1px solid #263244", borderRadius:12, overflow:"hidden", background:"#0f172a" }}>
