@@ -1,0 +1,17 @@
+{
+  "project": "Binghatti Masaken",
+  "dashboard_account": "Binghatti Masaken",
+  "slug": "binghatti-masaken",
+  "manager": "Ashwin",
+  "vertical": "CRE",
+  "region": "ME",
+  "consultant": "Dinesh",
+  "phase": "UAT",
+  "health": "red",
+  "status": "The project is marked Red primarily due to significant customer-side delays, lack of responsiveness, complications from engaging new vendors, and unresolved BRD and UAT sign-offs—all of which have caused the project timeline to slip substantially from the original Go-Live date of",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

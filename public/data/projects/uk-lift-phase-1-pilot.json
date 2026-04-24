@@ -1,0 +1,17 @@
+{
+  "project": "UK Lift - Phase 1 - Pilot",
+  "dashboard_account": "UK Lift - Phase 1 - Pilot",
+  "slug": "uk-lift-phase-1-pilot",
+  "manager": "Deepak Simon",
+  "vertical": "IFM",
+  "region": "UK",
+  "consultant": "Shasvat",
+  "phase": "UAT",
+  "health": "amber",
+  "status": "UAT Delays March 23 – UKLE requested additional time. An extension was agreed and confirmed by UKLE. March 25 – Ian’s site visit at UKLE, identified additional changes to be addressed March 27 – UAT planned sign-off date April 1 – All identified changes were completed. UKLE was r",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

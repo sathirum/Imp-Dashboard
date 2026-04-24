@@ -1,0 +1,17 @@
+{
+  "project": "Skeens ( Phase 2)",
+  "dashboard_account": "Skeens ( Phase 2)",
+  "slug": "skeens-phase-2",
+  "manager": "Mithun",
+  "vertical": "IFM",
+  "region": "US",
+  "consultant": "Jeffri",
+  "phase": "On-Hold",
+  "health": "red",
+  "status": "They are unable to make the vendors use the platform so SMS integration though demoed has not been implemented",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

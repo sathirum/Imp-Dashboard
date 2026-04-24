@@ -1,0 +1,17 @@
+{
+  "project": "Dimeo",
+  "dashboard_account": "Dimeo",
+  "slug": "dimeo",
+  "manager": "Vandhana",
+  "vertical": "IFM",
+  "region": "AUS",
+  "consultant": null,
+  "phase": "Configuration",
+  "health": "green",
+  "status": "27-01-2026 - Kick off Completed 13-02-2026 - Workshops completed, however we still may have one quick session for contracts as we have't got the sample data yet",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

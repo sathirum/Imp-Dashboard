@@ -1,0 +1,17 @@
+{
+  "project": "ENEC - QR to Survey",
+  "dashboard_account": "ENEC - QR to Survey",
+  "slug": "enec-qr-to-survey",
+  "manager": "Ashwin",
+  "vertical": "CRE",
+  "region": "ME",
+  "consultant": "Paurnika",
+  "phase": "Configuration",
+  "health": "green",
+  "status": "Project started as per the planned date. Minor delays occurred during BRD finalization due to incorporation of feedback from multiple teams and inclusion of Cybersecurity requirements. Overall project remains on track.",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

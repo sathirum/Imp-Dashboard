@@ -1,0 +1,49 @@
+{
+  "project": "Metro Maintenance Phase 1",
+  "dashboard_account": "Metro Maintenance Phase 1",
+  "slug": "metro-maintenance-phase-1",
+  "manager": "Vandhana",
+  "vertical": "IFM",
+  "region": "US",
+  "consultant": "Nivetha/Krishna",
+  "phase": "Hypercare",
+  "health": "amber",
+  "status": "Quote workflow + Corrigo rate-card integration workshop delivered to AM/ops team. Price-list-ID mapping identified as ongoing risk.",
+  "active_risks": [
+    {
+      "text": "Corrigo rate-card sync depends on matching price-list IDs; mismatches caught manually — quote-to-billing error risk",
+      "first_seen": "2026-04-22"
+    }
+  ],
+  "open_items": [
+    {
+      "text": "Publish detailed quote-workflow + Corrigo mapping documentation",
+      "owner": "Facilio",
+      "due": "Post-workshop"
+    },
+    {
+      "text": "Provide ongoing support to Metro account managers/operations",
+      "owner": "Krishna K / Jeffri Shan",
+      "due": "Ongoing"
+    },
+    {
+      "text": "Validate price-list-ID mapping per service",
+      "owner": "Metro team",
+      "due": "This week"
+    }
+  ],
+  "recent_decisions": [
+    {
+      "text": "Rate-card management centralized in Service Rate Card module",
+      "date": "2026-04-22"
+    },
+    {
+      "text": "Automated add of new price-list items/services from Corrigo into Facilio",
+      "date": "2026-04-22"
+    }
+  ],
+  "last_updated": "2026-04-22",
+  "last_call_ids": [
+    "946edce9"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "project": "Modon - Phase 1",
+  "dashboard_account": "Modon - Phase 1",
+  "slug": "modon-phase-1",
+  "manager": "Ashwin",
+  "vertical": "CRE",
+  "region": "ME",
+  "consultant": "Paurnika, Riya, Jhimlee",
+  "phase": "Requirement Gathering",
+  "health": "amber",
+  "status": "CWRC accommodation suite Phase-01 customization in progress across multiple sessions. Integration-heavy scope: Oracle + Parcomex + Emirates ID + bilingual contracts.",
+  "active_risks": [
+    {
+      "text": "Three-way integration dependency (Oracle, Parcomex, EID) introduces schedule risk",
+      "first_seen": "2026-04-22"
+    },
+    {
+      "text": "Residents without EID need manual check-in + 60-day access cap (ops burden + compliance trigger)",
+      "first_seen": "2026-04-22"
+    },
+    {
+      "text": "Bilingual (English + Arabic) legally binding contract generation introduces legal/compliance risk",
+      "first_seen": "2026-04-22"
+    },
+    {
+      "text": "Laundry service integration scope deferred — in-scope vs. Phase-2 decision pending",
+      "first_seen": "2026-04-22"
+    }
+  ],
+  "open_items": [
+    {
+      "text": "Finalize wireframes for contract module",
+      "owner": "Ashwin / Vasanth",
+      "due": "Next session"
+    },
+    {
+      "text": "Document EID reader integration spec",
+      "owner": "Ashwin / Vasanth",
+      "due": "Next session"
+    },
+    {
+      "text": "Finalize Parcomex integration scope",
+      "owner": "Ashwin",
+      "due": "Session 02"
+    },
+    {
+      "text": "Detail self-cooking kitchen use case",
+      "owner": "Ashwin",
+      "due": "Next session"
+    },
+    {
+      "text": "Produce Arabic contract generation spec (legal binding vs. data capture)",
+      "owner": "Ashwin / Amrithya",
+      "due": "Next session"
+    },
+    {
+      "text": "Model Moonflower catering report with billing reconciliation",
+      "owner": "Ashwin",
+      "due": "Next session"
+    }
+  ],
+  "recent_decisions": [
+    {
+      "text": "Facilio integrates with Parcomex for resident access control (activation/deactivation on check-in/out)",
+      "date": "2026-04-22"
+    },
+    {
+      "text": "Residents without EID: 60-day temporary access; auto-deactivate on expiry",
+      "date": "2026-04-22"
+    },
+    {
+      "text": "Fines recorded in Facilio, paid via Oracle, marked recovered in Facilio",
+      "date": "2026-04-22"
+    },
+    {
+      "text": "English + Arabic contract module scoped in",
+      "date": "2026-04-22"
+    },
+    {
+      "text": "Historical resident data cannot be deleted due to legal/governance rules",
+      "date": "2026-04-22"
+    }
+  ],
+  "last_updated": "2026-04-22",
+  "last_call_ids": [
+    "6ed5ffcc",
+    "bbc12737",
+    "ece051fa",
+    "e298a18e",
+    "5c887e3d"
+  ]
+}
