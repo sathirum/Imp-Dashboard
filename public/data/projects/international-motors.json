@@ -1,0 +1,17 @@
+{
+  "project": "International Motors",
+  "dashboard_account": "International Motors",
+  "slug": "international-motors",
+  "manager": "Deepak Simon",
+  "vertical": "IFM",
+  "region": "US",
+  "consultant": "Muthu",
+  "phase": "UAT",
+  "health": "green",
+  "status": "Data upload & implementation",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

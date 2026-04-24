@@ -1,0 +1,17 @@
+{
+  "project": "T.J Regional Health",
+  "dashboard_account": "T.J Regional Health",
+  "slug": "t-j-regional-health",
+  "manager": "Deepak Simon",
+  "vertical": "IFM",
+  "region": "US",
+  "consultant": "Hasina J",
+  "phase": "UAT",
+  "health": "green",
+  "status": "All Planned Dates are from MSA dates. 10-Feb-2026 - Kick off Started 11-Feb-2026 - Worshop 1 - Portfolio & Asset 16-Feb-2026 - Workshop 2 - Service Request, Reactive & inventory 18-Feb-2026 - Workshop 3 moved by customer 20-Feb-2026 - Workshop 3 - Inspection & Planned Maintenance",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}
