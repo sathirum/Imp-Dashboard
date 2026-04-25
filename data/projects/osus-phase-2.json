@@ -1,0 +1,17 @@
+{
+  "project": "OSUS - Phase 2",
+  "dashboard_account": "OSUS - Phase 2",
+  "slug": "osus-phase-2",
+  "manager": "Ashwin",
+  "vertical": "CRE",
+  "region": "ME",
+  "consultant": "Dinesh",
+  "phase": "Configuration",
+  "health": "green",
+  "status": "No recent call activity.",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

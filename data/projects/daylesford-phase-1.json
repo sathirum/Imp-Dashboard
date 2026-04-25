@@ -1,0 +1,39 @@
+{
+  "project": "Daylesford - Phase 1",
+  "dashboard_account": "Daylesford - Phase 1",
+  "slug": "daylesford-phase-1",
+  "manager": "Deepak Simon",
+  "vertical": "IFM",
+  "region": "UK",
+  "consultant": "Thilak",
+  "phase": "Configuration",
+  "health": "green",
+  "status": "UAT walkthrough complete — PPM workflow demo delivered. Onboarding plan aligned with Daylesford.",
+  "active_risks": [],
+  "open_items": [
+    {
+      "text": "Share UAT tracker sheet; align onboarding plan",
+      "owner": "Deepak",
+      "due": "This week"
+    },
+    {
+      "text": "Begin UAT execution per tracker",
+      "owner": "Amelia Harper (Daylesford)",
+      "due": "Per plan"
+    }
+  ],
+  "recent_decisions": [
+    {
+      "text": "PPM workflow confirmed as fit for both contract-linked and non-contract scenarios",
+      "date": "2026-04-22"
+    },
+    {
+      "text": "Dynamic risk assessments enforced on vendor and technician execution",
+      "date": "2026-04-22"
+    }
+  ],
+  "last_updated": "2026-04-22",
+  "last_call_ids": [
+    "77e1ea93"
+  ]
+}

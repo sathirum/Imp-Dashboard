@@ -1,0 +1,17 @@
+{
+  "project": "Deyaar - DPM",
+  "dashboard_account": "Deyaar - DPM",
+  "slug": "deyaar-dpm",
+  "manager": "Ashwin",
+  "vertical": "CRE",
+  "region": "ME",
+  "consultant": "Arun Kumar",
+  "phase": "Configuration",
+  "health": "amber",
+  "status": "Phase 1 ready for Live Phase 2 In UAT",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

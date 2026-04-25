@@ -1,0 +1,17 @@
+{
+  "project": "OSUS - Phase 1",
+  "dashboard_account": "OSUS - Phase 1",
+  "slug": "osus-phase-1",
+  "manager": "Ashwin",
+  "vertical": "CRE",
+  "region": "ME",
+  "consultant": "Dinesh",
+  "phase": "Configuration",
+  "health": "green",
+  "status": "Customer asked to deliver the project by April 1-15th Project Started and progressing as per plan",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

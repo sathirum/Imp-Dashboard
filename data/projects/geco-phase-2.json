@@ -1,0 +1,17 @@
+{
+  "project": "GECO - Phase 2",
+  "dashboard_account": "GECO - Phase 2",
+  "slug": "geco-phase-2",
+  "manager": "Ashwin",
+  "vertical": "IFM",
+  "region": "ME",
+  "consultant": "Arun Kumar, Jeevaregai",
+  "phase": "Requirement Gathering",
+  "health": "red",
+  "status": "13-Mar-2026: Phase-02 BRD is submitted 09-Feb-2026: Check-in / Check-out solution document was shared by Product team 02-Feb-2026: Data preparation activities for upcoming sites 28-Jan-2026: MRI Integration was prioritized and taken up post completion of Phase 1 21-Jan-2026: Ahme",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

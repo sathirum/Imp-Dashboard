@@ -1,0 +1,17 @@
+{
+  "project": "Westhab - CAFM",
+  "dashboard_account": "Westhab - CAFM",
+  "slug": "westhab-cafm",
+  "manager": "Deepak Simon",
+  "vertical": "IFM",
+  "region": "ME",
+  "consultant": "Hasina J",
+  "phase": "Hypercare",
+  "health": "amber",
+  "status": "1-Dec-2025 - BRD Approved",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

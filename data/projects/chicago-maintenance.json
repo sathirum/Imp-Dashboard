@@ -1,0 +1,17 @@
+{
+  "project": "Chicago Maintenance",
+  "dashboard_account": "Chicago Maintenance",
+  "slug": "chicago-maintenance",
+  "manager": "Ashwin",
+  "vertical": "IFM",
+  "region": "ME",
+  "consultant": "Riyavarshini",
+  "phase": "Transitioned to support",
+  "health": "green",
+  "status": "Transitioned to Support. All Modules has been configured and has been Handedover to CMC. Modules which has been On holded for Integration such as PR, PO , Inventory Management has been configured as per the requirements gathered. Which shall be subjected to re-configuration later",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

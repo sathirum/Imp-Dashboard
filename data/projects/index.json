@@ -1,0 +1,557 @@
+{
+  "count": 69,
+  "projects": [
+    {
+      "slug": "daylesford-phase-1",
+      "project": "Daylesford - Phase 1",
+      "manager": "Deepak Simon",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "UK"
+    },
+    {
+      "slug": "good-hands-technical-services",
+      "project": "Good Hands Technical Services",
+      "manager": "Ashwin",
+      "phase": "UAT",
+      "health": "amber",
+      "region": "ME"
+    },
+    {
+      "slug": "metro-maintenance-phase-1",
+      "project": "Metro Maintenance Phase 1",
+      "manager": "Vandhana",
+      "phase": "Hypercare",
+      "health": "amber",
+      "region": "US"
+    },
+    {
+      "slug": "modon-phase-1",
+      "project": "Modon - Phase 1",
+      "manager": "Ashwin",
+      "phase": "Requirement Gathering",
+      "health": "amber",
+      "region": "ME"
+    },
+    {
+      "slug": "trinity-hospital",
+      "project": "Trinity Hospital",
+      "manager": "Sangavi",
+      "phase": "Hypercare",
+      "health": "red",
+      "region": "US"
+    },
+    {
+      "slug": "ace-hardware",
+      "project": "Ace Hardware",
+      "manager": "Deepak Simon",
+      "phase": "Hypercare",
+      "health": "green",
+      "region": "US"
+    },
+    {
+      "slug": "al-mujama-wave-1",
+      "project": "Al Mujama - Wave 1",
+      "manager": "Ashwin",
+      "phase": "Hypercare",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "al-mujama-wave-2",
+      "project": "Al Mujama - Wave 2",
+      "manager": "Ashwin",
+      "phase": "Hypercare",
+      "health": "amber",
+      "region": "ME"
+    },
+    {
+      "slug": "avar-phase-2",
+      "project": "Avar-Phase 2",
+      "manager": "Vandhana",
+      "phase": "UAT",
+      "health": "amber",
+      "region": "UK"
+    },
+    {
+      "slug": "binghatti-masaken",
+      "project": "Binghatti Masaken",
+      "manager": "Ashwin",
+      "phase": "UAT",
+      "health": "red",
+      "region": "ME"
+    },
+    {
+      "slug": "brookfield-uk-additional-building",
+      "project": "Brookfield(UK) - Additional Building",
+      "manager": "Deepak Simon",
+      "phase": "Transitioned to support",
+      "health": "amber",
+      "region": "UK"
+    },
+    {
+      "slug": "cbre",
+      "project": "CBRE",
+      "manager": "Sangavi",
+      "phase": "UAT",
+      "health": "green",
+      "region": "AUS"
+    },
+    {
+      "slug": "cit-diriya",
+      "project": "CIT - Diriya",
+      "manager": "Ashwin",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "charter-hall",
+      "project": "Charter Hall",
+      "manager": "Sangavi",
+      "phase": "Transitioned to support",
+      "health": "green",
+      "region": "AUS"
+    },
+    {
+      "slug": "chicago-maintenance",
+      "project": "Chicago Maintenance",
+      "manager": "Ashwin",
+      "phase": "Transitioned to support",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "cognita-rps-his-hes-rgs-expansion",
+      "project": "Cognita (RPS, HIS, HES) RGS Expansion",
+      "manager": "Ashwin",
+      "phase": "Transitioned to support",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "dalkia-misk-city",
+      "project": "Dalkia - Misk city",
+      "manager": "Mithun",
+      "phase": "Configuration",
+      "health": "red",
+      "region": "ME"
+    },
+    {
+      "slug": "daylesford-phase-2",
+      "project": "Daylesford - Phase 2",
+      "manager": "Deepak Simon",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "UK"
+    },
+    {
+      "slug": "deyaar-dcm",
+      "project": "Deyaar - DCM",
+      "manager": "Ashwin",
+      "phase": "UAT",
+      "health": "amber",
+      "region": "ME"
+    },
+    {
+      "slug": "deyaar-dpm",
+      "project": "Deyaar - DPM",
+      "manager": "Ashwin",
+      "phase": "Configuration",
+      "health": "amber",
+      "region": "ME"
+    },
+    {
+      "slug": "dimeo",
+      "project": "Dimeo",
+      "manager": "Vandhana",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "AUS"
+    },
+    {
+      "slug": "dunnes-stores",
+      "project": "Dunnes Stores",
+      "manager": "Deepak Simon",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "UK"
+    },
+    {
+      "slug": "enec-cafm",
+      "project": "ENEC - CAFM",
+      "manager": "Ashwin",
+      "phase": "UAT",
+      "health": "amber",
+      "region": "ME"
+    },
+    {
+      "slug": "enec-qr-to-survey",
+      "project": "ENEC - QR to Survey",
+      "manager": "Ashwin",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "enec-workspace-management",
+      "project": "ENEC - Workspace Management",
+      "manager": "Ashwin",
+      "phase": "Requirement Gathering",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "es-global",
+      "project": "ES Global",
+      "manager": "Ashwin",
+      "phase": "Requirement Gathering",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "fc-madras",
+      "project": "FC Madras",
+      "manager": "Vandhana",
+      "phase": "Configuration",
+      "health": "amber",
+      "region": "APAC"
+    },
+    {
+      "slug": "geco-phase-1",
+      "project": "GECO - Phase 1",
+      "manager": "Ashwin",
+      "phase": "UAT",
+      "health": "red",
+      "region": "ME"
+    },
+    {
+      "slug": "geco-phase-2",
+      "project": "GECO - Phase 2",
+      "manager": "Ashwin",
+      "phase": "Requirement Gathering",
+      "health": "red",
+      "region": "ME"
+    },
+    {
+      "slug": "ghassan-gag",
+      "project": "Ghassan - GAG",
+      "manager": "Ashwin",
+      "phase": "Transitioned to support",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "hg-facilities-solutions-wave-1",
+      "project": "HG Facilities Solutions - wave 1",
+      "manager": "Deepak Simon",
+      "phase": "Transitioned to support",
+      "health": "green",
+      "region": "US"
+    },
+    {
+      "slug": "hg-facilities-solutions-wave-2",
+      "project": "HG Facilities Solutions - wave 2'",
+      "manager": "Deepak Simon",
+      "phase": "Transitioned to support",
+      "health": "green",
+      "region": "US"
+    },
+    {
+      "slug": "hibernia",
+      "project": "Hibernia",
+      "manager": "Deepak Simon",
+      "phase": "UAT",
+      "health": "green",
+      "region": "UK"
+    },
+    {
+      "slug": "houchens",
+      "project": "Houchens",
+      "manager": "Deepak Simon",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "US"
+    },
+    {
+      "slug": "icd-bp-phase-1",
+      "project": "ICD BP Phase-1",
+      "manager": "Ashwin",
+      "phase": "Hypercare",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "icd-bp-phase-2",
+      "project": "ICD BP Phase-2",
+      "manager": "Ashwin",
+      "phase": "Hypercare",
+      "health": "amber",
+      "region": "ME"
+    },
+    {
+      "slug": "iem",
+      "project": "IEM",
+      "manager": "Vandhana",
+      "phase": "Hypercare",
+      "health": "red",
+      "region": "UK"
+    },
+    {
+      "slug": "in-collaborative",
+      "project": "In Collaborative",
+      "manager": "Deepak Simon",
+      "phase": "Transitioned to support",
+      "health": "green",
+      "region": "US"
+    },
+    {
+      "slug": "international-motors",
+      "project": "International Motors",
+      "manager": "Deepak Simon",
+      "phase": "UAT",
+      "health": "green",
+      "region": "US"
+    },
+    {
+      "slug": "jsy-pahaytc",
+      "project": "JSY-PAHAYTC",
+      "manager": "Vandhana",
+      "phase": "UAT",
+      "health": "red",
+      "region": "APAC"
+    },
+    {
+      "slug": "ksd-group",
+      "project": "KSD Group",
+      "manager": "Deepak Simon",
+      "phase": "Requirement Gathering",
+      "health": "amber",
+      "region": "UK"
+    },
+    {
+      "slug": "kingsmede",
+      "project": "Kingsmede",
+      "manager": "Sangavi",
+      "phase": "Transitioned to support",
+      "health": "green",
+      "region": "AUS"
+    },
+    {
+      "slug": "laith-electro-mechanical",
+      "project": "Laith Electro Mechanical",
+      "manager": "Ashwin",
+      "phase": "UAT",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "maf-al-zahia",
+      "project": "MAF - Al Zahia",
+      "manager": "Ashwin",
+      "phase": "Hypercare",
+      "health": "amber",
+      "region": "ME"
+    },
+    {
+      "slug": "mha",
+      "project": "MHA",
+      "manager": "Vandhana",
+      "phase": "Hypercare",
+      "health": "green",
+      "region": "UK"
+    },
+    {
+      "slug": "mansions",
+      "project": "Mansions",
+      "manager": "Ashwin",
+      "phase": "Hypercare",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "metro-maintenance-phase-2",
+      "project": "Metro Maintenance Phase 2",
+      "manager": "Vandhana",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "US"
+    },
+    {
+      "slug": "modon-phase-2",
+      "project": "Modon - Phase 2",
+      "manager": "Ashwin",
+      "phase": "Requirement Gathering",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "modon-phase-3",
+      "project": "Modon - Phase 3",
+      "manager": "Ashwin",
+      "phase": "Requirement Gathering",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "osus-phase-1",
+      "project": "OSUS - Phase 1",
+      "manager": "Ashwin",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "osus-phase-2",
+      "project": "OSUS - Phase 2",
+      "manager": "Ashwin",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "publix-us",
+      "project": "Publix US",
+      "manager": "Deepak Simon",
+      "phase": "UAT",
+      "health": "green",
+      "region": "US"
+    },
+    {
+      "slug": "qsp-site-power",
+      "project": "QSP Site & Power",
+      "manager": "Ashwin",
+      "phase": "Transitioned to support",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "saudi-tabreed-phase-1",
+      "project": "Saudi Tabreed (Phase - 1)",
+      "manager": "Ashwin",
+      "phase": "Hypercare",
+      "health": "red",
+      "region": "ME"
+    },
+    {
+      "slug": "saudi-tabreed-phase-2",
+      "project": "Saudi Tabreed (Phase - 2)",
+      "manager": "Ashwin",
+      "phase": "Hypercare",
+      "health": "red",
+      "region": "ME"
+    },
+    {
+      "slug": "scouts-nsw-phase-1",
+      "project": "Scouts NSW - Phase 1",
+      "manager": "Deepak Simon",
+      "phase": "Hypercare",
+      "health": "green",
+      "region": "AUS"
+    },
+    {
+      "slug": "scouts-nsw-phase-2",
+      "project": "Scouts NSW - Phase 2",
+      "manager": "Deepak Simon",
+      "phase": "UAT",
+      "health": "amber",
+      "region": "AUS"
+    },
+    {
+      "slug": "silal",
+      "project": "Silal",
+      "manager": "Ashwin",
+      "phase": "Hypercare",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "skeens-phase-2",
+      "project": "Skeens ( Phase 2)",
+      "manager": "Mithun",
+      "phase": "On-Hold",
+      "health": "red",
+      "region": "US"
+    },
+    {
+      "slug": "spectra",
+      "project": "Spectra",
+      "manager": "Ashwin",
+      "phase": "UAT",
+      "health": "red",
+      "region": "ME"
+    },
+    {
+      "slug": "t-j-regional-health",
+      "project": "T.J Regional Health",
+      "manager": "Deepak Simon",
+      "phase": "UAT",
+      "health": "green",
+      "region": "US"
+    },
+    {
+      "slug": "tsl",
+      "project": "TSL",
+      "manager": "Deepak Simon",
+      "phase": "Requirement Gathering",
+      "health": "green",
+      "region": "UK"
+    },
+    {
+      "slug": "teyseer",
+      "project": "Teyseer",
+      "manager": "Ashwin",
+      "phase": "Configuration",
+      "health": "green",
+      "region": "ME"
+    },
+    {
+      "slug": "uk-lift-phase-1-pilot",
+      "project": "UK Lift - Phase 1 - Pilot",
+      "manager": "Deepak Simon",
+      "phase": "UAT",
+      "health": "amber",
+      "region": "UK"
+    },
+    {
+      "slug": "uk-lift-phase-2-pilot",
+      "project": "UK Lift - Phase 2 - Pilot",
+      "manager": "Deepak Simon",
+      "phase": "Configuration",
+      "health": "amber",
+      "region": "UK"
+    },
+    {
+      "slug": "unilodge-phase-2",
+      "project": "Unilodge ( Phase 2)",
+      "manager": "Mithun",
+      "phase": "Go-Live",
+      "health": "amber",
+      "region": "AUS"
+    },
+    {
+      "slug": "unilodge-single-family-housing",
+      "project": "Unilodge Single Family Housing",
+      "manager": "Deepak Simon",
+      "phase": "UAT",
+      "health": "green",
+      "region": "AUS"
+    },
+    {
+      "slug": "westhab-cafm",
+      "project": "Westhab - CAFM",
+      "manager": "Deepak Simon",
+      "phase": "Hypercare",
+      "health": "amber",
+      "region": "US"
+    },
+    {
+      "slug": "woodmans-market",
+      "project": "Woodmans Market",
+      "manager": "Deepak Simon",
+      "phase": "Hypercare",
+      "health": "green",
+      "region": "US"
+    }
+  ]
+}

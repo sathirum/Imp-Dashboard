@@ -1,0 +1,17 @@
+{
+  "project": "Publix US",
+  "dashboard_account": "Publix US",
+  "slug": "publix-us",
+  "manager": "Deepak Simon",
+  "vertical": "IFM",
+  "region": "US",
+  "consultant": "Muthu",
+  "phase": "UAT",
+  "health": "green",
+  "status": "23-Jan-2026 - Actual go live will be confirmed when all issues are sorted, One of the vendors to be trained last week of Feb & use the system for 2 to 3 weeks. So the go live will be mid of march. Go Live - 6-April-2026",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

@@ -1,0 +1,17 @@
+{
+  "project": "ENEC - CAFM",
+  "dashboard_account": "ENEC - CAFM",
+  "slug": "enec-cafm",
+  "manager": "Ashwin",
+  "vertical": "CRE",
+  "region": "ME",
+  "consultant": "Paurnika, Riya",
+  "phase": "UAT",
+  "health": "amber",
+  "status": "11-Apr-2026: Informed customer that system is up and live in Azure 30-Mar-2026: Customer agreed to migrate to Azure 16-Mar-2026: Aljack proposed on migrating to Azure 09-Mar-2026: ENEC is not migrated to US DC - the system is still down 02-Mar-2026: Proposed ENEC team to create d",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}
