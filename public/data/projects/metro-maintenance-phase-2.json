@@ -1,0 +1,17 @@
+{
+  "project": "Metro Maintenance Phase 2",
+  "dashboard_account": "Metro Maintenance Phase 2",
+  "slug": "metro-maintenance-phase-2",
+  "manager": "Vandhana",
+  "vertical": "IFM",
+  "region": "US",
+  "consultant": "Nivetha/Krishna",
+  "phase": "Configuration",
+  "health": "green",
+  "status": "Oct 22 - Inspections have been set up, some changes are requested- RFQ in progress ----- July 29th - Sandbox created , testing YTS ----- June 17 - Invoice integration underway ----- June 10 - Invoice Configuration underway -----",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

@@ -1,0 +1,30 @@
+{
+  "project": "Trinity Hospital",
+  "dashboard_account": "Trinity Hospital",
+  "slug": "trinity-hospital",
+  "manager": "Sangavi",
+  "vertical": "CRE",
+  "region": "US",
+  "consultant": "Jhimlee Datta",
+  "phase": "Hypercare",
+  "health": "red",
+  "status": "Customer dissatisfaction escalated — exec sponsor Philip Rogers called Facilio \"a bad word\" internally. Power BI positioned as substitute for reporting workflows. Reference-customer status at risk.",
+  "active_risks": [
+    {
+      "text": "Exec sponsor Philip Rogers escalated dissatisfaction — called Facilio 'a bad word'",
+      "first_seen": "2026-04-23"
+    },
+    {
+      "text": "Power BI being positioned as Facilio substitute for reporting workflows",
+      "first_seen": "2026-04-23"
+    },
+    {
+      "text": "Reference-customer commitment at risk if sentiment does not recover",
+      "first_seen": "2026-04-23"
+    }
+  ],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": "2026-04-23",
+  "last_call_ids": []
+}

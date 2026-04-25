@@ -1,0 +1,17 @@
+{
+  "project": "Spectra",
+  "dashboard_account": "Spectra",
+  "slug": "spectra",
+  "manager": "Ashwin",
+  "vertical": "IFM",
+  "region": "ME",
+  "consultant": "Paurnika, Niviya",
+  "phase": "UAT",
+  "health": "red",
+  "status": "No response from customer for a long time and now customer is available to continue the engagement",
+  "active_risks": [],
+  "open_items": [],
+  "recent_decisions": [],
+  "last_updated": null,
+  "last_call_ids": []
+}

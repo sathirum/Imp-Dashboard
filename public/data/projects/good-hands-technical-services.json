@@ -1,0 +1,66 @@
+{
+  "project": "Good Hands Technical Services",
+  "dashboard_account": "Good Hands Technical Services",
+  "slug": "good-hands-technical-services",
+  "manager": "Ashwin",
+  "vertical": "IFM",
+  "region": "ME",
+  "consultant": "Paurnika, Niviya",
+  "phase": "UAT",
+  "health": "amber",
+  "status": "Pre-go-live UAT. Multiple open gaps (inventory return, non-WO inventory, data migration). Friday regroup planned.",
+  "active_risks": [
+    {
+      "text": "Inventory return has no standard procedure — manual adjustments only",
+      "first_seen": "2026-04-22"
+    },
+    {
+      "text": "Raising inventory requests without a work order requires PPM/inspection workaround",
+      "first_seen": "2026-04-22"
+    },
+    {
+      "text": "Data migration for items/assets/job plans still in progress",
+      "first_seen": "2026-04-22"
+    },
+    {
+      "text": "Inspection print alignment + logo committed by product for 23 Apr — zero buffer",
+      "first_seen": "2026-04-22"
+    }
+  ],
+  "open_items": [
+    {
+      "text": "Complete inspection print alignment & logo",
+      "owner": "Facilio product team",
+      "due": "23 Apr"
+    },
+    {
+      "text": "Propose inventory-without-WO workaround (PPM or inspection-based)",
+      "owner": "Paurnika",
+      "due": "Friday"
+    },
+    {
+      "text": "Drive data migration for items/assets/job plans",
+      "owner": "Paurnika",
+      "due": "Friday regroup"
+    },
+    {
+      "text": "Submit remaining data & test invoice-to-customer",
+      "owner": "Prashanth (Good Hands)",
+      "due": "Before Friday"
+    }
+  ],
+  "recent_decisions": [
+    {
+      "text": "Inventory return stays manual-adjustment-only until standard procedure is built",
+      "date": "2026-04-22"
+    },
+    {
+      "text": "Friday regroup scheduled to cover remaining items and data submission",
+      "date": "2026-04-22"
+    }
+  ],
+  "last_updated": "2026-04-23",
+  "last_call_ids": [
+    "dbe9b220"
+  ]
+}
