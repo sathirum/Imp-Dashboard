@@ -7,11 +7,56 @@
   "region": "US",
   "consultant": "Muthu",
   "phase": "UAT",
-  "health": "green",
-  "status": "23-Jan-2026 - Actual go live will be confirmed when all issues are sorted, One of the vendors to be trained last week of Feb & use the system for 2 to 3 weeks. So the go live will be mid of march. Go Live - 6-April-2026",
-  "active_risks": [],
-  "open_items": [],
-  "recent_decisions": [],
-  "last_updated": null,
-  "last_call_ids": []
+  "health": "amber",
+  "status": "24-Apr-2026: Publix data migration, training, and go-live planning session confirmed retrofit data is available through Jan 2026 while shutdown data still needs audit. Leak rate calculation was changed to trigger on system addition for EPA compliance. Staggered go-live remains the plan, with internal users first and contractors later, while contractor mobile app enforcement remains an unresolved challenge.",
+  "active_risks": [
+    {
+      "text": "Historical retrofit and shutdown data gaps require audit before go-live",
+      "first_seen": "2026-04-24"
+    },
+    {
+      "text": "Contractor mobile app enforcement has no clear resolution yet",
+      "first_seen": "2026-04-24"
+    }
+  ],
+  "open_items": [
+    {
+      "text": "Audit historical retrofit and shutdown event data",
+      "owner": "Publix internal team",
+      "due": "Before go-live"
+    },
+    {
+      "text": "Complete training video creation",
+      "owner": "Facilio (Deepak/Varun)",
+      "due": "Before contractor rollout"
+    },
+    {
+      "text": "Set up sandbox environment",
+      "owner": "Facilio",
+      "due": "Pre-go-live"
+    },
+    {
+      "text": "Confirm RMS sandbox access",
+      "owner": "Publix / Facilio",
+      "due": null
+    }
+  ],
+  "recent_decisions": [
+    {
+      "text": "Leak rate calculation on system addition was approved",
+      "date": "2026-04-24"
+    },
+    {
+      "text": "Staggered go-live strategy confirmed with internal users before contractors",
+      "date": "2026-04-24"
+    },
+    {
+      "text": "Training videos will be embedded in the system",
+      "date": "2026-04-24"
+    }
+  ],
+  "last_updated": "2026-04-24",
+  "last_call_ids": [
+    "52fa9792-4dd2-48ad-9039-ce9c2244980d"
+  ]
 }

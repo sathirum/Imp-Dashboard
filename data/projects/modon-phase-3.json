@@ -7,11 +7,65 @@
   "region": "ME",
   "consultant": "Paurnika, Riya, Jhimlee",
   "phase": "Requirement Gathering",
-  "health": "green",
-  "status": "No recent call activity.",
-  "active_risks": [],
-  "open_items": [],
-  "recent_decisions": [],
-  "last_updated": null,
-  "last_call_ids": []
+  "health": "amber",
+  "status": "24-Apr-2026: Modon/CWRC/Moonflower HSE and module scoping calls clarified fleet management and medical case register scope. Fleet management is not applicable for Alrayan, Moonflower will confirm whether 8-10 internal golf cars should be onboarded, and medical case logging will be integrated into existing HSE incident flows. A separate HSE data clarification confirmed the risk matrix is the remaining HSE data item, with more specific data request protocols agreed after CWRC frustration around imprecise requests.",
+  "active_risks": [
+    {
+      "text": "Moonflower golf car fleet management confirmation is pending, creating minor scope uncertainty",
+      "first_seen": "2026-04-24"
+    },
+    {
+      "text": "Imprecise HSE data requests have caused internal back-and-forth and may create rework if the new protocol is not followed",
+      "first_seen": "2026-04-24"
+    }
+  ],
+  "open_items": [
+    {
+      "text": "Confirm fleet management requirement for Moonflower golf cars",
+      "owner": "Conrade Barnabas (Moonflower)",
+      "due": "2026-04-27"
+    },
+    {
+      "text": "Share occupational and non-occupational first aid report templates",
+      "owner": "Moonflower team",
+      "due": "2026-04-27"
+    },
+    {
+      "text": "Provide the remaining HSE risk matrix data for CWRC",
+      "owner": "Kaishyap Shrestha (CWRC)",
+      "due": "Ongoing"
+    },
+    {
+      "text": "Move shared compliance documents into the shared folder",
+      "owner": "Jhimlee Datta (Facilio)",
+      "due": "Immediate"
+    }
+  ],
+  "recent_decisions": [
+    {
+      "text": "Fleet management will not proceed for Alrayan at this time",
+      "date": "2026-04-24"
+    },
+    {
+      "text": "Medical case logging will be integrated into existing HSE incident flows",
+      "date": "2026-04-24"
+    },
+    {
+      "text": "Moonflower will confirm golf car fleet management applicability by Monday",
+      "date": "2026-04-24"
+    },
+    {
+      "text": "Future HSE data requests must be specific and granular, with Facilio providing existing templates to avoid duplication",
+      "date": "2026-04-24"
+    },
+    {
+      "text": "Project H&S plan has been deprioritized",
+      "date": "2026-04-24"
+    }
+  ],
+  "last_updated": "2026-04-24",
+  "last_call_ids": [
+    "44d1ff40-6167-458f-8af2-41a5dc81b775",
+    "0f2a4092-ceb2-4a06-900c-d3663a10fdc9"
+  ]
 }

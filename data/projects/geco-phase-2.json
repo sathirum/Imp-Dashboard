@@ -8,10 +8,32 @@
   "consultant": "Arun Kumar, Jeevaregai",
   "phase": "Requirement Gathering",
   "health": "red",
-  "status": "13-Mar-2026: Phase-02 BRD is submitted 09-Feb-2026: Check-in / Check-out solution document was shared by Product team 02-Feb-2026: Data preparation activities for upcoming sites 28-Jan-2026: MRI Integration was prioritized and taken up post completion of Phase 1 21-Jan-2026: Ahme",
-  "active_risks": [],
-  "open_items": [],
+  "status": "24-Apr-2026: The scheduled GECOMEP implementation progress update did not proceed substantively. The 15-minute call only captured an opening greeting, so no meaningful project discussion, decisions, or follow-up detail was recorded. The Clari digest maps this to GECO - Phase 2 by default as the most recent active phase, with ambiguity remaining between Phase 1 and Phase 2.",
+  "active_risks": [
+    {
+      "text": "Progress update was not conducted and may need to be rescheduled",
+      "first_seen": "2026-04-24"
+    },
+    {
+      "text": "Clari mapping remains ambiguous between GECO Phase 1 and GECO Phase 2",
+      "first_seen": "2026-04-24"
+    }
+  ],
+  "open_items": [
+    {
+      "text": "Reschedule or complete the GECOMEP implementation progress update",
+      "owner": "Facilio / GECOMEP",
+      "due": null
+    },
+    {
+      "text": "Confirm whether this Clari call should remain mapped to GECO Phase 2 or move to GECO Phase 1",
+      "owner": "Facilio",
+      "due": null
+    }
+  ],
   "recent_decisions": [],
-  "last_updated": null,
-  "last_call_ids": []
+  "last_updated": "2026-04-24",
+  "last_call_ids": [
+    "4b92e8cd-9931-41e9-9f2c-c67a952193a2"
+  ]
 }
