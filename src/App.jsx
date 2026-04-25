@@ -122,6 +122,13 @@ const normalizeHeader = (value) =>
     .replace(/\s+/g, " ")
     .trim();
 
+const normalizeProjectKey = (value) =>
+  String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
 const RUNWAY_PHASE_LABELS = {
   "Requirement Gathering": "Requirement Gathering",
   "Configuration": "Configuration",
@@ -679,6 +686,486 @@ function ProjectRunway({ projects }) {
   );
 }
 
+const DIGEST_LOOKBACK_DAYS = 60;
+const DIGEST_RECENT_PROBE_DAYS = 7;
+
+const toIsoDate = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
+const buildRecentDigestEntries = (days) => {
+  const today = new Date();
+  return Array.from({ length: days }, (_, index) => {
+    const date = new Date(today);
+    date.setDate(today.getDate() - index);
+    const iso = toIsoDate(date);
+    return { date: iso, file: `${iso}.json` };
+  });
+};
+
+const normalizeDigestEntries = (manifest) => {
+  const entries = manifest?.digests || manifest?.dates || [];
+  return entries
+    .map((entry) => {
+      if (typeof entry === "string") return { date: entry, file: `${entry}.json` };
+      const date = entry.date || String(entry.file || "").replace(/\.json$/i, "");
+      const file = entry.file || `${date}.json`;
+      return { ...entry, date, file };
+    })
+    .filter((entry) => entry.date && entry.file);
+};
+
+const digestDateLabel = (value) => {
+  const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return value || "-";
+  return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]))
+    .toLocaleDateString("en-GB", { day:"2-digit", month:"short", year:"numeric" });
+};
+
+const digestTimeLabel = (value) => {
+  if (!value) return "-";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "-";
+  return `${date.toLocaleTimeString("en-IN", { timeZone:"Asia/Kolkata", hour:"2-digit", minute:"2-digit" })} IST`;
+};
+
+const healthFromCalls = (calls, fallback) => {
+  const signals = calls.map((call) => String(call.health_signal || "").toLowerCase()).filter(Boolean);
+  if (signals.includes("red")) return "red";
+  if (signals.includes("amber")) return "amber";
+  if (signals.includes("green")) return "green";
+  return fallback || null;
+};
+
+function DailyClariDigest({ projects }) {
+  const [indexData, setIndexData] = useState(null);
+  const [digestDays, setDigestDays] = useState([]);
+  const [selectedSlug, setSelectedSlug] = useState(null);
+  const [selectedDateBySlug, setSelectedDateBySlug] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+
+    const fetchJson = async (path) => {
+      const res = await fetch(`${import.meta.env.BASE_URL}${path}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`${path} fetch failed: ${res.status}`);
+      return res.json();
+    };
+
+    const loadDigestEntries = async () => {
+      let manifestEntries = [];
+
+      try {
+        const manifest = await fetchJson("data/digests/index.json");
+        manifestEntries = normalizeDigestEntries(manifest);
+      } catch (error) {
+        manifestEntries = [];
+      }
+
+      const probeDays = manifestEntries.length ? DIGEST_RECENT_PROBE_DAYS : DIGEST_LOOKBACK_DAYS;
+      const byDate = new Map();
+      [...manifestEntries, ...buildRecentDigestEntries(probeDays)].forEach((entry) => {
+        byDate.set(entry.date, entry);
+      });
+      return Array.from(byDate.values()).sort((a, b) => b.date.localeCompare(a.date));
+    };
+
+    const loadAll = async () => {
+      try {
+        setLoading(true);
+        setLoadError(null);
+
+        const [projectIndex, digestEntries] = await Promise.all([
+          fetchJson("data/projects/index.json"),
+          loadDigestEntries(),
+        ]);
+
+        const digestResults = await Promise.all(
+          digestEntries.map(async (entry) => {
+            try {
+              const data = await fetchJson(`data/digests/${entry.file}`);
+              return {
+                ...data,
+                date: data.date || entry.date,
+                file: entry.file,
+                calls: Array.isArray(data.calls) ? data.calls : [],
+              };
+            } catch (error) {
+              return null;
+            }
+          })
+        );
+
+        if (!active) return;
+        setIndexData(projectIndex);
+        setDigestDays(digestResults.filter(Boolean).sort((a, b) => b.date.localeCompare(a.date)));
+      } catch (error) {
+        if (active) setLoadError(error.message);
+      } finally {
+        if (active) setLoading(false);
+      }
+    };
+
+    loadAll();
+    return () => { active = false; };
+  }, []);
+
+  const allowedProjectKeys = useMemo(
+    () => new Set(projects.map((project) => normalizeProjectKey(project.account))),
+    [projects]
+  );
+
+  const projectBySlug = useMemo(() => {
+    const map = new Map();
+    (indexData?.projects || []).forEach((project) => map.set(project.slug, project));
+    return map;
+  }, [indexData]);
+
+  const callsBySlug = useMemo(() => {
+    const groups = {};
+
+    digestDays.forEach((day) => {
+      day.calls.forEach((call) => {
+        if (!call.project_slug) return;
+        const enrichedCall = {
+          ...call,
+          digest_date: day.date,
+          digest_file: day.file,
+          digest_generated_at: day.generated_at,
+        };
+        if (!groups[call.project_slug]) groups[call.project_slug] = [];
+        groups[call.project_slug].push(enrichedCall);
+      });
+    });
+
+    Object.values(groups).forEach((calls) => {
+      calls.sort((a, b) => String(a.timestamp_ist || "").localeCompare(String(b.timestamp_ist || "")));
+    });
+
+    return groups;
+  }, [digestDays]);
+
+  const dateOptionsBySlug = useMemo(() => {
+    const options = {};
+    Object.entries(callsBySlug).forEach(([slug, calls]) => {
+      options[slug] = Array.from(new Set(calls.map((call) => call.digest_date)))
+        .sort((a, b) => b.localeCompare(a));
+    });
+    return options;
+  }, [callsBySlug]);
+
+  const visibleDigests = useMemo(() => {
+    return Object.entries(callsBySlug)
+      .map(([slug, calls]) => {
+        const project = projectBySlug.get(slug);
+        const dates = dateOptionsBySlug[slug] || [];
+        const latestDate = dates[0];
+        const latestCalls = calls.filter((call) => call.digest_date === latestDate);
+        const latestCall = latestCalls[latestCalls.length - 1] || calls[calls.length - 1];
+
+        return {
+          slug,
+          project: project?.project || latestCall?.crm_account_name || latestCall?.title || slug,
+          manager: project?.manager || "-",
+          phase: project?.phase || "-",
+          region: project?.region || "-",
+          health: healthFromCalls(latestCalls, project?.health),
+          latest_date: latestDate,
+          total_calls: calls.length,
+          date_count: dates.length,
+        };
+      })
+      .filter((item) => allowedProjectKeys.has(normalizeProjectKey(item.project)))
+      .sort((a, b) => (
+        String(b.latest_date || "").localeCompare(String(a.latest_date || "")) ||
+        String(a.project || "").localeCompare(String(b.project || ""))
+      ));
+  }, [callsBySlug, dateOptionsBySlug, projectBySlug, allowedProjectKeys]);
+
+  useEffect(() => {
+    if (!visibleDigests.length) {
+      setSelectedSlug(null);
+      return;
+    }
+
+    const stillVisible = visibleDigests.some((item) => item.slug === selectedSlug);
+    if (!stillVisible) setSelectedSlug(visibleDigests[0].slug);
+  }, [visibleDigests, selectedSlug]);
+
+  useEffect(() => {
+    if (!selectedSlug) return;
+    const dates = dateOptionsBySlug[selectedSlug] || [];
+    if (!dates.length) return;
+    if (!dates.includes(selectedDateBySlug[selectedSlug])) {
+      setSelectedDateBySlug((prev) => ({ ...prev, [selectedSlug]: dates[0] }));
+    }
+  }, [selectedSlug, dateOptionsBySlug, selectedDateBySlug]);
+
+  const selectedProject = selectedSlug ? visibleDigests.find((item) => item.slug === selectedSlug) : null;
+  const selectedDateOptions = selectedSlug ? dateOptionsBySlug[selectedSlug] || [] : [];
+  const selectedDate = selectedSlug ? selectedDateBySlug[selectedSlug] || selectedDateOptions[0] : null;
+  const selectedCalls = selectedSlug && selectedDate
+    ? (callsBySlug[selectedSlug] || []).filter((call) => call.digest_date === selectedDate)
+    : [];
+
+  const healthMeta = (health) => {
+    const key = String(health || "").toLowerCase();
+    if (key === "green") return { label:"Green", color:"#059669", bg:"#22c55e18" };
+    if (key === "amber") return { label:"Amber", color:"#d97706", bg:"#f59e0b18" };
+    if (key === "red") return { label:"Red", color:"#dc2626", bg:"#ef444418" };
+    return { label:health || "Unknown", color:"#7f93b0", bg:"#33415533" };
+  };
+
+  const phaseMeta = PHASE_META[selectedProject?.phase] || { color:"#64748b", bg:"#64748b18" };
+
+  const sectionStyle = {
+    background:"#101826",
+    border:"1px solid #263244",
+    borderRadius:14,
+    padding:"14px 16px",
+  };
+
+  const selectedHealth = healthFromCalls(selectedCalls, selectedProject?.health);
+  const cardMeta = selectedProject ? healthMeta(selectedHealth) : null;
+  const digestCount = digestDays.reduce((sum, day) => sum + day.calls.length, 0);
+
+  const renderTextList = (items, empty) => (
+    items?.length ? (
+      <div style={{ display:"grid", gap:8 }}>
+        {items.map((item, index) => (
+          <div key={index} style={{ fontSize:13, lineHeight:1.5, color:"#d8e2f0", background:"#0b1220", border:"1px solid #263244", borderRadius:10, padding:"8px 10px" }}>
+            {typeof item === "string" ? item : item.text || item.task || "-"}
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div style={{ fontSize:13, color:"#8ea3bf" }}>{empty}</div>
+    )
+  );
+
+  const renderActionList = (items, empty) => (
+    items?.length ? (
+      <div style={{ display:"grid", gap:8 }}>
+        {items.map((item, index) => (
+          <div key={index} style={{ background:"#0b1220", border:"1px solid #263244", borderRadius:10, padding:"9px 10px" }}>
+            <div style={{ fontSize:13, lineHeight:1.5, color:"#d8e2f0" }}>{item.task || item.text || "-"}</div>
+            <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginTop:6, fontSize:11, color:"#7f93b0" }}>
+              {item.owner && <span>Owner: <span style={{ color:"#a9bad0" }}>{item.owner}</span></span>}
+              {item.due && <span>Due: <span style={{ color:"#a9bad0" }}>{item.due}</span></span>}
+            </div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div style={{ fontSize:13, color:"#8ea3bf" }}>{empty}</div>
+    )
+  );
+
+  return (
+    <div style={{
+      background:"#0f172a",
+      border:"1px solid #263244",
+      borderRadius:20,
+      padding:"16px",
+      boxShadow:"0 1px 3px rgba(2,6,23,0.35), 0 14px 32px rgba(2,6,23,0.3)",
+    }}>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", gap:12, flexWrap:"wrap", paddingBottom:12, marginBottom:14, borderBottom:"1px solid #263244" }}>
+        <div>
+          <div style={{ fontSize:18, fontWeight:800, color:"#f8fafc", letterSpacing:"-0.03em" }}>Daily Clari Digest</div>
+          <div style={{ fontSize:12, color:"#8ea3bf", marginTop:3 }}>Daily call summaries loaded from `public/data/digests`.</div>
+        </div>
+        <div style={{ fontSize:12, color:"#9fb0c8" }}>
+          {digestDays.length} day{digestDays.length !== 1 ? "s" : ""} · {digestCount} call{digestCount !== 1 ? "s" : ""}
+        </div>
+      </div>
+
+      {loadError && (
+        <div style={{ fontSize:12, color:"#fca5a5", background:"#241113", border:"1px solid #7f1d1d", borderRadius:12, padding:"10px 12px", marginBottom:14 }}>
+          {loadError}
+        </div>
+      )}
+
+      {loading && !loadError ? (
+        <div style={{ fontSize:13, color:"#9fb0c8", padding:"12px 2px" }}>Loading Clari digests...</div>
+      ) : visibleDigests.length === 0 ? (
+        <div style={{ fontSize:13, color:"#9fb0c8", padding:"12px 2px" }}>No digest calls match the current shared filters.</div>
+      ) : (
+        <div style={{ display:"grid", gridTemplateColumns:"minmax(280px, 380px) minmax(0, 1fr)", gap:16 }}>
+          <div style={{ border:"1px solid #263244", borderRadius:16, overflow:"hidden", background:"#0b1220", minHeight:520 }}>
+            <div style={{ display:"grid", gridTemplateColumns:"1.8fr 0.8fr 0.8fr", gap:0, background:"#111827", borderBottom:"1px solid #263244" }}>
+              {["Project", "Latest", "Health"].map((label) => (
+                <div key={label} style={{ padding:"10px 12px", fontSize:11, fontWeight:700, letterSpacing:"0.06em", textTransform:"uppercase", color:"#7f93b0" }}>{label}</div>
+              ))}
+            </div>
+            <div style={{ maxHeight:560, overflowY:"auto" }}>
+              {visibleDigests.map((item, index) => {
+                const meta = healthMeta(item.health);
+                const active = item.slug === selectedSlug;
+                return (
+                  <button
+                      key={item.slug}
+                    type="button"
+                    onClick={() => setSelectedSlug(item.slug)}
+                    style={{
+                      width:"100%",
+                      display:"grid",
+                      gridTemplateColumns:"1.8fr 0.8fr 0.8fr",
+                      textAlign:"left",
+                      padding:0,
+                      border:"none",
+                      borderBottom:"1px solid #1f2a3d",
+                      background:active ? "#132033" : index % 2 === 0 ? "#0f172a" : "#111827",
+                      cursor:"pointer",
+                    }}
+                  >
+                    <div style={{ padding:"11px 12px" }}>
+                      <div style={{ fontSize:13, fontWeight:600, color:"#e5edf7" }}>{item.project}</div>
+                      <div style={{ fontSize:11, color:"#7f93b0", marginTop:3 }}>
+                        {item.total_calls} call{item.total_calls !== 1 ? "s" : ""} · {item.date_count} date{item.date_count !== 1 ? "s" : ""}
+                      </div>
+                    </div>
+                    <div style={{ padding:"11px 12px", fontSize:12, color:"#9fb0c8" }}>{digestDateLabel(item.latest_date)}</div>
+                    <div style={{ padding:"11px 12px" }}>
+                      <span style={{ display:"inline-flex", alignItems:"center", gap:6, fontSize:11, fontWeight:700, color:meta.color, background:meta.bg, borderRadius:999, padding:"3px 8px", whiteSpace:"nowrap" }}>
+                        <span style={{ width:7, height:7, borderRadius:"50%", background:meta.color, display:"inline-block" }} />
+                        {meta.label}
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div style={{ display:"grid", gap:14 }}>
+            {selectedProject ? (
+              <>
+                <div style={sectionStyle}>
+                  <div style={{ display:"flex", justifyContent:"space-between", gap:12, alignItems:"flex-start", flexWrap:"wrap" }}>
+                    <div>
+                      <div style={{ fontSize:24, fontWeight:800, color:"#f8fafc", letterSpacing:"-0.04em" }}>{selectedProject.project}</div>
+                      <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginTop:10 }}>
+                        <span style={{ fontSize:11, fontWeight:600, padding:"2px 8px", borderRadius:10, color:phaseMeta.color, background:phaseMeta.bg }}>
+                          {selectedProject.phase || "-"}
+                        </span>
+                        <span style={{ display:"inline-flex", alignItems:"center", gap:6, fontSize:11, fontWeight:700, color:cardMeta.color, background:cardMeta.bg, borderRadius:999, padding:"3px 8px" }}>
+                          <span style={{ width:7, height:7, borderRadius:"50%", background:cardMeta.color, display:"inline-block" }} />
+                          {cardMeta.label}
+                        </span>
+                        <span style={{ fontSize:11, color:"#9fb0c8", background:"#0b1220", border:"1px solid #263244", borderRadius:999, padding:"3px 8px" }}>{selectedProject.region || "-"}</span>
+                      </div>
+                    </div>
+                    <div style={{ display:"grid", gap:8, minWidth:190 }}>
+                      <select
+                        style={{
+                          background:"#0b1220",
+                          border:"1px solid #263244",
+                          color:"#e5edf7",
+                          borderRadius:10,
+                          padding:"8px 10px",
+                          fontSize:12,
+                          outline:"none",
+                        }}
+                        value={selectedDate || ""}
+                        onChange={(event) => setSelectedDateBySlug((prev) => ({ ...prev, [selectedSlug]: event.target.value }))}
+                      >
+                        {selectedDateOptions.map((date) => (
+                          <option key={date} value={date}>{digestDateLabel(date)}</option>
+                        ))}
+                      </select>
+                      <div style={{ fontSize:12, color:"#8ea3bf", textAlign:"right" }}>
+                        <div>Manager: <span style={{ color:"#e5edf7", fontWeight:600 }}>{selectedProject.manager || "-"}</span></div>
+                        <div style={{ marginTop:4 }}>Calls on date: <span style={{ color:"#e5edf7", fontWeight:600 }}>{selectedCalls.length}</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {selectedCalls.map((call, callIndex) => {
+                  const callMeta = healthMeta(call.health_signal || selectedProject.health);
+                  return (
+                    <div key={call.call_id || `${selectedDate}-${callIndex}`} style={sectionStyle}>
+                      <div style={{ display:"flex", justifyContent:"space-between", gap:12, flexWrap:"wrap", marginBottom:12 }}>
+                        <div>
+                          <div style={{ fontSize:16, fontWeight:800, color:"#f8fafc" }}>{call.title || `Call ${callIndex + 1}`}</div>
+                          <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginTop:8 }}>
+                            <span style={{ fontSize:11, color:"#9fb0c8", background:"#0b1220", border:"1px solid #263244", borderRadius:999, padding:"3px 8px" }}>{digestTimeLabel(call.timestamp_ist)}</span>
+                            {call.duration_minutes && <span style={{ fontSize:11, color:"#9fb0c8", background:"#0b1220", border:"1px solid #263244", borderRadius:999, padding:"3px 8px" }}>{call.duration_minutes} min</span>}
+                            {call.sentiment && <span style={{ fontSize:11, color:"#9fb0c8", background:"#0b1220", border:"1px solid #263244", borderRadius:999, padding:"3px 8px" }}>{call.sentiment}</span>}
+                            {call.has_escalation && <span style={{ fontSize:11, color:"#fca5a5", background:"#241113", border:"1px solid #7f1d1d", borderRadius:999, padding:"3px 8px" }}>Escalation</span>}
+                            {call.has_date_shift && <span style={{ fontSize:11, color:"#fbbf24", background:"#251a06", border:"1px solid #713f12", borderRadius:999, padding:"3px 8px" }}>Date shift</span>}
+                          </div>
+                        </div>
+                        <span style={{ display:"inline-flex", alignItems:"center", gap:6, height:24, fontSize:11, fontWeight:700, color:callMeta.color, background:callMeta.bg, borderRadius:999, padding:"3px 8px" }}>
+                          <span style={{ width:7, height:7, borderRadius:"50%", background:callMeta.color, display:"inline-block" }} />
+                          {callMeta.label}
+                        </span>
+                      </div>
+
+                      <div style={{ fontSize:14, lineHeight:1.65, color:"#d8e2f0", marginBottom:14 }}>
+                        {call.summary || "No summary captured for this call."}
+                      </div>
+
+                      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:12 }}>
+                        <div>
+                          <div style={{ fontSize:11, fontWeight:700, color:"#7f93b0", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:9 }}>Key Points</div>
+                          {renderTextList(call.key_points, "No key points recorded.")}
+                        </div>
+                        <div>
+                          <div style={{ fontSize:11, fontWeight:700, color:"#7f93b0", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:9 }}>Open Items</div>
+                          {renderTextList(call.open_items, "No open items recorded.")}
+                        </div>
+                        <div>
+                          <div style={{ fontSize:11, fontWeight:700, color:"#7f93b0", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:9 }}>Risks</div>
+                          {renderTextList(call.risks, "No risks recorded.")}
+                        </div>
+                      </div>
+
+                      <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))", gap:12, marginTop:14 }}>
+                        <div>
+                          <div style={{ fontSize:11, fontWeight:700, color:"#7f93b0", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:9 }}>Action Items</div>
+                          {renderActionList(call.action_items, "No action items recorded.")}
+                        </div>
+                        <div>
+                          <div style={{ fontSize:11, fontWeight:700, color:"#7f93b0", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:9 }}>Decisions</div>
+                          {renderTextList(call.decisions, "No decisions recorded.")}
+                        </div>
+                      </div>
+
+                      <div style={{ marginTop:14, display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))", gap:10 }}>
+                        {[
+                          ["CRM Account", call.crm_account_name || "-"],
+                          ["Project Slug", call.project_slug],
+                          ["Call ID", call.call_id],
+                          ["Digest File", call.digest_file],
+                        ].map(([label, value]) => (
+                          <div key={label} style={{ background:"#0b1220", border:"1px solid #263244", borderRadius:10, padding:"9px 10px" }}>
+                            <div style={{ fontSize:10, color:"#7f93b0", textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:4 }}>{label}</div>
+                            <div style={{ fontSize:12, color:"#d8e2f0", fontWeight:600, wordBreak:"break-word" }}>{value || "-"}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </>
+            ) : (
+              <div style={{ ...sectionStyle, fontSize:13, color:"#9fb0c8" }}>
+                Select a project to view its Clari digest.
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function App() {
   const [projects, setProjects]       = useState(FALLBACK);
   const [lastUpdated, setLastUpdated] = useState(null);
@@ -1087,9 +1574,14 @@ export default function App() {
           <div style={S.tabs}>
             <button type="button" style={S.tab(view==="dashboard")} onClick={() => setView("dashboard")}>Dashboard</button>
             <button type="button" style={S.tab(view==="runway")} onClick={() => setView("runway")}>Project Timeline</button>
+            <button type="button" style={S.tab(view==="digest")} onClick={() => setView("digest")}>Daily Clari Digest</button>
           </div>
           <div style={S.viewHint}>
-            {view === "dashboard" ? "Portfolio KPIs, filters, and project details" : "Timeline view built from the same Implementation Dashboard source data"}
+            {view === "dashboard"
+              ? "Portfolio KPIs, filters, and project details"
+              : view === "runway"
+                ? "Timeline view built from the same Implementation Dashboard source data"
+                : "Daily Clari digest loaded from dated files in public/data/digests"}
           </div>
         </div>
 
@@ -1226,9 +1718,13 @@ export default function App() {
           </div>
         )}
         </>
-        ) : (
+        ) : view === "runway" ? (
           <div style={{ paddingTop:16 }}>
             <ProjectRunway projects={filteredBase} />
+          </div>
+        ) : (
+          <div style={{ paddingTop:16 }}>
+            <DailyClariDigest projects={filteredBase} />
           </div>
         )}
 

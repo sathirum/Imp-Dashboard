@@ -8,59 +8,55 @@
   "consultant": "Paurnika, Niviya",
   "phase": "UAT",
   "health": "amber",
-  "status": "Pre-go-live UAT. Multiple open gaps (inventory return, non-WO inventory, data migration). Friday regroup planned.",
+  "status": "24-Apr-2026: Pre-go-live UAT session confirmed inventory, tenant, and user data are ready. Asset and PPM data remain outstanding, with Prashanth committed to send them by EOD 25 Apr. Minor work order refinements were agreed, admin training is planned for the first week of May, and the next meeting is scheduled for Monday 27 Apr at 12:00 PM IST.",
   "active_risks": [
     {
-      "text": "Inventory return has no standard procedure — manual adjustments only",
-      "first_seen": "2026-04-22"
+      "text": "Go-live depends on timely receipt of asset and PPM data from Prashanth",
+      "first_seen": "2026-04-24"
     },
     {
-      "text": "Raising inventory requests without a work order requires PPM/inspection workaround",
-      "first_seen": "2026-04-22"
-    },
-    {
-      "text": "Data migration for items/assets/job plans still in progress",
-      "first_seen": "2026-04-22"
-    },
-    {
-      "text": "Inspection print alignment + logo committed by product for 23 Apr — zero buffer",
-      "first_seen": "2026-04-22"
+      "text": "Prashanth is traveling to India, creating a minor coordination risk despite the WFH mitigation",
+      "first_seen": "2026-04-24"
     }
   ],
   "open_items": [
     {
-      "text": "Complete inspection print alignment & logo",
-      "owner": "Facilio product team",
-      "due": "23 Apr"
-    },
-    {
-      "text": "Propose inventory-without-WO workaround (PPM or inspection-based)",
-      "owner": "Paurnika",
-      "due": "Friday"
-    },
-    {
-      "text": "Drive data migration for items/assets/job plans",
-      "owner": "Paurnika",
-      "due": "Friday regroup"
-    },
-    {
-      "text": "Submit remaining data & test invoice-to-customer",
+      "text": "Send asset and PPM schedule data",
       "owner": "Prashanth (Good Hands)",
-      "due": "Before Friday"
+      "due": "2026-04-25 EOD"
+    },
+    {
+      "text": "Upload received data and fast-track go-live preparation",
+      "owner": "Paurnika Ramesh / Niviya T",
+      "due": "2026-04-27"
+    },
+    {
+      "text": "Finalize vacating report print option selection",
+      "owner": "Good Hands / Facilio",
+      "due": null
+    },
+    {
+      "text": "Conduct admin training in the first week of May",
+      "owner": "Facilio",
+      "due": "First week of May"
     }
   ],
   "recent_decisions": [
     {
-      "text": "Inventory return stays manual-adjustment-only until standard procedure is built",
-      "date": "2026-04-22"
+      "text": "Tenant contact field will be non-mandatory",
+      "date": "2026-04-24"
     },
     {
-      "text": "Friday regroup scheduled to cover remaining items and data submission",
-      "date": "2026-04-22"
+      "text": "Supervisors will self-assign as technician for external repair work orders",
+      "date": "2026-04-24"
+    },
+    {
+      "text": "Next meeting scheduled for Monday 27 Apr at 12:00 PM IST",
+      "date": "2026-04-24"
     }
   ],
-  "last_updated": "2026-04-23",
+  "last_updated": "2026-04-24",
   "last_call_ids": [
-    "dbe9b220"
+    "39708f34-ab97-48fc-af38-591d98c47df0"
   ]
 }

@@ -374,7 +374,7 @@
       "project": "Metro Maintenance Phase 2",
       "manager": "Vandhana",
       "phase": "Configuration",
-      "health": "green",
+      "health": "amber",
       "region": "US"
     },
     {
@@ -390,7 +390,7 @@
       "project": "Modon - Phase 3",
       "manager": "Ashwin",
       "phase": "Requirement Gathering",
-      "health": "green",
+      "health": "amber",
       "region": "ME"
     },
     {
@@ -414,7 +414,7 @@
       "project": "Publix US",
       "manager": "Deepak Simon",
       "phase": "UAT",
-      "health": "green",
+      "health": "amber",
       "region": "US"
     },
     {

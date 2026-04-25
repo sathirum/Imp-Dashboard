@@ -7,11 +7,56 @@
   "region": "US",
   "consultant": "Nivetha/Krishna",
   "phase": "Configuration",
-  "health": "green",
-  "status": "Oct 22 - Inspections have been set up, some changes are requested- RFQ in progress ----- July 29th - Sandbox created , testing YTS ----- June 17 - Invoice integration underway ----- June 10 - Invoice Configuration underway -----",
-  "active_risks": [],
-  "open_items": [],
-  "recent_decisions": [],
-  "last_updated": null,
-  "last_call_ids": []
+  "health": "amber",
+  "status": "24-Apr-2026: Technical workshop focused on the Facilio-Corrigo integration. Invoicing for Corrigo work orders is now enabled in Facilio, site verification was simplified, integration error states were resolved, and the check-in/check-out button was combined. The critical blocker remains bulk closure of approximately 2,000 open Corrigo work orders, with the related ticket already 1-2 weeks old and awaiting Krishna's follow-up.",
+  "active_risks": [
+    {
+      "text": "Bulk close of approximately 2,000 Corrigo work orders is blocking Metro operational hygiene and is 1-2 weeks overdue",
+      "first_seen": "2026-04-24"
+    },
+    {
+      "text": "Manual merge of 330 inspection work orders remains an ongoing labor burden",
+      "first_seen": "2026-04-24"
+    }
+  ],
+  "open_items": [
+    {
+      "text": "Resolve bulk close ticket for approximately 2,000 Corrigo work orders",
+      "owner": "Krishna Karthikeyan",
+      "due": "ASAP (overdue)"
+    },
+    {
+      "text": "Explore bulk PM trigger date update for 1,200+ sites",
+      "owner": "Krishna Karthikeyan",
+      "due": "Before next call"
+    },
+    {
+      "text": "Simplify prorated work order process",
+      "owner": "Krishna Karthikeyan",
+      "due": "Next or next-next call"
+    },
+    {
+      "text": "Inform account managers of NTE access",
+      "owner": "Mark Brown (Metro)",
+      "due": "2026-04-24"
+    }
+  ],
+  "recent_decisions": [
+    {
+      "text": "Corrigo work order invoicing is live in Facilio",
+      "date": "2026-04-24"
+    },
+    {
+      "text": "Combined check-in/check-out button has been implemented",
+      "date": "2026-04-24"
+    },
+    {
+      "text": "NTE access granted to account managers",
+      "date": "2026-04-24"
+    }
+  ],
+  "last_updated": "2026-04-24",
+  "last_call_ids": [
+    "ee3c3cca-37e8-41c7-bea3-10f77ffa735e"
+  ]
 }
