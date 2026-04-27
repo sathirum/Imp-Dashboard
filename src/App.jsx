@@ -1193,7 +1193,8 @@ export default function App() {
       const json = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false });
       if (json.length < 2) throw new Error("No data in sheet");
 
-      const headers = json[0].map((h) => h || "");
+      const headerRow = Array.isArray(json[0]) ? json[0] : [];
+      const headers = Array.from({ length: headerRow.length }, (_, index) => headerRow[index] || "");
       const normalizedHeaders = headers.map(normalizeHeader);
       const rows = json.slice(1);
 
@@ -1231,9 +1232,10 @@ export default function App() {
         functionalTestReport: ["functional test report"]
       };
       const findColumnIndex = (aliases) => {
-        const normalizedAliases = aliases.map(normalizeHeader);
+        const normalizedAliases = aliases.map(normalizeHeader).filter(Boolean);
         for (let index = 0; index < normalizedHeaders.length; index += 1) {
           const header = normalizedHeaders[index];
+          if (!header) continue;
           if (normalizedAliases.some((alias) => header === alias || header.includes(alias) || alias.includes(header))) {
             return index;
           }
