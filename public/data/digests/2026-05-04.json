@@ -1,0 +1,525 @@
+{
+  "date": "2026-05-04",
+  "generated_at": "2026-05-06T07:30:00+05:30",
+  "total_calls": 8,
+  "calls": [
+    {
+      "call_id": "bc8b4fcf-06e9-4f21-8c86-792c87686b29",
+      "title": "My MS_TEAMS Meeting (NWC / AL Shalfa \u2014 System Implementation)",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-04T10:57:59+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Mithun Narayanan",
+        "Hadi Ali (NWC Admin Shalfa)",
+        "Eng. Molhm Hassan"
+      ],
+      "summary": "Requirements-finalisation session for NWC/AL Shalfa system implementation. Phased approach agreed; QR codes, Arabic description field, asset status dropdown, and client evaluation ratings in WO workflow all confirmed. Mini-UAT scheduled for Thursday.",
+      "key_points": [
+        "Phased implementation approach agreed for development and deployment.",
+        "QR code generation for assets confirmed feasible; sticker size specifications to be confirmed with TBC.",
+        "Dedicated Arabic description field to be added to the building module.",
+        "Asset operational status to be changed from single-line text to a dropdown for better filtering and reporting.",
+        "Work order workflow enhanced to include client evaluation (excellent / good / poor ratings).",
+        "Client ratings will trigger subsequent actions: auto-closure or initiation of CM task.",
+        "Mini-UAT scheduled for Thursday to review implemented changes."
+      ],
+      "decisions": [
+        "Phased implementation approach adopted.",
+        "Asset operational status: text field \u2192 dropdown.",
+        "Client evaluation ratings (excellent/good/poor) integrated into WO workflow."
+      ],
+      "action_items": [
+        {
+          "owner": "Team",
+          "task": "Confirm sticker size specifications with TBC",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Implement Arabic description field in building module",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Implement client evaluation ratings in WO workflow",
+          "due": "Before Thursday"
+        },
+        {
+          "owner": "Team / Client",
+          "task": "Conduct mini-UAT",
+          "due": "Thursday 7 May 2026"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "TBC sticker size confirmation; mini-UAT readiness by Thursday."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "9928969c-e6ea-4e9e-9659-d494dd39b0cd",
+      "title": "Following: Daily Facilio CAFM Workshops | Resolving Issues",
+      "crm_account_name": "CIT",
+      "project_slug": "cit-diriya",
+      "timestamp_ist": "2026-05-04T12:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya",
+        "Dinesh R",
+        "Magesh",
+        "Nitish Soondur (CIT)",
+        "Mohammed Nebab (CIT)",
+        "Mohammad Bashaaib (CIT)",
+        "Vinay Mohan (CIT)",
+        "Gladson Aby (CIT)",
+        "Chandan Dabeedeen (SCMS)",
+        "Helder Branco (CIT)",
+        "Tahir Abbas"
+      ],
+      "summary": "Working session on CIT CAFM issues. PPM bulk update not supported; moving to Excel import with training. Inventory description fix targeted 15 May. MOC project onboarding to OCI instance agreed in principle; pricing and licensing to be finalised.",
+      "key_points": [
+        "PPM upload functionality requires revision \u2014 moving to Excel import with a training session for data cleanup.",
+        "Bulk updating PPM schedules for numerous assets by location or type presents a significant challenge with current UI.",
+        "Facilio AI accuracy issue to be checked with Sudarshan.",
+        "Inventory management issues: inaccurate item descriptions and poor searchability; fix to display descriptions alongside item codes planned by 15 May.",
+        "Investigating possibility of updating inventory against closed work orders and adjusting current stock levels.",
+        "MOC project: recommended to onboard within OCI instance; pricing and implementation timelines to be finalised.",
+        "User licensing for MOC needs clarification (comparing existing Facilio users vs. required 100+ seats).",
+        "Daily follow-up calls scheduled to track progress."
+      ],
+      "decisions": [
+        "PPM to move to Excel import method with training session for data cleanup.",
+        "Inventory fix (descriptions alongside item codes) targeted by 15 May.",
+        "MOC project to be onboarded within OCI instance.",
+        "Daily follow-up calls established."
+      ],
+      "action_items": [
+        {
+          "owner": "Team",
+          "task": "Revise PPM upload to Excel import and schedule training session",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team / Sudarshan",
+          "task": "Check Facilio AI accuracy issue",
+          "due": "TBD"
+        },
+        {
+          "owner": "Engineering",
+          "task": "Fix inventory item descriptions + searchability",
+          "due": "15 May 2026"
+        },
+        {
+          "owner": "Team",
+          "task": "Investigate inventory update against closed WOs",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Finalise MOC pricing and implementation timeline",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Clarify MOC user licensing requirements",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "PPM bulk update capability not yet available. Inventory descriptions inaccurate. AI accuracy concern raised. MOC scope and licensing unresolved."
+      ],
+      "open_items": [
+        "PPM Excel import tool; inventory fix by 15 May; MOC licensing clarification; Sudarshan AI check."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "60859d23-7d97-4987-b86d-27af974d9bfd",
+      "title": "CWRC \u2014 Access Control Parkomax Integration",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-04T12:33:30+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat Furgo",
+        "Firas Abdul Rahman",
+        "Aashik Sadar",
+        "Pradheesh Lal",
+        "Vijeesh Vellat",
+        "Kumar Arumugam",
+        "Mohammed Khalfallah"
+      ],
+      "summary": "Integration scoping session for CWRC resident access control between Facilio and ParcoMax. Architecture agreed: two-way resident data sync, one-way gym subscription push. ParcoMax API license required but cost unconfirmed \u2014 a potential procurement blocker.",
+      "key_points": [
+        "Facilio will push resident data to ParcoMax; ParcoMax returns resident IDs and access card numbers.",
+        "Facility access (dining, gym) permissions to be pushed from Facilio to ParcoMax.",
+        "Gym subscription status pushed from ParcoMax to Facilio (triggered by POS); Facilio stores status, not payment data.",
+        "Two-way integration agreed for resident data; one-way push for subscription status.",
+        "Resident check-out triggers Facilio API call to ParcoMax for user deactivation.",
+        "ParcoMax requires an API license for integration; costs to be confirmed.",
+        "Master data (contractors, departments) managed via ParcoMax APIs; Facilio creates new entries if needed.",
+        "Transactional data (daily movements) not integrated to avoid duplication."
+      ],
+      "decisions": [
+        "Two-way integration for resident data; one-way push for subscription status.",
+        "Facilio calls ParcoMax API on resident check-out to deactivate user."
+      ],
+      "action_items": [
+        {
+          "owner": "ParcoMax",
+          "task": "Confirm API license cost for integration",
+          "due": "TBD"
+        },
+        {
+          "owner": "Ashwin Bhat Furgo",
+          "task": "Finalise integration API specifications with ParcoMax",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "ParcoMax API license cost unconfirmed &mdash; potential cost and procurement blocker for integration."
+      ],
+      "open_items": [
+        "ParcoMax API license cost confirmation; API specification documentation from ParcoMax."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "68d91a4c-979c-4b29-81ae-b789ab598d52",
+      "title": "Facilio <> MAF \u2014 Support Transition",
+      "crm_account_name": "Majid Al Futtaim",
+      "project_slug": "maf-al-zahia",
+      "timestamp_ist": "2026-05-04T13:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya",
+        "Riyavarshini Arunprasad",
+        "Mithun Narayanan",
+        "Ashwin",
+        "Kesava Krishnan R",
+        "Jeffri Shan J",
+        "Georges Hawa (MAF)",
+        "Shirin Lashteghani (MAF)",
+        "Cearbhall Beggan (MAF)",
+        "Apeksha Kulkarni (MAF)",
+        "Hesham Hegazy (MAF)",
+        "Mohamed Ishan (MAF)",
+        "and others"
+      ],
+      "summary": "Formal support transition call for Maf-tilal-algaf and Maf-alzahir to Sleo's support team with Mithun as primary contact. Support via Freshdesk; severity SLAs established. User adoption challenges with new service providers flagged; train-the-trainer model agreed.",
+      "key_points": [
+        "Maf-tilal-algaf and Maf-alzahir officially transitioned to Sleo's support team; Mithun is primary contact.",
+        "Support requests to be submitted via support@facilio.com, managed through Freshdesk.",
+        "Dedicated POC recommended from MAF side to filter and submit issues to avoid duplicates.",
+        "Ticket categories defined: product defects, implementation issues/requests, user adoption/education, roadmap items.",
+        "Severity levels P1/P2/P3 and acknowledgment SLAs established.",
+        "Challenges with user adoption and training new service providers raised.",
+        "Facilio to support under a train-the-trainer model.",
+        "Freshdesk access to be provided to MAF admins for ticket tracking."
+      ],
+      "decisions": [
+        "Support transition to Sleo effective immediately; Mithun is primary contact.",
+        "Dedicated MAF POC to be appointed to filter support requests.",
+        "Freshdesk access to be granted to MAF admins."
+      ],
+      "action_items": [
+        {
+          "owner": "MAF",
+          "task": "Appoint dedicated POC for support ticket submission",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Facilio / Mithun",
+          "task": "Provide Freshdesk access to MAF admins",
+          "due": "TBD"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Support user adoption and training for new service providers",
+          "due": "Ongoing"
+        }
+      ],
+      "risks": [
+        "User adoption challenges noted for new service providers &mdash; train-the-trainer model agreed as mitigation."
+      ],
+      "open_items": [
+        "MAF POC appointment; Freshdesk access provisioning."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "7c50d981-8547-41a3-b690-c6ed067a08f2",
+      "title": "CWRC \u2014 Contract Discussion",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-04T13:41:05+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat Furgo",
+        "Firas Abdul Rahman",
+        "Mohammed Khalfallah",
+        "Kumar Arumugam"
+      ],
+      "summary": "Contract scope clarification for CWRC. Real-time forecasting excluded; historical bid-price dashboard agreed. Arabic support and contract expiry notifications to be built. Legal team meeting to be scheduled for contract structure discussion.",
+      "key_points": [
+        "Internal legal meeting to be scheduled to discuss contract structure.",
+        "Customer inquiry response requires manual upload of date, time, and version number for client behaviour analysis.",
+        "Version history restoration accepted as manual attachment of previous proposals.",
+        "Real-time market response and predictive forecasting excluded; Facilio will provide historical bid-price dashboards.",
+        "Dashboard to display average bid prices and forecast based on vacant bids and contract expirations.",
+        "Arabic language support and editing privileges for fixed contract terms to be incorporated.",
+        "Automated notifications for contract expiry to be implemented for contract and finance departments."
+      ],
+      "decisions": [
+        "Real-time/predictive forecasting excluded from scope.",
+        "Dashboard to provide average bid prices and vacancy-based forecast.",
+        "Arabic language support and contract term editing to be incorporated.",
+        "Automated contract expiry notifications agreed."
+      ],
+      "action_items": [
+        {
+          "owner": "Ashwin Bhat Furgo",
+          "task": "Schedule internal legal meeting on contract structure",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Implement Arabic language support in contract module",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Build average bid-price dashboard with vacancy-based forecast",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Implement automated contract expiry notifications",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Legal team involvement in contract structure still to be coordinated."
+      ],
+      "open_items": [
+        "Internal legal meeting; Arabic language implementation; dashboard build."
+      ],
+      "health_signal": "green",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "c47b4a7b-56a1-481f-865f-215d3bad6c52",
+      "title": "MODON \u2014 Planner Verification",
+      "crm_account_name": "",
+      "project_slug": "modon-phase-2",
+      "timestamp_ist": "2026-05-04T14:33:59+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jhimlee Datta",
+        "Ashwin Bhat Furgo",
+        "Firas Abdul Rahman",
+        "Sreesobh Naduvanchery"
+      ],
+      "summary": "MODON planner verification session. 31 open tasks confirmed; several reopened due to incomplete information, risking BRD submission timeline. Decision to schedule individual 30-minute entity meetings to resolve each item.",
+      "key_points": [
+        "Discrepancy in open task counts resolved after filter adjustments: 31 open tasks confirmed.",
+        "Several tasks reopened due to incomplete information or outstanding queries, impacting project timelines.",
+        "Issues identified: vendor/subcontractor restriction rules, Oracle integration budget confirmation, missing module fault codes/inspection values.",
+        "Decision to export all comments from open tasks and schedule individual 30-minute clarification meetings per entity.",
+        "Jhimlee or Renka to lead meetings; Ashwin Bhat Furgo as optional attendee.",
+        "Goal is to resolve all pending issues before BRD submission.",
+        "Current task update and notification process deemed insufficient."
+      ],
+      "decisions": [
+        "Export all comments from open tasks for review.",
+        "Schedule individual 30-minute clarification meetings per entity.",
+        "Jhimlee / Renka to lead each meeting."
+      ],
+      "action_items": [
+        {
+          "owner": "Jhimlee",
+          "task": "Export all open task comments and schedule individual entity meetings",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Team",
+          "task": "Resolve vendor/subcontractor restriction rules",
+          "due": "Before BRD submission"
+        },
+        {
+          "owner": "Team",
+          "task": "Confirm Oracle integration budget",
+          "due": "Before BRD submission"
+        },
+        {
+          "owner": "Team",
+          "task": "Add missing module fault codes and inspection values",
+          "due": "Before BRD submission"
+        }
+      ],
+      "risks": [
+        "31 open tasks with reopened items risking BRD submission deadline. Notification process inadequate \u2014 tasks not being tracked effectively."
+      ],
+      "open_items": [
+        "Oracle integration budget confirmation; fault codes/inspection values to be added; individual entity meetings to be completed."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "2f18f248-7872-4a98-abe5-e1d17418cf25",
+      "title": "ENEC \u2014 Weekly Cadence Call",
+      "crm_account_name": "Emirate Nuclear Energy company",
+      "project_slug": "enec-workspace-management",
+      "timestamp_ist": "2026-05-04T15:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya",
+        "Kesava Krishnan R",
+        "Riyavarshini Arunprasad",
+        "Paurnika Ramesh",
+        "Robin (Facilio)",
+        "Al Jack (Facilio)",
+        "Muhammad Asim Rashid (ENEC)",
+        "Samir Cardy (ENEC)",
+        "Majed AlShemeili (ENEC)",
+        "Syed Qutubuddin (ENEC)",
+        "Rajeev Kulkarni (ENEC)",
+        "Khuram Khurshid (ENEC)",
+        "Adeel Riaz (ENEC)",
+        "Ibrahim Kutty"
+      ],
+      "summary": "ENEC workspace management cadence call. Client raised clear concerns about system value without SAP/Employee Central and Outlook integrations. Facilio to share architectural diagrams; follow-up meeting to finalise integration strategy within days.",
+      "key_points": [
+        "BRD covers office space management: desk and room management, parking, deliveries, and lockers.",
+        "Critical need for integration with HR systems (SAP/Employee Central) for employee data and offboarding workflows.",
+        "Outlook integration essential for meeting room bookings and analytics.",
+        "Participants expressed concerns about the system's value without these integrations and automated workflows.",
+        "Requirement for searching employees by name to locate assigned desks.",
+        "Automated notifications for desk availability and employee departures are crucial.",
+        "Architectural diagrams and integration capabilities documentation to be shared by Facilio.",
+        "Follow-up meeting scheduled to finalise integration strategies and timelines."
+      ],
+      "decisions": [
+        "Facilio to share architectural diagrams and integration capability documentation.",
+        "Follow-up meeting scheduled to finalise integration approach within days."
+      ],
+      "action_items": [
+        {
+          "owner": "Facilio / Kesava / Riyavarshini",
+          "task": "Share architectural diagrams and integration capability documentation",
+          "due": "Within days"
+        },
+        {
+          "owner": "Team",
+          "task": "Schedule and conduct follow-up meeting on integration strategy",
+          "due": "Within days"
+        }
+      ],
+      "risks": [
+        "Client stated the system has limited value without SAP/Employee Central and Outlook integrations. Risk of scope or expectation misalignment if integrations cannot be confirmed promptly."
+      ],
+      "open_items": [
+        "SAP/Employee Central integration feasibility; Outlook integration approach; follow-up meeting scheduling."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "0aa382ba-723e-4ce2-8884-07c3d6abff6c",
+      "title": "Lunds & Byerlys Touchbase",
+      "crm_account_name": "Lunds & Byerlys",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-04T20:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Arjun M M",
+        "William Stordeur",
+        "Basant",
+        "Kevin Kungel (L&B)",
+        "Shelly Sunde (L&B)",
+        "Jeff Carlson (L&B)",
+        "Alex Quiroz (L&B)",
+        "Diann Armitage (L&B)",
+        "Shawn Tessman (L&B)",
+        "Edgardo Diaz (L&B)"
+      ],
+      "summary": "Multiple issues discussed for Lunds & Byerlys: mobile app inspection visibility, asset decommissioning/refrigerant compliance gap, T&M contract un-expiry not supported, predictive alarm noise. Team working through items collaboratively.",
+      "key_points": [
+        "Mobile app inspection visibility issue for certain users attributed to user permissions and site assignments.",
+        "WO asset filtering bug resolved.",
+        "Exporting job plan tasks still in progress.",
+        "Decommissioning sites/assets: challenges in properly handling refrigerant assets to prevent errors; better integration between asset management and refrigerant compliance needed.",
+        "Un-expiring Time &amp; Materials contracts not currently supported \u2014 new contracts must be created.",
+        "Duplicate data entry required for assigning categories to contracts and provider associations; needs streamlining.",
+        "Mobile app connectivity issues and incorrect refrigerant value rounding impact usability.",
+        "Predictive alarm rules for condenser approach need refinement (fan speed, ambient temperature, site-specific variations)."
+      ],
+      "decisions": [
+        "New contracts to be created when T&M contracts expire (un-expiry not supported)."
+      ],
+      "action_items": [
+        {
+          "owner": "Team",
+          "task": "Resolve mobile app inspection visibility permission issue",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Complete job plan task export functionality",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Improve integration between asset decommissioning and refrigerant compliance",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Streamline contract category/provider association data entry",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Fix mobile app connectivity and refrigerant value rounding",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Refine condenser approach predictive alarm rules",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "T&M contract un-expiry not supported \u2014 operational workaround required. Decommissioning/refrigerant compliance integration gap. Predictive alarms may generate noise due to insufficient data granularity."
+      ],
+      "open_items": [
+        "Job plan export; decommissioning/refrigerant integration; alarm rule refinement."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    }
+  ]
+}
