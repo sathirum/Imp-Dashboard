@@ -1,0 +1,290 @@
+{
+  "date": "2026-05-08",
+  "generated_at": "2026-05-08T07:00:00+05:30",
+  "total_calls": 5,
+  "calls": [
+    {
+      "call_id": "53d9ae81-e892-4771-87a9-bb83b2312747",
+      "title": "Key Watcher Integration Testing",
+      "crm_account_name": "CBRE",
+      "project_slug": "cbre",
+      "timestamp_ist": "2026-05-08T10:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Sangavi M (Facilio)",
+        "Ranjan TSB (Facilio)",
+        "Vandhana S (Facilio)",
+        "Magesh (Facilio)",
+        "Naresh SS (Facilio)",
+        "Jordan Smith (CBRE)",
+        "Abhishek Balakrishna (CBRE)",
+        "Eliana Gutierrez (CBRE)"
+      ],
+      "summary": "Working session between Facilio (Sathya, Sangavi, Ranjan, Vandhana, team) and CBRE for Key Watcher integration testing. The team was coordinating environment setup and contact with Key Watcher, with a Parallels activation prerequisite before enabling the Moboke integration. Minimal substantive dialogue captured in transcript \u2014 session was in early-stage testing coordination.",
+      "key_points": [
+        "Integration testing session for Key Watcher system with CBRE team.",
+        "Team was coordinating contact with Key Watcher and resolving an environment issue ('paradise garden' environment noted as problematic).",
+        "Parallels activation required before enabling Moboke integration.",
+        "Mahesh (Facilio) was requested to join the session for support."
+      ],
+      "decisions": [
+        "Parallels to be activated prior to enabling Moboke integration.",
+        "Session to continue with Magesh joining for technical support."
+      ],
+      "action_items": [
+        {
+          "owner": "Naresh SS",
+          "task": "Contact Key Watcher and resolve paradise garden environment issue",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Activate Parallels before proceeding with Moboke integration",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Environment issue ('paradise garden') causing disruption to integration testing. Dependency on Key Watcher availability."
+      ],
+      "open_items": [
+        "Key Watcher team availability; Parallels activation; Magesh joining the session."
+      ],
+      "health_signal": "green",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "73df5014-b0a4-4b2a-b565-b4cc3673842a",
+      "title": "FarVision CM Integration Revisiting",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-08T11:32:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat Fugro (Facilio)",
+        "Abdul Ajees (Customer)",
+        "Dheeraj Sharma (FarVision)",
+        "Amit Kumar Singh (FarVision)",
+        "Sreesobh Naduvanchery (Facilio)"
+      ],
+      "summary": "Technical session to refine the CM integration architecture between Facilio, Oracle, and FarVision. Key outcome: Oracle will directly supply item master and vendor master data for CM (scope change from original BRD), with FarVision acting as a translator for PRs/POs. The call was disrupted by a governance issue \u2014 Ashwin had shared the BRD directly with IT, which Abdul Ajees explicitly rejected; a formal enforcement email is being prepared. The technical approach (GL codes + UDFs) was agreed and the BRD revision is due by Saturday.",
+      "key_points": [
+        "Decision made: inventory will NOT be maintained in FarVision. Available spare parts to be uploaded to Facilio; Facilio integrates with Oracle for item master.",
+        "FarVision to act as a translator for PRs and POs \u2014 mapping text item references to Oracle item codes for GRN updates in Facilio.",
+        "Scope change: Oracle integration now required for CM item master and vendor master (previously scoped out). BRD must be revised.",
+        "BRD governance breach: Ashwin shared the BRD directly with IT, bypassing agreed channel. Abdul Ajees insisted all BRDs must go to him and Raj first.",
+        "Dheeraj proposed GL code approach: budget heads from FarVision created as GL codes in Facilio, with Oracle/FarVision references stored in UDF fields at GRN time."
+      ],
+      "decisions": [
+        "Item master and vendor master for CM to integrate directly with Oracle (not FarVision). BRD scope updated accordingly.",
+        "No full item master sync in Facilio \u2014 GL code-level budget mapping adopted. Oracle/FarVision references captured in UDFs.",
+        "BRD distribution rule enforced: all future BRDs must be routed through Abdul Ajees and Raj only \u2014 not directly to IT.",
+        "Abdul Ajees to review the FarVision integration BRD by Saturday (9 May)."
+      ],
+      "action_items": [
+        {
+          "owner": "Ashwin Bhat Fugro",
+          "task": "Revise BRD \u2014 remove 'no Oracle integration for CM' clause, add Oracle item master + vendor master scope",
+          "due": "By Saturday 9 May"
+        },
+        {
+          "owner": "Ashwin Bhat Fugro",
+          "task": "Share BRD with Dheeraj as requested",
+          "due": "Immediate"
+        },
+        {
+          "owner": "Abdul Ajees",
+          "task": "Issue formal email reinforcing BRD governance channel (all BRDs \u2192 Abdul Ajees + Raj only)",
+          "due": "Immediate"
+        },
+        {
+          "owner": "Abdul Ajees",
+          "task": "Review FarVision integration BRD",
+          "due": "Saturday 9 May"
+        }
+      ],
+      "risks": [
+        "Scope change on Oracle integration for CM increases integration complexity. BRD governance breach risks information control and stakeholder trust. FarVision item code mapping is complex \u2014 FarVision must maintain a reference table for GRN/stocking updates."
+      ],
+      "open_items": [
+        "Ashwin BRD revision; Abdul Ajees formal governance email; FarVision item code mapping reference; Saturday BRD review."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "2fe8a97f-29f6-4449-b926-f9edd6df253f",
+      "title": "GECOMEP Implementation Progress Update",
+      "crm_account_name": "GECOMEP",
+      "project_slug": "geco-phase-1",
+      "timestamp_ist": "2026-05-08T12:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Kesava Krishnan R (Facilio)",
+        "Arun Kumar V (Facilio)",
+        "Samitha Wickramasinghage (Tecon)",
+        "Sakeena Begam (GECOMEP)",
+        "Ahmad Ali Mansour (GECOMEP)",
+        "Anto Joseph (GECOMEP)"
+      ],
+      "summary": "Very brief call to reschedule the GECOMEP implementation code review and progress status meeting to 3:00\u20134:00 PM Dubai time on the same day (8 May). No substantive implementation discussion took place. Customer team (Sakeena, Ahmad, Anto) was cooperative; internal scheduling constraints were the only friction noted.",
+      "key_points": [
+        "Call was a brief scheduling exchange \u2014 the intended code review and progress status meeting was rescheduled to 3:00\u20134:00 PM Dubai time the same day.",
+        "Kesava noted a calendar conflict preventing attendance for the full slot; Arun Kumar available until 3:30 PM.",
+        "Jeeva assigned to send the revised meeting invitation."
+      ],
+      "decisions": [
+        "Code review and implementation progress review rescheduled to 3:00\u20134:00 PM Dubai time (8 May)."
+      ],
+      "action_items": [
+        {
+          "owner": "Jeeva (Jeevaregai Shanmugam)",
+          "task": "Send revised meeting invitation for 3:00\u20134:00 PM Dubai time",
+          "due": "8 May 2026"
+        }
+      ],
+      "risks": [
+        "Internal scheduling conflicts (Kesava and Arun Kumar availability gaps)."
+      ],
+      "open_items": [
+        "Jeeva to send meeting invite; Kesava and Arun Kumar to join within their availability windows."
+      ],
+      "health_signal": "green",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "8029a5a2-1a37-4959-988e-e812e5eba5e7",
+      "title": "<MODON AM> : FarVision Move In-Move Out",
+      "crm_account_name": "",
+      "project_slug": "modon-phase-1",
+      "timestamp_ist": "2026-05-08T16:32:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jhimlee Datta (Facilio)",
+        "Ahmad Turki (MODON)",
+        "Saradi Mohamed (MODON)",
+        "Dheeraj Sharma (FarVision)",
+        "Firas Abdul Rahman",
+        "Rajesh Patil",
+        "Ganpat Pandey"
+      ],
+      "summary": "Design session for the MODON move-in/move-out inspection process integrating Facilio and FarVision. Key outcomes: a security deposit-based threshold triggers manual PM approval for high-cost move-out damage, legal dispute scenarios put work orders in stagnant status with SLA clocks paused, and additional tenant-requested works during move-in follow a separate approval flow. Multiple open dependencies remain \u2014 SLA matrix by unit type, FarVision security deposit data integration, and portal feedback feature development \u2014 with updated diagrams due from Jhimlee early next week.",
+      "key_points": [
+        "Move-out inspection: threshold mechanism agreed \u2014 if tenant-borne costs exceed the security deposit amount, property management manual approval is required before corrective work orders proceed.",
+        "Legal dispute scenario: work orders enter 'stagnant' status; SLA/KPI clock pauses until resolution.",
+        "Move-in inspection: all costs borne by property management. Additional tenant-requested works (e.g., kitchen renovation) follow a separate flow with quotation, scope definition, and approval steps.",
+        "SLA/KPI matrix to be defined per unit type (1BHK, 2BHK, 3BHK, 4BHK) \u2014 Ahmad Turki and Saradi to provide this matrix.",
+        "Feedback mechanism: two channels confirmed \u2014 technician captures rating + signature in Facilio app (pushed to FarVision), and tenant submits detailed feedback via FarVision portal (three templates: move-in, move-out, maintenance).",
+        "FarVision portal feedback feature not yet built \u2014 to be developed.",
+        "PR for corrective work in move-out leasing vertical: Facilio \u2192 Oracle directly (FarVision handles AR only in leasing)."
+      ],
+      "decisions": [
+        "Cost threshold for manual PM approval = security deposit amount per tenant (FarVision to push this value to Facilio).",
+        "SLA clock pauses when tenant has not accepted the FMR report (move-out); move-in findings start work immediately.",
+        "Additional works during move-in are a separate flow from defect findings \u2014 separate FMR report, quotation, approval, and SLA rules.",
+        "Dual feedback system confirmed: Facilio app (technician-side) + FarVision portal (tenant-side)."
+      ],
+      "action_items": [
+        {
+          "owner": "Jhimlee Datta",
+          "task": "Update process flow diagrams: add PM approval touchpoint for high-cost move-out scenarios, add additional works branch for move-in",
+          "due": "Early next week"
+        },
+        {
+          "owner": "Ahmad Turki / Saradi Mohamed",
+          "task": "Provide SLA matrix by unit type (1BHK, 2BHK, 3BHK, 4BHK \u2192 number of days)",
+          "due": "TBD"
+        },
+        {
+          "owner": "FarVision team",
+          "task": "Configure FarVision to push security deposit amount and unit type per tenant to Facilio",
+          "due": "TBD"
+        },
+        {
+          "owner": "FarVision team",
+          "task": "Build tenant feedback feature in FarVision portal (3 templates: move-in, move-out, maintenance)",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Security deposit amount not yet in Facilio (FarVision dependency). SLA matrix undefined \u2014 go-live readiness at risk if not provided. FarVision portal feedback feature not yet built."
+      ],
+      "open_items": [
+        "FarVision security deposit data push; Ahmad/Saradi SLA matrix; Jhimlee updated flow diagrams; FarVision portal feedback development."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "58b81943-9c69-483c-b5bd-b1b62112858a",
+      "title": "[THCE <> Facilio] : PM Discussion",
+      "crm_account_name": "",
+      "project_slug": "t-j-regional-health",
+      "timestamp_ist": "2026-05-08T18:01:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jhimlee Datta (Facilio)",
+        "Jesse E. Pearce (THCE)",
+        "Michael DeRossett (THCE)",
+        "Rebecca A. Barta (THCE)",
+        "Jonathan W. Hill (THCE)"
+      ],
+      "summary": "Technical deep-dive on PM schedule configuration and parent-child asset relationships for THCE. Two key issues surfaced: (1) the PM multi-level variance architecture requires duplicating schedules at lower levels \u2014 a usability gap that creates risk of accidental overwrites and extra manual work; (2) Facilio is not returning the asset number to the Medicaid integration, a live bug flagged by Rebecca Barta. Jhimlee to analyse options for PM multi-level support and fix the Medicaid integration. Parent-child asset design for Da Vinci robots deferred to a follow-up session.",
+      "key_points": [
+        "PM schedule configuration: assets can only have PMs at one of four schedule levels (site, model, asset category, individual). Overriding at a lower level requires duplicating the PM schedule, creating extra manual work.",
+        "Michael DeRossett flagged risk of accidental schedule overwrites: \"if I push the wrong schedule I can mess up their pm schedules.\"",
+        "Michael noted bandwidth pressure: \"I don't have a lot of help anymore.\"",
+        "Parent-child asset relationships: currently indicator-only \u2014 no automated workflows. Financial implications for contract pricing and cost allocation (Da Vinci robots) require careful asset category design.",
+        "Medicaid integration gap: Facilio not returning the asset number to the Medicaid system. Rebecca flagged: \"Can you just make sure you're sending the asset number back over to Medicaid? They're not showing it.\"",
+        "Medicaid list view requirements unclear \u2014 Jhimlee to review separately with Rebecca.",
+        "No changes to be made until analysis is complete and documentation updated."
+      ],
+      "decisions": [
+        "No PM schedule changes to be made pending Jhimlee's analysis on multi-level support options.",
+        "Parent-child asset model for Da Vinci robots to be fully scoped in a follow-up session (Jonathan Hill to be included).",
+        "Jhimlee to investigate and fix Medicaid asset number not being returned from Facilio."
+      ],
+      "action_items": [
+        {
+          "owner": "Jhimlee Datta",
+          "task": "Analyse PM schedule multi-level support \u2014 propose solutions (clone model-to-site option, or simultaneous multi-level support)",
+          "due": "TBD"
+        },
+        {
+          "owner": "Jhimlee Datta",
+          "task": "Investigate and fix Medicaid integration \u2014 ensure asset number is sent back to Medicaid system",
+          "due": "TBD"
+        },
+        {
+          "owner": "Jhimlee Datta",
+          "task": "Review Medicaid list view requirements separately with Rebecca Barta",
+          "due": "TBD"
+        },
+        {
+          "owner": "Jhimlee Datta / Team",
+          "task": "Schedule parent-child asset follow-up session for Da Vinci robots (include Jonathan Hill)",
+          "due": "After Jonathan returns"
+        }
+      ],
+      "risks": [
+        "PM multi-level variance is a functional gap requiring workarounds and creating risk of accidental overwrites. Medicaid asset number integration is broken. Parent-child asset categories for Da Vinci robots have contract cost and regulatory tracking implications."
+      ],
+      "open_items": [
+        "Jhimlee analysis on PM multi-level; Medicaid fix; Jonathan Hill availability for parent-child session; Rebecca follow-up on Medicaid list view."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    }
+  ]
+}
