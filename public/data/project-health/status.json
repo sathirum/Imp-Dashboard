@@ -1,5 +1,152 @@
 {
   "last_updated": "2026-05-08",
   "description": "Rolling per-project health state. Updated daily by the Project Health Digest skill.",
-  "projects": {}
+  "projects": {
+    "cbre": {
+      "project_slug": "cbre",
+      "display_name": "Cbre",
+      "health_signal": "green",
+      "last_updated": "2026-05-08",
+      "rolling_summary": "Key Watcher integration testing is progressing. Team is validating integration setup and functionality with no blockers reported.",
+      "cumulative_risks": [],
+      "cumulative_actions": [],
+      "recent_signals": [
+        {
+          "date": "2026-05-08",
+          "signal": "green",
+          "sources": [
+            "clari"
+          ],
+          "has_escalation": false,
+          "has_date_shift": false,
+          "summary": "Key Watcher integration testing is progressing. Team is validating integration setup and functionality with no blockers reported."
+        }
+      ]
+    },
+    "geco-phase-1": {
+      "project_slug": "geco-phase-1",
+      "display_name": "Geco Phase 1",
+      "health_signal": "green",
+      "last_updated": "2026-05-08",
+      "rolling_summary": "GECOMEP implementation progressing well. Team reviewed progress across key modules; no escalations or blockers flagged in this session.",
+      "cumulative_risks": [],
+      "cumulative_actions": [],
+      "recent_signals": [
+        {
+          "date": "2026-05-08",
+          "signal": "green",
+          "sources": [
+            "clari"
+          ],
+          "has_escalation": false,
+          "has_date_shift": false,
+          "summary": "GECOMEP implementation progressing well. Team reviewed progress across key modules; no escalations or blockers flagged in this session."
+        }
+      ]
+    },
+    "modon-phase-1": {
+      "project_slug": "modon-phase-1",
+      "display_name": "Modon Phase 1",
+      "health_signal": "amber",
+      "last_updated": "2026-05-08",
+      "rolling_summary": "FarVision Move In-Move Out module discussion underway for MODON. Integration scope and workflows are being revisited — open items pending resolution before configuration can proceed.",
+      "cumulative_risks": [
+        "FarVision Move In-Move Out integration scope not yet finalised",
+        "Open dependency on FarVision integration alignment"
+      ],
+      "cumulative_actions": [],
+      "recent_signals": [
+        {
+          "date": "2026-05-08",
+          "signal": "amber",
+          "sources": [
+            "clari"
+          ],
+          "has_escalation": false,
+          "has_date_shift": false,
+          "summary": "FarVision Move In-Move Out module discussion underway for MODON. Integration scope and workflows are being revisited — open items pending resolution before configuration can proceed."
+        }
+      ]
+    },
+    "t-j-regional-health": {
+      "project_slug": "t-j-regional-health",
+      "display_name": "T J Regional Health",
+      "health_signal": "amber",
+      "last_updated": "2026-05-08",
+      "rolling_summary": "PM discussion held with THCE (T.J. Regional Health). Risk items and delivery concerns were raised; team is monitoring closely and tracking open actions from this session.",
+      "cumulative_risks": [
+        "PM-level risks discussed in session — details pending transcript review",
+        "Delivery dependencies discussed without full resolution"
+      ],
+      "cumulative_actions": [],
+      "recent_signals": [
+        {
+          "date": "2026-05-08",
+          "signal": "amber",
+          "sources": [
+            "clari"
+          ],
+          "has_escalation": false,
+          "has_date_shift": false,
+          "summary": "PM discussion held with THCE (T.J. Regional Health). Risk items and delivery concerns were raised; team is monitoring closely and tracking open actions from this session."
+        }
+      ]
+    },
+    "edarat-cafm": {
+      "project_slug": "edarat-cafm",
+      "display_name": "Edarat Cafm",
+      "health_signal": "amber",
+      "last_updated": "2026-05-08",
+      "rolling_summary": "New project kick-off completed for Edarat (4 data centers CAFM implementation). MoM circulated on 8 May by Kesava Krishnan. Tentative go-live is 19 August 2026. Client is requesting an accelerated phased rollout due to tenant onboarding timelines and legacy software expiration — Facilio must propose a revised plan before the next session.",
+      "cumulative_risks": [
+        "Client requesting timeline acceleration due to tenant onboarding pressure and legacy software expiration at other sites",
+        "Phased rollout strategy not yet proposed — Facilio needs to confirm feasibility",
+        "5th site expansion dependent on early adoption success — commercial risk"
+      ],
+      "cumulative_actions": [
+        {
+          "owner": "Facilio Team (Kesava)",
+          "task": "Share kickoff presentation deck",
+          "due": "Immediate",
+          "added_date": "2026-05-08"
+        },
+        {
+          "owner": "Facilio Team (Kesava)",
+          "task": "Share onboarding/data gathering templates",
+          "due": "Before next session",
+          "added_date": "2026-05-08"
+        },
+        {
+          "owner": "Facilio Team (Kesava)",
+          "task": "Share BRD workshop schedule",
+          "due": "Before workshop kickoff",
+          "added_date": "2026-05-08"
+        },
+        {
+          "owner": "Facilio Team (Kesava/Ashwin)",
+          "task": "Propose revised phased rollout approach & share revised Project Plan",
+          "due": "Before next session",
+          "added_date": "2026-05-08"
+        },
+        {
+          "owner": "Edarat Team",
+          "task": "Nominate governance stakeholders and counterparts",
+          "due": "Before next session",
+          "added_date": "2026-05-08"
+        }
+      ],
+      "recent_signals": [
+        {
+          "date": "2026-05-08",
+          "signal": "amber",
+          "sources": [
+            "email"
+          ],
+          "has_escalation": false,
+          "has_date_shift": false,
+          "summary": "New project kick-off completed for Edarat (4 data centers CAFM implementation). MoM circulated on 8 May by Kesava Krishnan. Tentative go-live is 19 August 2026. Client is requesting an accelerated pha"
+        }
+      ]
+    }
+  }
 }
