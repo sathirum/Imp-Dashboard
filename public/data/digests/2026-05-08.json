@@ -2,6 +2,24 @@
   "date": "2026-05-08",
   "generated_at": "2026-05-08T07:00:00+05:30",
   "total_calls": 5,
+  "for_krishna": "No critical items today. \u2705",
+  "for_sathya_risks": [
+    {
+      "account": "FarVision CM Integration",
+      "headline": "BRD Governance Breach + Oracle Scope Change [RISK]",
+      "body": "Ashwin Bhat Fugro shared the CM integration BRD directly with IT, bypassing the agreed channel (Abdul Ajees + Raj). Abdul Ajees was firm: \"Look, we have clearly agreed before. Nothing has to be shared with anyone. It has to be shared with me and Sreshub.\" Abdul Ajees is preparing a formal email to enforce the process. Separately, the BRD scope must be revised \u2014 Oracle integration is now required for item master and vendor master in CM (previously excluded). (Owner: Ashwin Bhat Fugro)"
+    },
+    {
+      "account": "THCE",
+      "headline": "Medicaid Integration Gap + PM Multi-Level Variance Limitation [RISK]",
+      "body": "Facilio is not sending the asset number back to the Medicaid system \u2014 Rebecca Barta flagged this: \"Can you just make sure you're sending the asset number back over to Medicaid? They're not showing it.\" Additionally, the PM schedule inheritance logic does not support multi-level variance without manual duplication \u2014 a known functional gap. Michael DeRossett noted the workload: \"you create extra work for myself Jesse. I don't have a lot of help anymore.\" Analysis and fix underway. (Owner: Jhimlee)"
+    },
+    {
+      "account": "MODON AM",
+      "headline": "Open Dependencies: SLA Matrix + Security Deposit Data Pending [RISK]",
+      "body": "The move-in/move-out inspection process design has several open items: (1) SLA matrix by unit type (1BHK, 2BHK, etc.) not yet provided by Ahmad Turki/Saradi Mohamed, (2) FarVision must be configured to pass security deposit amount per tenant to Facilio to trigger the manual approval threshold, (3) updated process flow diagrams pending from Jhimlee by early next week. Risk of delay to go-live if these items are not closed promptly. (Owner: Jhimlee)"
+    }
+  ],
   "calls": [
     {
       "call_id": "53d9ae81-e892-4771-87a9-bb83b2312747",
@@ -44,14 +62,13 @@
           "due": "TBD"
         }
       ],
-      "risks": [
-        "Environment issue ('paradise garden') causing disruption to integration testing. Dependency on Key Watcher availability."
-      ],
-      "open_items": [
-        "Key Watcher team availability; Parallels activation; Magesh joining the session."
-      ],
+      "customer_sentiment": "Neutral \u2014 call was a working session; no customer feedback captured in transcript.",
+      "sentiment_label": "neutral",
+      "escalations": "None.",
+      "date_shifts": "None.",
+      "risks": "Environment issue ('paradise garden') causing disruption to integration testing. Dependency on Key Watcher availability.",
+      "open_dependencies": "Key Watcher team availability; Parallels activation; Magesh joining the session.",
       "health_signal": "green",
-      "sentiment": "neutral",
       "has_escalation": false,
       "has_date_shift": false
     },
@@ -105,14 +122,13 @@
           "due": "Saturday 9 May"
         }
       ],
-      "risks": [
-        "Scope change on Oracle integration for CM increases integration complexity. BRD governance breach risks information control and stakeholder trust. FarVision item code mapping is complex \u2014 FarVision must maintain a reference table for GRN/stocking updates."
-      ],
-      "open_items": [
-        "Ashwin BRD revision; Abdul Ajees formal governance email; FarVision item code mapping reference; Saturday BRD review."
-      ],
+      "customer_sentiment": "Tense but functional \u2014 Abdul Ajees was visibly irritated by the BRD governance violation. Technical discussion was productive once refocused.",
+      "sentiment_label": "mixed",
+      "escalations": "Abdul Ajees enforced a governance escalation on BRD routing \u2014 was firm: \"Let's follow one process, please.\" Preparing a formal email to all parties.",
+      "date_shifts": "BRD review deferred to Saturday 9 May.",
+      "risks": "Scope change on Oracle integration for CM increases integration complexity. BRD governance breach risks information control and stakeholder trust. FarVision item code mapping is complex \u2014 FarVision must maintain a reference table for GRN/stocking updates.",
+      "open_dependencies": "Ashwin BRD revision; Abdul Ajees formal governance email; FarVision item code mapping reference; Saturday BRD review.",
       "health_signal": "amber",
-      "sentiment": "mixed",
       "has_escalation": false,
       "has_date_shift": false
     },
@@ -148,14 +164,13 @@
           "due": "8 May 2026"
         }
       ],
-      "risks": [
-        "Internal scheduling conflicts (Kesava and Arun Kumar availability gaps)."
-      ],
-      "open_items": [
-        "Jeeva to send meeting invite; Kesava and Arun Kumar to join within their availability windows."
-      ],
+      "customer_sentiment": "Neutral \u2014 brief, administrative call. Customer was cooperative and flexible.",
+      "sentiment_label": "neutral",
+      "escalations": "None.",
+      "date_shifts": "None \u2014 same-day reschedule only.",
+      "risks": "Internal scheduling conflicts (Kesava and Arun Kumar availability gaps).",
+      "open_dependencies": "Jeeva to send meeting invite; Kesava and Arun Kumar to join within their availability windows.",
       "health_signal": "green",
-      "sentiment": "neutral",
       "has_escalation": false,
       "has_date_shift": false
     },
@@ -179,7 +194,7 @@
       "key_points": [
         "Move-out inspection: threshold mechanism agreed \u2014 if tenant-borne costs exceed the security deposit amount, property management manual approval is required before corrective work orders proceed.",
         "Legal dispute scenario: work orders enter 'stagnant' status; SLA/KPI clock pauses until resolution.",
-        "Move-in inspection: all costs borne by property management. Additional tenant-requested works (e.g., kitchen renovation) follow a separate flow with quotation, scope definition, and approval steps.",
+        "Move-in inspection: all costs borne by property management. Additional tenant-requested works follow a separate flow with quotation, scope definition, and approval steps.",
         "SLA/KPI matrix to be defined per unit type (1BHK, 2BHK, 3BHK, 4BHK) \u2014 Ahmad Turki and Saradi to provide this matrix.",
         "Feedback mechanism: two channels confirmed \u2014 technician captures rating + signature in Facilio app (pushed to FarVision), and tenant submits detailed feedback via FarVision portal (three templates: move-in, move-out, maintenance).",
         "FarVision portal feedback feature not yet built \u2014 to be developed.",
@@ -213,14 +228,13 @@
           "due": "TBD"
         }
       ],
-      "risks": [
-        "Security deposit amount not yet in Facilio (FarVision dependency). SLA matrix undefined \u2014 go-live readiness at risk if not provided. FarVision portal feedback feature not yet built."
-      ],
-      "open_items": [
-        "FarVision security deposit data push; Ahmad/Saradi SLA matrix; Jhimlee updated flow diagrams; FarVision portal feedback development."
-      ],
+      "customer_sentiment": "Engaged and constructive \u2014 Ahmad Turki actively shaped solution design, injecting new requirements around legal risk control and SLA nuance. No hostility.",
+      "sentiment_label": "neutral",
+      "escalations": "Ahmad Turki raised legal dispute scenario requiring work order stagnation and KPI hold \u2014 not an escalation against Facilio, but a product requirement driven by legal risk awareness.",
+      "date_shifts": "Updated process flow diagrams deferred to early next week. SLA matrix and FarVision data pending with no committed date.",
+      "risks": "Security deposit amount not yet in Facilio (FarVision dependency). SLA matrix undefined \u2014 go-live readiness at risk if not provided. FarVision portal feedback feature not yet built.",
+      "open_dependencies": "FarVision security deposit data push; Ahmad/Saradi SLA matrix; Jhimlee updated flow diagrams; FarVision portal feedback development.",
       "health_signal": "amber",
-      "sentiment": "neutral",
       "has_escalation": false,
       "has_date_shift": true
     },
@@ -243,7 +257,7 @@
         "PM schedule configuration: assets can only have PMs at one of four schedule levels (site, model, asset category, individual). Overriding at a lower level requires duplicating the PM schedule, creating extra manual work.",
         "Michael DeRossett flagged risk of accidental schedule overwrites: \"if I push the wrong schedule I can mess up their pm schedules.\"",
         "Michael noted bandwidth pressure: \"I don't have a lot of help anymore.\"",
-        "Parent-child asset relationships: currently indicator-only \u2014 no automated workflows. Financial implications for contract pricing and cost allocation (Da Vinci robots) require careful asset category design.",
+        "Parent-child asset relationships: currently indicator-only \u2014 no automated workflows. Financial implications for contract pricing and cost allocation (Da Vinci robots).",
         "Medicaid integration gap: Facilio not returning the asset number to the Medicaid system. Rebecca flagged: \"Can you just make sure you're sending the asset number back over to Medicaid? They're not showing it.\"",
         "Medicaid list view requirements unclear \u2014 Jhimlee to review separately with Rebecca.",
         "No changes to be made until analysis is complete and documentation updated."
@@ -275,14 +289,13 @@
           "due": "After Jonathan returns"
         }
       ],
-      "risks": [
-        "PM multi-level variance is a functional gap requiring workarounds and creating risk of accidental overwrites. Medicaid asset number integration is broken. Parent-child asset categories for Da Vinci robots have contract cost and regulatory tracking implications."
-      ],
-      "open_items": [
-        "Jhimlee analysis on PM multi-level; Medicaid fix; Jonathan Hill availability for parent-child session; Rebecca follow-up on Medicaid list view."
-      ],
+      "customer_sentiment": "Mixed \u2014 constructive collaboration but undercurrent of frustration. Michael DeRossett is feeling bandwidth pressure and workaround burden. Rebecca Barta is pragmatic and assertive. No anger, but clear pressure signals.",
+      "sentiment_label": "mixed",
+      "escalations": "None formally. Jonathan Hill asserted he must be included in future parent-child discussions.",
+      "date_shifts": "Parent-child discussion and PM analysis decisions deferred pending analysis \u2014 no committed dates.",
+      "risks": "PM multi-level variance is a functional gap requiring workarounds and creating risk of accidental overwrites. Medicaid asset number integration is broken. Parent-child asset categories for Da Vinci robots have contract cost and regulatory tracking implications.",
+      "open_dependencies": "Jhimlee analysis on PM multi-level; Medicaid fix; Jonathan Hill availability for parent-child session; Rebecca follow-up on Medicaid list view.",
       "health_signal": "amber",
-      "sentiment": "mixed",
       "has_escalation": false,
       "has_date_shift": false
     }
