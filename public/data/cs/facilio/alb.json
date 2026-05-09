@@ -1,0 +1,21 @@
+{
+  "account_id": "alb",
+  "display_name": "Al Bawani",
+  "date": "2026-05-09",
+  "fetched_at": "2026-05-09T20:55:07.257176+05:30",
+  "health_signal": "green",
+  "last_export_date": "2026-05-05",
+  "days_since_export": 4,
+  "modules_present": [
+    "workorder"
+  ],
+  "modules": {
+    "workorder": {
+      "display_name": "Work Order",
+      "total_records": 240194,
+      "latest_id": 3269521
+    }
+  },
+  "_source": "SharePoint: AI CS Playbook/Al Bawani/Module Data/",
+  "_note": "Only Work Order module exported as of last upload. Other modules (Asset, PPM, SR etc.) will appear here once Mithun exports them to the Module Data folder."
+}
