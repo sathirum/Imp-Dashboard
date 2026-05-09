@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Health Dashboard — 8 May 2026</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:#f0f2f7;color:#18223a;font-size:14px;line-height:1.6}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;background:#007a7c;display:flex;align-items:center;justify-content:space-between;padding:0 24px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.tb-title{font-size:15px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.tb-sub{font-size:11px;color:rgba(255,255,255,.65);margin-left:10px}
+.tb-date{font-size:11px;color:rgba(255,255,255,.6);font-family:monospace}
+.layout{display:flex;padding-top:56px;min-height:100vh}
+.sidebar{width:248px;flex-shrink:0;position:fixed;top:56px;left:0;bottom:0;background:#fff;border-right:1px solid #e2e7f0;overflow-y:auto;padding:10px 0 32px}
+.sb-sec{padding:10px 16px 3px;font-family:monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#b8c4d0}
+.sb-item{display:flex;align-items:center;gap:9px;padding:8px 16px;cursor:pointer;font-size:12px;font-weight:500;color:#47566a;border-left:2px solid transparent;transition:all .12s}
+.sb-item:hover{background:#f7f9fc;border-left-color:#c8d0e0}
+.sb-item.active{background:#e6f4f4;color:#007a7c;border-left-color:#007a7c;font-weight:600}
+.sb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.sb-sc{margin-left:auto;font-family:monospace;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;white-space:nowrap}
+.main{margin-left:248px;flex:1;padding:22px 28px 60px;max-width:1100px}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat-card{background:#fff;border:1px solid #e2e7f0;border-radius:8px;padding:14px 20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.stat-val{font-size:30px;font-weight:800;line-height:1.1}
+.stat-lbl{font-size:11px;color:#8896a8;margin-top:4px;font-weight:500}
+.search-bar{background:#fff;border:1px solid #e2e7f0;border-radius:8px;padding:10px 16px;margin-bottom:16px;display:flex;gap:10px;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.search-bar input{flex:1;border:none;outline:none;font-size:13px;background:transparent;color:#18223a}
+.filter-btn{font-size:11px;padding:4px 13px;border-radius:6px;border:1px solid #e2e7f0;background:#f7f9fc;cursor:pointer;font-weight:600;color:#47566a;transition:all .12s}
+.filter-btn.active{background:#e6f4f4;border-color:#007a7c;color:#007a7c}
+.filter-btn:hover{border-color:#c8d0e0;background:#f0f2f7}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div style="width:32px;height:32px;border-radius:7px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:17px">📊</div>
+    <span class="tb-title">Project Health Dashboard</span>
+    <span class="tb-sub">AI-powered · Clari + Email + Teams · no team input required</span>
+  </div>
+  <span class="tb-date">Updated: 8 May 2026</span>
+</div>
+<div class="layout">
+  <div class="sidebar">
+    <div class="sb-sec">Projects (5)</div>
+    
+<div class="sb-item" onclick="showProject('modon-phase-1')" id="sb-modon-phase-1">
+  <span class="sb-dot" style="background:#c47d00"></span>
+  Modon Phase 1
+  <span class="sb-sc" style="background:#fff3e0;color:#c47d00">AMBER</span>
+</div>
+<div class="sb-item" onclick="showProject('t-j-regional-health')" id="sb-t-j-regional-health">
+  <span class="sb-dot" style="background:#c47d00"></span>
+  T J Regional Health
+  <span class="sb-sc" style="background:#fff3e0;color:#c47d00">AMBER</span>
+</div>
+<div class="sb-item" onclick="showProject('edarat-cafm')" id="sb-edarat-cafm">
+  <span class="sb-dot" style="background:#c47d00"></span>
+  Edarat Cafm
+  <span class="sb-sc" style="background:#fff3e0;color:#c47d00">AMBER</span>
+</div>
+<div class="sb-item" onclick="showProject('cbre')" id="sb-cbre">
+  <span class="sb-dot" style="background:#1a9c5b"></span>
+  Cbre
+  <span class="sb-sc" style="background:#eaf7f1;color:#1a9c5b">GREEN</span>
+</div>
+<div class="sb-item" onclick="showProject('geco-phase-1')" id="sb-geco-phase-1">
+  <span class="sb-dot" style="background:#1a9c5b"></span>
+  Geco Phase 1
+  <span class="sb-sc" style="background:#eaf7f1;color:#1a9c5b">GREEN</span>
+</div>
+    <div style="padding:20px 16px 0;border-top:1px solid #e2e7f0;margin-top:12px">
+      <p style="font-size:10px;color:#b8c4d0;font-family:monospace;line-height:1.7">Sources<br>🔵 Clari calls<br>📧 Outlook email<br>💬 Teams chat</p>
+    </div>
+  </div>
+  <div class="main">
+    <div class="stats-bar">
+      <div class="stat-card"><div class="stat-val">5</div><div class="stat-lbl">📁 Total Projects</div></div>
+      <div class="stat-card" style="border-color:#fdecea"><div class="stat-val" style="color:#c0392b">0</div><div class="stat-lbl">🔴 At Risk</div></div>
+      <div class="stat-card" style="border-color:#fff3e0"><div class="stat-val" style="color:#c47d00">3</div><div class="stat-lbl">🟡 Watch</div></div>
+      <div class="stat-card" style="border-color:#eaf7f1"><div class="stat-val" style="color:#1a9c5b">2</div><div class="stat-lbl">🟢 On Track</div></div>
+    </div>
+    <div class="search-bar">
+      <span style="color:#8896a8;font-size:15px">🔍</span>
+      <input type="text" id="search" placeholder="Search projects..." oninput="filterProjects()">
+      <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('red',this)">🔴 At Risk</button>
+      <button class="filter-btn" onclick="setFilter('amber',this)">🟡 Watch</button>
+      <button class="filter-btn" onclick="setFilter('green',this)">🟢 On Track</button>
+    </div>
+    
+<div class="project-card" id="card-modon-phase-1" style="display:none;border:1px solid #e2e7f0;border-radius:8px;padding:22px;margin-bottom:20px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px">
+    <div>
+      <h2 style="font-size:17px;font-weight:800;margin:0 0 6px 0">Modon Phase 1</h2>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 11px;border-radius:10px;font-weight:700;background:#fff3e0;color:#c47d00">🟡 Watch</span>
+        <span style="font-size:11px;color:#8896a8">Last signal: 2026-05-08</span>
+        <span style='font-size:10px;padding:2px 7px;border-radius:10px;background:#e8f1fb;color:#1a5fa8;margin-right:4px'>CLARI</span>
+      </div>
+    </div>
+    <div style="text-align:right;flex-shrink:0;margin-left:12px">
+      <div style="font-size:10px;color:#8896a8;margin-bottom:5px">Signal history</div>
+      <span title='2026-05-08' style='display:inline-block;width:10px;height:10px;border-radius:50%;background:#c47d00;margin-right:2px'></span>
+    </div>
+  </div>
+  <p style="font-size:13px;color:#47566a;margin:0 0 18px 0;line-height:1.7;background:#fff3e0;padding:10px 14px;border-radius:6px;border-left:3px solid #c47d00">FarVision Move In-Move Out module discussion underway for MODON. Integration scope and workflows are being revisited — open items pending resolution before configuration can proceed.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="background:#f7f9fc;border-radius:6px;padding:12px 14px">
+      <p style="font-weight:700;font-size:11px;color:#1a1a1a;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.06em">⚠ Open Risks</p>
+      <ul style="font-size:12px;color:#47566a;padding-left:16px;margin:0;line-height:1.7"><li>FarVision Move In-Move Out integration scope not yet finalised</li><li>Open dependency on FarVision integration alignment</li></ul>
+    </div>
+    <div style="background:#f7f9fc;border-radius:6px;padding:12px 14px">
+      <p style="font-weight:700;font-size:11px;color:#1a1a1a;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.06em">✅ Action Items</p>
+      <ul style="font-size:12px;color:#47566a;padding-left:16px;margin:0;line-height:1.7"><li>None.</li></ul>
+    </div>
+  </div>
+</div>
+<div class="project-card" id="card-t-j-regional-health" style="display:none;border:1px solid #e2e7f0;border-radius:8px;padding:22px;margin-bottom:20px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px">
+    <div>
+      <h2 style="font-size:17px;font-weight:800;margin:0 0 6px 0">T J Regional Health</h2>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 11px;border-radius:10px;font-weight:700;background:#fff3e0;color:#c47d00">🟡 Watch</span>
+        <span style="font-size:11px;color:#8896a8">Last signal: 2026-05-08</span>
+        <span style='font-size:10px;padding:2px 7px;border-radius:10px;background:#e8f1fb;color:#1a5fa8;margin-right:4px'>CLARI</span>
+      </div>
+    </div>
+    <div style="text-align:right;flex-shrink:0;margin-left:12px">
+      <div style="font-size:10px;color:#8896a8;margin-bottom:5px">Signal history</div>
+      <span title='2026-05-08' style='display:inline-block;width:10px;height:10px;border-radius:50%;background:#c47d00;margin-right:2px'></span>
+    </div>
+  </div>
+  <p style="font-size:13px;color:#47566a;margin:0 0 18px 0;line-height:1.7;background:#fff3e0;padding:10px 14px;border-radius:6px;border-left:3px solid #c47d00">PM discussion held with THCE (T.J. Regional Health). Risk items and delivery concerns were raised; team is monitoring closely and tracking open actions from this session.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="background:#f7f9fc;border-radius:6px;padding:12px 14px">
+      <p style="font-weight:700;font-size:11px;color:#1a1a1a;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.06em">⚠ Open Risks</p>
+      <ul style="font-size:12px;color:#47566a;padding-left:16px;margin:0;line-height:1.7"><li>PM-level risks discussed in session — details pending transcript review</li><li>Delivery dependencies discussed without full resolution</li></ul>
+    </div>
+    <div style="background:#f7f9fc;border-radius:6px;padding:12px 14px">
+      <p style="font-weight:700;font-size:11px;color:#1a1a1a;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.06em">✅ Action Items</p>
+      <ul style="font-size:12px;color:#47566a;padding-left:16px;margin:0;line-height:1.7"><li>None.</li></ul>
+    </div>
+  </div>
+</div>
+<div class="project-card" id="card-edarat-cafm" style="display:none;border:1px solid #e2e7f0;border-radius:8px;padding:22px;margin-bottom:20px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px">
+    <div>
+      <h2 style="font-size:17px;font-weight:800;margin:0 0 6px 0">Edarat Cafm</h2>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 11px;border-radius:10px;font-weight:700;background:#fff3e0;color:#c47d00">🟡 Watch</span>
+        <span style="font-size:11px;color:#8896a8">Last signal: 2026-05-08</span>
+        <span style='font-size:10px;padding:2px 7px;border-radius:10px;background:#e8f1fb;color:#1a5fa8;margin-right:4px'>EMAIL</span>
+      </div>
+    </div>
+    <div style="text-align:right;flex-shrink:0;margin-left:12px">
+      <div style="font-size:10px;color:#8896a8;margin-bottom:5px">Signal history</div>
+      <span title='2026-05-08' style='display:inline-block;width:10px;height:10px;border-radius:50%;background:#c47d00;margin-right:2px'></span>
+    </div>
+  </div>
+  <p style="font-size:13px;color:#47566a;margin:0 0 18px 0;line-height:1.7;background:#fff3e0;padding:10px 14px;border-radius:6px;border-left:3px solid #c47d00">New project kick-off completed for Edarat (4 data centers CAFM implementation). MoM circulated on 8 May by Kesava Krishnan. Tentative go-live is 19 August 2026. Client is requesting an accelerated phased rollout due to tenant onboarding timelines and legacy software expiration — Facilio must propose a revised plan before the next session.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="background:#f7f9fc;border-radius:6px;padding:12px 14px">
+      <p style="font-weight:700;font-size:11px;color:#1a1a1a;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.06em">⚠ Open Risks</p>
+      <ul style="font-size:12px;color:#47566a;padding-left:16px;margin:0;line-height:1.7"><li>Client requesting timeline acceleration due to tenant onboarding pressure and legacy software expiration at other sites</li><li>Phased rollout strategy not yet proposed — Facilio needs to confirm feasibility</li><li>5th site expansion dependent on early adoption success — commercial risk</li></ul>
+    </div>
+    <div style="background:#f7f9fc;border-radius:6px;padding:12px 14px">
+      <p style="font-weight:700;font-size:11px;color:#1a1a1a;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.06em">✅ Action Items</p>
+      <ul style="font-size:12px;color:#47566a;padding-left:16px;margin:0;line-height:1.7"><li><strong>Facilio Team (Kesava)</strong> — Share kickoff presentation deck <span style='color:#8896a8'>→ Immediate</span></li><li><strong>Facilio Team (Kesava)</strong> — Share onboarding/data gathering templates <span style='color:#8896a8'>→ Before next session</span></li><li><strong>Facilio Team (Kesava)</strong> — Share BRD workshop schedule <span style='color:#8896a8'>→ Before workshop kickoff</span></li><li><strong>Facilio Team (Kesava/Ashwin)</strong> — Propose revised phased rollout approach & share revised Project Plan <span style='color:#8896a8'>→ Before next session</span></li><li><strong>Edarat Team</strong> — Nominate governance stakeholders and counterparts <span style='color:#8896a8'>→ Before next session</span></li></ul>
+    </div>
+  </div>
+</div>
+<div class="project-card" id="card-cbre" style="display:none;border:1px solid #e2e7f0;border-radius:8px;padding:22px;margin-bottom:20px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px">
+    <div>
+      <h2 style="font-size:17px;font-weight:800;margin:0 0 6px 0">Cbre</h2>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 11px;border-radius:10px;font-weight:700;background:#eaf7f1;color:#1a9c5b">🟢 On Track</span>
+        <span style="font-size:11px;color:#8896a8">Last signal: 2026-05-08</span>
+        <span style='font-size:10px;padding:2px 7px;border-radius:10px;background:#e8f1fb;color:#1a5fa8;margin-right:4px'>CLARI</span>
+      </div>
+    </div>
+    <div style="text-align:right;flex-shrink:0;margin-left:12px">
+      <div style="font-size:10px;color:#8896a8;margin-bottom:5px">Signal history</div>
+      <span title='2026-05-08' style='display:inline-block;width:10px;height:10px;border-radius:50%;background:#1a9c5b;margin-right:2px'></span>
+    </div>
+  </div>
+  <p style="font-size:13px;color:#47566a;margin:0 0 18px 0;line-height:1.7;background:#eaf7f1;padding:10px 14px;border-radius:6px;border-left:3px solid #1a9c5b">Key Watcher integration testing is progressing. Team is validating integration setup and functionality with no blockers reported.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="background:#f7f9fc;border-radius:6px;padding:12px 14px">
+      <p style="font-weight:700;font-size:11px;color:#1a1a1a;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.06em">⚠ Open Risks</p>
+      <ul style="font-size:12px;color:#47566a;padding-left:16px;margin:0;line-height:1.7"><li>None flagged.</li></ul>
+    </div>
+    <div style="background:#f7f9fc;border-radius:6px;padding:12px 14px">
+      <p style="font-weight:700;font-size:11px;color:#1a1a1a;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.06em">✅ Action Items</p>
+      <ul style="font-size:12px;color:#47566a;padding-left:16px;margin:0;line-height:1.7"><li>None.</li></ul>
+    </div>
+  </div>
+</div>
+<div class="project-card" id="card-geco-phase-1" style="display:none;border:1px solid #e2e7f0;border-radius:8px;padding:22px;margin-bottom:20px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px">
+    <div>
+      <h2 style="font-size:17px;font-weight:800;margin:0 0 6px 0">Geco Phase 1</h2>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:11px;padding:3px 11px;border-radius:10px;font-weight:700;background:#eaf7f1;color:#1a9c5b">🟢 On Track</span>
+        <span style="font-size:11px;color:#8896a8">Last signal: 2026-05-08</span>
+        <span style='font-size:10px;padding:2px 7px;border-radius:10px;background:#e8f1fb;color:#1a5fa8;margin-right:4px'>CLARI</span>
+      </div>
+    </div>
+    <div style="text-align:right;flex-shrink:0;margin-left:12px">
+      <div style="font-size:10px;color:#8896a8;margin-bottom:5px">Signal history</div>
+      <span title='2026-05-08' style='display:inline-block;width:10px;height:10px;border-radius:50%;background:#1a9c5b;margin-right:2px'></span>
+    </div>
+  </div>
+  <p style="font-size:13px;color:#47566a;margin:0 0 18px 0;line-height:1.7;background:#eaf7f1;padding:10px 14px;border-radius:6px;border-left:3px solid #1a9c5b">GECOMEP implementation progressing well. Team reviewed progress across key modules; no escalations or blockers flagged in this session.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="background:#f7f9fc;border-radius:6px;padding:12px 14px">
+      <p style="font-weight:700;font-size:11px;color:#1a1a1a;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.06em">⚠ Open Risks</p>
+      <ul style="font-size:12px;color:#47566a;padding-left:16px;margin:0;line-height:1.7"><li>None flagged.</li></ul>
+    </div>
+    <div style="background:#f7f9fc;border-radius:6px;padding:12px 14px">
+      <p style="font-weight:700;font-size:11px;color:#1a1a1a;margin:0 0 8px 0;text-transform:uppercase;letter-spacing:.06em">✅ Action Items</p>
+      <ul style="font-size:12px;color:#47566a;padding-left:16px;margin:0;line-height:1.7"><li>None.</li></ul>
+    </div>
+  </div>
+</div>
+    <div id="no-projects" style="display:none;text-align:center;padding:60px 20px;color:#8896a8">
+      <div style="font-size:40px;margin-bottom:12px">📭</div>
+      <p>No projects match your filter.</p>
+    </div>
+  </div>
+</div>
+<script>
+var currentFilter='all';
+var projects={"modon-phase-1": "amber", "t-j-regional-health": "amber", "edarat-cafm": "amber", "cbre": "green", "geco-phase-1": "green"};
+function showProject(slug){
+  document.querySelectorAll('.project-card').forEach(function(c){c.style.display='none';});
+  document.querySelectorAll('.sb-item').forEach(function(i){i.classList.remove('active');});
+  var card=document.getElementById('card-'+slug);
+  var sb=document.getElementById('sb-'+slug);
+  if(card){card.style.display='block';}
+  if(sb){sb.classList.add('active');}
+}
+function setFilter(f,btn){
+  currentFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  applyFilter();
+}
+function filterProjects(){applyFilter();}
+function applyFilter(){
+  var q=document.getElementById('search').value.toLowerCase();
+  var items=document.querySelectorAll('.sb-item');
+  var firstVisible=null;
+  items.forEach(function(item){
+    var slug=item.id.replace('sb-','');
+    var sig=projects[slug]||'green';
+    var name=item.textContent.toLowerCase();
+    var ok=(currentFilter==='all'||sig===currentFilter)&&(!q||name.includes(q));
+    item.style.display=ok?'':'none';
+    if(ok&&!firstVisible)firstVisible=slug;
+  });
+  if(firstVisible)showProject(firstVisible);
+  else{document.querySelectorAll('.project-card').forEach(function(c){c.style.display='none';});}
+}
+window.addEventListener('DOMContentLoaded',function(){
+  if('modon-phase-1')showProject('modon-phase-1');
+});
+</script>
+</body>
+</html>
