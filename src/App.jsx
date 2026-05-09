@@ -75,14 +75,35 @@ const FALLBACK = [
   { account:"KSD Group", vertical:"IFM", region:"UK", phase:"Requirement Gathering", rag:"Amber", status:"Active", lead:"Deepak Simon", consultant:"Shasvat", comments:"Kick off - 26-March-2026\r\nWorkshop 1 - 31-March-2026\r\nWorkshop 2 - 1-April-2026\r\nWorkshop 3 - 7-April-2026\r\nWorkshop 4 - 9-April-2026\r\nWorkshop 5 - Technicial Integration Discussion (No ETA Agreed)", plannedGoLive:"24-Sep-2026", actualGoLive:"", clientPOC:"", sowPlanStart:"9-Mar-2026", sowPlanEnd:"24-Sep-2026", plannedStart:"26-Mar-2026", actualStart:"26-Mar-2026", plannedBRDSub:"26-Mar-2026", actualBRDSub:"", plannedBRDSignoff:"31-Mar-2026", actualBRDSignoff:"", plannedUATStart:"28-Aug-2026", actualUATStart:"", plannedUATSignoff:"16-Sep-2026", actualUATSignoff:"", projectPlan:"Updated Project plan", msa:"KSD_SO, MSA, SOW_19 March 2026.docx.pdf", governanceFolder:"KSD", brd:"26-Mar-2026", wsr:"", functionalTestReport:"" }
 ];
 
-const PHASES = ["Requirement Gathering", "Configuration", "UAT", "Hypercare", "Transitioned to support"];
-const DEFAULT_PHASE_FILTER = PHASES.filter((phase) => phase !== "Transitioned to support");
+const PHASES = ["Requirement Gathering", "Configuration", "UAT", "Hypercare", "On-Hold", "Transitioned to support"];
+const NO_PHASE_LABEL = "No Phase";
+const getPhaseValue = (phase) => String(phase || "").trim() || NO_PHASE_LABEL;
+const displayPhaseLabel = (phase) => getPhaseValue(phase).toLowerCase() === "on-hold" ? "On Hold" : getPhaseValue(phase);
+const isTransitionedPhase = (phase) => getPhaseValue(phase).toLowerCase().includes("transitioned");
+const buildPhaseOptions = (projects) => {
+  const phaseSet = new Set(PHASES);
+  projects.forEach((project) => phaseSet.add(getPhaseValue(project.phase)));
+
+  return Array.from(phaseSet).sort((left, right) => {
+    const leftIndex = PHASES.findIndex((phase) => phase.toLowerCase() === left.toLowerCase());
+    const rightIndex = PHASES.findIndex((phase) => phase.toLowerCase() === right.toLowerCase());
+    if (leftIndex !== -1 || rightIndex !== -1) {
+      if (leftIndex === -1) return 1;
+      if (rightIndex === -1) return -1;
+      return leftIndex - rightIndex;
+    }
+    return left.localeCompare(right);
+  });
+};
+const defaultPhaseFilterFor = (phaseOptions) => phaseOptions.filter((phase) => !isTransitionedPhase(phase));
+const DEFAULT_PHASE_FILTER = defaultPhaseFilterFor(PHASES);
 
 const PHASE_META = {
   "Requirement Gathering": { color:"#64748b", bg:"#64748b18" },
   "Configuration":         { color:"#d97706", bg:"#f59e0b18" },
   "UAT":                   { color:"#059669", bg:"#22c55e18" },
   "Hypercare":             { color:"#ea580c", bg:"#f9731618" },
+  "On-Hold":               { color:"#dc2626", bg:"#ef444418" },
   "Transitioned to support": { color:"#7c3aed", bg:"#8b5cf618" }
 };
 
@@ -101,8 +122,9 @@ const VertPill = ({ v }) => {
 };
 
 const PhasePill = ({ phase }) => {
-  const m = PHASE_META[phase] || { color:"#64748b", bg:"#64748b18" };
-  return <span style={{ fontSize:11, fontWeight:600, padding:"2px 8px", borderRadius:10, color:m.color, background:m.bg }}>{phase||"—"}</span>;
+  const label = getPhaseValue(phase);
+  const m = PHASE_META[label] || { color:"#64748b", bg:"#64748b18" };
+  return <span style={{ fontSize:11, fontWeight:600, padding:"2px 8px", borderRadius:10, color:m.color, background:m.bg }}>{displayPhaseLabel(label)}</span>;
 };
 
 const RAGDot = ({ rag }) => {
@@ -1533,9 +1555,9 @@ const sameFilterValues = (left, right) => {
   const rightValues = asFilterArray(right).slice().sort();
   return leftValues.length === rightValues.length && leftValues.every((value, index) => value === rightValues[index]);
 };
-const hasAnyFilters = (filters) => (
+const hasAnyFilters = (filters, defaultPhaseFilter = DEFAULT_PHASE_FILTER) => (
   asFilterArray(filters.rag).length > 0 ||
-  !sameFilterValues(filters.phase, DEFAULT_PHASE_FILTER) ||
+  !sameFilterValues(filters.phase, defaultPhaseFilter) ||
   asFilterArray(filters.region).length > 0 ||
   asFilterArray(filters.lead).length > 0 ||
   asFilterArray(filters.vertical).length > 0 ||
@@ -1544,18 +1566,30 @@ const hasAnyFilters = (filters) => (
 
 const isTransitionedToSupport = (project) => {
   const status = String(project.status || "").toLowerCase();
-  const phase = String(project.phase || "").toLowerCase();
+  const phase = getPhaseValue(project.phase).toLowerCase();
   return status.includes("transitioned") || phase.includes("transitioned");
 };
 
-const uniqueProjectKey = (project) => normalizeProjectKey(project.account)
-  .replace(/\bphase\s*\d+\b/g, "")
-  .replace(/\bphase\s*-\s*\d+\b/g, "")
-  .replace(/\bwave\s*\d+\b/g, "")
-  .replace(/\bwave\s*-\s*\d+\b/g, "")
-  .replace(/\bpilot\b/g, "")
-  .replace(/\s+/g, " ")
-  .trim();
+const uniqueProjectKey = (project) => {
+  const normalized = normalizeProjectKey(project.account)
+    .replace(/\bphase\s*\d+\b/g, "")
+    .replace(/\bphase\s*-\s*\d+\b/g, "")
+    .replace(/\bwave\s*\d+\b/g, "")
+    .replace(/\bwave\s*-\s*\d+\b/g, "")
+    .replace(/\bpilot\b/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const cbSuffix = /\bcb\b/.test(normalized) || /\bcb\b/.test(normalizeProjectKey(project.vertical))
+    ? " cb"
+    : "";
+
+  if (/\bmodon\b/.test(normalized)) return `modon${cbSuffix}`;
+  if (/\benec\b/.test(normalized)) return `enec${cbSuffix}`;
+  if (/\bdeyaar\b/.test(normalized)) return `deyaar${cbSuffix}`;
+
+  return normalized;
+};
 
 const uniqueProjectCount = (projects) => new Set(
   projects.map(uniqueProjectKey).filter(Boolean)
@@ -1598,6 +1632,8 @@ export default function App() {
   const [debugLog, setDebugLog]       = useState(null);
   const [showDebug, setShowDebug]     = useState(false);
   const [view, setView]               = useState("dashboard");
+  const phaseOptions = useMemo(() => buildPhaseOptions(projects), [projects]);
+  const defaultPhaseFilter = useMemo(() => defaultPhaseFilterFor(phaseOptions), [phaseOptions]);
 
   const sync = useCallback(async (force = false) => {
     setSyncing(true); setSyncMsg(null); setDebugLog(null);
@@ -1723,6 +1759,20 @@ export default function App() {
     return () => clearInterval(iv);
   }, [sync]);
 
+  useEffect(() => {
+    setFilters((currentFilters) => {
+      const currentPhases = asFilterArray(currentFilters.phase);
+      const wasDefaultPhaseSelection =
+        currentPhases.length === 0 ||
+        sameFilterValues(currentPhases, DEFAULT_PHASE_FILTER) ||
+        sameFilterValues(currentPhases, defaultPhaseFilter);
+
+      if (!wasDefaultPhaseSelection) return currentFilters;
+      if (sameFilterValues(currentPhases, defaultPhaseFilter)) return currentFilters;
+      return { ...currentFilters, phase: defaultPhaseFilter };
+    });
+  }, [defaultPhaseFilter]);
+
   const stats = useMemo(() => {
     const live = projects.filter(p => !isTransitionedToSupport(p));
     const active = projects.filter(p => p.status === "Active");
@@ -1733,7 +1783,7 @@ export default function App() {
       green:  live.filter(p=>p.rag==="Green").length,
       amber:  live.filter(p=>p.rag==="Amber").length,
       red:    live.filter(p=>p.rag==="Red").length,
-      phase: PHASES.reduce((acc,ph) => (acc[ph] = projects.filter(p=>p.phase.toLowerCase() === ph.toLowerCase()).length, acc), {}),
+      phase: phaseOptions.reduce((acc,ph) => (acc[ph] = projects.filter(p=>getPhaseValue(p.phase).toLowerCase() === ph.toLowerCase()).length, acc), {}),
       regions: [...new Set(live.map(p=>p.region).filter(r=>r))].sort(),
       regionCounts: live.reduce((acc,p) => (acc[p.region] = (acc[p.region]||0)+1, acc), {}),
       leads: [...new Set(live.map(p=>p.lead).filter(l=>l))].sort(),
@@ -1741,7 +1791,7 @@ export default function App() {
       verticals: [...new Set(live.map(p=>p.vertical).filter(v=>v))].sort(),
       verticalCounts: live.reduce((acc,p) => (acc[p.vertical] = (acc[p.vertical]||0)+1, acc), {})
     };
-  }, [projects]);
+  }, [projects, phaseOptions]);
 
   const filteredBase = useMemo(() => {
     const selectedRags = asFilterArray(filters.rag);
@@ -1752,7 +1802,7 @@ export default function App() {
 
     return projects.filter(p => {
       if (selectedRags.length && !selectedRags.includes(p.rag)) return false;
-      if (selectedPhases.length && !selectedPhases.includes(String(p.phase || "").toLowerCase())) return false;
+      if (selectedPhases.length && !selectedPhases.includes(getPhaseValue(p.phase).toLowerCase())) return false;
       if (selectedRegions.length && !selectedRegions.includes(p.region)) return false;
       if (selectedLeads.length && !selectedLeads.includes(p.lead)) return false;
       if (selectedVerticals.length && !selectedVerticals.includes(p.vertical)) return false;
@@ -1781,7 +1831,7 @@ export default function App() {
   };
 
   const setFilter = (k,v) => setFilters(f=>({...f,[k]:v}));
-  const clearFilters = () => setFilters(DEFAULT_FILTERS);
+  const clearFilters = () => setFilters({ ...DEFAULT_FILTERS, phase: defaultPhaseFilter });
   const toggleFilterValue = (key, value) => {
     setFilters((currentFilters) => {
       const values = asFilterArray(currentFilters[key]);
@@ -1947,7 +1997,7 @@ export default function App() {
           ].map(({num,label,color,ragKey,onClick})=>{
             const active = ragKey
               ? asFilterArray(filters.rag).includes(ragKey)
-              : !hasAnyFilters(filters);
+              : !hasAnyFilters(filters, defaultPhaseFilter);
             return (
               <div key={label} style={{
                 ...S.kpi,
@@ -1972,9 +2022,10 @@ export default function App() {
           <div className="dashboard-section" style={S.sectionCard}>
             <div style={S.sectionTitle}>Implementation pipeline</div>
             <div style={{...S.pipeline, display:"flex", flexDirection:"column", gap:18 }}>
-              <div style={{display:"flex", gap:8, alignItems:"center", overflowX:"auto"}}>
-                {PHASES.map(ph => {
-                  const m = PHASE_META[ph]; const count = stats.phase[ph]||0;
+              <div style={{display:"flex", gap:8, alignItems:"stretch", flexWrap:"wrap"}}>
+                {phaseOptions.map(ph => {
+                  const m = PHASE_META[ph] || { color:"#64748b", bg:"#64748b18" };
+                  const count = stats.phase[ph]||0;
                   const active = asFilterArray(filters.phase).includes(ph);
                   return (
                     <div key={ph} className="pipe-item" style={{
@@ -1984,7 +2035,7 @@ export default function App() {
                       borderTopWidth: active ? 2 : 1
                     }} onClick={()=>toggleFilterValue("phase", ph)}>
                       <div style={{...S.pipeCount, color:m.color}}>{count}</div>
-                      <div style={S.pipeLabel}>{ph}</div>
+                      <div style={S.pipeLabel}>{displayPhaseLabel(ph)}</div>
                     </div>
                   );
                 })}
@@ -2013,11 +2064,11 @@ export default function App() {
                     label="Phases"
                     selected={asFilterArray(filters.phase)}
                     onToggle={(value) => toggleFilterValue("phase", value)}
-                    options={PHASES.map(ph => ({ value:ph, label:`${ph} (${stats.phase[ph] || 0})` }))}
+                    options={phaseOptions.map(ph => ({ value:ph, label:`${displayPhaseLabel(ph)} (${stats.phase[ph] || 0})` }))}
                   />
                   <input style={S.search} placeholder="Search projects, accounts…"
                     value={filters.search} onChange={e=>setFilter("search",e.target.value)} />
-                  {hasAnyFilters(filters) &&
+                  {hasAnyFilters(filters, defaultPhaseFilter) &&
                     <button style={{...S.sel,cursor:"pointer",color:"#fca5a5",borderColor:"#7f1d1d",background:"#241113"}}
                       onClick={clearFilters}>
                       Clear ×
