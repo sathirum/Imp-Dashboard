@@ -1,0 +1,5 @@
+{
+  "last_updated": "2026-05-08",
+  "description": "Rolling per-project health state. Updated daily by the Project Health Digest skill.",
+  "projects": {}
+}
