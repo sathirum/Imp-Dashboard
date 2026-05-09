@@ -76,6 +76,7 @@ const FALLBACK = [
 ];
 
 const PHASES = ["Requirement Gathering", "Configuration", "UAT", "Hypercare", "Transitioned to support"];
+const DEFAULT_PHASE_FILTER = PHASES.filter((phase) => phase !== "Transitioned to support");
 
 const PHASE_META = {
   "Requirement Gathering": { color:"#64748b", bg:"#64748b18" },
@@ -137,6 +138,33 @@ const RUNWAY_PHASE_LABELS = {
   "Transitioned to support": "Transitioned to support"
 };
 
+const MONTH_LOOKUP = {
+  jan: 0,
+  january: 0,
+  feb: 1,
+  february: 1,
+  mar: 2,
+  march: 2,
+  apr: 3,
+  april: 3,
+  may: 4,
+  jun: 5,
+  june: 5,
+  jul: 6,
+  july: 6,
+  aug: 7,
+  august: 7,
+  sep: 8,
+  sept: 8,
+  september: 8,
+  oct: 9,
+  october: 9,
+  nov: 10,
+  november: 10,
+  dec: 11,
+  december: 11,
+};
+
 const parseDate = (value) => {
   if (!value) return null;
   if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
@@ -144,7 +172,10 @@ const parseDate = (value) => {
     const serial = XLSX.SSF.parse_date_code(value);
     if (serial) return new Date(serial.y, serial.m - 1, serial.d);
   }
-  const raw = String(value).trim();
+  const raw = String(value)
+    .replace(/[\u200B-\u200D\uFEFF]/g, "")
+    .replace(/\u00A0/g, " ")
+    .trim();
   if (!raw || raw === "—") return null;
 
   // SharePoint exports are typically day-first, so prefer explicit dd/mm/yyyy parsing
@@ -156,6 +187,17 @@ const parseDate = (value) => {
     const year = Number(slash[3].length === 2 ? `20${slash[3]}` : slash[3]);
     const parsed = new Date(year, month, day);
     if (!Number.isNaN(parsed.getTime())) return parsed;
+  }
+
+  const monthName = raw.match(/^(\d{1,2})(?:st|nd|rd|th)?[\s/-]+([A-Za-z]+)[\s/-]+(\d{2,4})$/i);
+  if (monthName) {
+    const day = Number(monthName[1]);
+    const month = MONTH_LOOKUP[monthName[2].toLowerCase()];
+    const year = Number(monthName[3].length === 2 ? `20${monthName[3]}` : monthName[3]);
+    if (month !== undefined) {
+      const parsed = new Date(year, month, day);
+      if (!Number.isNaN(parsed.getTime())) return parsed;
+    }
   }
 
   const direct = new Date(raw);
@@ -687,7 +729,8 @@ function ProjectRunway({ projects }) {
 }
 
 const DIGEST_LOOKBACK_DAYS = 60;
-const DIGEST_RECENT_PROBE_DAYS = 7;
+const GITHUB_DIGESTS_API = "https://api.github.com/repos/sathirum/Imp-Dashboard/contents/public/data/digests?ref=main";
+const GITHUB_DIGESTS_RAW_BASE = "https://raw.githubusercontent.com/sathirum/Imp-Dashboard/main/public/data/digests";
 
 const toIsoDate = (date) => {
   const year = date.getFullYear();
@@ -740,40 +783,112 @@ const healthFromCalls = (calls, fallback) => {
   return fallback || null;
 };
 
+const digestGroupKey = (call) => {
+  const slug = String(call.project_slug || "").trim();
+  if (slug && slug !== "unmatched") return slug;
+
+  const fallbackKey = normalizeProjectKey(call.crm_account_name || call.title || call.call_id);
+  return fallbackKey ? `unmatched-${fallbackKey}` : `unmatched-${call.call_id || "call"}`;
+};
+
 function DailyClariDigest({ projects }) {
   const [indexData, setIndexData] = useState(null);
   const [digestDays, setDigestDays] = useState([]);
   const [selectedSlug, setSelectedSlug] = useState(null);
   const [selectedDateBySlug, setSelectedDateBySlug] = useState({});
+  const [digestProjectFilter, setDigestProjectFilter] = useState("");
+  const [digestDateFilter, setDigestDateFilter] = useState("all");
   const [loading, setLoading] = useState(true);
+  const [remoteSyncing, setRemoteSyncing] = useState(false);
   const [loadError, setLoadError] = useState(null);
+  const [digestSource, setDigestSource] = useState("local files");
+
+  const fetchLocalJson = useCallback(async (path) => {
+    const res = await fetch(`${import.meta.env.BASE_URL}${path}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`${path} fetch failed: ${res.status}`);
+    return res.json();
+  }, []);
+
+  const loadLocalDigestEntries = useCallback(async () => {
+    let manifestEntries = [];
+
+    try {
+      const manifest = await fetchLocalJson("data/digests/index.json");
+      manifestEntries = normalizeDigestEntries(manifest);
+    } catch (error) {
+      manifestEntries = [];
+    }
+
+    const byDate = new Map();
+    [...manifestEntries, ...buildRecentDigestEntries(DIGEST_LOOKBACK_DAYS)].forEach((entry) => {
+      byDate.set(entry.date, entry);
+    });
+    return Array.from(byDate.values()).sort((a, b) => b.date.localeCompare(a.date));
+  }, [fetchLocalJson]);
+
+  const loadGithubDigestEntries = useCallback(async () => {
+    const res = await fetch(`${GITHUB_DIGESTS_API}&t=${Date.now()}`, {
+      cache: "no-store",
+      headers: { Accept: "application/vnd.github+json" },
+    });
+    if (!res.ok) throw new Error(`GitHub digest listing failed: ${res.status}`);
+
+    const files = await res.json();
+    if (!Array.isArray(files)) throw new Error("GitHub digest listing returned an unexpected response");
+
+    return files
+      .filter((file) => file.type === "file" && /^\d{4}-\d{2}-\d{2}\.json$/.test(file.name))
+      .map((file) => ({
+        date: file.name.replace(/\.json$/i, ""),
+        file: file.name,
+        url: file.download_url || `${GITHUB_DIGESTS_RAW_BASE}/${file.name}`,
+      }))
+      .sort((a, b) => b.date.localeCompare(a.date));
+  }, []);
+
+  const loadDigestDaysFromEntries = useCallback(async (digestEntries) => {
+    const digestResults = await Promise.all(
+      digestEntries.map(async (entry) => {
+        try {
+          const res = entry.url
+            ? await fetch(`${entry.url}${entry.url.includes("?") ? "&" : "?"}t=${Date.now()}`, { cache: "no-store" })
+            : null;
+          const data = entry.url ? await (async () => {
+            if (!res.ok) throw new Error(`${entry.file} fetch failed: ${res.status}`);
+            return res.json();
+          })() : await fetchLocalJson(`data/digests/${entry.file}`);
+          return {
+            ...data,
+            date: data.date || entry.date,
+            file: entry.file,
+            calls: Array.isArray(data.calls) ? data.calls : [],
+          };
+        } catch (error) {
+          return null;
+        }
+      })
+    );
+
+    return digestResults.filter(Boolean).sort((a, b) => b.date.localeCompare(a.date));
+  }, [fetchLocalJson]);
+
+  const syncDigestsFromGithub = useCallback(async () => {
+    try {
+      setRemoteSyncing(true);
+      setLoadError(null);
+      const digestEntries = await loadGithubDigestEntries();
+      const remoteDigestDays = await loadDigestDaysFromEntries(digestEntries);
+      setDigestDays(remoteDigestDays);
+      setDigestSource("GitHub main");
+    } catch (error) {
+      setLoadError(error.message);
+    } finally {
+      setRemoteSyncing(false);
+    }
+  }, [loadGithubDigestEntries, loadDigestDaysFromEntries]);
 
   useEffect(() => {
     let active = true;
-
-    const fetchJson = async (path) => {
-      const res = await fetch(`${import.meta.env.BASE_URL}${path}`, { cache: "no-store" });
-      if (!res.ok) throw new Error(`${path} fetch failed: ${res.status}`);
-      return res.json();
-    };
-
-    const loadDigestEntries = async () => {
-      let manifestEntries = [];
-
-      try {
-        const manifest = await fetchJson("data/digests/index.json");
-        manifestEntries = normalizeDigestEntries(manifest);
-      } catch (error) {
-        manifestEntries = [];
-      }
-
-      const probeDays = manifestEntries.length ? DIGEST_RECENT_PROBE_DAYS : DIGEST_LOOKBACK_DAYS;
-      const byDate = new Map();
-      [...manifestEntries, ...buildRecentDigestEntries(probeDays)].forEach((entry) => {
-        byDate.set(entry.date, entry);
-      });
-      return Array.from(byDate.values()).sort((a, b) => b.date.localeCompare(a.date));
-    };
 
     const loadAll = async () => {
       try {
@@ -781,29 +896,16 @@ function DailyClariDigest({ projects }) {
         setLoadError(null);
 
         const [projectIndex, digestEntries] = await Promise.all([
-          fetchJson("data/projects/index.json"),
-          loadDigestEntries(),
+          fetchLocalJson("data/projects/index.json"),
+          loadLocalDigestEntries(),
         ]);
 
-        const digestResults = await Promise.all(
-          digestEntries.map(async (entry) => {
-            try {
-              const data = await fetchJson(`data/digests/${entry.file}`);
-              return {
-                ...data,
-                date: data.date || entry.date,
-                file: entry.file,
-                calls: Array.isArray(data.calls) ? data.calls : [],
-              };
-            } catch (error) {
-              return null;
-            }
-          })
-        );
+        const localDigestDays = await loadDigestDaysFromEntries(digestEntries);
 
         if (!active) return;
         setIndexData(projectIndex);
-        setDigestDays(digestResults.filter(Boolean).sort((a, b) => b.date.localeCompare(a.date)));
+        setDigestDays(localDigestDays);
+        setDigestSource("local files");
       } catch (error) {
         if (active) setLoadError(error.message);
       } finally {
@@ -813,12 +915,7 @@ function DailyClariDigest({ projects }) {
 
     loadAll();
     return () => { active = false; };
-  }, []);
-
-  const allowedProjectKeys = useMemo(
-    () => new Set(projects.map((project) => normalizeProjectKey(project.account))),
-    [projects]
-  );
+  }, [fetchLocalJson, loadDigestDaysFromEntries, loadLocalDigestEntries]);
 
   const projectBySlug = useMemo(() => {
     const map = new Map();
@@ -831,15 +928,16 @@ function DailyClariDigest({ projects }) {
 
     digestDays.forEach((day) => {
       day.calls.forEach((call) => {
-        if (!call.project_slug) return;
+        const groupKey = digestGroupKey(call);
         const enrichedCall = {
           ...call,
+          digest_group_key: groupKey,
           digest_date: day.date,
           digest_file: day.file,
           digest_generated_at: day.generated_at,
         };
-        if (!groups[call.project_slug]) groups[call.project_slug] = [];
-        groups[call.project_slug].push(enrichedCall);
+        if (!groups[groupKey]) groups[groupKey] = [];
+        groups[groupKey].push(enrichedCall);
       });
     });
 
@@ -850,17 +948,57 @@ function DailyClariDigest({ projects }) {
     return groups;
   }, [digestDays]);
 
+  const digestDateOptions = useMemo(
+    () => Array.from(new Set(digestDays.map((day) => day.date).filter(Boolean)))
+      .sort((a, b) => b.localeCompare(a)),
+    [digestDays]
+  );
+
+  const filteredCallsBySlug = useMemo(() => {
+    const groups = {};
+    const projectSearch = normalizeProjectKey(digestProjectFilter);
+
+    Object.entries(callsBySlug).forEach(([slug, calls]) => {
+      const project = projectBySlug.get(slug);
+      const dateFilteredCalls = digestDateFilter === "all"
+        ? calls
+        : calls.filter((call) => call.digest_date === digestDateFilter);
+
+      if (!dateFilteredCalls.length) return;
+
+      const latestCall = dateFilteredCalls[dateFilteredCalls.length - 1];
+      const projectName = project?.project || latestCall?.crm_account_name || latestCall?.title || slug;
+      const searchableText = normalizeProjectKey([
+        projectName,
+        project?.manager,
+        project?.phase,
+        project?.region,
+        ...dateFilteredCalls.flatMap((call) => [
+          call.crm_account_name,
+          call.title,
+          call.summary,
+          ...(call.participants || []),
+        ]),
+      ].filter(Boolean).join(" "));
+
+      if (projectSearch && !searchableText.includes(projectSearch)) return;
+      groups[slug] = dateFilteredCalls;
+    });
+
+    return groups;
+  }, [callsBySlug, digestDateFilter, digestProjectFilter, projectBySlug]);
+
   const dateOptionsBySlug = useMemo(() => {
     const options = {};
-    Object.entries(callsBySlug).forEach(([slug, calls]) => {
+    Object.entries(filteredCallsBySlug).forEach(([slug, calls]) => {
       options[slug] = Array.from(new Set(calls.map((call) => call.digest_date)))
         .sort((a, b) => b.localeCompare(a));
     });
     return options;
-  }, [callsBySlug]);
+  }, [filteredCallsBySlug]);
 
   const visibleDigests = useMemo(() => {
-    return Object.entries(callsBySlug)
+    return Object.entries(filteredCallsBySlug)
       .map(([slug, calls]) => {
         const project = projectBySlug.get(slug);
         const dates = dateOptionsBySlug[slug] || [];
@@ -880,12 +1018,11 @@ function DailyClariDigest({ projects }) {
           date_count: dates.length,
         };
       })
-      .filter((item) => allowedProjectKeys.has(normalizeProjectKey(item.project)))
       .sort((a, b) => (
         String(b.latest_date || "").localeCompare(String(a.latest_date || "")) ||
         String(a.project || "").localeCompare(String(b.project || ""))
       ));
-  }, [callsBySlug, dateOptionsBySlug, projectBySlug, allowedProjectKeys]);
+  }, [filteredCallsBySlug, dateOptionsBySlug, projectBySlug]);
 
   useEffect(() => {
     if (!visibleDigests.length) {
@@ -910,7 +1047,7 @@ function DailyClariDigest({ projects }) {
   const selectedDateOptions = selectedSlug ? dateOptionsBySlug[selectedSlug] || [] : [];
   const selectedDate = selectedSlug ? selectedDateBySlug[selectedSlug] || selectedDateOptions[0] : null;
   const selectedCalls = selectedSlug && selectedDate
-    ? (callsBySlug[selectedSlug] || []).filter((call) => call.digest_date === selectedDate)
+    ? (filteredCallsBySlug[selectedSlug] || []).filter((call) => call.digest_date === selectedDate)
     : [];
 
   const healthMeta = (health) => {
@@ -979,9 +1116,92 @@ function DailyClariDigest({ projects }) {
           <div style={{ fontSize:18, fontWeight:800, color:"#f8fafc", letterSpacing:"-0.03em" }}>Daily Clari Digest</div>
           <div style={{ fontSize:12, color:"#8ea3bf", marginTop:3 }}>Daily call summaries loaded from `public/data/digests`.</div>
         </div>
-        <div style={{ fontSize:12, color:"#9fb0c8" }}>
-          {digestDays.length} day{digestDays.length !== 1 ? "s" : ""} · {digestCount} call{digestCount !== 1 ? "s" : ""}
+        <div style={{ display:"flex", gap:10, alignItems:"center", flexWrap:"wrap", justifyContent:"flex-end" }}>
+          <div style={{ fontSize:12, color:"#9fb0c8" }}>
+            {digestDays.length} day{digestDays.length !== 1 ? "s" : ""} · {digestCount} call{digestCount !== 1 ? "s" : ""} · {digestSource}
+          </div>
+          <button
+            type="button"
+            onClick={syncDigestsFromGithub}
+            disabled={remoteSyncing}
+            style={{
+              border:"1px solid #2f4058",
+              background:remoteSyncing ? "#111827" : "#132033",
+              color:remoteSyncing ? "#7f93b0" : "#e5edf7",
+              borderRadius:10,
+              padding:"7px 10px",
+              fontSize:12,
+              fontWeight:700,
+              cursor:remoteSyncing ? "default" : "pointer",
+            }}
+          >
+            {remoteSyncing ? "Syncing..." : "Sync from Clari Repo"}
+          </button>
         </div>
+      </div>
+
+      <div style={{ display:"flex", gap:10, alignItems:"end", flexWrap:"wrap", marginBottom:14 }}>
+        <label style={{ display:"grid", gap:6, flex:"1 1 240px", minWidth:0 }}>
+          <span style={{ fontSize:11, fontWeight:700, color:"#7f93b0", letterSpacing:"0.06em", textTransform:"uppercase" }}>Project / Call</span>
+          <input
+            type="search"
+            value={digestProjectFilter}
+            onChange={(event) => setDigestProjectFilter(event.target.value)}
+            placeholder="Filter project, title, participant..."
+            style={{
+              background:"#0b1220",
+              border:"1px solid #263244",
+              color:"#e5edf7",
+              borderRadius:10,
+              padding:"9px 11px",
+              fontSize:12,
+              outline:"none",
+              minWidth:0,
+            }}
+          />
+        </label>
+        <label style={{ display:"grid", gap:6, flex:"0 1 240px", minWidth:180 }}>
+          <span style={{ fontSize:11, fontWeight:700, color:"#7f93b0", letterSpacing:"0.06em", textTransform:"uppercase" }}>Call Date</span>
+          <select
+            value={digestDateFilter}
+            onChange={(event) => setDigestDateFilter(event.target.value)}
+            style={{
+              background:"#0b1220",
+              border:"1px solid #263244",
+              color:"#e5edf7",
+              borderRadius:10,
+              padding:"9px 11px",
+              fontSize:12,
+              outline:"none",
+            }}
+          >
+            <option value="all">All dates</option>
+            {digestDateOptions.map((date) => (
+              <option key={date} value={date}>{digestDateLabel(date)}</option>
+            ))}
+          </select>
+        </label>
+        <button
+          type="button"
+          onClick={() => {
+            setDigestProjectFilter("");
+            setDigestDateFilter("all");
+          }}
+          disabled={!digestProjectFilter && digestDateFilter === "all"}
+          style={{
+            border:"1px solid #263244",
+            background:"#101826",
+            color:(!digestProjectFilter && digestDateFilter === "all") ? "#627089" : "#d8e2f0",
+            borderRadius:10,
+            padding:"9px 12px",
+            fontSize:12,
+            fontWeight:700,
+            cursor:(!digestProjectFilter && digestDateFilter === "all") ? "default" : "pointer",
+            whiteSpace:"nowrap",
+          }}
+        >
+          Clear Filters
+        </button>
       </div>
 
       {loadError && (
@@ -993,7 +1213,7 @@ function DailyClariDigest({ projects }) {
       {loading && !loadError ? (
         <div style={{ fontSize:13, color:"#9fb0c8", padding:"12px 2px" }}>Loading Clari digests...</div>
       ) : visibleDigests.length === 0 ? (
-        <div style={{ fontSize:13, color:"#9fb0c8", padding:"12px 2px" }}>No digest calls match the current shared filters.</div>
+        <div style={{ fontSize:13, color:"#9fb0c8", padding:"12px 2px" }}>No digest calls match the selected filters.</div>
       ) : (
         <div style={{ display:"grid", gridTemplateColumns:"minmax(280px, 380px) minmax(0, 1fr)", gap:16 }}>
           <div style={{ border:"1px solid #263244", borderRadius:16, overflow:"hidden", background:"#0b1220", minHeight:520 }}>
@@ -1111,6 +1331,19 @@ function DailyClariDigest({ projects }) {
                         {call.summary || "No summary captured for this call."}
                       </div>
 
+                      {call.participants?.length > 0 && (
+                        <div style={{ marginBottom:14 }}>
+                          <div style={{ fontSize:11, fontWeight:700, color:"#7f93b0", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:9 }}>Participants</div>
+                          <div style={{ display:"flex", gap:7, flexWrap:"wrap" }}>
+                            {call.participants.map((participant, index) => (
+                              <span key={`${participant}-${index}`} style={{ fontSize:11, color:"#b9c7da", background:"#0b1220", border:"1px solid #263244", borderRadius:999, padding:"4px 8px", maxWidth:230, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }} title={participant}>
+                                {participant}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
                       <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))", gap:12 }}>
                         <div>
                           <div style={{ fontSize:11, fontWeight:700, color:"#7f93b0", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:9 }}>Key Points</div>
@@ -1166,12 +1399,199 @@ function DailyClariDigest({ projects }) {
   );
 }
 
+function MultiSelectFilter({ label, options, selected, onToggle }) {
+  const [open, setOpen] = useState(false);
+  const [menuStyle, setMenuStyle] = useState(null);
+  const buttonRef = useRef(null);
+  const menuRef = useRef(null);
+  const selectedValues = Array.isArray(selected) ? selected : [];
+  const display = selectedValues.length ? `${label}: ${selectedValues.length}` : `All ${label}`;
+
+  const openMenu = () => {
+    const rect = buttonRef.current?.getBoundingClientRect();
+    if (!rect) {
+      setOpen((value) => !value);
+      return;
+    }
+
+    const width = Math.min(280, Math.max(240, rect.width));
+    const left = Math.min(Math.max(12, rect.left), window.innerWidth - width - 12);
+    const availableBelow = window.innerHeight - rect.bottom - 12;
+    const maxHeight = Math.max(180, Math.min(320, availableBelow));
+    setMenuStyle({
+      position:"fixed",
+      zIndex:10000,
+      top:rect.bottom + 6,
+      left,
+      width,
+      maxHeight,
+    });
+    setOpen((value) => !value);
+  };
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const close = (event) => {
+      if (buttonRef.current?.contains(event.target)) return;
+      if (menuRef.current?.contains(event.target)) return;
+      setOpen(false);
+    };
+    const closeOnLayoutChange = () => setOpen(false);
+
+    document.addEventListener("mousedown", close);
+    window.addEventListener("scroll", closeOnLayoutChange, true);
+    window.addEventListener("resize", closeOnLayoutChange);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      window.removeEventListener("scroll", closeOnLayoutChange, true);
+      window.removeEventListener("resize", closeOnLayoutChange);
+    };
+  }, [open]);
+
+  return (
+    <div style={{ position:"relative" }}>
+      <button
+        ref={buttonRef}
+        type="button"
+        onClick={openMenu}
+        style={{
+        background:"#101826",
+        border:"1px solid #263244",
+        color:"#d8e2f0",
+        borderRadius:10,
+        padding:"8px 11px",
+        fontSize:12,
+        outline:"none",
+        cursor:"pointer",
+        minWidth:145,
+        userSelect:"none",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"space-between",
+        gap:8,
+      }}
+      >
+        <span>{display}</span>
+        <span style={{ color:"#7f93b0", fontSize:10 }}>{open ? "▲" : "▼"}</span>
+      </button>
+      {open && (
+        <div ref={menuRef} style={{
+        ...menuStyle,
+        overflowY:"auto",
+        background:"#0b1220",
+        border:"1px solid #263244",
+        borderRadius:12,
+        boxShadow:"0 10px 26px rgba(2,6,23,0.32)",
+        padding:8,
+        }}>
+          <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", gap:8, padding:"5px 7px 8px" }}>
+            <div style={{ fontSize:10, color:"#7f93b0", textTransform:"uppercase", letterSpacing:"0.08em", fontWeight:700 }}>{label}</div>
+            {selectedValues.length > 0 && (
+              <button
+                type="button"
+                onClick={() => selectedValues.forEach((value) => onToggle(value))}
+                style={{ border:"none", background:"transparent", color:"#fca5a5", fontSize:11, fontWeight:700, cursor:"pointer" }}
+              >
+                Clear
+              </button>
+            )}
+          </div>
+          {options.map((option) => {
+            const checked = selectedValues.includes(option.value);
+            return (
+              <label key={option.value} style={{
+                display:"flex",
+                alignItems:"center",
+                gap:8,
+                padding:"7px 8px",
+                borderRadius:8,
+                cursor:"pointer",
+                color:"#d8e2f0",
+                fontSize:12,
+                background:checked ? "#132033" : "transparent",
+              }}>
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={() => onToggle(option.value)}
+                  style={{ accentColor:"#2dd4bf", flexShrink:0 }}
+                />
+                <span style={{ overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}>{option.label}</span>
+              </label>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+const DEFAULT_FILTERS = { rag:[], phase:DEFAULT_PHASE_FILTER, region:[], lead:[], vertical:[], search:"" };
+const asFilterArray = (value) => Array.isArray(value) ? value : (value && value !== "all" ? [value] : []);
+const sameFilterValues = (left, right) => {
+  const leftValues = asFilterArray(left).slice().sort();
+  const rightValues = asFilterArray(right).slice().sort();
+  return leftValues.length === rightValues.length && leftValues.every((value, index) => value === rightValues[index]);
+};
+const hasAnyFilters = (filters) => (
+  asFilterArray(filters.rag).length > 0 ||
+  !sameFilterValues(filters.phase, DEFAULT_PHASE_FILTER) ||
+  asFilterArray(filters.region).length > 0 ||
+  asFilterArray(filters.lead).length > 0 ||
+  asFilterArray(filters.vertical).length > 0 ||
+  Boolean(filters.search)
+);
+
+const isTransitionedToSupport = (project) => {
+  const status = String(project.status || "").toLowerCase();
+  const phase = String(project.phase || "").toLowerCase();
+  return status.includes("transitioned") || phase.includes("transitioned");
+};
+
+const uniqueProjectKey = (project) => normalizeProjectKey(project.account)
+  .replace(/\bphase\s*\d+\b/g, "")
+  .replace(/\bphase\s*-\s*\d+\b/g, "")
+  .replace(/\bwave\s*\d+\b/g, "")
+  .replace(/\bwave\s*-\s*\d+\b/g, "")
+  .replace(/\bpilot\b/g, "")
+  .replace(/\s+/g, " ")
+  .trim();
+
+const uniqueProjectCount = (projects) => new Set(
+  projects.map(uniqueProjectKey).filter(Boolean)
+).size;
+
+const projectHealthRank = { Green: 1, Amber: 2, Red: 3 };
+const uniqueProjectHealthCounts = (projects) => {
+  const healthByProject = new Map();
+
+  projects.forEach((project) => {
+    const key = uniqueProjectKey(project);
+    if (!key) return;
+
+    const rag = project.rag === "Red" || project.rag === "Amber" ? project.rag : "Green";
+    const current = healthByProject.get(key);
+    if (!current || projectHealthRank[rag] > projectHealthRank[current]) {
+      healthByProject.set(key, rag);
+    }
+  });
+
+  const counts = { total:healthByProject.size, green:0, amber:0, red:0 };
+  healthByProject.forEach((rag) => {
+    if (rag === "Red") counts.red += 1;
+    else if (rag === "Amber") counts.amber += 1;
+    else counts.green += 1;
+  });
+  return counts;
+};
+
 export default function App() {
-  const [projects, setProjects]       = useState(FALLBACK);
+  const [projects, setProjects]       = useState([]);
+  const [initialSyncDone, setInitialSyncDone] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(null);
   const [syncing, setSyncing]         = useState(false);
   const [syncMsg, setSyncMsg]         = useState(null);
-  const [filters, setFilters]         = useState({rag:"all",phase:"all",region:"all",lead:"all",vertical:"all",search:""});
+  const [filters, setFilters]         = useState(DEFAULT_FILTERS);
   const [sortKey, setSortKey]         = useState("account");
   const [sortDir, setSortDir]         = useState(1);
   const [expanded, setExpanded]       = useState(null);
@@ -1229,7 +1649,9 @@ export default function App() {
         governanceFolder: ["link to project governance folder"],
         brd: ["brd"],
         wsr: ["wsr"],
-        functionalTestReport: ["functional test report"]
+        functionalTestReport: ["functional test report"],
+        scope: ["modules in scope", "module in scope", "modules scope"],
+        uatTracker: ["uat tracker", "uat tracker link", "uat tracking", "uat tracker document", "uat test tracker", "uat test case tracker"]
       };
       const findColumnIndex = (aliases) => {
         const normalizedAliases = aliases.map(normalizeHeader).filter(Boolean);
@@ -1276,7 +1698,9 @@ export default function App() {
         governanceFolder: row[colMap.governanceFolder] || "",
         brd: row[colMap.brd] || "",
         wsr: row[colMap.wsr] || "",
-        functionalTestReport: row[colMap.functionalTestReport] || ""
+        functionalTestReport: row[colMap.functionalTestReport] || "",
+        scope: row[colMap.scope] || "",
+        uatTracker: row[colMap.uatTracker] || ""
       })).filter(p => p.account && p.account !== "Unknown");
 
       setProjects(mapped);
@@ -1286,7 +1710,11 @@ export default function App() {
       setSyncMsg({ ok: false, text: `Sync error: ${e.message}` });
       setDebugLog(`Exception: ${e.message}`);
       setShowDebug(true);
-    } finally { setSyncing(false); }
+      setProjects((currentProjects) => currentProjects.length ? currentProjects : FALLBACK);
+    } finally {
+      setInitialSyncDone(true);
+      setSyncing(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -1296,16 +1724,16 @@ export default function App() {
   }, [sync]);
 
   const stats = useMemo(() => {
-    const live = projects.filter(p => p.status !== "Transitioned");
+    const live = projects.filter(p => !isTransitionedToSupport(p));
     const active = projects.filter(p => p.status === "Active");
     const hyp = projects.filter(p => p.status === "Hypercare");
     return {
-      total: projects.length,
+      total: live.length,
       active: active.length, hypercare: hyp.length,
       green:  live.filter(p=>p.rag==="Green").length,
       amber:  live.filter(p=>p.rag==="Amber").length,
       red:    live.filter(p=>p.rag==="Red").length,
-      phase: PHASES.reduce((acc,ph) => (acc[ph] = live.filter(p=>p.phase.toLowerCase() === ph.toLowerCase()).length, acc), {}),
+      phase: PHASES.reduce((acc,ph) => (acc[ph] = projects.filter(p=>p.phase.toLowerCase() === ph.toLowerCase()).length, acc), {}),
       regions: [...new Set(live.map(p=>p.region).filter(r=>r))].sort(),
       regionCounts: live.reduce((acc,p) => (acc[p.region] = (acc[p.region]||0)+1, acc), {}),
       leads: [...new Set(live.map(p=>p.lead).filter(l=>l))].sort(),
@@ -1316,12 +1744,18 @@ export default function App() {
   }, [projects]);
 
   const filteredBase = useMemo(() => {
+    const selectedRags = asFilterArray(filters.rag);
+    const selectedPhases = asFilterArray(filters.phase).map((value) => value.toLowerCase());
+    const selectedRegions = asFilterArray(filters.region);
+    const selectedLeads = asFilterArray(filters.lead);
+    const selectedVerticals = asFilterArray(filters.vertical);
+
     return projects.filter(p => {
-      if (filters.rag!=="all" && p.rag!==filters.rag) return false;
-      if (filters.phase!=="all" && p.phase.toLowerCase()!==filters.phase.toLowerCase()) return false;
-      if (filters.region!=="all" && p.region!==filters.region) return false;
-      if (filters.lead!=="all" && p.lead!==filters.lead) return false;
-      if (filters.vertical!=="all" && p.vertical!==filters.vertical) return false;
+      if (selectedRags.length && !selectedRags.includes(p.rag)) return false;
+      if (selectedPhases.length && !selectedPhases.includes(String(p.phase || "").toLowerCase())) return false;
+      if (selectedRegions.length && !selectedRegions.includes(p.region)) return false;
+      if (selectedLeads.length && !selectedLeads.includes(p.lead)) return false;
+      if (selectedVerticals.length && !selectedVerticals.includes(p.vertical)) return false;
       if (filters.search) {
         const q=filters.search.toLowerCase();
         return [p.account,p.region,p.lead,p.consultant,p.comments].some(v=>(v||"").toLowerCase().includes(q));
@@ -1329,6 +1763,11 @@ export default function App() {
       return true;
     });
   }, [projects, filters]);
+
+  const kpiStats = useMemo(() => {
+    const liveFiltered = filteredBase.filter(p => !isTransitionedToSupport(p));
+    return uniqueProjectHealthCounts(liveFiltered);
+  }, [filteredBase]);
 
   const filtered = useMemo(() => {
     return [...filteredBase].sort((a,b) => {
@@ -1342,18 +1781,28 @@ export default function App() {
   };
 
   const setFilter = (k,v) => setFilters(f=>({...f,[k]:v}));
+  const clearFilters = () => setFilters(DEFAULT_FILTERS);
+  const toggleFilterValue = (key, value) => {
+    setFilters((currentFilters) => {
+      const values = asFilterArray(currentFilters[key]);
+      const nextValues = values.includes(value)
+        ? values.filter((item) => item !== value)
+        : [...values, value];
+      return { ...currentFilters, [key]: nextValues };
+    });
+  };
 
   // ── Styles ────────────────────────────────────────────────────────────────────
   const S = {
     wrap:  { fontFamily:"'Manrope', system-ui, sans-serif", minHeight:"100vh", color:"#d8e2f0", background:"radial-gradient(circle at top, #172033 0%, #0b1120 52%, #060a14 100%)" },
 
-    // Ribbon — exact match to reference page
     ribbon: {
       background:"#090f1d",
       borderBottom:"1px solid #1f2a3d",
       padding:"0 24px", minHeight:64,
       display:"flex", alignItems:"center", justifyContent:"space-between",
-      position:"sticky", top:0, zIndex:50
+      position:"sticky", top:0, zIndex:50,
+      boxShadow:"none"
     },
     ribbonLeft:  { display:"flex", alignItems:"center", gap:12, flexShrink:0 },
     ribbonCenter:{ display:"flex", alignItems:"center", gap:14, minWidth:0, margin:"0 18px", flex:"1 1 auto" },
@@ -1361,7 +1810,8 @@ export default function App() {
     ribbonMeta:  { fontSize:11, color:"#91a4bd", whiteSpace:"nowrap", overflow:"hidden", textOverflow:"ellipsis" },
     ribbonRight: { display:"flex", alignItems:"center", gap:10, flexWrap:"wrap", justifyContent:"flex-end" },
 
-    shell: { maxWidth:1440, margin:"0 auto", padding:"10px 20px 40px" },
+    appFrame: { minHeight:"calc(100vh - 64px)" },
+    shell: { maxWidth:1440, width:"100%", margin:"0 auto", padding:"26px 30px 44px" },
     heroPanel:{ display:"grid", gridTemplateColumns:"1fr", gap:10, alignItems:"stretch" },
 
     header: {
@@ -1420,7 +1870,7 @@ export default function App() {
     tabs: { display:"flex", gap:3, background:"#101826", borderRadius:12, padding:3, border:"1px solid #263244" },
     tab:  (active) => ({ padding:"7px 14px", borderRadius:9, fontSize:13, fontWeight:600, cursor:"pointer", transition:"all 0.15s", background:active?"#1f2937":"transparent", color:active?"#f8fafc":"#8ea3bf", border:"none", boxShadow:active?"inset 0 0 0 1px #314056":"none" }),
 
-    filters: { display:"flex", gap:8, alignItems:"center", flexWrap:"wrap" },
+    filters: { display:"flex", gap:8, alignItems:"flex-start", flexWrap:"wrap" },
     sel:     { background:"#101826", border:"1px solid #263244", color:"#d8e2f0", borderRadius:10, padding:"8px 11px", fontSize:12, outline:"none" },
     search:  { background:"#101826", border:"1px solid #263244", color:"#d8e2f0", borderRadius:10, padding:"8px 13px", fontSize:12, outline:"none", flex:1, minWidth:180 },
 
@@ -1485,25 +1935,19 @@ export default function App() {
         </div>
       </div>
 
-      <div style={S.shell}>
+      <div className="app-frame" style={S.appFrame}>
+      <main style={S.shell}>
         {/* ── KPI Cards ── */}
         <div className="dashboard-grid" style={S.kpiRow}>
           {[
-            { num:stats.total,  label:"Total Projects", color:"#2563eb", ragKey:null,    onClick: () => setFilters({rag:"all",phase:"all",region:"all",lead:"all",vertical:"all",search:""}) },
-            { num:stats.green,  label:"On Track",       color:"#059669", ragKey:"Green", onClick: () => setFilter("rag", filters.rag === "Green" ? "all" : "Green") },
-            { num:stats.amber,  label:"At Risk",        color:"#d97706", ragKey:"Amber", onClick: () => setFilter("rag", filters.rag === "Amber" ? "all" : "Amber") },
-            { num:stats.red,    label:"Critical",       color:"#dc2626", ragKey:"Red",   onClick: () => setFilter("rag", filters.rag === "Red" ? "all" : "Red") },
+            { num:kpiStats.total,  label:"Total Projects", color:"#2563eb", ragKey:null,    onClick: clearFilters },
+            { num:kpiStats.green,  label:"On Track",       color:"#059669", ragKey:"Green", onClick: () => toggleFilterValue("rag", "Green") },
+            { num:kpiStats.amber,  label:"At Risk",        color:"#d97706", ragKey:"Amber", onClick: () => toggleFilterValue("rag", "Amber") },
+            { num:kpiStats.red,    label:"Critical",       color:"#dc2626", ragKey:"Red",   onClick: () => toggleFilterValue("rag", "Red") },
           ].map(({num,label,color,ragKey,onClick})=>{
             const active = ragKey
-              ? filters.rag === ragKey
-              : (
-                  filters.rag === "all" &&
-                  filters.phase === "all" &&
-                  filters.region === "all" &&
-                  filters.lead === "all" &&
-                  filters.vertical === "all" &&
-                  !filters.search
-                );
+              ? asFilterArray(filters.rag).includes(ragKey)
+              : !hasAnyFilters(filters);
             return (
               <div key={label} style={{
                 ...S.kpi,
@@ -1531,14 +1975,14 @@ export default function App() {
               <div style={{display:"flex", gap:8, alignItems:"center", overflowX:"auto"}}>
                 {PHASES.map(ph => {
                   const m = PHASE_META[ph]; const count = stats.phase[ph]||0;
-                  const active = filters.phase===ph;
+                  const active = asFilterArray(filters.phase).includes(ph);
                   return (
                     <div key={ph} className="pipe-item" style={{
                       ...S.pipeItem,
                       background: active ? `linear-gradient(180deg, ${m.bg} 0%, rgba(15,23,42,0.92) 100%)` : "#101826",
                       borderColor: active ? m.color : "#263244",
                       borderTopWidth: active ? 2 : 1
-                    }} onClick={()=>setFilter("phase", active?"all":ph)}>
+                    }} onClick={()=>toggleFilterValue("phase", ph)}>
                       <div style={{...S.pipeCount, color:m.color}}>{count}</div>
                       <div style={S.pipeLabel}>{ph}</div>
                     </div>
@@ -1547,23 +1991,35 @@ export default function App() {
               </div>
               <div className="dashboard-toolbar">
                 <div style={S.filters}>
-                  <select style={S.sel} value={filters.region} onChange={e=>setFilter("region",e.target.value)}>
-                    <option value="all">All Regions</option>
-                    {stats.regions.map(r=><option key={r} value={r}>{r} ({stats.regionCounts[r]||0})</option>)}
-                  </select>
-                  <select style={S.sel} value={filters.lead} onChange={e=>setFilter("lead",e.target.value)}>
-                    <option value="all">All Managers</option>
-                    {stats.leads.map(l=><option key={l} value={l}>{l} ({stats.leadCounts[l]||0})</option>)}
-                  </select>
-                  <select style={S.sel} value={filters.vertical} onChange={e=>setFilter("vertical",e.target.value)}>
-                    <option value="all">All Verticals</option>
-                    {stats.verticals.map(v=><option key={v} value={v}>{v} ({stats.verticalCounts[v]||0})</option>)}
-                  </select>
+                  <MultiSelectFilter
+                    label="Regions"
+                    selected={asFilterArray(filters.region)}
+                    onToggle={(value) => toggleFilterValue("region", value)}
+                    options={stats.regions.map(r => ({ value:r, label:`${r} (${stats.regionCounts[r] || 0})` }))}
+                  />
+                  <MultiSelectFilter
+                    label="Managers"
+                    selected={asFilterArray(filters.lead)}
+                    onToggle={(value) => toggleFilterValue("lead", value)}
+                    options={stats.leads.map(l => ({ value:l, label:`${l} (${stats.leadCounts[l] || 0})` }))}
+                  />
+                  <MultiSelectFilter
+                    label="Verticals"
+                    selected={asFilterArray(filters.vertical)}
+                    onToggle={(value) => toggleFilterValue("vertical", value)}
+                    options={stats.verticals.map(v => ({ value:v, label:`${v} (${stats.verticalCounts[v] || 0})` }))}
+                  />
+                  <MultiSelectFilter
+                    label="Phases"
+                    selected={asFilterArray(filters.phase)}
+                    onToggle={(value) => toggleFilterValue("phase", value)}
+                    options={PHASES.map(ph => ({ value:ph, label:`${ph} (${stats.phase[ph] || 0})` }))}
+                  />
                   <input style={S.search} placeholder="Search projects, accounts…"
                     value={filters.search} onChange={e=>setFilter("search",e.target.value)} />
-                  {(filters.rag!=="all"||filters.phase!=="all"||filters.region!=="all"||filters.lead!=="all"||filters.vertical!=="all"||filters.search) &&
+                  {hasAnyFilters(filters) &&
                     <button style={{...S.sel,cursor:"pointer",color:"#fca5a5",borderColor:"#7f1d1d",background:"#241113"}}
-                      onClick={()=>setFilters({rag:"all",phase:"all",region:"all",lead:"all",vertical:"all",search:""})}>
+                      onClick={clearFilters}>
                       Clear ×
                     </button>}
                 </div>
@@ -1671,17 +2127,19 @@ export default function App() {
                               </div>
                               <div style={{ display:"flex", gap:24, flexWrap:"wrap" }}>
                                 {[
-                                  ["Project Plan", p.projectPlan],
-                                  ["MSA", p.msa],
-                                  ["Governance Folder", p.governanceFolder],
-                                  ["BRD", p.brd],
-                                  ["WSR", p.wsr],
-                                  ["Functional Test Report", p.functionalTestReport]
-                                ].map(([k,v])=>(
-                                  <div key={k}>
+                                  ["Project Plan", p.projectPlan, true],
+                                  ["MSA", p.msa, true],
+                                  ["Governance Folder", p.governanceFolder, true],
+                                  ["BRD", p.brd, true],
+                                  ["WSR", p.wsr, true],
+                                  ["Functional Test Report", p.functionalTestReport, true],
+                                  ["Scope", p.scope, false],
+                                  ["UAT Tracker", p.uatTracker, true]
+                                ].map(([k,v,isLink])=>(
+                                  <div key={k} style={k === "Scope" ? { maxWidth: 360 } : undefined}>
                                     <div style={{ fontSize:10, color:"#7f93b0", textTransform:"uppercase", letterSpacing:"0.05em", marginBottom:3 }}>{k}</div>
-                                    <div style={{ fontSize:13, color:"#d8e2f0", fontWeight:500 }}>
-                                      {v ? <a href={v} target="_blank" rel="noopener noreferrer" style={{color:"#5eead4"}}>Link</a> : "—"}
+                                    <div style={{ fontSize:13, color:"#d8e2f0", fontWeight:500, whiteSpace: k === "Scope" ? "pre-wrap" : "normal", lineHeight: k === "Scope" ? 1.5 : undefined }}>
+                                      {v ? (isLink ? <a href={v} target="_blank" rel="noopener noreferrer" style={{color:"#5eead4"}}>Link</a> : v) : "—"}
                                     </div>
                                   </div>
                                 ))}
@@ -1730,6 +2188,7 @@ export default function App() {
           </div>
         )}
 
+      </main>
       </div>
     </div>
   );
