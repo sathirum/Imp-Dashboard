@@ -1,0 +1,957 @@
+{
+  "date": "2026-05-05",
+  "generated_at": "2026-05-06T01:30:00+05:30",
+  "total_calls": 18,
+  "calls": [
+    {
+      "call_id": "f0695586-c07a-41d5-ad98-b6c641faaca0",
+      "title": "Moon Flower CAFM Task Planner",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-05T11:31:49+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Riyavarshini Arunprasad",
+        "Sreesobh Naduvanchery",
+        "Supreeth Babu",
+        "Conrade Barnabas"
+      ],
+      "summary": "Call focused on finalising data onboarding for Moon Flower. Data onboarding confirmed 100% complete. Key items: fault codes, QR codes, auto-assignment matrix, visitor management follow-up.",
+      "key_points": [
+        "Fault codes to be implemented",
+        "PDF portfolio drawings",
+        "QR code generation",
+        "Auto-assignment matrix in development",
+        "Laundry location data to be added",
+        "Visitor management deferred to Ashwin",
+        "Data onboarding 100% complete"
+      ],
+      "decisions": [
+        "Data onboarding complete; close all pending tasks EOD",
+        "Ashwin to follow up on visitor management"
+      ],
+      "action_items": [
+        {
+          "owner": "Team",
+          "task": "Close all pending tasks",
+          "due": "2026-05-05"
+        },
+        {
+          "owner": "Ashwin",
+          "task": "Follow up on visitor management system",
+          "due": "TBD"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "Auto-assignment matrix mapping in progress",
+        "Laundry location data not yet added"
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "f6ab61e8-7f07-4cf1-ade5-14058cc6d891",
+      "title": "CBRE Go-live First Day!",
+      "crm_account_name": "CBRE",
+      "project_slug": "cbre",
+      "timestamp_ist": "2026-05-05T12:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya",
+        "Vandhana",
+        "Sangavi",
+        "Ranjan",
+        "Jhimlee Datta",
+        "Aravindhan Mathiyazhagan",
+        "Aswinkumar",
+        "Pranav KSK",
+        "Abhishek Balakrishna (CBRE)"
+      ],
+      "summary": "Day 1 of CBRE production go-live. Full delivery team mobilised. No detailed Clari summary available.",
+      "key_points": [
+        "Day 1 of production go-live for CBRE",
+        "Full delivery team present"
+      ],
+      "decisions": [
+        "Go-live commenced"
+      ],
+      "action_items": [
+        {
+          "owner": "Full team",
+          "task": "Support go-live day operations",
+          "due": "Ongoing"
+        }
+      ],
+      "risks": [],
+      "open_items": [],
+      "health_signal": null,
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "1dadb147-b2c8-4d29-8cf1-49127e18ec7c",
+      "title": "Daily Facilio CAFM Workshops | Resolving Issues",
+      "crm_account_name": "CIT",
+      "project_slug": "cit-diriya",
+      "timestamp_ist": "2026-05-05T12:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya",
+        "Dinesh R",
+        "Ashwin Bhat Furgo",
+        "Nitish Soondur (CIT)",
+        "Mohammed Nebab (CIT)",
+        "Vinay Mohan (CIT)",
+        "Gladson Aby (CIT)",
+        "Tahir Abbas (CIT)",
+        "Chandan Dabeedeen (SCMS)",
+        "Helder Branco (CIT)",
+        "Ravish Betchoo (CIT)"
+      ],
+      "summary": "Working session on CIT CAFM inventory request process. PRs cannot be created via mobile app \u2014 significant field bottleneck. PPM V3 needed for bulk updates not yet released. Workstation app crash on Gletson device under investigation.",
+      "key_points": [
+        "PRs cannot be created via mobile app",
+        "New stock item process defined",
+        "PPM V3 planned for release",
+        "Gletson device crash under investigation",
+        "Closed WOs can be reopened for historical inventory requests"
+      ],
+      "decisions": [
+        "Client to provide inventory request list to Dinesh",
+        "PPM V3 to be released"
+      ],
+      "action_items": [
+        {
+          "owner": "Dinesh R",
+          "task": "Provide remaining inventory request list",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Investigate Gletson mobile app crash",
+          "due": "TBD"
+        },
+        {
+          "owner": "Engineering",
+          "task": "Release PPM V3 with bulk date-update UI",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Mobile PR creation blocked",
+        "PPM V3 not released",
+        "Mobile device crash unresolved"
+      ],
+      "open_items": [
+        "PPM V3 release",
+        "Mobile PR workaround",
+        "Gletson device investigation"
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "3802808e-53f0-49bc-ab3c-c5fb957170f9",
+      "title": "GoodHands",
+      "crm_account_name": "",
+      "project_slug": "good-hands-technical-services",
+      "timestamp_ist": "2026-05-05T13:33:44+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Paurnika Ramesh",
+        "Niviya T",
+        "Prashanth"
+      ],
+      "summary": "Pre-go-live issue resolution for Good Hands. Key blocker: PRs cannot be created from mobile. Multiple workflow fixes applied. Go-live sign-off expected EOD.",
+      "key_points": [
+        "PRs cannot be created from mobile app",
+        "Tenant approval flow corrected",
+        "Inspection flow: tenant approval exempted during escalations",
+        "PO logo to be removed",
+        "Asset data discrepancies identified",
+        "Go-live sign-off targeted EOD"
+      ],
+      "decisions": [
+        "Logo removed from PO format",
+        "Tenant approval flow corrected",
+        "Go-live sign-off targeted EOD"
+      ],
+      "action_items": [
+        {
+          "owner": "Team",
+          "task": "Investigate mobile PR creation workaround",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Team",
+          "task": "Resolve asset data discrepancies",
+          "due": "TBD"
+        },
+        {
+          "owner": "Client",
+          "task": "Provide go-live sign-off",
+          "due": "2026-05-05"
+        }
+      ],
+      "risks": [
+        "Mobile PR creation blocked at go-live threshold",
+        "Asset data discrepancies outstanding"
+      ],
+      "open_items": [
+        "Mobile PR workaround",
+        "Asset data cleanup",
+        "Go-live sign-off"
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "1efe4854-de75-497f-9b6e-b61c589bcd2f",
+      "title": "MODON Data Clarification",
+      "crm_account_name": "",
+      "project_slug": "modon-phase-2",
+      "timestamp_ist": "2026-05-05T14:01:48+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jhimlee Datta",
+        "Sreesobh Naduvanchery",
+        "Visia Lagula",
+        "Saradi Mohamed"
+      ],
+      "summary": "Data clarification session for MODON covering asset downtime criteria, user roles, insurance structure, and CapEx workflows. All items resolved or assigned.",
+      "key_points": [
+        "Asset downtime flagging refined",
+        "User roles to be consolidated",
+        "Duplicate naming/insurance data to resolve",
+        "CapEx in Oracle; Facilio initiates",
+        "Insurance structure confirmed",
+        "Warranties asset-linked"
+      ],
+      "decisions": [
+        "CapEx primary: Oracle",
+        "Warranties: asset-linked by category"
+      ],
+      "action_items": [
+        {
+          "owner": "Team",
+          "task": "Update instruction set for asset downtime",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Provide GRN notification recipient list",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Resolve duplicate naming and insurance data",
+          "due": "TBD"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "Updated instruction set",
+        "GRN recipient list",
+        "Duplicate data cleanup"
+      ],
+      "health_signal": "green",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "811abf2c-640e-4d00-9514-c873fa7b4ee8",
+      "title": "My MS_TEAMS Meeting (SLA Configuration & Testing)",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-05T14:27:33+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jeffri Shan J",
+        "Rujuta Singbal",
+        "Ismail Khursheed",
+        "Mostafa Maamoun",
+        "Ali Kelig"
+      ],
+      "summary": "SLA configuration session. SLA due dates now reflect post-code-approval priority changes; rejected/force-closed WOs no longer breach SLAs; pause/resume role-based. Production deployment Thursday 7 May.",
+      "key_points": [
+        "SLA due dates reflect priority changes",
+        "WOs rejected/force-closed no longer breach SLAs",
+        "Pause/resume SLA role-based",
+        "Paused-WO dashboard proposed",
+        "Production deployment Thursday"
+      ],
+      "decisions": [
+        "SLA pause/resume: admins only",
+        "Production deployment: 7 May"
+      ],
+      "action_items": [
+        {
+          "owner": "Jeffri Shan",
+          "task": "Deploy SLA configs to production",
+          "due": "2026-05-07"
+        },
+        {
+          "owner": "Team",
+          "task": "Review lab changes and provide dashboard config guide",
+          "due": "TBD"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "Production deployment Thursday",
+        "Paused-WO dashboard not built"
+      ],
+      "health_signal": "green",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "1ae9b4a7-2b66-4744-ae72-97381979b666",
+      "title": "Stark X Facilio \u2014 Weekly Meeting",
+      "crm_account_name": "Stark",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-05T14:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Abarna R",
+        "Jake (Facilio)",
+        "Ian Smithyman (Facilio)",
+        "Tom Newholm (Stark)",
+        "Lloyd Andrews (Stark)",
+        "Isaac Ellis (Stark)"
+      ],
+      "summary": "Weekly meeting between Facilio and Stark. No Clari summary available.",
+      "key_points": [],
+      "decisions": [],
+      "action_items": [],
+      "risks": [],
+      "open_items": [],
+      "health_signal": null,
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "1a1379d6-6b1a-482e-a7e8-08c480eb9d24",
+      "title": "Dunnes <> Facilio \u2014 Weekly Project Status",
+      "crm_account_name": "",
+      "project_slug": "dunnes-stores",
+      "timestamp_ist": "2026-05-05T15:28:13+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Deepak Simon",
+        "Tony Gaynor",
+        "Jake McKenna",
+        "Hasina Juhi",
+        "Karen Walsh"
+      ],
+      "summary": "UAT demo on sandbox. Data migration glitches observed. All data must be 100% uploaded before Friday final UAT. UI feedback given.",
+      "key_points": [
+        "UAT demo on sandbox; glitches observed",
+        "Portfolio categorisation reviewed",
+        "Vendor and WO flows demonstrated",
+        "UI feedback: rename tabs, clarify display",
+        "Data must be 100% uploaded before Friday UAT"
+      ],
+      "decisions": [
+        "Team committed to resolve glitches before Friday"
+      ],
+      "action_items": [
+        {
+          "owner": "Deepak Simon",
+          "task": "Resolve sandbox data migration glitches",
+          "due": "2026-05-08"
+        },
+        {
+          "owner": "Deepak Simon",
+          "task": "Ensure 100% data upload to sandbox",
+          "due": "2026-05-08"
+        },
+        {
+          "owner": "Team",
+          "task": "Apply UI naming and display feedback",
+          "due": "2026-05-08"
+        }
+      ],
+      "risks": [
+        "Sandbox glitches must be cleared before Friday UAT"
+      ],
+      "open_items": [
+        "Full data upload",
+        "UI changes",
+        "Glitch fixes"
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "892ecbf8-9254-4b12-a1c2-63332a272edb",
+      "title": "AL Shalfa Import Discussion",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-05T16:29:55+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Yaaminy SK",
+        "Hadi Ali (NWC Admin Shalfa)"
+      ],
+      "summary": "Critical data integrity issue: 7,000+ assets incorrectly mapped due to non-unique space name validation defect. User previously re-imported 55,000 assets. Yaaminy to provide remediation plan by 6 May.",
+      "key_points": [
+        "109 vs 137 asset discrepancy root-caused",
+        "Non-unique space names map assets to wrong buildings",
+        "7,000+ assets incorrectly mapped",
+        "Future fix: use unique space IDs",
+        "User previously re-imported 55,000 assets"
+      ],
+      "decisions": [
+        "Yaaminy SK to provide remediation plan by 6 May"
+      ],
+      "action_items": [
+        {
+          "owner": "Yaaminy SK",
+          "task": "Provide solution for 7,000+ incorrectly mapped assets",
+          "due": "2026-05-06"
+        },
+        {
+          "owner": "Engineering",
+          "task": "Evaluate scalable fix to avoid re-import",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "7,000+ assets incorrectly mapped",
+        "Re-import requires significant manual effort"
+      ],
+      "open_items": [
+        "Remediation approach for incorrectly mapped assets"
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "841b240e-243a-4492-9aa1-aa50755daa32",
+      "title": "Facilio Implementation Update \u2014 Teyseer",
+      "crm_account_name": "Teyseer Services Company W.L.L.",
+      "project_slug": "teyseer",
+      "timestamp_ist": "2026-05-05T16:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Kesava Krishnan R",
+        "Jeevaregai Shanmugam",
+        "Arun Kumar V",
+        "Dominico Laude (Teyseer)"
+      ],
+      "summary": "Implementation on track for most modules. UAT originally targeted end of April has slipped; new plan: UAT handover 19-20 May, UAT 21-25 May. Client satisfied; plans expansion to 2-3 sites.",
+      "key_points": [
+        "Most modules complete",
+        "Notifications and dashboards in progress",
+        "Functional test report 18 May; UAT handover 19-20 May; UAT 21-25 May",
+        "Pending: inventory data, contract details, job plan inputs, PM details, budget",
+        "UAT sign-off originally end of April \u2014 now May",
+        "Client satisfied; plans expansion"
+      ],
+      "decisions": [
+        "Functional test report: 18 May",
+        "UAT handover: 19-20 May",
+        "UAT: 21-25 May"
+      ],
+      "action_items": [
+        {
+          "owner": "Team",
+          "task": "Complete notifications and dashboards",
+          "due": "2026-05-18"
+        },
+        {
+          "owner": "Teyseer",
+          "task": "Provide inventory data and contract details",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Team",
+          "task": "Clarify job plan inputs and PM asset details",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Inventory data and contract details pending",
+        "Job plan and PM clarifications outstanding"
+      ],
+      "open_items": [
+        "Client data pending",
+        "Notifications and dashboards completion"
+      ],
+      "health_signal": "amber",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "1ec12134-a774-4510-9d9b-33efa8f2ef9c",
+      "title": "ES Global <> Facilio | Project Discussion",
+      "crm_account_name": "ES Global",
+      "project_slug": "es-global",
+      "timestamp_ist": "2026-05-05T17:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya",
+        "Kesava Krishnan R",
+        "Arun Kumar V",
+        "Mohammed Meeran",
+        "Ashwin",
+        "Omer",
+        "John Mathew (ES Global)"
+      ],
+      "summary": "Project discussion between Facilio and ES Global with Sathya present. No Clari summary available.",
+      "key_points": [],
+      "decisions": [],
+      "action_items": [],
+      "risks": [],
+      "open_items": [],
+      "health_signal": null,
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "4ea71acc-a242-4566-9eb1-464b61a577e5",
+      "title": "RE: Facilio-MS Field Service Integration \u2014 Deyaar/Ontegra",
+      "crm_account_name": "Ontegra Facilities Management",
+      "project_slug": "deyaar-dcm",
+      "timestamp_ist": "2026-05-05T17:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya",
+        "Ashwin",
+        "Naresh",
+        "Magesh",
+        "Lina Abdalla (Deyaar IT)",
+        "Hudha Hind (Ontegra)",
+        "Muhammad Adil (Dynamics+)",
+        "Ratib AbuHajleh (Ontegra)",
+        "Sajid Sulaiman (Deyaar IT)",
+        "Saad Saleem (Ontegra)"
+      ],
+      "summary": "Integration testing for Deyaar/Ontegra MS Field Service. Duplicate WO bug resolved. API timeout (up to 2 mins) flagged as UX risk ahead of Thursday UAT and Sunday deployment. DCM phase deferred.",
+      "key_points": [
+        "Duplicate WO bug resolved",
+        "Attachment preview: IP restriction issue",
+        "Non-private comments to be sent; deletion restricted",
+        "Retry mechanism agreed",
+        "Status mapping confirmed",
+        "Production deployment Sunday 10 May",
+        "UAT Thursday 7 May",
+        "DCM phase deferred",
+        "API timeout up to 2 mins \u2014 UX concern"
+      ],
+      "decisions": [
+        "Production deployment: Sunday 10 May",
+        "UAT: Thursday 7 May",
+        "Ontegra to provide checklist by 6 May"
+      ],
+      "action_items": [
+        {
+          "owner": "Ontegra",
+          "task": "Provide production checklist",
+          "due": "2026-05-06"
+        },
+        {
+          "owner": "Ashwin/Naresh",
+          "task": "Resolve attachment IP restriction in production",
+          "due": "2026-05-10"
+        },
+        {
+          "owner": "Team",
+          "task": "Test API timeout mitigation",
+          "due": "2026-05-07"
+        },
+        {
+          "owner": "Team",
+          "task": "Schedule DCM phase technical session",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "API timeout up to 2 mins \u2014 UX risk",
+        "Attachment preview blocked by IP restriction",
+        "Tight timeline: UAT Thursday, deploy Sunday"
+      ],
+      "open_items": [
+        "Ontegra production checklist",
+        "Attachment IP fix",
+        "API timeout testing",
+        "DCM phase scoping"
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "bfc69f2f-db53-4162-9361-a70263a50d34",
+      "title": "Hibernia Weekly Catch Up",
+      "crm_account_name": "",
+      "project_slug": "hibernia",
+      "timestamp_ist": "2026-05-05T17:45:21+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Deepak Simon",
+        "Eyre Massy",
+        "Justin Dowling",
+        "Colin Corcoran"
+      ],
+      "summary": "Vendors not following processes; Kfm admins granted full override permissions ahead of audit. PM scope bug fixed. Offline inspection live; offline work audit still in development.",
+      "key_points": [
+        "Vendors not following processes; admins granted override permissions",
+        "Audit pressure driving manual WO closure",
+        "PM scope bug fixed: parent assets now targeted",
+        "Offline inspection live",
+        "Offline work audit in development",
+        "Electrical RAMs increasing slowly"
+      ],
+      "decisions": [
+        "Kfm admins granted full override permissions",
+        "PM scope adjusted to target parent assets"
+      ],
+      "action_items": [
+        {
+          "owner": "Lourdu / Colin",
+          "task": "Manually complete outstanding vendor WOs for audit",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Team",
+          "task": "Continue development of offline work audit",
+          "due": "TBD"
+        },
+        {
+          "owner": "Harmon",
+          "task": "Provide bespoke RAM task descriptions",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Vendors not following processes \u2014 systemic compliance issue",
+        "Audit imminent with open vendor WOs",
+        "Offline work audit not available"
+      ],
+      "open_items": [
+        "Offline work audit module",
+        "Bespoke RAM descriptions",
+        "Audit closure of vendor WOs"
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "3f742572-b3b6-4595-8a73-a2c997772108",
+      "title": "[THCE <> Facilio] : PM Solution Document Discussion",
+      "crm_account_name": "",
+      "project_slug": "t-j-regional-health",
+      "timestamp_ist": "2026-05-05T17:58:07+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jhimlee Datta",
+        "Rebecca A. Barta",
+        "Philip Rogers",
+        "Michael DeRossett",
+        "Jesse E. Pearce",
+        "Charles Hockenberry"
+      ],
+      "summary": "PM configuration clarification for THCE. No-PM-required is a variance request; 12-month grace period PMs locked to Jan 1; asset category approval workflow tightened. Follow-up for parent-child PMs.",
+      "key_points": [
+        "No PM required = variance request",
+        "Retired assets: PM reactivation allowed",
+        "12-month grace period PM execution: Jan 1 always",
+        "Base date retained for now",
+        "New asset categories need approval",
+        "Follow-up for PM parent-child relationships"
+      ],
+      "decisions": [
+        "12-month grace period PM execution date: Jan 1",
+        "Asset approval workflow includes key personnel review"
+      ],
+      "action_items": [
+        {
+          "owner": "Jhimlee",
+          "task": "Schedule follow-up session on PM parent-child relationships",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Implement asset category request/approval workflow",
+          "due": "TBD"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "PM parent-child session not yet scheduled"
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "1e9c58ff-721f-4ef8-94b6-9ca2fae01f77",
+      "title": "Facilio Project Update Recurring Meeting \u2014 Imperial Cleaning",
+      "crm_account_name": "Imperial Cleaning",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-05T18:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya",
+        "Riyavarshini Arunprasad",
+        "Sean Smith (Imperial)",
+        "Cynthia Blas",
+        "Jeffrey Krinick",
+        "Martha Gaviria",
+        "Millie Capri"
+      ],
+      "summary": "Complex scope discussion on invoice/credit note netting and contract revision workflows. Screenshots insufficient; wireframes required. RFQ process needs clearer workflow.",
+      "key_points": [
+        "Invoice and credit note netting clarified",
+        "Screenshots insufficient \u2014 wireframes required",
+        "Non-financial contract changes require care",
+        "RFQ process needs dedicated module",
+        "Business Central integration needs clarification"
+      ],
+      "decisions": [
+        "Wireframes to be provided"
+      ],
+      "action_items": [
+        {
+          "owner": "Riyavarshini",
+          "task": "Prepare wireframes for invoice/credit netting workflows",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Clarify Business Central integration for netted invoices",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Scope complexity could delay design sign-off"
+      ],
+      "open_items": [
+        "Wireframes pending",
+        "Business Central integration details",
+        "RFQ workflow design"
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "fb0212d6-29f9-4cc9-9a85-c072862c2a69",
+      "title": "Houchens Weekly Touchbase",
+      "crm_account_name": "Houchens Industries",
+      "project_slug": "houchens",
+      "timestamp_ist": "2026-05-05T19:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Deepak Simon",
+        "Praveen Kumar",
+        "William Stordeur",
+        "Basant",
+        "Anne Sullivan (Houchens)",
+        "Keith Martin (Houchens)"
+      ],
+      "summary": "Multiple bugs: incorrect mandatory inspection dates (fix due 6 May), decommissioned assets in inspections (investigation ongoing), technician user ID integrity. Workaround confirmed for mixed refrigerant logging.",
+      "key_points": [
+        "Mandatory inspection date errors \u2014 fix due tomorrow",
+        "Decommissioned assets in inspections \u2014 investigation underway",
+        "Technician user ID: backend fix preferred",
+        "Mixed refrigerant: separate line items confirmed",
+        "Territory file inaccessible \u2014 to resolve",
+        "Latest mobile app to be downloaded"
+      ],
+      "decisions": [
+        "Will Stordeur to fix inspection dates by 6 May",
+        "Backend fix preferred for technician user ID"
+      ],
+      "action_items": [
+        {
+          "owner": "Will Stordeur",
+          "task": "Fix mandatory inspection date calculations",
+          "due": "2026-05-06"
+        },
+        {
+          "owner": "Team",
+          "task": "Investigate decommissioned assets in inspections",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Resolve territory file download restriction",
+          "due": "TBD"
+        },
+        {
+          "owner": "Technicians",
+          "task": "Download and test latest mobile app",
+          "due": "ASAP"
+        }
+      ],
+      "risks": [
+        "Incorrect mandatory inspection dates",
+        "Decommissioned assets in inspections",
+        "Technician ID integrity if not backend-fixed"
+      ],
+      "open_items": [
+        "Inspection date fix",
+        "Decommissioned-asset investigation",
+        "Territory file fix",
+        "Technician ID backend fix"
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "46d44690-2346-4643-a60f-4e2b6d95d082",
+      "title": "Facilio + Kroger Weekly Check-in Call",
+      "crm_account_name": "Kroger",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-05T20:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Praveen Kumar",
+        "William Stordeur",
+        "Basant",
+        "Soriah Broughton (Kroger)",
+        "Kristin Campbell (Kroger)",
+        "T.J. Phillips (Kroger)",
+        "Ryan Callagan (Kroger)",
+        "Mark Bishop (Kroger)"
+      ],
+      "summary": "Commissioning progress call. SOAP licenses needed for Emerson E3 devices unconfirmed. BRD sign-off and standard set points still outstanding. Danforth sites WIP.",
+      "key_points": [
+        "ILON credentials needed for data validation",
+        "Emerson E3 requires SOAP licenses \u2014 Kroger config unclear",
+        "E2 and Emerson commissioning in progress; Danforth WIP",
+        "Store square footage and portfolio data needed",
+        "Controller-based ambient temperature preferred",
+        "BRD sign-off and standard set points pending"
+      ],
+      "decisions": [
+        "Controller-based ambient temperature for rule application"
+      ],
+      "action_items": [
+        {
+          "owner": "Praveen Kumar",
+          "task": "Obtain ILON smart server credentials",
+          "due": "TBD"
+        },
+        {
+          "owner": "Kroger",
+          "task": "Clarify SOAP license config for Emerson E3",
+          "due": "TBD"
+        },
+        {
+          "owner": "Kroger",
+          "task": "Provide store square footage and portfolio data",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Complete commissioning of Danforth sites",
+          "due": "TBD"
+        },
+        {
+          "owner": "Kroger",
+          "task": "BRD sign-off and standard set points confirmation",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "SOAP license blocker for Emerson E3",
+        "BRD not signed off",
+        "Danforth sites not commissioned"
+      ],
+      "open_items": [
+        "ILON credentials",
+        "SOAP license clarification",
+        "Portfolio data",
+        "BRD sign-off",
+        "Danforth commissioning"
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "3b287acb-7699-4096-842a-e96fd3e6cced",
+      "title": "[THCE <> Facilio] : PartsSource Discussion",
+      "crm_account_name": "",
+      "project_slug": "t-j-regional-health",
+      "timestamp_ist": "2026-05-05T21:01:07+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Vandhana S",
+        "Jhimlee Datta",
+        "Jason Meister",
+        "Rebecca A. Barta",
+        "Nicholas Rajcsak"
+      ],
+      "summary": "Root cause and solution agreed for PartSource PR failures. Solution: non-editable 'customer line key' field in PartSource. 'Core exchange' checkbox issue to be investigated.",
+      "key_points": [
+        "PR failures caused by users editing WO numbers from PartSource",
+        "Solution: non-editable 'customer line key' field",
+        "Field invisible to end-users \u2014 eliminates error source",
+        "Notification enhancement for WO reference failures",
+        "Core exchange checkbox not auto-populating \u2014 investigation pending"
+      ],
+      "decisions": [
+        "Implement 'customer line key' integration in PartSource"
+      ],
+      "action_items": [
+        {
+          "owner": "Vandhana S",
+          "task": "Implement 'customer line key' integration with PartSource",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Investigate 'core exchange' checkbox at PR and PO levels",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Enhance automated notifications for WO reference failures",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Core exchange checkbox issue under investigation"
+      ],
+      "open_items": [
+        "Customer line key implementation",
+        "Core exchange investigation",
+        "Notification enhancement"
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    }
+  ]
+}

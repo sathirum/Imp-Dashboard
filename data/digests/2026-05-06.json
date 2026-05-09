@@ -1,0 +1,831 @@
+{
+  "date": "2026-05-06",
+  "generated_at": "2026-05-06T07:00:00+05:30",
+  "total_calls": 15,
+  "calls": [
+    {
+      "call_id": "36420550-147e-43a5-a751-0f278df36006",
+      "title": "Modon CM \u2014 MSDS, Digital Suggestion Box, Insurance, Training Plan & Quality Management",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-06T11:32:04+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Riyavarshini Arunprasad (Facilio)",
+        "Rajkumar Mahadevan (Modon)"
+      ],
+      "summary": "Requirements workshop covering MSDS digitisation, insurance policy/claim management, digital suggestion box, and training plan modules for Modon CM. All process flows were clarified and agreed; configuration is pending receipt of client data sheets. Session was productive with clear next steps.",
+      "key_points": [
+        "MSDS digitisation: upload soft copies, track expiry dates, two-step approval (FMSP \u2192 MCM Engineer).",
+        "Digital suggestion box to also accommodate software-related complaint/issue reporting (distinct from operational suggestions).",
+        "Insurance module needed to track policies and claims; claims to be initiated from incidents by MCM engineers.",
+        "Facilio to be used for scheduling and tracking induction sessions and toolbox talks.",
+        "Existing PPM and reactive quality-check processes confirmed sufficient \u2014 no separate quality module needed."
+      ],
+      "decisions": [
+        "MSDS data and insurance claim tracker sheets to be obtained from client for system setup.",
+        "Training topics, schedules, and assignment matrices to be provided for the training plan module.",
+        "Digital suggestion box to cover both operational and software-issue reporting."
+      ],
+      "action_items": [
+        {
+          "owner": "Client / Modon",
+          "task": "Share MSDS data sheet and insurance claim tracker for configuration",
+          "due": "TBD"
+        },
+        {
+          "owner": "Client / Modon",
+          "task": "Provide training topics, schedules, and assignment matrix",
+          "due": "TBD"
+        },
+        {
+          "owner": "Riyavarshini",
+          "task": "Configure MSDS digitisation, insurance module, suggestion box, and training plan in Facilio",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Client data (MSDS sheets, insurance tracker, training matrix) required from Modon before configuration can proceed \u2014 dependency on client."
+      ],
+      "open_items": [
+        "MSDS data sheet from Modon; insurance claim tracker; training topics and assignment matrix."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "a6a41586-d5fd-4b32-bc43-dfdb0fb139b9",
+      "title": "Good Hands \u2014 Admin Training",
+      "crm_account_name": "",
+      "project_slug": "good-hands-technical-services",
+      "timestamp_ist": "2026-05-06T12:00:20+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Paurnika Ramesh (Facilio)",
+        "Niviya T (Facilio)",
+        "Prashanth (Good Hands)"
+      ],
+      "summary": "Comprehensive admin training session for Good Hands covering all major Facilio modules. Data discrepancies for vendors and tenants were identified and a plan to consolidate duplicates was agreed. No issues or risks raised.",
+      "key_points": [
+        "System navigation, dashboard and view configuration, asset management, and work order modules covered.",
+        "Inspection template creation, job plan association with planned maintenance, and storeroom/inventory management demonstrated.",
+        "Report and dashboard creation (charts, pivot tables) explained in detail.",
+        "Vendor and tenant data discrepancies reviewed; duplicate records identified for consolidation.",
+        "Quotation flow updated: tenant approval based on acknowledgment status; direct work order scenarios confirmed."
+      ],
+      "decisions": [
+        "Vendor duplicates to be resolved by consolidating into vendor contacts.",
+        "Quotation flow adjusted to handle tenant approval and direct work order scenarios."
+      ],
+      "action_items": [
+        {
+          "owner": "Paurnika / Niviya",
+          "task": "Resolve vendor and tenant duplicate data in system",
+          "due": "TBD"
+        },
+        {
+          "owner": "Prashanth / Good Hands team",
+          "task": "Practice admin workflows post-training and raise queries",
+          "due": "TBD"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "Vendor duplicate data cleanup; client team to apply training."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "d094a920-6292-4412-bc3d-ebed58cea880",
+      "title": "Daily Facilio CAFM Workshops | Resolving Issues \u2014 CIT",
+      "crm_account_name": "CIT",
+      "project_slug": "cit-diriya",
+      "timestamp_ist": "2026-05-06T12:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Dinesh R (Facilio \u2014 absent)",
+        "Omer (Facilio",
+        "covering)",
+        "Vinay Mohan (CIT)",
+        "Glaxon Aby (CIT)",
+        "and others"
+      ],
+      "summary": "Daily CAFM issue-resolution session for CIT was partially rescheduled due to Dinesh R's absence. Two recurring issues were discussed: Glaxon's mobile app sign-in failure and the 'resolution breached' status bug for cleaning/civil work orders. Both items require follow-up action from the Facilio team.",
+      "key_points": [
+        "Dinesh R unavailable; Omer covered and proposed rescheduling to later the same day or next morning.",
+        "Glaxon unable to sign in via mobile app \u2014 ongoing issue, Omer to check with Ashwin on resolution.",
+        "'Resolution breached' status not displaying correctly for cleaning and civil work order categories.",
+        "The 'resolution breached' status appears to be manually updated rather than automated \u2014 Vinay to log in tracker.",
+        "Materials purchased with petty cash need to be added to inventory management."
+      ],
+      "decisions": [
+        "Session rescheduled; Omer to coordinate with Ashwin for mobile app sign-in support.",
+        "Vinay Mohan to update tracker with findings on 'resolution breached' status discrepancy."
+      ],
+      "action_items": [
+        {
+          "owner": "Omer / Ashwin",
+          "task": "Resolve Glaxon mobile app sign-in issue",
+          "due": "Same day / next morning"
+        },
+        {
+          "owner": "Dinesh R",
+          "task": "Investigate and fix 'resolution breached' status for cleaning and civil WO categories",
+          "due": "TBD"
+        },
+        {
+          "owner": "Vinay Mohan (CIT)",
+          "task": "Update issue tracker with resolution breached findings",
+          "due": "Same day"
+        },
+        {
+          "owner": "CIT team",
+          "task": "Ensure petty-cash purchased materials are recorded in inventory",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "'Resolution breached' status bug appears manual \u2014 automation gap may affect SLA reporting accuracy. Mobile app sign-in issue persisting without resolution."
+      ],
+      "open_items": [
+        "Ashwin availability for mobile app support; Dinesh R to investigate resolution breached automation."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "e0e5f8a3-0497-4578-a33a-665c05d0da36",
+      "title": "TSL \u2014 Facilio Meeting (Onboarding, Custom Domain, UAT Planning)",
+      "crm_account_name": "TSL",
+      "project_slug": "tsl",
+      "timestamp_ist": "2026-05-06T14:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Lourdu Livin A (Facilio)",
+        "Deepak Simon (Facilio)",
+        "Ian Smithyman (Facilio)",
+        "Meryl Moloney Cichal (TSL)",
+        "Philip Buxton (TSL)",
+        "Mario Zubac (Zutech)"
+      ],
+      "summary": "Pre-go-live alignment call for TSL covering custom domain setup, client portal feedback, SLA configuration, and UAT planning. June 1st go-live remains confirmed but several dependencies are outstanding including SFG20 data integration, SLA definitions, and DNS subdomain setup.",
+      "key_points": [
+        "Custom domain setup: subdomains required (client.fmglobal.app, vendor.fmglobal.app); subdirectories not feasible \u2014 investigation ongoing.",
+        "Client portal landing page demonstrated; feedback on TSL logo prominence and background treatment provided.",
+        "Resolution SLAs for different ticket priority levels to be defined and configured.",
+        "SFG20 data integration for PPM job plans, skills, and estimated durations is critical and needs to be arranged.",
+        "UAT for reactive work order flow scheduled for the following week.",
+        "Go-live date confirmed as June 1st with reactive module available for early testing.",
+        "RAMS (Risk Assessment Method Statements) integration for P1/P2 work orders needs clarification."
+      ],
+      "decisions": [
+        "Go-live target remains June 1st.",
+        "Investigate feasibility of integrating portals within main domain (currently appears subdomain-only).",
+        "UAT for reactive WO to take place next week."
+      ],
+      "action_items": [
+        {
+          "owner": "Lourdu Livin / Deepak Simon",
+          "task": "Confirm subdomain vs main domain feasibility for portals and send updated DNS records",
+          "due": "ASAP"
+        },
+        {
+          "owner": "TSL / Facilio",
+          "task": "Define and configure resolution SLAs for all ticket priority levels",
+          "due": "Before UAT"
+        },
+        {
+          "owner": "TSL",
+          "task": "Provide SFG20 data for PPM job plan and skills integration",
+          "due": "Before go-live"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Clarify RAMS integration requirements for P1/P2 work orders",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "SFG20 data integration not yet in place \u2014 critical for accurate PPM scheduling. SLAs for ticket priorities not yet defined. Subdomain/DNS setup pending confirmation. RAMS integration unclear."
+      ],
+      "open_items": [
+        "SFG20 data from TSL; SLA definitions from TSL; DNS/subdomain resolution; RAMS clarification."
+      ],
+      "health_signal": "amber",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "f87c03aa-1180-4fe7-b943-0026597e2049",
+      "title": "FORTES \u2014 Inspection Clarification",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-06T15:22:08+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Yaaminy SK (Facilio)",
+        "Karthikeyan Srinivasan",
+        "Shiju Parackal",
+        "Alibabu Abdul Gani",
+        "Venkat Anirudh Mokkapati",
+        "Samarth Kumar (FORTES)"
+      ],
+      "summary": "FORTES raised multiple technical issues and feature gaps during a clarification session, including a Chrome login freeze, missing PPM asset location data, and the inability to convert inspection findings to work orders (on roadmap). Permissions and subcategory configurations are being resolved by Yaaminy SK.",
+      "key_points": [
+        "Clarified 'independent spaces' vs 'all spaces' distinction for building configurations.",
+        "Work order view requested to show all statuses, not just closed ones.",
+        "'Power tools' subcategory addition requires editing existing tool-type records.",
+        "Permissions for invoice viewing and planned maintenance to be enabled for 'facilities manager' role.",
+        "Chrome browser-specific login freeze identified as a known issue.",
+        "Asset location data missing during asset addition in planned preventive maintenance \u2014 bug raised.",
+        "Bulk selection for filtering items is difficult \u2014 usability gap noted.",
+        "Multiple HSE editors for inspections not supported; automatic reassignment not available if assigned person is unavailable.",
+        "Converting inspection findings directly to work orders is on the product roadmap (not yet available).",
+        "SLA due dates are fixed once set \u2014 cannot be changed by reassigning WO or altering priority."
+      ],
+      "decisions": [
+        "New user accounts to be created for current staff rather than reassigning departed employee licenses.",
+        "Invoice and planned maintenance viewing permissions to be enabled for facilities manager role.",
+        "Findings-to-WO conversion confirmed on roadmap."
+      ],
+      "action_items": [
+        {
+          "owner": "Yaaminy SK",
+          "task": "Enable invoice and planned maintenance view permissions for facilities manager role",
+          "due": "TBD"
+        },
+        {
+          "owner": "Yaaminy SK",
+          "task": "Add power tools as subcategory by editing existing tool-type records",
+          "due": "TBD"
+        },
+        {
+          "owner": "Facilio Product",
+          "task": "Investigate Chrome browser login freeze and asset location bug in PPM",
+          "due": "TBD"
+        },
+        {
+          "owner": "Facilio Product",
+          "task": "Roadmap delivery: findings to work order direct conversion",
+          "due": "Roadmap"
+        }
+      ],
+      "risks": [
+        "Chrome login freeze may affect user adoption. Missing asset location in PPM is a data integrity gap. Findings-to-WO conversion not yet available \u2014 this is a critical feature for FORTES workflow."
+      ],
+      "open_items": [
+        "Product team bug fixes: Chrome login, PPM asset location; roadmap delivery for findings-to-WO conversion."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "ad33cfc5-0736-4f8f-b51d-294c3daff71d",
+      "title": "Saudi Tabreed \u2014 Bi-weekly Review",
+      "crm_account_name": "stom.sa",
+      "project_slug": "saudi-tabreed-phase-1",
+      "timestamp_ist": "2026-05-06T16:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Ashwin (Facilio)",
+        "Kesava (Facilio)",
+        "Arun Kumar V (Facilio)",
+        "Hana Al Saleh (Saudi Tabreed)"
+      ],
+      "summary": "Bi-weekly review for Saudi Tabreed covered Kfm integration (nearing production), work order/procurement testing, and a dashboard blocker for Hassan's multi-report view pending a product team fix by 6\u20137 May. Connected buildings progress updates are pending from Arjun and Mel.",
+      "key_points": [
+        "Connected buildings: progress updates to be provided by Arjun and Mel separately.",
+        "Kfm integration testing nearing completion; production deployment planned for next week.",
+        "Critical blocker: multi-report dashboard issue for Hassan awaiting product team fix \u2014 ETA 6\u20137 May.",
+        "Work order and procurement module testing with Tracks team concluding today; production deployment to follow post-testing and Merchant confirmation.",
+        "Hana confirmed Marshad will conduct UAT independently."
+      ],
+      "decisions": [
+        "Kfm to move to production next week post-Merchant confirmation.",
+        "Dashboard fix (multi-report) to be delivered by product team by end of day 6 or 7 May.",
+        "Work order and procurement to move to production after Tracks testing concludes and Merchant confirms."
+      ],
+      "action_items": [
+        {
+          "owner": "Arjun / Mel",
+          "task": "Send connected buildings progress update",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Facilio Product",
+          "task": "Fix multi-report dashboard issue for Hassan",
+          "due": "6\u20137 May 2026"
+        },
+        {
+          "owner": "Kesava / Arun Kumar V",
+          "task": "Confirm Merchant sign-off and move Kfm to production",
+          "due": "Next week"
+        },
+        {
+          "owner": "Marshad (Saudi Tabreed)",
+          "task": "Conduct independent UAT for Kfm component",
+          "due": "Post-production deployment"
+        }
+      ],
+      "risks": [
+        "Dashboard fix (multi-report) is a product-team dependency blocking client visibility. Kfm production deployment gated on Merchant confirmation \u2014 external dependency."
+      ],
+      "open_items": [
+        "Product team dashboard fix by 7 May; Merchant confirmation for Kfm production move; connected buildings update from Arjun/Mel."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "7264e4d7-0e45-4119-a060-95c47db2e7dd",
+      "title": "MODON PM \u2014 FarVision Integration Discussion Day 3",
+      "crm_account_name": "",
+      "project_slug": "modon-phase-2",
+      "timestamp_ist": "2026-05-06T16:32:07+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat Fugro (Facilio)",
+        "Jhimlee Datta (Facilio)",
+        "Rajesh Patil",
+        "Dheeraj Sharma",
+        "Saradi Mohamed"
+      ],
+      "summary": "Day 3 of the MODON PM FarVision integration discussion was again hampered by the absence of the Property Management team who own Power Vision. The 'preferred inspection date' field logic remains unresolved and process flows cannot be shared with FarVision until PM team provides input.",
+      "key_points": [
+        "Integration touchpoints for 'moving mode' feature between Power Vision and Facilio under discussion (Day 3).",
+        "Facilio to handle move-in inspections triggered by Power Vision with data fields: unit code, building info, move-in date, preferred inspection date, tenant code.",
+        "Dheeraj questioned feasibility of 'preferred inspection date' field \u2014 not currently captured for move-outs; business case unclear.",
+        "Property Management (PM) team absence is a critical blocker \u2014 they own Power Vision and are needed to finalise requirements.",
+        "Meeting paused to allow Rajesh to bring a PM representative into the call.",
+        "Process flows to be shared with FarVision team for API updates."
+      ],
+      "decisions": [
+        "Process flows to be shared with FarVision team after PM team input is obtained.",
+        "'Preferred inspection date' feasibility to be clarified with PM team."
+      ],
+      "action_items": [
+        {
+          "owner": "Rajesh Patil",
+          "task": "Bring PM team representative into discussions to finalise requirements",
+          "due": "Immediately"
+        },
+        {
+          "owner": "Ashwin Bhat Fugro / Jhimlee",
+          "task": "Share process flows with FarVision team for API updates once requirements finalised",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "PM team absence on third consecutive session is blocking integration finalisation. Preferred inspection date field feasibility unresolved \u2014 may require process redesign."
+      ],
+      "open_items": [
+        "PM team (Power Vision owners) participation to finalise integration requirements; FarVision team for API updates."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "b3180374-7922-4606-ba4d-12ba303c08fd",
+      "title": "ES Global &lt;&gt; Facilio \u2014 Project Discussion",
+      "crm_account_name": "ES Global",
+      "project_slug": "es-global",
+      "timestamp_ist": "2026-05-06T17:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Kesava (Facilio)",
+        "Arun Kumar V (Facilio)",
+        "Mohammed Meeran (Facilio)",
+        "Ashwin (Facilio)",
+        "Ananth R (Facilio)",
+        "Omer (Facilio)",
+        "John Mathew (ES Global)"
+      ],
+      "summary": "ES Global go-live was shifted from end of this week to phased handovers on May 11 and May 18. John Mathew pushed for RFP-aligned delivery and raised concerns about payment terms; Facilio agreed to absorb three RFP scope items and committed to an offline payment discussion. Odoo integration was explicitly deferred.",
+      "key_points": [
+        "Original go-live plan (end of this week) adjusted to phased module handovers: May 11 and May 18, with client testing in between.",
+        "John Mathew insisting RFP as the base document for expected outcomes; BRD sign-off to be conditional.",
+        "Facilio agreed to incorporate three specific RFP points into scope at no additional cost to maintain goodwill.",
+        "Facilio clarified that RFP cannot be the sole reference for all future discussions given subsequent negotiations and vanilla implementation approach.",
+        "Subscription and licensing payments tied to project kickoff (not usage) \u2014 John Mathew acknowledged need for offline discussion.",
+        "Odoo system integration scoped as a separate future engagement.",
+        "User creation and access to be provided during UAT phase; initial focus on portfolio and asset data upload."
+      ],
+      "decisions": [
+        "Go-live revised to phased handovers: May 11 (first modules) and May 18 (remaining modules).",
+        "Three RFP points incorporated into scope at no additional cost.",
+        "Payment terms to be discussed offline between Sathya and John Mathew.",
+        "Odoo integration deferred to a future, separate scope."
+      ],
+      "action_items": [
+        {
+          "owner": "Sathya / Kesava",
+          "task": "Conduct offline discussion with John Mathew on payment/licensing terms",
+          "due": "This week"
+        },
+        {
+          "owner": "Facilio team",
+          "task": "Complete module handover 1 (portfolio and asset data upload)",
+          "due": "May 11"
+        },
+        {
+          "owner": "Facilio team",
+          "task": "Complete module handover 2 (remaining modules)",
+          "due": "May 18"
+        },
+        {
+          "owner": "Ananth R / team",
+          "task": "Document three additional RFP points in updated scope",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "RFP vs SOW scope ambiguity could resurface in future; payment terms dispute unresolved \u2014 offline discussion required. Odoo integration expectations need to be explicitly deferred in writing."
+      ],
+      "open_items": [
+        "Offline payment discussion with John Mathew; updated scope document; client portfolio and asset data for upload."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "fb388560-be80-4c4f-9c8f-f3f4f8d250ec",
+      "title": "MHA \u2014 Work Order Bulk Delete Demo on Sandbox",
+      "crm_account_name": "",
+      "project_slug": "mha",
+      "timestamp_ist": "2026-05-06T17:28:16+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Lourdu Livin A (Facilio)",
+        "Sana Khan (MHA)",
+        "Nick Dore (MHA)",
+        "Kate Brindley (MHA)"
+      ],
+      "summary": "Lourdu Livin demonstrated the new bulk work order delete feature for MHA, which handles cascading deletion across all dependent modules. Kate Brindley will test in sandbox before production enablement for Kfm Admins.",
+      "key_points": [
+        "New bulk delete work order feature demonstrated: deletes WO and all dependent records across modules.",
+        "Feature accessible via 'More Actions' in Open, All, and Closed work order views.",
+        "Deletion runs in background with mandatory completion notification.",
+        "Permissions for bulk delete will be granted to Kfm Admins only.",
+        "Kate Brindley assigned to test thoroughly in sandbox by creating parent and child work orders."
+      ],
+      "decisions": [
+        "Kate Brindley to test bulk delete functionality in sandbox.",
+        "Testing outcomes to inform creation of training scenarios.",
+        "Permissions scoped to Kfm Admins."
+      ],
+      "action_items": [
+        {
+          "owner": "Kate Brindley (MHA)",
+          "task": "Test bulk delete feature in sandbox using parent and child work orders",
+          "due": "TBD"
+        },
+        {
+          "owner": "Lourdu Livin",
+          "task": "Grant Kfm Admin permissions for bulk delete button post-testing",
+          "due": "After sandbox test"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "Kate Brindley sandbox testing completion before production enablement."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "00af7c6d-b02a-44be-a1f6-a385d3d4187d",
+      "title": "Lunds &amp; Byerlys &times; Facilio \u2014 RM Touchbase",
+      "crm_account_name": "Lunds & Byerlys",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-06T17:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Arjun M M (Facilio)",
+        "Basant (Facilio)",
+        "William Stordeur (Facilio)",
+        "Kevin Kungel (Lunds & Byerlys)",
+        "Jeffrey Carlson (Lunds & Byerlys)"
+      ],
+      "summary": "Alarm rule refinement session for Lunds & Byerlys refrigeration systems. Most rules were tightened and agreed; condenser approach rule requires a follow-up session. Site offline alarms and connect-to-device are flagged as critical pre-deployment items.",
+      "key_points": [
+        "Defrost recovery alarm threshold adjusted \u2014 focus on recovery time over defrost duration to avoid nuisance alarms.",
+        "Valve open rule refined to exclude 'monitor only' valve types; focus on stepper, EEV, and LLV types.",
+        "Current imbalance threshold for racks increased to 20% to account for utility-side variations.",
+        "Condenser approach rule requires further development \u2014 ambient temp, fan speed, system load and refrigerant type to be incorporated.",
+        "High/low space temperature alarms on RTUs: 2.7\u00b0F deviation threshold over one hour with fan status as condition.",
+        "Site offline alarms and connect-to-device functionality flagged as critical for upcoming deployment.",
+        "Follow-up session scheduled to finalise condenser approach rule."
+      ],
+      "decisions": [
+        "Current imbalance threshold set to 20%.",
+        "Valve open rule excludes MON (monitor only) valve types.",
+        "Follow-up session to finalise condenser approach rule parameters."
+      ],
+      "action_items": [
+        {
+          "owner": "Arjun M M / Basant",
+          "task": "Develop condenser approach rule incorporating ambient temp, fan speed, system load, refrigerant type",
+          "due": "Before next session"
+        },
+        {
+          "owner": "Facilio Engineering",
+          "task": "Resolve site offline alarms and connect-to-device functionality for deployment",
+          "due": "Before deployment"
+        }
+      ],
+      "risks": [
+        "Site offline alarms and connect-to-device functionality are flagged as critical and must be resolved before deployment. Condenser approach rule not yet finalised."
+      ],
+      "open_items": [
+        "Site offline alarms fix; connect-to-device functionality; condenser approach rule finalisation at next follow-up."
+      ],
+      "health_signal": "amber",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "2131b90a-9703-4b47-9506-31292722f4b2",
+      "title": "MODON \u2014 Project Timeline Update",
+      "crm_account_name": "",
+      "project_slug": "modon-phase-2",
+      "timestamp_ist": "2026-05-06T17:33:29+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat Fugro (Facilio)",
+        "Riyavarshini Arunprasad (Facilio)",
+        "Jhimlee Datta (Facilio)",
+        "Vandhana S (Facilio)",
+        "Amrithya",
+        "Arunkumar M"
+      ],
+      "summary": "Internal MODON project timeline alignment call following accelerated delivery expectations. MVP covering core modules is required by end of June; BRD submission deadline is May 15. Oracle and BIM integrations are under review and may be dropped, which carries client relationship risk.",
+      "key_points": [
+        "Project end date accelerated to February; MVP release required by end of June.",
+        "All workshops consolidated into a single BRD phase; BRD submission due by May 15.",
+        "MVP to cover core modules: portfolio management, asset management, user permissions, vendor management across all Modon entities.",
+        "Alrayan customisations (resident management, catering, space management) as a parallel track.",
+        "Oracle and BIM integrations may be reduced or dropped due to unclear requirements.",
+        "FarVision integration to proceed; scope to be aligned.",
+        "Customer BRD sign-off emphasised to prevent future scope disputes.",
+        "KPIs to be captured at high level in initial BRD submission; detailed solution to follow."
+      ],
+      "decisions": [
+        "MVP by end of June focusing on core modules.",
+        "BRD submission deadline: May 15.",
+        "Oracle/BIM integrations potentially dropped pending requirements clarity.",
+        "Alrayan customisation as a parallel track."
+      ],
+      "action_items": [
+        {
+          "owner": "Ashwin Bhat Fugro / Riyavarshini / Jhimlee / Vandhana",
+          "task": "Complete BRD for all modules and obtain customer sign-off",
+          "due": "May 15"
+        },
+        {
+          "owner": "Facilio team",
+          "task": "Clarify Oracle and BIM integration requirements with Modon",
+          "due": "Before May 15"
+        },
+        {
+          "owner": "Facilio team",
+          "task": "Plan and execute MVP core module delivery",
+          "due": "End of June"
+        }
+      ],
+      "risks": [
+        "Oracle and BIM integrations at risk of being dropped \u2014 client may push back. Scope creep risk if BRDs are not signed off. Tight timeline to deliver MVP by end of June."
+      ],
+      "open_items": [
+        "Modon customer BRD sign-off; Oracle/BIM requirements clarity; Alrayan customisation requirements."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "54893d4e-5e8e-46aa-b651-f02bb2726e30",
+      "title": "GECO \u2014 Technician Training Session 2",
+      "crm_account_name": "",
+      "project_slug": "geco-phase-1",
+      "timestamp_ist": "2026-05-06T17:37:43+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jeevaregai Shanmugam (Facilio)",
+        "Samitha Wickramasinghage (GECO)"
+      ],
+      "summary": "Second technician training session for GECO covering the full mobile app work order lifecycle from creation to material issuance. The attendance check-in feature is noted as still under development. Training was productive.",
+      "key_points": [
+        "Work order creation via mobile app demonstrated for corrective and reactive scenarios.",
+        "Mandatory fields: site, building, floor; category and subcategory selection (e.g., HVAC, medical gas).",
+        "Technician workflow covered: acknowledgment, attendance check-in (in development), start/end travel, work in progress states.",
+        "Work order hold/pause for access issues and checkout functionality for productivity tracking explained.",
+        "Conversion to chargeable work order, inventory request (manual and autofill from plan), supervisor approval workflow covered.",
+        "Labour entry and actuals finalisation once materials are issued explained."
+      ],
+      "decisions": [
+        "Training on mobile app work order flow completed for Session 2.",
+        "Daily attendance check-in noted as still in development."
+      ],
+      "action_items": [
+        {
+          "owner": "Jeevaregai",
+          "task": "Follow up on attendance check-in feature development status",
+          "due": "TBD"
+        },
+        {
+          "owner": "Samitha / GECO technicians",
+          "task": "Practice mobile app work order creation workflows",
+          "due": "Post-training"
+        }
+      ],
+      "risks": [
+        "Attendance check-in feature is still in development \u2014 technicians cannot complete the full workflow until this is available."
+      ],
+      "open_items": [
+        "Attendance check-in feature delivery by product team."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "83fe0523-77db-4df5-adbd-32361ac4efdd",
+      "title": "TSL FM \u2014 Domain Setup Catchup",
+      "crm_account_name": "",
+      "project_slug": "tsl",
+      "timestamp_ist": "2026-05-06T18:26:30+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Lourdu Livin A (Facilio)"
+      ],
+      "summary": "Technical catchup confirming subdomain architecture for TSL portals. Updated DNS records need to be sent to TSL; portals are not yet live as DNS is pending. This is a dependency for the June 1 go-live.",
+      "key_points": [
+        "Subdomains confirmed as mandatory: client.fmglobal.app and vendor.fmglobal.app \u2014 subdirectories not feasible.",
+        "DNS CNAME restriction on root domains prevents alternative approach; subdomains to point via CNAME to connect.faceview.co.uk.",
+        "Updated DNS records including maintenance portal to be sent to TSL.",
+        "Common certificate generation record required for maintenance, vendor, and client applications.",
+        "fmglobal.app currently not indexing \u2014 pending DNS record application.",
+        "Minor UI adjustments for vendor portal layout under review."
+      ],
+      "decisions": [
+        "Subdomain architecture confirmed; Facilio to provide updated DNS records.",
+        "TSL to apply DNS records; portals expected to index correctly after application."
+      ],
+      "action_items": [
+        {
+          "owner": "Lourdu Livin",
+          "task": "Send updated DNS records including maintenance portal CNAME to TSL",
+          "due": "ASAP"
+        },
+        {
+          "owner": "TSL IT",
+          "task": "Apply DNS records and verify portal indexing",
+          "due": "After receiving records"
+        }
+      ],
+      "risks": [
+        "Portals (client, vendor, maintenance) are not yet live as fmglobal.app is not indexing pending DNS changes \u2014 risk to June 1 go-live readiness."
+      ],
+      "open_items": [
+        "TSL applying DNS CNAME records; certificate generation record; portal indexing verification."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "595b8b03-5450-4185-8dbb-0954ae129ea9",
+      "title": "UK Lift &amp; Escalator \u2014 Phase 2 UAT Demo",
+      "crm_account_name": "UK Lift and Escalator",
+      "project_slug": "uk-lift-phase-2-pilot",
+      "timestamp_ist": "2026-05-06T18:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "V Shasvat Vijay (Facilio)",
+        "Abarna R (Facilio)",
+        "Deepak Simon (Facilio)",
+        "Ian Smithyman (Facilio)",
+        "Shaun Ward (UK Lift)",
+        "Nick Hay (UK Lift)",
+        "Simon Hay (UK Lift)",
+        "Les Bloor (UK Lift)"
+      ],
+      "summary": "Phase 2 UAT demo for UK Lift & Escalator covering contract, quotation, and vendor modules. Multiple feature gaps were surfaced \u2014 notably profitability reporting and a pending-payment contract status \u2014 which are operationally critical for UK Lift and require roadmap commitment to maintain UAT momentum.",
+      "key_points": [
+        "Quotation form enhanced to include optional labour and material cost breakdowns.",
+        "Rate card and contract module refinement: auto-renewal, fixed terms, billing cycles, contract end notifications.",
+        "Reactive and PPM contract workflows demonstrated: WO generation, appointment dispatch, cost calculation, invoicing.",
+        "Vendor onboarding process reviewed: rate submission, safety documentation, service category selection.",
+        "'Pending payment' status needed for new contracts to prevent work commencing before payment confirmation.",
+        "Automated assignment of inspection checklists within PPM contracts flagged as a key requirement.",
+        "Profitability and margin reporting at engineer, job, and contract levels required."
+      ],
+      "decisions": [
+        "Commitment to address all UAT feedback and incorporate requested features.",
+        "Pending payment contract status to be developed.",
+        "Profitability reporting to be added to roadmap."
+      ],
+      "action_items": [
+        {
+          "owner": "Shasvat / Abarna / Deepak",
+          "task": "Develop 'pending payment' contract status to block WO commencement pre-payment",
+          "due": "TBD"
+        },
+        {
+          "owner": "Shasvat / Abarna",
+          "task": "Implement automated inspection checklist assignment within PPM contracts",
+          "due": "TBD"
+        },
+        {
+          "owner": "Facilio Product",
+          "task": "Add profitability/margin reporting at engineer, job, and contract levels",
+          "due": "Roadmap"
+        }
+      ],
+      "risks": [
+        "Profitability reporting and pending-payment contract status are both absent and are operational requirements for UK Lift. Risk to UAT sign-off if these are not committed to with a timeline."
+      ],
+      "open_items": [
+        "Product roadmap delivery for profitability reporting; pending payment status development; automated PPM checklist assignment."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "dfe5a2b1-5b54-41a6-9e7f-493222673b82",
+      "title": "SAIC \u2014 Demo 2 Reactive Workflow",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-06T20:35:40+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Adhithyan G (Facilio)",
+        "Brad Johns (SAIC)",
+        "Donn Shin (SAIC)"
+      ],
+      "summary": "Second demo for SAIC focused on the reactive service request and work order workflow. The session went well with all key features demonstrated. UAT planning was initiated and a vanity URL for SSO was requested. No issues or risks raised.",
+      "key_points": [
+        "Service request creation, escalation, and automatic work order generation demonstrated.",
+        "WO can be linked to a specific space or specific asset \u2014 reporting implications discussed.",
+        "Cancellation flow for service requests: decline, mark as duplicate, internal tracking of related WOs.",
+        "WO lifecycle: submitted \u2192 team assigned \u2192 assigned to start \u2192 work in progress \u2192 resolved \u2192 closed.",
+        "SLA timers pause when WO is paused; response and resolution SLAs tracked.",
+        "Mobile app functionality for technicians confirmed.",
+        "Service request auto-closes when all associated child WOs are closed.",
+        "UAT planning discussed; vanity URL for easier SSO access requested."
+      ],
+      "decisions": [
+        "UAT planning to proceed following demo.",
+        "Vanity URL for SSO to be set up.",
+        "Future enhancement: mandatory resolution comments and images on WO (auto-reflecting in service request)."
+      ],
+      "action_items": [
+        {
+          "owner": "Adhithyan G",
+          "task": "Set up vanity URL for SAIC SSO access",
+          "due": "TBD"
+        },
+        {
+          "owner": "Adhithyan G",
+          "task": "Share UAT plan with SAIC team",
+          "due": "TBD"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "Vanity URL setup; UAT plan agreement."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    }
+  ]
+}

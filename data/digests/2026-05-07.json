@@ -1,0 +1,496 @@
+{
+  "date": "2026-05-07",
+  "generated_at": "2026-05-07T07:00:00+05:30",
+  "total_calls": 9,
+  "calls": [
+    {
+      "call_id": "11e9344b-15e7-4cf1-abdb-8bbef01cc838",
+      "title": "Facilio x Scouts NSW \u2014 Weekly Cadence",
+      "crm_account_name": "Scouts NSW",
+      "project_slug": "scouts-nsw-phase-1",
+      "timestamp_ist": "2026-05-07T10:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Hasina (Facilio)",
+        "Deepak Simon (Facilio)",
+        "Nicholas Sheehan (Scouts NSW)",
+        "Sam Dababneh (Scouts NSW)"
+      ],
+      "summary": "Weekly integration cadence with Scouts NSW focused on Facilio-to-Zero vendor data synchronization. ABN confirmed as unique identifier; bank details to stay in Zero. Two-way billing sync and invoice transmission flagged as needing additional development investigation.",
+      "key_points": [
+        "Vendor creation in Facilio will sync to Zero; ABN to be used as unique identifier for vendors.",
+        "Supplier bank account details will remain solely in Zero \u2014 not synced from Facilio.",
+        "Facilio must sync supplier contact details (business name, contact, address, ABN) to Zero.",
+        "Two-way sync for billing status and invoice/certificate transmission requires further investigation and potential additional development.",
+        "Pending integration items to be confirmed with updates provided by the following day."
+      ],
+      "decisions": [
+        "ABN will be the unique key for vendor deduplication during sync.",
+        "Bank account data stays in Zero; finance team manages it directly.",
+        "Team to investigate feasibility of two-way billing sync and document findings before next cadence."
+      ],
+      "action_items": [
+        {
+          "owner": "Deepak Simon / Hasina",
+          "task": "Provide clarification and updates on pending integration items",
+          "due": "Next day"
+        },
+        {
+          "owner": "Facilio Integration Team",
+          "task": "Investigate and scope two-way billing status sync and invoice/certificate transmission to Zero",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Two-way billing sync and invoice/certificate transmission may require additional development effort \u2014 scope and timeline TBD."
+      ],
+      "open_items": [
+        "Feasibility confirmation of two-way billing sync; Zero-side API readiness for vendor pull."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "d28d4882-a2d0-4625-829e-8d6f733f1789",
+      "title": "ENEC \u2014 KPI Reporting & SLA Breach Configuration",
+      "crm_account_name": "ENEC",
+      "project_slug": "enec-cafm",
+      "timestamp_ist": "2026-05-07T10:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Paurnika Ramesh (Facilio)",
+        "Riyavarshini Arunprasad (Facilio)",
+        "Ashwin Bhat Fugro (Facilio)",
+        "Syed Qutubuddin (Facilio)"
+      ],
+      "summary": "Internal configuration session for ENEC's KPI reporting and SLA breach setup. Key decisions included switching to workflow-based failure logging and confirming a two-level SLA exemption approval process. Failure day calculation anchored to 'make good' due date.",
+      "key_points": [
+        "KPI reporting will be contract-specific (not vendor-specific) with detailed service stream mapping.",
+        "Shift from fixed scheduler to workflow-based approach for more accurate SLA failure logging.",
+        "Two-level approval process required for SLA exemptions (SME + line manager).",
+        "Failure day calculation to be based on 'make good' due date.",
+        "Default to 100% pass when no work orders exist for a contract in a period.",
+        "KPI report generation frequency to be defined separately for PPM vs. corrective/reactive work orders."
+      ],
+      "decisions": [
+        "Workflow-based failure logging replaces fixed schedulers for more accurate tracking.",
+        "Two-level SLA exemption approval process confirmed (SME + line manager).",
+        "Failure percentage calculation anchored to 'make good' due date."
+      ],
+      "action_items": [
+        {
+          "owner": "Paurnika Ramesh / Team",
+          "task": "Validate existing SLA configurations and business hour logic for ENEC",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Define KPI report generation frequency for PPM vs. corrective/reactive work orders",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Accurate data mapping and understanding ENEC-specific business logic are critical; misconfigurations could affect KPI accuracy."
+      ],
+      "open_items": [
+        "SLA business hour logic validation; confirmation of report frequency for different WO types."
+      ],
+      "health_signal": "green",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "6e294ed1-3575-47fc-b6d9-244748b0a63b",
+      "title": "Good Hands Admin Training \u2014 Day 2",
+      "crm_account_name": "Good Hands Technical Services",
+      "project_slug": "good-hands-technical-services",
+      "timestamp_ist": "2026-05-07T12:01:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Paurnika Ramesh (Facilio)",
+        "Niviya T (Facilio)",
+        "Prashanth (Good Hands)"
+      ],
+      "summary": "Day 2 of admin training for Good Hands covered data import, portal configuration, module customization, notification setup, and SLA configuration. Client was engaged; no blockers raised.",
+      "key_points": [
+        "Data import for assets, spaces, buildings, sites, tenants, and vendors demonstrated via Data Loader.",
+        "Bulk job plan import via legacy URL covered; updates not supported, deletion requires unpublishing and dependency clearance.",
+        "Tenant and vendor portals configured with user roles, permissions, and customized tab layouts.",
+        "Module customization: custom fields, field visibility/editability rules, and custom button configuration.",
+        "Email/in-app notifications setup, PDF template configuration, and SLA policy creation demonstrated.",
+        "PPM and inventory bulk import via VBA sheets with API key authentication covered."
+      ],
+      "decisions": [
+        "Job plan updates not supported in bulk import \u2014 manual edits required post-import.",
+        "SLA policies will be configured based on work order priority and category."
+      ],
+      "action_items": [
+        {
+          "owner": "Prashanth (Good Hands)",
+          "task": "Practice configuring portals, SLA policies, and custom fields in the test environment",
+          "due": "TBD"
+        },
+        {
+          "owner": "Niviya T",
+          "task": "Provide VBA sheets for PPM and inventory bulk import",
+          "due": "TBD"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "Client to practice configurations and raise any gaps before next session."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "e8f5974c-ab97-45e1-9831-b6041b39befb",
+      "title": "CIT \u2014 Daily CAFM Workshop: Resolving Issues",
+      "crm_account_name": "CIT",
+      "project_slug": "cit-diriya",
+      "timestamp_ist": "2026-05-07T12:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Dinesh R (Facilio)",
+        "Ananth R (Facilio)",
+        "Magesh (Facilio)",
+        "Nitish Soondur",
+        "Mohammed Nebab",
+        "Mohammad Bashaaib",
+        "Vinay Mohan",
+        "Gladson Aby",
+        "Tahir Abbas",
+        "Chandan Dabeedeen",
+        "Helder Branco",
+        "Ravish Betchoo (CIT/SCMS)"
+      ],
+      "summary": "Daily CIT workshop focused on resolving copilot reporting inaccuracies, inventory management gaps, and SLA configuration for scrubber tickets. Multiple action items committed to Dinesh R for same-day resolution. Mobile app description column feature ETA is May 15th.",
+      "key_points": [
+        "Facility copilot returning incorrect work order counts for 'corrective' and 'work in progress' statuses \u2014 prompt and data-type investigation needed.",
+        "Workaround developed: inventory requests can be created in 'closed' status for easier tracking.",
+        "New SLA policy to be created for 'scrubber' tickets with ~24-hour resolution time.",
+        "19 scrubber tickets missing resolved-time entries due to workflow automation gaps \u2014 Dinesh to investigate.",
+        "Mobile app description column feature ETA: May 15th; Dinesh to check if earlier release possible.",
+        "Detailed walkthrough of manual inventory upload process (item creation, stocking, bin management)."
+      ],
+      "decisions": [
+        "New 24-hour SLA policy to be created specifically for scrubber tickets.",
+        "Inventory requests workaround (closed status) approved for immediate use.",
+        "Dinesh to investigate copilot prompt accuracy and data type issues today."
+      ],
+      "action_items": [
+        {
+          "owner": "Dinesh R",
+          "task": "Investigate copilot prompt and data type for corrective/WIP count accuracy",
+          "due": "Today"
+        },
+        {
+          "owner": "Dinesh R",
+          "task": "Update 19 scrubber tickets with missing resolved times",
+          "due": "Today"
+        },
+        {
+          "owner": "Dinesh R",
+          "task": "Create new SLA policy for scrubber tickets (24h resolution)",
+          "due": "Today"
+        },
+        {
+          "owner": "Dinesh R",
+          "task": "Check feasibility of early release of mobile app description column feature",
+          "due": "Today"
+        }
+      ],
+      "risks": [
+        "Copilot reporting inaccuracies may undermine client confidence in AI features; 19 unresolved scrubber ticket time-log gaps risk SLA reporting integrity."
+      ],
+      "open_items": [
+        "Copilot prompt fix; scrubber SLA creation; mobile app feature release timeline confirmation."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "64728587-ea21-4a42-95af-025a4aabc243",
+      "title": "Edarat Group \u2014 Project Kick-Off Meeting",
+      "crm_account_name": "Edarat Group",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-07T12:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Kesava Krishnan R (Facilio)",
+        "Ashwin (Facilio)",
+        "Arun Kumar V (Facilio)",
+        "Jeevaregai S (Facilio)",
+        "Dixit Pathak (Facilio)",
+        "Mohamed Siddik",
+        "Haitham Hussein",
+        "Aljazi Alsubaie",
+        "Darrel Mendiola",
+        "Muhammad Nawaz",
+        "Bilal Hasan",
+        "Bilal Al-Masri",
+        "Muhammad Fiaz",
+        "Adel Rizk",
+        "Tarek Fawaz",
+        "Akram Abdalla (Edarat/MIS)"
+      ],
+      "summary": "Successful kick-off meeting for the Edarat Group implementation. Go-live targeted for August 19th across 4 data centers. Client expressed interest in phasing delivery to achieve an earlier go-live for critical modules \u2014 Facilio to provide a revised proposal.",
+      "key_points": [
+        "Facilio's 12-step implementation approach presented: data collection \u2192 BRD \u2192 configuration \u2192 testing \u2192 training \u2192 go-live.",
+        "Scope covers 4 data centers with a potential 5th to be added later.",
+        "Modules: portfolio management, helpdesk, work order management, PPM, inspection, vendor management.",
+        "Tentative go-live date: August 19th with a 3-month implementation timeline.",
+        "Client requested phased implementation \u2014 prioritizing critical modules for an earlier go-live.",
+        "Key risks identified: stakeholder unavailability, delays in approvals, resistance to workflow changes.",
+        "Training materials and session recordings to be provided throughout."
+      ],
+      "decisions": [
+        "Facilio to explore phased approach and provide a revised proposal to the client.",
+        "Communication cadences and governance structure agreed upon.",
+        "Training recordings will be available for future reference."
+      ],
+      "action_items": [
+        {
+          "owner": "Facilio Team",
+          "task": "Prepare revised phased implementation proposal prioritizing critical modules",
+          "due": "TBD"
+        },
+        {
+          "owner": "Both Teams",
+          "task": "Establish regular communication cadences per project governance structure",
+          "due": "Immediately"
+        },
+        {
+          "owner": "Facilio Team",
+          "task": "Share training materials and guidelines with client team",
+          "due": "Ongoing"
+        }
+      ],
+      "risks": [
+        "Stakeholder unavailability, approval delays, and change management resistance flagged as primary implementation risks."
+      ],
+      "open_items": [
+        "Revised phased proposal from Facilio; client stakeholder availability for BRD sessions."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "41572f5f-b00c-4e4d-94cb-8476e85f34c8",
+      "title": "ENEC \u2014 QR Feedback UAT Handover",
+      "crm_account_name": "ENEC",
+      "project_slug": "enec-qr-to-survey",
+      "timestamp_ist": "2026-05-07T14:03:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Vasanth Maran (Facilio)",
+        "Paurnika Ramesh (Facilio)",
+        "Syed Qutubuddin (Facilio)",
+        "Muhammad Asim Rashid (Facilio)",
+        "Majed Ebrahim AlShemeili (ENEC)"
+      ],
+      "summary": "ENEC QR Feedback UAT handover session identified a critical gap: the reporting dashboard does not yet exist, blocking UAT completion. Additional open items include existing QR code integration, low-rating notifications, and duplicate submission prevention. A follow-up meeting will be scheduled once the dashboard is ready.",
+      "key_points": [
+        "Survey templates with star/emoji question types created and associated with services; dynamic QR codes generated.",
+        "Workaround for protected areas (no mobile): survey links emailed, accessible when internet is available.",
+        "Integration of existing QR codes with new system requires further investigation with third-party provider.",
+        "Critical gap: reporting dashboard is absent \u2014 essential for UAT completion and management review.",
+        "Immediate notifications for low ratings (email/mobile) are a key requirement still to be addressed.",
+        "Preventing duplicate survey submissions is a requirement not yet implemented."
+      ],
+      "decisions": [
+        "Follow-up meeting to be scheduled to test the reporting dashboard once developed.",
+        "Email-based workaround approved for protected areas with no mobile access."
+      ],
+      "action_items": [
+        {
+          "owner": "Vasanth Maran / Team",
+          "task": "Develop and present the reporting dashboard for UAT testing",
+          "due": "Before follow-up meeting"
+        },
+        {
+          "owner": "Team",
+          "task": "Investigate integration of existing QR codes with third-party provider",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Implement immediate notifications for low survey ratings",
+          "due": "TBD"
+        },
+        {
+          "owner": "Team",
+          "task": "Implement duplicate submission prevention",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Absence of reporting dashboard blocks UAT sign-off; existing QR code integration is an open requirement; duplicate submission gap unresolved."
+      ],
+      "open_items": [
+        "Reporting dashboard build and delivery; third-party QR provider discussion; duplicate submission solution."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "140e34f3-664e-437b-ade1-c781615e784c",
+      "title": "CIT \u2014 Dashboard Configuration Training",
+      "crm_account_name": "CIT",
+      "project_slug": "cit-diriya",
+      "timestamp_ist": "2026-05-07T14:56:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Yaaminy SK (Facilio)",
+        "Mohammad Bashaaib (CIT)"
+      ],
+      "summary": "Dashboard configuration training session for CIT's Mohammad Bashaaib. Covered creating cards, bar charts, global filters, and timeline settings. Client encouraged to practise independently in the test environment.",
+      "key_points": [
+        "Walkthrough of creating dashboard cards (Total Work Order Count) and bar charts (open vs. closed WOs).",
+        "Global filters and timeline settings demonstrated as essential for accurate widget data.",
+        "Bar charts created in Analytics module and embedded into dashboards.",
+        "Preventive Maintenance work orders can be filtered by type and site in chart configuration.",
+        "Client encouraged to create and delete test dashboards/widgets for hands-on practice."
+      ],
+      "decisions": [
+        "Client (Bashaaib) to practice creating test dashboards to build self-sufficiency."
+      ],
+      "action_items": [
+        {
+          "owner": "Mohammad Bashaaib (CIT)",
+          "task": "Create practice dashboards and widgets in the test environment",
+          "due": "Self-paced"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "None."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "810e660a-9f40-463d-bdf6-0537ce24a049",
+      "title": "Woodman's \u2014 Slow Leak Detection Touchbase",
+      "crm_account_name": "Woodman's Food Markets",
+      "project_slug": "woodmans-market",
+      "timestamp_ist": "2026-05-07T19:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Deepak Simon (Facilio)",
+        "William Stordeur (Facilio)",
+        "Basant (Facilio)",
+        "Selvam (Facilio)",
+        "Jordan LaBorde (Woodman's)",
+        "Josh Branch (Woodman's)",
+        "John H (Facilio)"
+      ],
+      "summary": "Leak detection touchbase confirmed agent installation and data mapping for the first 2 Woodman's stores. Remaining 10 stores expected in 2\u20133 days. A separate discovery phase is required for Microthermal controllers across 8 sites, introducing schedule risk for full rollout.",
+      "key_points": [
+        "Agents installed and data points discovered for first 2 stores; key parameters (liquid level, temperature, valve positions) mapped.",
+        "Multi-case controllers handled by mapping points to first available case.",
+        "Store 37 has assets (coolers, meat prep, dairy) with no discovered points \u2014 list to be shared for verification.",
+        "Walk-in coolers with single sensors will only yield data from one point.",
+        "Two racks in Janesville (Lmt-J, Mt-K) on Microthermal controllers \u2014 separate discovery phase needed for 8 sites.",
+        "Mapping for remaining 10 stores of 12-store rollout expected to conclude in 2\u20133 days."
+      ],
+      "decisions": [
+        "Microthermal controller discovery will be treated as a separate phase for 8 sites.",
+        "First 2 stores serve as pilot configuration; remaining 10 stores to follow.",
+        "Asset list for store 37 (no-point assets) to be shared for client verification."
+      ],
+      "action_items": [
+        {
+          "owner": "Facilio Team",
+          "task": "Share list of store 37 assets with no discovered data points for Woodman's verification",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Facilio Team",
+          "task": "Complete mapping for remaining 10 stores of 12-store rollout",
+          "due": "2\u20133 days"
+        },
+        {
+          "owner": "Facilio Team",
+          "task": "Plan and initiate separate Microthermal controller discovery phase for 8 sites",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Microthermal controllers on 8 sites require a separate discovery phase; store 37 has unmapped assets pending verification."
+      ],
+      "open_items": [
+        "Woodman's verification of store 37 asset list; Microthermal discovery phase planning."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "864f42a7-381e-4e0d-bff1-ff3ab81adb2d",
+      "title": "Woodman's \u2014 System Check",
+      "crm_account_name": "Woodman's Food Markets",
+      "project_slug": "woodmans-market",
+      "timestamp_ist": "2026-05-07T19:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Deepak Simon (Facilio)",
+        "William Stordeur (Facilio)",
+        "Basant (Facilio)",
+        "Josh Branch (Woodman's)",
+        "Dan Gregersen (Woodman's)"
+      ],
+      "summary": "Woodman's system check resolved work order assignment and event logging issues. Corporate Plaza is now set up. Site 47 asset data import remains blocked pending receipt of a signed amendment \u2014 Deepak Simon to follow up urgently.",
+      "key_points": [
+        "Work order contractor assignment issue resolved: additional assignee added and work order restarted to transfer responsibility.",
+        "Refrigerant leak event corrected: open circuit event created and incorrect leak event deleted.",
+        "Corporate Plaza buildings and spaces (floors and basement) set up successfully.",
+        "Site 47 asset data (refrigerant full charge info) needs to be updated using spreadsheet from Store 45.",
+        "Amendment for Site 47 sent for signature \u2014 signed copy required before asset data import can proceed."
+      ],
+      "decisions": [
+        "Reassigning work orders via 'add additional assignee and restart' method confirmed as the correct approach.",
+        "Asset data import for Site 47 to wait until signed amendment is received."
+      ],
+      "action_items": [
+        {
+          "owner": "Deepak Simon / William",
+          "task": "Follow up to obtain signed amendment for Site 47",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Facilio Team",
+          "task": "Update Site 47 refrigerant full charge data using Store 45 spreadsheet once amendment signed",
+          "due": "After amendment signed"
+        }
+      ],
+      "risks": [
+        "Amendment signature delay blocks Site 47 data import and full operational readiness."
+      ],
+      "open_items": [
+        "Signed amendment from Woodman's; Store 45 spreadsheet for Site 47 refrigerant data."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    }
+  ]
+}
