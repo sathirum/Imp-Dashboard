@@ -1,0 +1,64 @@
+{
+  "date": "2026-05-10",
+  "generated_at": "2026-05-11T07:00:00+05:30",
+  "total_calls": 1,
+  "calls": [
+    {
+      "call_id": "4df72227-0707-48df-99cb-b6f2265e46dd",
+      "title": "Daily Facilio CAFM Workshops | Resolving Issues",
+      "crm_account_name": "CIT",
+      "project_slug": "cit-diriya",
+      "timestamp_ist": "2026-05-10T12:30:00+05:30",
+      "duration_minutes": 5,
+      "participants": [
+        "Sathya (Facilio)",
+        "Dinesh R (Facilio)",
+        "Ananth R (Facilio)",
+        "Magesh (Facilio)",
+        "Nitish Soondur (CIT)",
+        "Vinay Mohan (CIT)",
+        "Mohammed Nebab (CIT)",
+        "Mohammad Bashaaib (CIT)",
+        "Tahir Abbas (CIT)",
+        "Gladson Aby (CIT)",
+        "Chandan Dabeedeen (SCMS)",
+        "Helder Branco (CIT)",
+        "Ravish Betchoo (CIT)"
+      ],
+      "summary": "The daily CAFM workshop on 10 May (Sunday) had CIT participants joined but the Facilio team was entirely absent due to the Sunday holiday coinciding with a Tamil Nadu public holiday. Nitish Soondur confirmed the situation with Ananth via WhatsApp and the session was deferred to Monday 11 May. No urgent issues were raised by the customer.",
+      "key_points": [
+        "CIT team (Nitish Soondur, Vinay Mohan) joined the daily CAFM workshop on Sunday as scheduled.",
+        "No Facilio team members were available \u2014 confirmed by Ananth via WhatsApp: 'nobody is available from Facilio today, including him.'",
+        "Participants noted it was both a Sunday and a Tamil Nadu public holiday (Chief Minister appointment ceremony).",
+        "No urgent items were raised by the CIT side; Nitish offered Ananth could assist from Dubai if something urgent came up.",
+        "Session concluded in ~5 minutes with agreement to reconvene Monday morning."
+      ],
+      "decisions": [
+        "CAFM workshop deferred to Monday 11 May 2026.",
+        "CIT to reach out directly if any urgent issue arises before Monday."
+      ],
+      "action_items": [
+        {
+          "owner": "Facilio Team / Dinesh R",
+          "task": "Resume daily CAFM workshop on Monday 11 May as scheduled",
+          "due": "11 May 2026"
+        },
+        {
+          "owner": "Sathya",
+          "task": "Confirm Facilio attendance for Monday session with CIT",
+          "due": "11 May 2026"
+        }
+      ],
+      "risks": [
+        "Facilio team absence on a scheduled customer-facing workshop day could set a precedent. Continuity of daily workshops depends on Facilio attendance; any further misses may erode CIT confidence."
+      ],
+      "open_items": [
+        "Facilio team confirms availability for Monday session; CIT to flag any urgent items before then."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": true
+    }
+  ]
+}
