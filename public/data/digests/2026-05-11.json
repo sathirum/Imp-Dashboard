@@ -1,0 +1,808 @@
+{
+  "date": "2026-05-11",
+  "generated_at": "2026-05-11T07:00:00+05:30",
+  "total_calls": 15,
+  "calls": [
+    {
+      "call_id": "ea63844a-5b77-468d-a4ea-64dae63a3609",
+      "title": "Torrens University Demo 1 (Session 1)",
+      "crm_account_name": "Torrens University",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-11T08:26:46+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ranjan TSB (Facilio)",
+        "Pranav KSK (Facilio)",
+        "John Dean",
+        "Lexie Beric"
+      ],
+      "summary": "First demo session for Torrens University covering portfolio hierarchy, portal structure, and the service request to work order workflow. Session focused on configuring the service request form and clarifying attachment and vendor completion behaviour. Asset/template data finalisation is the remaining open item.",
+      "key_points": [
+        "Demonstrated portfolio hierarchy and user portals (maintenance, staff, vendor).",
+        "Category-based filtering for problem types to simplify service request form \u2014 building and floor mandatory, space optional.",
+        "Service request to work order conversion workflow shown, including internal vs external provider options.",
+        "Force complete option for non-portal vendors and status sync between portals highlighted.",
+        "Data finalisation for asset parts and PDF-based inspection/induction templates ongoing, expected within two days."
+      ],
+      "decisions": [
+        "Building and floor fields will be mandatory in the service request form; space selection optional.",
+        "Attachments from service requests must be added independently to work orders \u2014 no automatic transfer."
+      ],
+      "action_items": [
+        {
+          "owner": "Pranav / Ranjan",
+          "task": "Finalise asset parts data and PDF-based inspection/induction templates",
+          "due": "Within 2 days"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "Asset parts and PDF template data finalisation pending."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "abc816cd-9e39-4f81-bae3-57c83a4385f9",
+      "title": "Torrens University Demo 1 (Session 2)",
+      "crm_account_name": "Torrens University",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-11T08:59:19+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ranjan TSB (Facilio)",
+        "Pranav KSK (Facilio)",
+        "John Dean",
+        "Lexie Beric"
+      ],
+      "summary": "Second demo session for Torrens University focusing on external vendor workflows (RFQ, NTE, permits), asset management hierarchy, and email template customisation. All discussions were constructive with clear configuration decisions made.",
+      "key_points": [
+        "External vendor workflow covered: direct assignment, RFQ processes, permit approvals, NTE ($800 cap with admin-approved increase).",
+        "Vendor notifications, work order rejection/reassignment, and service report/invoice handling detailed.",
+        "Asset management: naming conventions and hierarchical filtering by building, floor, space.",
+        "Customisable email templates for vendors without portal access discussed.",
+        "Floor plan integration for location visualisation introduced."
+      ],
+      "decisions": [
+        "NTE values capped at $800 \u2014 increases require admin approval with reasoning.",
+        "Vendors must obtain permit approvals before starting work.",
+        "Work order priority auto-fill based on problem type to be implemented."
+      ],
+      "action_items": [
+        {
+          "owner": "Pranav / Ranjan",
+          "task": "Configure customisable email templates for non-portal vendors",
+          "due": "TBD"
+        },
+        {
+          "owner": "Pranav / Ranjan",
+          "task": "Implement auto-fill priority based on problem type for work orders",
+          "due": "TBD"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "None."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "f1fb768c-ffc4-4fb8-a240-95b48c5dbdde",
+      "title": "AlShalfa \u2014 Requirement Session 2",
+      "crm_account_name": "AlShalfa",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-11T11:33:43+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Mithun Narayanan (Facilio)",
+        "Hadi Ali NWC_Admin_Shalfa",
+        "Mohammed Sarwar Shareef"
+      ],
+      "summary": "Requirement session for AlShalfa focused on work order closure workflow redesign and scalability concerns around client verification. Key open risks are KPI formula accuracy and limitations of Arabic language support on system-level fields.",
+      "key_points": [
+        "Work order closure and client evaluation workflow refined \u2014 resolved WOs to be assigned directly to client users based on building association, bypassing Shelfa engineer review step.",
+        "Multiple client entities to be created, each linked to specific building groups, to manage volume and prevent data overlap.",
+        "Arabic language support confirmed \u2014 with limitations: system statuses and core configurations cannot be translated.",
+        "KPI formulas flagged for re-verification to ensure correct results.",
+        "Ministry/school numbers to be displayed on work orders and building details.",
+        "Inventory module: direct purchase requests not possible; reservation and direct addition to work orders are supported.",
+        "Bulk approval of multiple work orders by clients to be implemented (limit 50 at a time)."
+      ],
+      "decisions": [
+        "Resolved WOs assigned directly to client by building association \u2014 no Shelfa engineer intermediary.",
+        "Multiple client entities to be created per building group for scalability."
+      ],
+      "action_items": [
+        {
+          "owner": "Mithun",
+          "task": "Re-verify KPI formulas for accuracy",
+          "due": "TBD"
+        },
+        {
+          "owner": "Mithun",
+          "task": "Implement ministry/school number display on WOs and building details",
+          "due": "TBD"
+        },
+        {
+          "owner": "Mithun",
+          "task": "Configure bulk client approval (max 50 WOs at a time)",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "KPI formula accuracy unverified; Arabic language limitations on system statuses may affect client acceptance."
+      ],
+      "open_items": [
+        "KPI formula re-verification pending; client entity structure to be finalised."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "18c54814-c052-4d61-be10-254c651f55ba",
+      "title": "Daily Facilio CAFM Workshops | Resolving Issues \u2014 CIT",
+      "crm_account_name": "CIT",
+      "project_slug": "cit-diriya",
+      "timestamp_ist": "2026-05-11T12:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Dinesh R (Facilio)",
+        "Ananth R (Facilio)",
+        "Magesh V (Facilio)",
+        "Nitish Soondur (CIT)",
+        "Mohammed Nebab (CIT)",
+        "Mohammad Bashaaib (CIT)",
+        "Vinay Mohan (CIT)",
+        "Gladson Aby (CIT)",
+        "Tahir Abbas (CIT)",
+        "Chandan Dabeedeen (SCMS)",
+        "Helder Branco (CIT)",
+        "Ravish Betchoo (CIT)"
+      ],
+      "summary": "Daily CAFM issue resolution workshop for CIT attended by Sathya and Dinesh R along with a large CIT team. Clari transcript not available; session was routine live troubleshooting of CAFM configuration items.",
+      "key_points": [
+        "Daily workshop session to resolve outstanding CAFM configuration and data issues for CIT.",
+        "Detailed Clari summary not available \u2014 session focused on live issue resolution."
+      ],
+      "decisions": [
+        "Issues discussed and resolved in session (details not captured in Clari)."
+      ],
+      "action_items": [
+        {
+          "owner": "Dinesh R / Ananth R",
+          "task": "Follow up on any open items from session",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "None identified in available data."
+      ],
+      "open_items": [
+        "Ongoing daily cadence to track resolution progress."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "397e15b6-e597-49b6-938b-f5d56f933357",
+      "title": "GECO \u2014 Markup Calculation &amp; Quote PDF",
+      "crm_account_name": "GECO",
+      "project_slug": "geco-phase-2",
+      "timestamp_ist": "2026-05-11T13:38:31+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Arun Kumar V (Facilio)",
+        "Jeevaregai S (Facilio)",
+        "Ahmad Ali Mansour (GECO)"
+      ],
+      "summary": "GECO quotation workflow session resolved markup logic but surfaced unresolved duration and tax calculation bugs with the product team. Phase 2 is near completion; check-in/check-out feature committed for this week.",
+      "key_points": [
+        "Markup calculation logic corrected from average-based to line-item-specific for accurate client pricing.",
+        "PDF builder customisation options for quotations reviewed \u2014 selective display of markup tables and categories supported.",
+        "Labor duration and tax calculation discrepancies flagged as pending resolution with the product team.",
+        "Work order status display needs to differentiate between internal and client-facing views.",
+        "Technicians to see only selling prices (not cost prices) on mobile.",
+        "Phase 2 development nearing completion with testing and procurement tasks ongoing.",
+        "Check-in/check-out feature for technicians on mobile expected this week."
+      ],
+      "decisions": [
+        "Markup logic changed to line-item calculation.",
+        "Technicians restricted to selling price view on mobile."
+      ],
+      "action_items": [
+        {
+          "owner": "Arun Kumar V / Jeevaregai",
+          "task": "Chase product team on duration and tax calculation fixes",
+          "due": "Urgent"
+        },
+        {
+          "owner": "Arun Kumar V",
+          "task": "Schedule Phase 2 review meeting with GECO",
+          "due": "Soon"
+        },
+        {
+          "owner": "Arun Kumar V",
+          "task": "Confirm check-in/check-out mobile feature delivery this week",
+          "due": "This week"
+        }
+      ],
+      "risks": [
+        "Duration and tax calculation bugs unresolved with product team; risk to accurate client invoicing."
+      ],
+      "open_items": [
+        "Product team resolution of duration and tax calculation bugs; check-in/check-out release."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "30070169-592b-4e07-bf6e-b2eccda74a26",
+      "title": "ENEC \u2014 CAFM PDA Quick Alignment",
+      "crm_account_name": "Emirate Nuclear Energy company",
+      "project_slug": "enec-cafm",
+      "timestamp_ist": "2026-05-11T14:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat Fugro (Facilio)",
+        "Ananth R (Facilio)",
+        "Al Jack (Facilio)",
+        "Omer (Facilio)",
+        "Samir Cardy (ENEC)",
+        "Syed Qutubuddin (ENEC)",
+        "Muhammad Asim Rashid (ENEC Program)",
+        "Muhammad Baig (ENEC)",
+        "Majed AlShemeili (ENEC)",
+        "Rashed Alzaabi (ENEC)",
+        "Adrian Nutter (ENEC)",
+        "Khaled Al Falasi (ENEC)",
+        "Mohamed Al Farsi (ENEC)",
+        "Magesh V (Facilio)"
+      ],
+      "summary": "Alignment call for ENEC Baraka PDA deployment revealed a multi-week blocker: MDM compliance requires vendors to be in ENEC's Active Directory before PDAs can be provisioned. Interim web-on-mobile solution does not support full field operations. IT confirmation on the AD process is the critical next step.",
+      "key_points": [
+        "CAFM system is deployed but PDA devices are required for full functionality (ticket management, SLA tracking).",
+        "MDM compliance required before unmanaged PDAs can access the system \u2014 cybersecurity concern around data leakage, camera, upload/download.",
+        "MDM requires vendor integration into ENEC's Active Directory \u2014 IT confirmation needed, process may take several weeks.",
+        "Interim solution: web portal on mobile devices suggested, though not mobile-optimised.",
+        "Zone-specific restrictions (Green Zone, PA area) clarified \u2014 most restrictions stem from OT, not cybersecurity directly.",
+        "Clear process for vendor onboarding and device security needed before deployment can proceed."
+      ],
+      "decisions": [
+        "MDM compliance is the preferred path forward for PDA deployment.",
+        "Web portal on mobile as interim solution while MDM process is initiated."
+      ],
+      "action_items": [
+        {
+          "owner": "Ashwin Bhat / Ananth",
+          "task": "Get IT confirmation on Active Directory vendor integration timeline",
+          "due": "Urgent"
+        },
+        {
+          "owner": "Ashwin Bhat",
+          "task": "Define vendor onboarding and device security process",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "MDM implementation may take several weeks; interim solution (web on mobile) is not field-optimised, impacting SLA tracking capability."
+      ],
+      "open_items": [
+        "ENEC IT confirmation on Active Directory vendor onboarding; MDM compliance setup."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "a813a605-7462-4506-ad94-62344f07bb8d",
+      "title": "[Facilio \u2014 Brookfield] Bi-Weekly Cadence",
+      "crm_account_name": "Brookfield Properties",
+      "project_slug": "brookfield-uk-additional-building",
+      "timestamp_ist": "2026-05-11T14:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Lourdu Livin A (Facilio)",
+        "Inbaraj B (Facilio)",
+        "Adam Stubley (Brookfield)",
+        "Mario Da Silva (Brookfield)"
+      ],
+      "summary": "Bi-weekly cadence call between Facilio (Sathya, Lourdu Livin, Inbaraj) and Brookfield Properties (Adam Stubley, Mario Da Silva). Clari summary not available; action items to be confirmed from meeting recording.",
+      "key_points": [
+        "Bi-weekly cadence call attended by Sathya with Brookfield Properties team.",
+        "Detailed Clari summary not available for this call."
+      ],
+      "decisions": [
+        "Details not captured in Clari."
+      ],
+      "action_items": [
+        {
+          "owner": "Lourdu Livin / Inbaraj",
+          "task": "Follow up on any action items from the bi-weekly cadence",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "None identified in available data."
+      ],
+      "open_items": [
+        "Review meeting notes/recording for detailed action items."
+      ],
+      "health_signal": null,
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "6fad26bd-16b6-466f-bc14-5170950f5a1e",
+      "title": "ENEC \u2014 Weekly Cadence Call",
+      "crm_account_name": "Emirate Nuclear Energy company",
+      "project_slug": "enec-cafm",
+      "timestamp_ist": "2026-05-11T15:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Kesava (Facilio)",
+        "Riyavarshini Arunprasad (Facilio)",
+        "Al Jack (Facilio)",
+        "Paurnika Ramesh (Facilio)",
+        "Muhammad Asim Rashid (ENEC Program)",
+        "Samir Cardy (ENEC)",
+        "Majed AlShemeili (ENEC)",
+        "Syed Qutubuddin (ENEC)",
+        "Rajeev Kulkarni (ENEC Program)",
+        "Khuram Khurshid (ENEC)",
+        "Adeel Riaz (ENEC Program)"
+      ],
+      "summary": "Weekly ENEC cadence call attended by Sathya, Kesava, Riyavarshini, and Paurnika on the Facilio side. Clari summary unavailable; the key context from the same day is the PDA/MDM deployment blocker flagged in the earlier alignment call.",
+      "key_points": [
+        "Weekly cadence between Facilio leadership and ENEC project team.",
+        "Detailed Clari summary not available for this call.",
+        "Context from same-day PDA alignment call: MDM/AD blocker for PDA deployment is the key open risk."
+      ],
+      "decisions": [
+        "Details not captured in Clari."
+      ],
+      "action_items": [
+        {
+          "owner": "Kesava / Riyavarshini",
+          "task": "Follow up on action items from ENEC weekly cadence",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "PDA deployment blocker (MDM/AD) discussed in earlier same-day call."
+      ],
+      "open_items": [
+        "ENEC IT MDM/AD process confirmation; PDA deployment planning."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "2a9690ea-88ab-411f-be9b-52791fc5f4b3",
+      "title": "Teyseer Implementation / Data Update",
+      "crm_account_name": "Teyseer",
+      "project_slug": "teyseer",
+      "timestamp_ist": "2026-05-11T15:57:50+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jeevaregai S (Facilio)",
+        "Dominico Laude",
+        "Roderick Serrano",
+        "Raju Maharjan"
+      ],
+      "summary": "Teyseer implementation is on track for June 4 go-live. Job plan imports are nearly finalised, module configuration is nearing completion, and UAT data targets are defined. PM route and asset association are the critical path items before PM execution can begin.",
+      "key_points": [
+        "Corrected job plans for Gipco and Gst sites imported; final comments from Roderick pending.",
+        "Missing tasks from Maximo data extractions to be edited and added post-upload.",
+        "Inspection template to be updated with hard services examples (HVAC, pumps).",
+        "PM routes and asset association confirmed as critical for upcoming PM execution.",
+        "Existing Maximo PM plans to be implemented in Facilio using the 'next date' field for PPM triggers.",
+        "Historical WO data up to April 30 targeted for UAT; May data to be ready for June 4 go-live.",
+        "Module configuration nearly complete \u2014 project on track.",
+        "User data upload deferred until UAT phase."
+      ],
+      "decisions": [
+        "Existing Maximo PM plans implemented in Facilio using 'next date' field.",
+        "Historical WO data target: up to April 30 for UAT; May data for go-live."
+      ],
+      "action_items": [
+        {
+          "owner": "Jeevaregai",
+          "task": "Finalise PM routes, asset association, vendor/client contracts, and tenant association",
+          "due": "Before UAT"
+        },
+        {
+          "owner": "Jeevaregai",
+          "task": "Update inspection template with HVAC and pump examples",
+          "due": "TBD"
+        },
+        {
+          "owner": "Roderick",
+          "task": "Provide final comments on Gipco/Gst job plans",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Incomplete Maximo data for job plans; PM routes and asset association must be finalised before PM execution."
+      ],
+      "open_items": [
+        "Roderick's final comments on job plans; PM route and asset association completion."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "333e87cc-787a-4ded-9790-3f698d0d1798",
+      "title": "Facilio &lt;&gt; Berkeley FM \u2014 AI &amp; Technician Location Tracking",
+      "crm_account_name": "Berkeley Services UAE L.L.C.",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-11T16:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Kesava (Facilio)",
+        "Ashwin (Facilio)",
+        "RKarthic (Facilio)",
+        "Sudharsan (Facilio)",
+        "Shivaraj (Facilio)",
+        "Amrithya (Facilio)",
+        "Anand Gothandam (Berkeley)",
+        "Enrico Menzel (Berkeley)",
+        "Udayakumar Elumalai (Berkeley)"
+      ],
+      "summary": "Berkeley UAE is requesting rapid development of technician location tracking and AI dispatching features tied to an upcoming tender deadline. Phase 1 (geofencing/check-in-out) is on an accelerated schedule with weekly check-ins. The tender deadline creates a delivery risk if development slips.",
+      "key_points": [
+        "Phase 1: technician check-in/check-out with live tracking and geofencing; alerts for out-of-area check-ins and disabled GPS.",
+        "Phase 2: AI-driven dispatching based on proximity, availability, and performance metrics.",
+        "Strict user rights management required \u2014 only dispatchers, division heads, and project managers to access location data.",
+        "System must support both static and mobile technician work models.",
+        "Dashboard for technician activity and geofencing data required.",
+        "Live tracking update interval: 5 minutes initially, potentially reducible.",
+        "Development on accelerated timeline due to upcoming tender deadlines.",
+        "Weekly check-ins scheduled to monitor progress."
+      ],
+      "decisions": [
+        "Phase 1 development to proceed immediately on accelerated timeline.",
+        "Weekly check-ins to track progress."
+      ],
+      "action_items": [
+        {
+          "owner": "Kesava / Dev team",
+          "task": "Begin Phase 1 geofencing and check-in/check-out development",
+          "due": "Urgent \u2014 tender deadline driven"
+        },
+        {
+          "owner": "Kesava",
+          "task": "Define user rights management requirements for location features",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Accelerated development timeline due to tender; risk if Phase 1 is not delivered before tender deadline."
+      ],
+      "open_items": [
+        "Tender deadline for Phase 1 delivery; user rights management design."
+      ],
+      "health_signal": "amber",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "4a7cd18b-3dde-436c-a64c-5e7460bdaff5",
+      "title": "PPM Reporting Feedback Session (MS Teams)",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-11T16:30:27+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jeffri Shan (Facilio)",
+        "Rujuta Singbal",
+        "Mostafa Maamoun",
+        "Ismail Khursheed"
+      ],
+      "summary": "Feedback session on PPM reporting surfaced significant pain points: customers cannot easily generate consolidated reports with photos, checklists, and recommendations. The multi-step, technically-complex process is a recurring frustration. AI-enhanced reporting to be explored in a follow-up session.",
+      "key_points": [
+        "Users cannot easily generate comprehensive PPM reports for non-technical stakeholders.",
+        "System lacks user-friendly bulk export for PPM tasks.",
+        "Need for integrated reports combining before/after photos, checklists, and recommendations in a single PDF/dashboard view.",
+        "Tenant portal reporting accessibility is a priority.",
+        "Current process is time-consuming, multi-step, and requires technical users.",
+        "AI integration to be explored in a separate follow-up meeting."
+      ],
+      "decisions": [
+        "Separate AI features meeting to be scheduled."
+      ],
+      "action_items": [
+        {
+          "owner": "Jeffri Shan",
+          "task": "Schedule follow-up meeting to explore AI-specific reporting features",
+          "due": "TBD"
+        },
+        {
+          "owner": "Jeffri Shan",
+          "task": "Document PPM reporting requirements for product team",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Reporting gaps may affect customer satisfaction and renewal."
+      ],
+      "open_items": [
+        "Product team to assess feasibility of integrated PPM report view."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "d2a022d8-674e-4d06-8d55-867a23b0c4ec",
+      "title": "British Land X Facilio \u2014 Monthly Meeting",
+      "crm_account_name": "British Land",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-11T17:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Keerthana P (Facilio)",
+        "Jeffri Shan (Facilio)",
+        "Jake (Facilio)",
+        "Ian Smithyman (Facilio)",
+        "Amneet Sokhi (British Land)",
+        "Satbir Bassra",
+        "Mani Loi"
+      ],
+      "summary": "British Land monthly meeting surfaced two key blockers: Ng Bailey has not provided asset details needed for PPM, and building optimization at 100 Liverpool Street has been disabled due to tenant comfort complaints while BMS visibility is investigated. Third-party dependencies are the primary risk.",
+      "key_points": [
+        "Monthly meeting structure to be refreshed; CAFM and connected buildings training scheduled for end of week.",
+        "PPM upload responsibility dispute between Ng Bailey and internal team \u2014 ongoing support required from Facilio.",
+        "Optimization switched off at 100 Liverpool Street due to tenant comfort complaints; BMS visibility issues under investigation.",
+        "Ng Bailey yet to supply asset details \u2014 blocking PPM implementation.",
+        "Usage statistics review: month-on-month comparison and user counts per role requested.",
+        "Satie to Gallagher migration: specific certificates needed to test connection.",
+        "Cost-saving reports: plan to replicate successful site-specific report across all buildings.",
+        "IoT page demonstrated for data monitoring; incident management reporting update provided."
+      ],
+      "decisions": [
+        "Optimization at 100 Liverpool Street suspended pending BMS visibility investigation.",
+        "Slide decks to be updated with detailed data and root cause analysis."
+      ],
+      "action_items": [
+        {
+          "owner": "Keerthana P / Jeffri Shan",
+          "task": "Follow up with Ng Bailey on outstanding asset details for PPM",
+          "due": "Urgent"
+        },
+        {
+          "owner": "Keerthana P",
+          "task": "Investigate BMS visibility issues at 100 Liverpool Street",
+          "due": "Ongoing"
+        },
+        {
+          "owner": "Jeffri Shan",
+          "task": "Obtain Gallagher certificates for Satie migration testing",
+          "due": "TBD"
+        },
+        {
+          "owner": "Jake",
+          "task": "Replicate cost-saving report template across all buildings",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Ng Bailey asset data gap blocking PPM; BMS optimization suspended due to tenant complaints; Satie-Gallagher migration pending certificates."
+      ],
+      "open_items": [
+        "Ng Bailey asset details; BMS investigation resolution; Gallagher certificates."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "02af2c17-d5e3-42f1-bf66-0dc7a1c64eaa",
+      "title": "Ace Hardware \u2014 Facilio Reporting &amp; Troubleshooting",
+      "crm_account_name": "Ace Hardware Corporation",
+      "project_slug": "ace-hardware",
+      "timestamp_ist": "2026-05-11T19:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Deepak Simon (Facilio)",
+        "William Stordeur (Facilio)",
+        "Alec Ambrosio (Ace Hardware)",
+        "Thomas Callahan (Ace Hardware)"
+      ],
+      "summary": "Ace Hardware reporting and troubleshooting session covered dashboard customisation, bulk asset import, and PM management. A notable data integrity risk was identified: bulk-closing work orders clears the asset operational status field. Recurring check-in calls established.",
+      "key_points": [
+        "Custom dashboard cards created for asset counts and filtered operational statuses.",
+        "Reports for tables and charts must be built before attaching to dashboards.",
+        "PM upload complexity reviewed: asset-based vs site-based PMs; job plans require manual creation.",
+        "Bulk asset import via Excel detailed: field mapping, error handling, record ID for updates.",
+        "Workaround for bulk PM scheduling: create routes at site level, associate multiple assets.",
+        "Bulk closing work orders can inadvertently clear asset operational status field \u2014 impacts reporting.",
+        "Recurring calls established for ongoing system changes and feedback."
+      ],
+      "decisions": [
+        "Recurring feedback calls established.",
+        "Bulk PM scheduling to use site-level routes with multiple asset associations."
+      ],
+      "action_items": [
+        {
+          "owner": "Deepak Simon",
+          "task": "Document bulk PM scheduling workaround and share with Ace team",
+          "due": "TBD"
+        },
+        {
+          "owner": "Deepak Simon",
+          "task": "Investigate asset operational status clearing on bulk WO close \u2014 report to product",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Bulk WO close clearing asset operational status field is a data integrity risk for reporting."
+      ],
+      "open_items": [
+        "Product team to confirm fix for bulk close operational status issue."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "16725b3b-e222-4917-b0be-9230e6e3317a",
+      "title": "Lunds \u2014 Utility Bill Management",
+      "crm_account_name": "Lunds & Byerlys",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-11T20:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Arjun M M (Facilio)",
+        "William Stordeur (Facilio)",
+        "Basant (Facilio)",
+        "Kevin Kungel (Lunds)",
+        "Laurie Gross (Lunds)",
+        "Kim Rupp (Lunds)",
+        "Jeff Carlson (Lunds)",
+        "Jim VanBrunt (Lunds)",
+        "Shelly Sunde (Lunds)"
+      ],
+      "summary": "Lunds utility bill management session addressed missing account data, sorting improvements, and predictive maintenance alarm logic refinements. White Bear Lake and Richfield electrical meter issues remain open pending utility provider investigation.",
+      "key_points": [
+        "Statement date migration to utility records scheduled for completion this week.",
+        "Missing utility account details attributed to data upload limitations; newer entries under investigation.",
+        "Utility records page sorting to be improved (read date as primary sort key; statement date added later).",
+        "Meter tagging enhancement planned: generator, irrigation etc. for better event context.",
+        "'Door left open' alarms to be logged as non-critical case alarms.",
+        "Predictive maintenance logic for 'valve open' and 'condenser approach' being refined and will be implemented.",
+        "Rollover logic for excessive compressor cycling alarms needed to prevent notification flood.",
+        "White Bear Lake and Richfield electrical meter issues require investigation with utility provider."
+      ],
+      "decisions": [
+        "'Door left open' alarms classified as non-critical case alarms.",
+        "Read date to be primary sort key for utility records."
+      ],
+      "action_items": [
+        {
+          "owner": "Arjun / William",
+          "task": "Complete statement date migration to utility records",
+          "due": "This week"
+        },
+        {
+          "owner": "Arjun",
+          "task": "Investigate missing utility account details for newer entries",
+          "due": "TBD"
+        },
+        {
+          "owner": "Arjun",
+          "task": "Implement updated valve open and condenser approach PM logic",
+          "due": "TBD"
+        },
+        {
+          "owner": "Arjun / William",
+          "task": "Investigate White Bear Lake and Richfield electrical meter issues with utility provider",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Missing utility account data; White Bear Lake and Richfield meter issues unresolved."
+      ],
+      "open_items": [
+        "Utility provider investigation for White Bear Lake and Richfield; data upload process improvement."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "2cf16929-7e91-4dcd-b52d-c54e596cfe0b",
+      "title": "SAIC \u2014 Weekly Implementation Progress",
+      "crm_account_name": "School of the Art Institute of Chicago",
+      "project_slug": "chicago-maintenance",
+      "timestamp_ist": "2026-05-11T20:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Adhithyan G (Facilio)",
+        "Aditya (Facilio)",
+        "Matt (Facilio)",
+        "Thomas Buechele (ARTIC)",
+        "Kae Flester (SAIC)",
+        "Paul Guidice (SAIC)",
+        "Sarah Hicks (ARTIC)",
+        "Ann Marie Martens (SAIC)",
+        "Donn Shin (SAIC)",
+        "Brad Johns (SAIC)",
+        "Patrick Gallagher (SAIC)",
+        "Brian Jucas (ARTIC)",
+        "Lisa Durham (ARTIC)"
+      ],
+      "summary": "SAIC weekly implementation check covered SSO configuration, user management approach (manual bulk upload replacing SCIM), and UAT planning. A floor plan Markup bug was identified and a floor plan demo is scheduled for Wednesday. UAT timelines are holding.",
+      "key_points": [
+        "Space data display fix (scrolling for full names) in progress \u2014 to be demoed Wednesday.",
+        "SCIM integration deemed too time-consuming; manual bulk upload adopted for user management.",
+        "Custom vanity URL for SSO being explored; formal quote request to be sent.",
+        "Requester portal can bypass login and direct to SSO without custom URL; maintenance portal requires one.",
+        "User list for requester portal compilation underway \u2014 target next Wednesday.",
+        "UAT plan detailed: two phases \u2014 first with existing data, second with new data; Jira for issue tracking.",
+        "Admin training for Don and Brad noted.",
+        "Floor plan display bug: toolset disappears after clicking 'Markup' \u2014 to be investigated."
+      ],
+      "decisions": [
+        "Manual bulk upload adopted for user management (SCIM ruled out).",
+        "UAT to proceed in two phases using Jira for tracking."
+      ],
+      "action_items": [
+        {
+          "owner": "Adhithyan / Aditya",
+          "task": "Demo space data scrolling fix on Wednesday",
+          "due": "Wednesday"
+        },
+        {
+          "owner": "Adhithyan",
+          "task": "Send formal quote request for SSO vanity URL",
+          "due": "TBD"
+        },
+        {
+          "owner": "Adhithyan",
+          "task": "Compile user list for requester portal",
+          "due": "Next Wednesday"
+        },
+        {
+          "owner": "Adhithyan",
+          "task": "Investigate floor plan Markup toolset disappearing bug",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Floor plan Markup bug identified; SSO vanity URL cost pending; user list compilation on tight schedule."
+      ],
+      "open_items": [
+        "SSO vanity URL quote; user list for requester portal by next Wednesday."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    }
+  ]
+}
