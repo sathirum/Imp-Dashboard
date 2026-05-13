@@ -1,0 +1,872 @@
+{
+  "date": "2026-05-12",
+  "generated_at": "2026-05-12T07:00:00+05:30",
+  "total_calls": 16,
+  "calls": [
+    {
+      "call_id": "f1650b5a-5454-49fd-8d14-0362a1057ced",
+      "title": "My MS_TEAMS meeting (ENEC QR-to-Survey)",
+      "crm_account_name": "ENEC",
+      "project_slug": "enec-qr-to-survey",
+      "timestamp_ist": "2026-05-12T10:28:51+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Paurnika Ramesh (Facilio)",
+        "Majed Ebrahim AlShemeili",
+        "Muhammad Asim Rashid",
+        "Syed Qutubuddin",
+        "Rosanah Coloma Abejo",
+        "Tuwan Shaneer Yoosoof"
+      ],
+      "summary": "Session covered QR-to-survey dashboard configuration and a critical bug preventing WO submission on low ratings. Fixes and configurations are targeted for end of week, after which the client will confirm UAT readiness.",
+      "key_points": [
+        "Dashboard configurability and the need for admin training on customisation were primary discussion points.",
+        "Bug identified: work order submission fails on low ratings; 'thank you' page also missing \u2014 both to be fixed.",
+        "General comment field for all ratings will be implemented; offline feedback submission deemed out of scope.",
+        "Logo embedding in QR codes is not currently feasible but will be explored.",
+        "Preventing duplicate survey submissions faces technical constraints and is deprioritised.",
+        "Historical survey data onboarding ruled out due to absence of existing data."
+      ],
+      "decisions": [
+        "Fixes and dashboard configurations to be rolled out by end of week.",
+        "UAT to commence upon email confirmation once fixes are live.",
+        "Real-time notifications for low-rated survey work orders will be implemented."
+      ],
+      "action_items": [
+        {
+          "owner": "Paurnika Ramesh",
+          "task": "Fix work-order submission bug for low ratings and add 'thank you' page",
+          "due": "End of week"
+        },
+        {
+          "owner": "Paurnika Ramesh / Admin",
+          "task": "Deliver admin training on dashboard customisation",
+          "due": "Post-fix rollout"
+        }
+      ],
+      "risks": [
+        "Bug in low-rating WO submission risks delaying UAT start; offline submission out of scope."
+      ],
+      "open_items": [
+        "Email confirmation from client before UAT can begin; bug fix rollout by end of week."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "a8fbf14f-d3c3-498d-bb04-3427eb0312bc",
+      "title": "AlShalfa - Session 3",
+      "crm_account_name": "AlShalfa NWC",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-12T11:32:03+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Mithun Narayanan (Facilio)",
+        "Hadi Ali (NWC Admin AlShalfa)",
+        "Mohammed Sarwar Shareef"
+      ],
+      "summary": "Requirements alignment session revealed the client's requested report template is an inspection checklist rather than a WO report. KPI formulas need correction by 13 May; requirement for point 25 needs client clarification.",
+      "key_points": [
+        "Client-requested report format resembles an inspection checklist, not a standard work order report.",
+        "Aggregating data from many work orders into the requested format is technically impractical.",
+        "FCA report identified as a semi-annual inspection report \u2014 distinct from WO reporting.",
+        "KPI report formulas for hard services flagged for re-evaluation and correction.",
+        "Logo and QR code print sizing adjustments recommended to be tested before finalisation."
+      ],
+      "decisions": [
+        "Clarification required on whether client needs a WO report or inspection report for point 25.",
+        "KPI report (hard services) to be updated by the following day."
+      ],
+      "action_items": [
+        {
+          "owner": "Mithun Narayanan",
+          "task": "Correct KPI report formulas for hard services",
+          "due": "Next day (13 May)"
+        },
+        {
+          "owner": "Mithun / Client",
+          "task": "Clarify WO vs inspection report requirement for point 25",
+          "due": "Before next session"
+        },
+        {
+          "owner": "Mithun Narayanan",
+          "task": "Test-print logo and QR code sizing before finalising",
+          "due": "Before next session"
+        }
+      ],
+      "risks": [
+        "KPI formula errors for hard services could affect reporting accuracy if not corrected promptly."
+      ],
+      "open_items": [
+        "Client clarification on WO vs inspection report requirement; KPI formula corrections pending."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "84b5f7da-bed6-45d6-b47e-1334a55853cb",
+      "title": "Declined: Daily Facilio CAFM Workshops | Resolving Issues",
+      "crm_account_name": "CIT",
+      "project_slug": "cit-diriya",
+      "timestamp_ist": "2026-05-12T12:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Dinesh R (Facilio)",
+        "Magesh (Facilio)",
+        "Nitish Soondur",
+        "Mohammed Nebab",
+        "Mohammad Bashaaib",
+        "Vinay Mohan",
+        "Gladson Aby",
+        "Tahir Abbas",
+        "Chandan Dabeedeen",
+        "Helder Branco",
+        "Ravish Betchoo (CIT / SCMS)"
+      ],
+      "summary": "Client management has directed that all dashboard functions move to the Yungo portal and purchase requests go through SAGE ERP. The team agreed on a reconfigured client portal layout focused on inventory and work order views.",
+      "key_points": [
+        "Management directive to redirect all dashboard functionalities to Yungo portal \u2014 Facilio dashboards to be removed from client portal.",
+        "Purchase requests will be handled via SAGE ERP, not Facilio, to avoid redundant development.",
+        "PPM plans relocated to a work order view with list and calendar options, replacing the PPM calendar.",
+        "Inventory tracking to be presented as a list view under a new 'Inventory' folder (not as a dashboard).",
+        "Client requested spare parts vs. consumables distinction in inventory view.",
+        "Storekeepers will be granted stock-add access (not balance adjustment); training to be provided."
+      ],
+      "decisions": [
+        "Remove Facilio client portal dashboards; redirect to Yungo portal.",
+        "Purchase requests handled via SAGE ERP \u2014 no Facilio development.",
+        "Create new 'Inventory' folder with Inventory Request and Item modules.",
+        "Assets displayed first in reconfigured client portal."
+      ],
+      "action_items": [
+        {
+          "owner": "Dinesh R / Magesh",
+          "task": "Reconfigure client portal navigation per agreed layout",
+          "due": "TBD"
+        },
+        {
+          "owner": "Dinesh R",
+          "task": "Provide SAGE ERP access to relevant users",
+          "due": "TBD"
+        },
+        {
+          "owner": "Dinesh R / Magesh",
+          "task": "Create Inventory folder and configure spare parts/consumables views",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Removing Facilio dashboards from client portal in favour of Yungo could reduce Facilio stickiness; SAGE integration dependency."
+      ],
+      "open_items": [
+        "SAGE ERP access provisioning; Yungo portal readiness."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "891c9123-8035-4871-a771-6ccc7d8211cf",
+      "title": "MODON - FM Oracle Integration Touch Points",
+      "crm_account_name": "MODON",
+      "project_slug": "modon-phase-2",
+      "timestamp_ist": "2026-05-12T12:31:05+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jhimlee Datta (Facilio)",
+        "Ashwin Bhat Fugro (Facilio)",
+        "Sreesobh Naduvanchery",
+        "Jubin Thampan",
+        "Firas Abdul Rahman"
+      ],
+      "summary": "Integration requirements for MODON FM Oracle procurement, inventory, and budget touchpoints were defined. All parties aligned on PR/PO flow, two-way inventory sync, and budget monitoring approach.",
+      "key_points": [
+        "PRs initiated in Facilio for additional work orders will be pushed to Oracle for approval, with status updates flowing back.",
+        "Two-way inventory integration: Oracle provides item data; Facilio reports consumption.",
+        "Budget integration: Facilio will reflect Oracle's budget data and track spend against cost centres and projects.",
+        "Project codes, GL codes, stores, and vendor data must sync between Oracle and Facilio.",
+        "GRN initiation in Facilio will trigger Oracle updates for materials and services.",
+        "Real-time sync preferred for inventory and PR/PO status updates."
+      ],
+      "decisions": [
+        "Specific use cases around budget consumption points to be refined and documented.",
+        "PR-to-Oracle flow confirmed for additional work order scenarios."
+      ],
+      "action_items": [
+        {
+          "owner": "Jhimlee / Sreesobh",
+          "task": "Refine and document budget consumption use cases",
+          "due": "TBD"
+        },
+        {
+          "owner": "Integration team",
+          "task": "Define GL code and project code sync requirements",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Budget double-counting risk (PO vs GRN vs Invoice) flagged; service report push to Oracle for invoicing/GRN generation needs careful design."
+      ],
+      "open_items": [
+        "Documentation of budget consumption use cases; GL code and project code availability from Oracle."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "744f7042-f622-4d54-8c0e-d57dc4675376",
+      "title": "ES Global UAT Demo",
+      "crm_account_name": "ES Global",
+      "project_slug": "es-global",
+      "timestamp_ist": "2026-05-12T12:34:04+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Mohammed Meeran (Facilio)",
+        "John Mathew (ES Global)"
+      ],
+      "summary": "UAT demo covered most of the reactive flow but was blocked by a work permit functionality bug that prevented completion of the vendor process. A follow-up session is required before UAT can formally commence.",
+      "key_points": [
+        "End-to-end reactive process demonstrated: service requests, work orders, inventory requests, quotations, and work permits.",
+        "Dashboard, portfolio, and asset management features showcased.",
+        "Storekeeper (not technician) identified as correct role for material requests \u2014 process re-explained.",
+        "Quotation stage needed for in-house work orders (similar to vendor flow) \u2014 to be addressed.",
+        "Before/after photo attachments for work orders desired as mandatory \u2014 pending feature release.",
+        "Critical bug: work permit functionality broken, preventing continuation of vendor process."
+      ],
+      "decisions": [
+        "Work permit bug and in-house quotation requirement to be addressed in a follow-up session.",
+        "UAT user access to be provided (initially admin) to a list of users."
+      ],
+      "action_items": [
+        {
+          "owner": "Mohammed Meeran",
+          "task": "Fix work permit functionality bug",
+          "due": "Before follow-up session"
+        },
+        {
+          "owner": "Mohammed Meeran",
+          "task": "Arrange follow-up session to complete vendor process demo and address in-house quotation",
+          "due": "TBD"
+        },
+        {
+          "owner": "Mohammed Meeran",
+          "task": "Provision UAT user access for listed users",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Work permit bug is a UAT blocker; in-house quotation flow missing; mandatory photo attachment feature not yet released."
+      ],
+      "open_items": [
+        "Work permit bug fix; follow-up session scheduling; mandatory photo feature release."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "95f3e9d2-6808-4eff-8773-f01b329fe945",
+      "title": "MODON - AM Oracle Integration Touch Points",
+      "crm_account_name": "MODON",
+      "project_slug": "modon-phase-2",
+      "timestamp_ist": "2026-05-12T13:31:53+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jhimlee Datta (Facilio)",
+        "Ashwin Bhat Fugro (Facilio)",
+        "Sreesobh Naduvanchery",
+        "Saradi Mohamed",
+        "Visia Lagula",
+        "Firas Abdul Rahman"
+      ],
+      "summary": "Asset Management Oracle integration touchpoints for MODON were scoped: PR/PO, contracts, vendors, inventory, warranty, and RFQ flows were defined with Oracle as source of truth for procurement.",
+      "key_points": [
+        "Oracle as source of truth for PR creation; PO status updates flow back to Facilio.",
+        "Vendor, contract, and PO details including attachments to sync from Oracle to Facilio.",
+        "Cost centre and project information sync from Oracle to Facilio \u2014 confirmation and integration to be validated.",
+        "Contract variations: PR initiated in Facilio \u2192 new PO/contract in Oracle \u2192 syncs back.",
+        "Performance bonds and insurance data: manual input preferred for existing contracts; Oracle sync for future.",
+        "Warranty claims managed in Oracle, pushed to Facilio \u2014 bidirectional integration avoided to prevent duplication.",
+        "RFQ process: Facilio \u2192 Far Vision approval \u2192 Oracle for sourcing.",
+        "Budget management remains manual in Facilio; auto-reduces on work completion; no Oracle budget sync."
+      ],
+      "decisions": [
+        "Oracle is the source of truth for PR; Facilio initiates and reflects status.",
+        "Bidirectional warranty integration rejected to avoid duplication.",
+        "Inventory managed primarily in Facilio by FMSP; future bidirectional sync for quantity/stocking to be assessed."
+      ],
+      "action_items": [
+        {
+          "owner": "Jhimlee / Sreesobh",
+          "task": "Confirm cost centre and project code availability and integration feasibility",
+          "due": "TBD"
+        },
+        {
+          "owner": "Jhimlee / Sreesobh",
+          "task": "Document contract variation and RFQ integration flows",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Cost centre/project sync availability not yet confirmed; manual budget management in Facilio creates reconciliation risk."
+      ],
+      "open_items": [
+        "Cost centre/project data availability confirmation from Oracle; Far Vision approval integration design."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "32d69b9e-7793-4bb3-9e09-c809e85384bd",
+      "title": "ENEC - BRD - Scope Alignment: Office Space Management",
+      "crm_account_name": "ENEC",
+      "project_slug": "enec-workspace-management",
+      "timestamp_ist": "2026-05-12T14:30:17+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Riyavarshini Arunprasad (Facilio)",
+        "Ashwin Bhat Fugro (Facilio)",
+        "Al Shaheen Meeting Room (ENEC)"
+      ],
+      "summary": "BRD scope alignment for ENEC Workspace Management. Phase 1 will integrate HR and Outlook; real-time occupancy via a 'brain' system is deferred. Key requirements documented for desk allocation and space analytics.",
+      "key_points": [
+        "HR system integration is a primary requirement for onboarding, offboarding, and leave management.",
+        "Date-range specific desk assignments and deallocations required for temporary vacancy management.",
+        "Analytics on space utilisation, occupancy, and availability are critical for decision-making.",
+        "Outlook integration desired for meeting room bookings to provide unified view and analytics.",
+        "Real-time occupancy from a 'brain' system identified as a potential future enhancement.",
+        "Need to handle permanent vs. temporary desk allocations with clear business rules.",
+        "Phase 1 to focus on HR and Outlook integrations; other functionalities in future phases."
+      ],
+      "decisions": [
+        "Phase 1 scoped to HR and Outlook core integrations.",
+        "Real-time occupancy 'brain' system deferred to a future phase."
+      ],
+      "action_items": [
+        {
+          "owner": "Riyavarshini",
+          "task": "Document scope and integration requirements in BRD",
+          "due": "TBD"
+        },
+        {
+          "owner": "Riyavarshini / Client",
+          "task": "Define business rules for permanent vs. temporary desk allocation",
+          "due": "Before BRD sign-off"
+        }
+      ],
+      "risks": [
+        "Reliance on multiple systems (HR, Outlook, 'brain') creates integration complexity; temporary allocation logic requires careful business rule design."
+      ],
+      "open_items": [
+        "HR system details and API availability; Outlook integration feasibility confirmation."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "326b3db2-e2d3-46af-b18d-f6ec3b88ada7",
+      "title": "CWRC Oracle Integration Requirement",
+      "crm_account_name": "CWRC",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-12T14:32:02+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat Fugro (Facilio)",
+        "Sreesobh Naduvanchery",
+        "Mohammed Khalfallah",
+        "Firas Abdul Rahman"
+      ],
+      "summary": "Oracle integration requirements for CWRC were defined covering MR/PR automation, budget visibility, GL codes, and KPI-based invoice validation. Finance and Procurement teams need to be involved in subsequent meetings.",
+      "key_points": [
+        "MR approval in Facilio to auto-trigger PR creation in Oracle; status feedback back to Facilio.",
+        "Work order costs (labour and materials) managed in Facilio; material costs integrated into Oracle.",
+        "Oracle is source of truth for budget setting; Facilio displays budget info.",
+        "GL codes from Oracle essential for expense mapping.",
+        "Facilio to generate KPI reports for Oracle to validate contractor invoice deductions.",
+        "Contract creation flow: Facilio \u2192 Oracle for invoicing.",
+        "Finance and Procurement teams flagged for inclusion in upcoming Oracle meetings."
+      ],
+      "decisions": [
+        "Oracle remains source of truth for budget; Facilio is read-only for budget visibility.",
+        "Inventory integration between Oracle and Facilio is a shared requirement."
+      ],
+      "action_items": [
+        {
+          "owner": "Ashwin Bhat Fugro / Sreesobh",
+          "task": "Arrange next meeting with CWRC Finance and Procurement teams and Oracle",
+          "due": "TBD"
+        },
+        {
+          "owner": "Ashwin Bhat Fugro",
+          "task": "Document GL code mapping requirements",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Finance and Procurement teams not yet engaged \u2014 their absence could cause rework; GL code mapping complexity."
+      ],
+      "open_items": [
+        "Finance/Procurement team availability; Oracle GL code provision; KPI report template definition."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "1c31266a-062b-4a9a-a736-ab564f2c82a8",
+      "title": "[THCE <> Facilio] : Moon Flower Oracle Integration Touch Points",
+      "crm_account_name": "THCE",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-12T15:33:44+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jhimlee Datta (Facilio)",
+        "Sreesobh Naduvanchery",
+        "Supreeth Babu"
+      ],
+      "summary": "Brief touchpoints session for THCE Moon Flower Oracle integration. Requirements follow the MODON Oracle integration pattern; documentation to be completed.",
+      "key_points": [
+        "Oracle integration touchpoints for Moon Flower project discussed.",
+        "Consistent with MODON Oracle integration pattern \u2014 procurement, inventory, and budget flows."
+      ],
+      "decisions": [
+        "Integration requirements to be documented aligned with MODON approach."
+      ],
+      "action_items": [
+        {
+          "owner": "Jhimlee / Sreesobh",
+          "task": "Document Moon Flower Oracle integration requirements",
+          "due": "TBD"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "Oracle integration documentation from MODON to serve as reference."
+      ],
+      "health_signal": "green",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "18209804-a6dc-44a8-a501-f098606271da",
+      "title": "Facilio Implementation Update (Teyseer)",
+      "crm_account_name": "Teyseer Services Company W.L.L.",
+      "project_slug": "teyseer",
+      "timestamp_ist": "2026-05-12T16:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Kesava Krishnan R (Facilio)",
+        "Arun Kumar V (Facilio)",
+        "Jeevaregai Shanmugam (Facilio)",
+        "Ananth Raj (Facilio)",
+        "Dominico Laude (Teyseer)"
+      ],
+      "summary": "UAT preparation update for Teyseer. Data quality issues with duplicate job plans will be addressed post-import by supervisors. UAT is on track for week of 19 May; functional test report is due 18 May.",
+      "key_points": [
+        "Duplicate and inconsistent job plans for CTGV and CTGV ACC \u2014 tasks and checklists misaligned.",
+        "Decision to import data as-is; supervisors to review and correct job plans post-import.",
+        "Rough work order count from IBM Maximo still needed to validate exported data.",
+        "UAT scheduled for week of 19 May; functional test report due 18 May.",
+        "Team confirmed on track for UAT handover despite potential holiday impacts.",
+        "Project plan status needs accurate module-level updates for management reporting.",
+        "Vendor and contract data access from client to be provided for verification."
+      ],
+      "decisions": [
+        "Import job plan data as-is; post-import corrections by supervisors.",
+        "UAT week of 19 May confirmed; functional test report due 18 May."
+      ],
+      "action_items": [
+        {
+          "owner": "Arun Kumar V / Jeevaregai",
+          "task": "Obtain rough WO count from IBM Maximo for data validation",
+          "due": "Before import"
+        },
+        {
+          "owner": "Arun Kumar V / Jeevaregai",
+          "task": "Submit functional test report",
+          "due": "18 May 2026"
+        },
+        {
+          "owner": "Kesava",
+          "task": "Update project plan status by module for management reporting",
+          "due": "TBD"
+        },
+        {
+          "owner": "Dominico / Teyseer",
+          "task": "Provide vendor and contract data access for verification",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Duplicate job plans and missing IBM Maximo WO count create data quality risk; holiday impacts flagged but managed."
+      ],
+      "open_items": [
+        "IBM Maximo WO count; Teyseer vendor/contract data access; functional test report by 18 May."
+      ],
+      "health_signal": "amber",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "7b7400db-d662-4f78-a426-45ecd59ad989",
+      "title": "Butlins <> Facilio - Kick Off",
+      "crm_account_name": "Butlins Skyline Ltd",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-12T17:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Lourdu Livin A (Facilio)",
+        "Deepak Simon (Facilio)",
+        "Jake Lowe (Facilio)",
+        "Jeff Proctor",
+        "Kamil Brodowski",
+        "Jonny Key",
+        "Laura Juster (Butlins)"
+      ],
+      "summary": "Successful kickoff meeting for Butlins implementation. Phase 1 (reactive maintenance) targets June 15 go-live. A requirements workshop is scheduled for next week with pre-workshop prep session.",
+      "key_points": [
+        "Project team, methodology, and initial scope established.",
+        "Phase 1: portfolio, service requests, and reactive maintenance \u2014 targeting June 15 go-live.",
+        "Phase 2: cleaning and reservation processes; technical integration discussions planned.",
+        "Key risks identified: stakeholder availability, scope creep, data onboarding challenges.",
+        "Workshop scheduled for following week to finalise requirements and create BRDs.",
+        "30-minute pre-workshop session planned to review onboarding template and identify pain points."
+      ],
+      "decisions": [
+        "Phase 1 reactive maintenance go-live target: June 15, 2026.",
+        "Workshop next week for requirements finalisation and BRD creation."
+      ],
+      "action_items": [
+        {
+          "owner": "Deepak Simon / Lourdu Livin",
+          "task": "Prepare onboarding template and share before pre-workshop session",
+          "due": "Before next week workshop"
+        },
+        {
+          "owner": "Facilio team",
+          "task": "Conduct pre-workshop 30-min session to identify pain points",
+          "due": "Before main workshop"
+        },
+        {
+          "owner": "Lourdu Livin / Deepak Simon",
+          "task": "Finalise BRDs at workshop",
+          "due": "Next week"
+        }
+      ],
+      "risks": [
+        "Stakeholder availability, scope creep, and data onboarding challenges flagged as key project risks."
+      ],
+      "open_items": [
+        "Workshop attendance and BRD sign-off from Butlins stakeholders; Jake Lowe in-person attendance confirmed."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "cf63d153-56e5-4ecf-a400-463a0fcf6ffe",
+      "title": "RE: NetSuite Integration - Status Check (Deyaar DCM)",
+      "crm_account_name": "Deyaar DCM",
+      "project_slug": "deyaar-dcm",
+      "timestamp_ist": "2026-05-12T17:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Ashwin (Facilio)",
+        "Kesava (Facilio)",
+        "Magesh (Facilio)",
+        "NetSuite Consultant (IT)",
+        "Mina Magdy (Azdan)",
+        "Lina Abdalla (IT)",
+        "Mohamed Amr (Azdan)",
+        "NetSuite Support (IT)",
+        "Pragadeesh Raja (Deyaar)"
+      ],
+      "summary": "NetSuite integration status check for Deyaar DCM. Site creation and vendor sync are live, but PR/PO integrations are failing and project sign-off is blocked. Key person Lina is unavailable, creating a scope gap that both sides need to resolve.",
+      "key_points": [
+        "Integration sign-off goal: confirm all modules (site creation, vendor, service requests, PR/PO) working in production.",
+        "Site creation and vendor data sync confirmed active in production.",
+        "PR and PO integrations reportedly failing \u2014 APIs reportedly exist but failing.",
+        "Key integration owner Lina is unavailable, creating documentation and scope gaps.",
+        "NetSuite consultant stated PR/PO were not explicitly assigned tasks.",
+        "Both parties agreed to investigate APIs and codebases independently."
+      ],
+      "decisions": [
+        "NetSuite consultant to receive specific requirements by email to proceed with fixes.",
+        "Both sides to investigate existing APIs to identify and resolve failures."
+      ],
+      "action_items": [
+        {
+          "owner": "Ashwin / Magesh",
+          "task": "Send specific PR/PO integration requirements to NetSuite consultant by email",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Facilio tech team",
+          "task": "Investigate failing PR/PO APIs in Facilio codebase",
+          "due": "ASAP"
+        },
+        {
+          "owner": "NetSuite team",
+          "task": "Investigate failing APIs on NetSuite side once requirements received",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Absence of key integration owner Lina; lack of documentation; unclear scope attribution for PR/PO integration."
+      ],
+      "open_items": [
+        "Lina's availability or knowledge transfer; NetSuite consultant receiving requirements email; API investigation outcomes."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "a073e64e-87b8-490f-886d-f50417e4d934",
+      "title": "MODON - Moon Flower Oracle Integration Touch Points",
+      "crm_account_name": "MODON",
+      "project_slug": "modon-phase-2",
+      "timestamp_ist": "2026-05-12T17:31:19+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Jhimlee Datta (Facilio)",
+        "Riyavarshini Arunprasad (Facilio)",
+        "Ashwin Bhat Fugro (Facilio)",
+        "Sreesobh Naduvanchery",
+        "Mohamad Azuldiin",
+        "Abdullah Ali",
+        "Edgar Ruado Jr"
+      ],
+      "summary": "MODON Moon Flower Oracle integration touchpoints finalised including MR\u2192PR automation, dual-store inventory sync, GRN attachment, invoice capture, and soft budget monitoring. Invoice integration was a new touchpoint added in this session.",
+      "key_points": [
+        "Approved MRs in Facilio automatically trigger PR creation in Oracle.",
+        "Dual-store approach (red and green zones) in Facilio confirmed; data sync from Oracle's centralised store.",
+        "GRN process executed in Oracle; approved GRNs attached to MRs in Facilio.",
+        "New touchpoint: invoices generated in Oracle captured in Facilio for tracking and GRN/SCS process.",
+        "Budget integration into Facilio for monitoring and notifications \u2014 not for hard blocking expenditure.",
+        "Work completion reports can be generated from Facilio work orders with custom templates."
+      ],
+      "decisions": [
+        "MR approval triggers automatic PR in Oracle \u2014 confirmed.",
+        "Invoice touchpoint added: Oracle invoices captured in Facilio for tracking.",
+        "Budget integration for soft monitoring only (no hard block)."
+      ],
+      "action_items": [
+        {
+          "owner": "Jhimlee / Riyavarshini / Sreesobh",
+          "task": "Document Moon Flower Oracle integration touchpoints formally",
+          "due": "TBD"
+        },
+        {
+          "owner": "Jhimlee",
+          "task": "Design work completion report custom template for SCS process",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Budget monitoring only (no hard block) may allow overspend; GRN/SCS process relies on Oracle invoice accuracy."
+      ],
+      "open_items": [
+        "Oracle invoice API availability; GRN sync design; custom report template definition."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "4794a042-9b4e-4af8-b76f-8e01bf2c966a",
+      "title": "1st Contract <> Facilio - Data Onboarding & Workshop Plan",
+      "crm_account_name": "1st Contract",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-12T18:32:29+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Deepak Simon (Facilio)",
+        "Jake Lowe (Facilio)",
+        "Stacey Buckley (1st Contract)",
+        "Steve Hill (1st Contract)"
+      ],
+      "summary": "Pre-workshop alignment for 1st Contract configuration. The full-day workshop is confirmed for 18 May. Most data is ready; quote/invoice templates are outstanding from the client.",
+      "key_points": [
+        "Full-day workshop scheduled for 18th to configure Facilio system.",
+        "Portfolio hierarchy to be structured at site level, associated with clients.",
+        "Service request categories, priorities, and SLA matrix largely prepared by Stacey Buckley.",
+        "RAMs configuration (generic vs. dynamic) deferred to workshop.",
+        "Vendor onboarding nearing completion; details to be shared when ready.",
+        "Quote and invoice templates need example formats from 1st Contract for customisation.",
+        "Additional exported data fields can be accommodated via extra Facilio site attributes.",
+        "Primary service: building fabric maintenance."
+      ],
+      "decisions": [
+        "Workshop scheduled for 18 May for system configuration.",
+        "RAMs configuration to be detailed at the workshop.",
+        "Jake Lowe to attend in person at client office for workshop."
+      ],
+      "action_items": [
+        {
+          "owner": "Stacey Buckley",
+          "task": "Share quote and invoice template examples before workshop",
+          "due": "Before 18 May"
+        },
+        {
+          "owner": "Deepak Simon / Jake",
+          "task": "Conduct workshop and configure Facilio system",
+          "due": "18 May 2026"
+        },
+        {
+          "owner": "Vendor team",
+          "task": "Complete vendor onboarding and share details",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "RAMs configuration complexity to be resolved at workshop; vendor onboarding slightly pending."
+      ],
+      "open_items": [
+        "Client-provided quote and invoice templates; vendor contact details; Jake Lowe's in-person attendance."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "ea9bf928-8e33-496a-bab0-36c7e2684a89",
+      "title": "Houchens Weekly Touchbase",
+      "crm_account_name": "Houchens Industries",
+      "project_slug": "houchens",
+      "timestamp_ist": "2026-05-12T19:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Deepak Simon (Facilio)",
+        "Varun Prasadd (Facilio)",
+        "William Stordeur (Facilio)",
+        "Basant (Facilio)",
+        "Anne Sullivan",
+        "Keith Martin (Houchens)"
+      ],
+      "summary": "Weekly touchbase for Houchens implementation. Vendor onboarding is the key concern \u2014 a master plan and calendar are urgently needed. Go-live remains tentatively end of May with a six-week hyper-care period planned.",
+      "key_points": [
+        "Dashboard visibility and arrangement on mobile to be optimised.",
+        "Site and asset decommissioning process clarified: retirement then decommission (two-step).",
+        "Workaround for mandatory inspection limitation: manual entry for overdue items; product fix pending.",
+        "Vendor onboarding progressing slowly \u2014 master plan and training calendar needed.",
+        "QR code generation and bulk printing process for asset identification explained.",
+        "Go-live tentatively set for end of month; six-week hyper-care period to follow.",
+        "374 active sites to be validated against contract costs."
+      ],
+      "decisions": [
+        "Build master plan and calendar for vendor onboarding and training.",
+        "Go-live tentatively end of May 2026.",
+        "Validate active site count (374) against contract."
+      ],
+      "action_items": [
+        {
+          "owner": "Deepak Simon / Varun",
+          "task": "Create master plan and calendar for vendor onboarding and training",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Team",
+          "task": "Validate 374 active sites against contract costs",
+          "due": "Before go-live"
+        },
+        {
+          "owner": "Product team",
+          "task": "Deliver product fix for mandatory inspection limitation",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Vendor onboarding slow; mandatory inspection workaround needed; site count validation pending."
+      ],
+      "open_items": [
+        "Vendor onboarding master plan; mandatory inspection product fix; site count validation."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "12b9060a-4891-47be-b45c-8f50f249a8a1",
+      "title": "Facilio <> HGFS Weekly Project Call",
+      "crm_account_name": "HG Facilities Solutions",
+      "project_slug": "hg-facilities-solutions-wave-1",
+      "timestamp_ist": "2026-05-12T21:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya (Facilio)",
+        "Deepak Simon (Facilio)",
+        "Hasina (Facilio)",
+        "Muthusaradha (Facilio)",
+        "Ryan McDonagh",
+        "Joseph Beck",
+        "Kathryn Morgan (HGFS)"
+      ],
+      "summary": "Weekly project call with HGFS focused on platform enhancements: admin delete for WOs, integrated proposal/invoicing, FSM module introduction, and offline inspections. Client is actively deepening their platform usage.",
+      "key_points": [
+        "Delete access for work orders to be enabled for admins to manage duplicates.",
+        "Proposal and invoice generation within Facilio to be integrated \u2014 reduces reliance on Excel.",
+        "Custom email domain for branded communication possible; requires commercial discussion.",
+        "Quotation module supports itemised pricing and pre-defined service rates.",
+        "FSM (Field Service Management) module introduced for scheduling and dispatching.",
+        "Offline mode for inspections now available on mobile app.",
+        "Inspections can be automated and triggered by PPM schedules.",
+        "Work order comment formatting issue (copy-paste related) being investigated."
+      ],
+      "decisions": [
+        "Enable admin delete access for work orders.",
+        "Explore custom email domain integration commercially."
+      ],
+      "action_items": [
+        {
+          "owner": "Facilio team",
+          "task": "Enable delete access for work orders for HGFS admins",
+          "due": "TBD"
+        },
+        {
+          "owner": "Sathya / Deepak",
+          "task": "Initiate commercial discussion for custom email domain",
+          "due": "TBD"
+        },
+        {
+          "owner": "Facilio tech",
+          "task": "Investigate and resolve work order comment formatting issue",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Custom email domain requires commercial agreement; comment formatting bug could affect client communications."
+      ],
+      "open_items": [
+        "Commercial approval for custom email domain; WO comment formatting bug resolution."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    }
+  ]
+}
