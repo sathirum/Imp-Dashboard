@@ -1,0 +1,603 @@
+{
+  "date": "2026-05-13",
+  "generated_at": "2026-05-13T07:00:00+05:30",
+  "total_calls": 11,
+  "calls": [
+    {
+      "call_id": "911dc380-ed9d-49ac-a8c3-d60549c9ad06",
+      "title": "Deyaar Refresher Training 01",
+      "crm_account_name": "Deyaar",
+      "project_slug": "deyaar-dcm",
+      "timestamp_ist": "2026-05-13T11:17:08+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat (Fugro)",
+        "Facilio CMMS team"
+      ],
+      "summary": "First of two refresher sessions for Deyaar focused on re-grounding users on Facilio's WO, inspection and asset flows. Adoption gaps tied to management changes; manual WO and findings-driven flow confirmed as canonical.",
+      "key_points": [
+        "Goal: digitize maintenance & operations on Facilio for better visibility and data access.",
+        "Old work-order backlog reduced by deletion, but volume remains high; automatic ticket generation from inspections has been disabled in favour of manual WO creation.",
+        "Walked through mobile app flow for work-order assignment, site visits and closure.",
+        "Reviewed asset management \u2014 portfolio structure, search/filter, asset details.",
+        "Inspections now drive 'findings' that lead to work orders rather than auto-generating them.",
+        "Permissions and user roles are blocking some users; visibility/access issues being tracked."
+      ],
+      "decisions": [
+        "Manual WO creation is the standard going forward; auto-generation from inspections stays off.",
+        "Findings-based flow is the canonical path from inspection \u2192 corrective WO."
+      ],
+      "action_items": [
+        {
+          "owner": "Deyaar team",
+          "task": "Drive adoption \u2014 regular system utilization for KPI & vendor mgmt.",
+          "due": "Ongoing"
+        },
+        {
+          "owner": "Facilio CMMS",
+          "task": "Address permission/visibility issues raised by users.",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Work-order volume still high; permission gaps blocking some user actions."
+      ],
+      "open_items": [
+        "Permission/role fixes required; user adoption depends on training landing."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "30bc64dd-e06e-439c-97cb-bdb6f620fab7",
+      "title": "Facilio <> ES GLOBAL UAT Session",
+      "crm_account_name": "ES Global",
+      "project_slug": "es-global",
+      "timestamp_ist": "2026-05-13T13:33:06+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Arun Kumar V",
+        "Mohammed Meeran Almatheen N",
+        "John Mathew (ES Global)",
+        "Ajay Sridharan"
+      ],
+      "summary": "UAT walkthrough with ES Global covering client portal, WO approval chain, quotation/SLA mechanics and material flow. Clear next steps on user provisioning and training plan.",
+      "key_points": [
+        "Demoed client portal \u2014 request creation, tracking dashboards for SRs, WOs and quotations.",
+        "WO approval chain walked through: admin \u2192 supervisor \u2192 FM engineer.",
+        "Quotation flow: vendor/staff assignment, line items, VAT at subtotal, digital signatures.",
+        "Clarified SLA behaviour \u2014 pauses during quote approval, resumes on client approval.",
+        "Material request flow refined to prioritize supervisor input; storekeeper owns inventory.",
+        "Vendor workflow includes quote, work-permit checklist and approval before commencement."
+      ],
+      "decisions": [
+        "Rejection comments mandatory across all rejection states.",
+        "FM engineer can now edit quotes directly instead of reject-and-resend.",
+        "UAT access via email IDs, Jira for feedback tracking."
+      ],
+      "action_items": [
+        {
+          "owner": "Arun Kumar V",
+          "task": "Provision UAT users by email ID and stand up Jira project for feedback.",
+          "due": "Pre-UAT"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Plan technician and client training cadence.",
+          "due": "Before go-live"
+        }
+      ],
+      "risks": [
+        "Standardising rejection-comment behaviour; material-request handover between supervisor and storekeeper."
+      ],
+      "open_items": [
+        "UAT user list from ES Global; Jira project setup."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "368df3d4-e53c-4aa8-bb69-97378f6c1ac9",
+      "title": "AlShalfa - Session 4",
+      "crm_account_name": "Al Shalfa",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-13T14:01:34+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Praveen Kumar",
+        "Hadi Ali (NWC Admin)",
+        "Amrithya",
+        "Mohammed Sarwar Shareef"
+      ],
+      "summary": "Session 4 closed out several config items (KPIs, QR codes, PPM, print layout) but flagged geotagging timeline as open and pushed back on the client's maintenance-history report as needing a separate module.",
+      "key_points": [
+        "Client-provided formulas for KPIs implemented; temporary KPI tab to be removed.",
+        "QR code generation for assets now available to all users.",
+        "PPM configs refined \u2014 asset condition linked to SLAs; rework/evaluation flow improved.",
+        "Comprehensive maintenance-history report not directly feasible from existing WO data.",
+        "WO print layout customizable up to 12 fields.",
+        "Arabic language support limited to field/module names; statuses stay in English.",
+        "Geotagging features under development with no firm timeline.",
+        "Bulk approval confirmed via client portal."
+      ],
+      "decisions": [
+        "Temporary KPI tab to be removed once the new KPI formulas are validated.",
+        "Maintenance-history reporting will require a separate module, not WO-data extension."
+      ],
+      "action_items": [
+        {
+          "owner": "Praveen Kumar",
+          "task": "Validate client KPI formulas and remove temporary KPI tab.",
+          "due": "Next session"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Scope a separate module for maintenance-history reporting.",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Geotagging delivery uncertainty; maintenance-history report scope creep."
+      ],
+      "open_items": [
+        "Client-side validation of KPI formulas; further scoping for history reports module."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "60f7f55b-eb57-459f-b7e1-0a9306aea4c8",
+      "title": "Placeholder - Facilio <> KSD Integration Workshop",
+      "crm_account_name": "KSD Group",
+      "project_slug": "ksd-group",
+      "timestamp_ist": "2026-05-13T14:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya",
+        "Shasvat",
+        "Vasanth M",
+        "Deepak Simon",
+        "Subramaniyan",
+        "Ian Smithyman",
+        "Tarun TN",
+        "Rob Salaita (KSD)",
+        "Luca Mercadal",
+        "Dominic Canney",
+        "Tracey Rangeley",
+        "Catherine-Marie Gallagher",
+        "Sarah Daniels",
+        "Adam Hart"
+      ],
+      "summary": "Deep-dive integration workshop covering KSD's Sage flows and the differing client systems (Verisign, Nvidia, Tesco/Sainsbury's/Argos). Significant integration uncertainty hinges on third-party vendor engagement.",
+      "key_points": [
+        "Integration scope: KSD financial & ops processes with Facilio + Sage (invoicing, POs, client/vendor mgmt).",
+        "Need clarified API documentation and sandbox access from Verisign / Nvidia.",
+        "Detailed walkthrough of Verisign and Nvidia flows for accept/decline/quote/invoice.",
+        "Standardized dropdowns needed across Tesco, Sainsbury's, Argos for reasons/codes.",
+        "Material invoicing for internal engineers identified as complex, needs further work.",
+        "PPM vs reactive WO invoicing differs sharply between Verisign and Nvidia."
+      ],
+      "decisions": [
+        "Sequencing of integrations will follow vendor responsiveness \u2014 Nvidia likely first.",
+        "Separate follow-up with Christina to scope H&S and audits requirements."
+      ],
+      "action_items": [
+        {
+          "owner": "Sathya/Shasvat",
+          "task": "Drive vendor (Nvidia/Verisign) towards API access & sandbox.",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Map Sage coding & VAT structures to Facilio invoice flow.",
+          "due": "Next workshop"
+        },
+        {
+          "owner": "KSD finance",
+          "task": "Share full list of client-specific dropdown values.",
+          "due": "Next workshop"
+        }
+      ],
+      "risks": [
+        "Third-party API responsiveness; material-invoicing complexity; per-client dropdown standardization."
+      ],
+      "open_items": [
+        "API/sandbox access from Nvidia & Verisign; Sage coding map; H&S audit scoping follow-up with Christina."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "b871a162-0bf5-47fa-b032-57b7b4a187af",
+      "title": "Facilio Osus Discussion",
+      "crm_account_name": "Osus",
+      "project_slug": "osus-phase-1",
+      "timestamp_ist": "2026-05-13T15:31:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Kesava Krishnan R",
+        "Duryodhan Padhan",
+        "Mohammad Sarfaraj Ahmed",
+        "Mohammed Essa Alahl"
+      ],
+      "summary": "Osus session surfaced two material risks: client wants visibility into license consumption against MSA (no dashboard today) and phase-1 go-live is blocked on internal UAT sign-off. Tenant/asset mapping demos went well.",
+      "key_points": [
+        "Operational topics: integrating inspection quotations into WO; plan for UAT and go-live with FM team.",
+        "Clarified difference between roles and licenses for admin users.",
+        "Concerns raised that there's no dashboard / validation to track license consumption vs MSA.",
+        "Vendor portal license limit = 100; client/tenant limit = 500.",
+        "Confirmed rule-based vs named-user license distinction.",
+        "Sandbox demo for tenant space and asset mapping; to be replicated in production.",
+        "Need formal UAT sign-off for phase-1 to proceed with go-live."
+      ],
+      "decisions": [
+        "License management is rule-based, not strictly license-number-based for internal users.",
+        "Sandbox tenant/asset mapping flow will be replicated in production."
+      ],
+      "action_items": [
+        {
+          "owner": "Kesava Krishnan R",
+          "task": "Provide phase-1 UAT sign-off confirmation after internal checks.",
+          "due": "ASAP"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Investigate custom dashboard/report for license consumption tracking.",
+          "due": "TBD"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Resolve technician account activation & password reset procedures.",
+          "due": "Next session"
+        }
+      ],
+      "risks": [
+        "No license-consumption dashboard; technician activation friction; UAT sign-off lag."
+      ],
+      "open_items": [
+        "Client internal checks for phase-1 UAT sign-off; Facilio scoping of license dashboard."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "c97489cb-586b-457b-b826-a0d4f2c50ace",
+      "title": "Edarat - Work Shop - 1",
+      "crm_account_name": "Edarat",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-13T15:32:47+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Arun Kumar V",
+        "Mohamed Siddik",
+        "Waleed Bahadeq",
+        "Mir Sayeed AzamI",
+        "Khaleel Uddin Syed",
+        "Muhammad Nawaz"
+      ],
+      "summary": "First requirements workshop with Edarat anchored hierarchy, SR vs WO distinction, corrective WO workflow and material request approvals. Process diagrams owed by Arun for next session.",
+      "key_points": [
+        "Mapped hierarchy: Site \u2192 Building \u2192 Floor \u2192 Space \u2192 Independent Space \u2192 Subspace.",
+        "Reactive maintenance via Service Requests; corrective work flows into Work Orders.",
+        "Defined SR workflow with client portal access, helpdesk role, classification, and client approval before closure.",
+        "Corrective WO workflow: supervisor decides in-house vs vendor; technician/field engineer roles spelled out.",
+        "Material request: technician planning \u2192 supervisor review \u2192 field engineer request \u2192 multi-level approvals (FE, Supervisor, DC Manager).",
+        "Warranty checks differentiate equipment warranty vs spare-part shelf life.",
+        "TFM-related SRs require a technician inspection step before resolving or converting to WO."
+      ],
+      "decisions": [
+        "TFM SRs will include a mandatory inspection step before resolution/conversion.",
+        "Material request approval chain confirmed (FE \u2192 Supervisor \u2192 DC Manager)."
+      ],
+      "action_items": [
+        {
+          "owner": "Arun Kumar V",
+          "task": "Provide process flow diagrams for SR and WO workflows.",
+          "due": "Next session"
+        },
+        {
+          "owner": "Edarat",
+          "task": "Continue scoping material request and PTW processes.",
+          "due": "Next session"
+        }
+      ],
+      "risks": [
+        "Material request approval chain complexity; PTW process still to be scoped."
+      ],
+      "open_items": [
+        "Process flow diagrams from Arun; client clarification on PTW."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "940ae873-a6ec-4c12-a1e8-cc1681ee9714",
+      "title": "Deyaar Refresher Training 02",
+      "crm_account_name": "Deyaar",
+      "project_slug": "deyaar-dcm",
+      "timestamp_ist": "2026-05-13T16:02:16+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat (Fugro)",
+        "Ruban C. Kurian (Technical)",
+        "Faisal Ahamed (Ontegra)"
+      ],
+      "summary": "Second refresher confirmed Facilio as the canonical FM system at Deyaar but surfaced real mobile-app performance issues, permit workflow gaps and inspection-report bugs that have to be cleared to land adoption.",
+      "key_points": [
+        "Goal: Facilio becomes the sole system for WO and facility management tasks.",
+        "Two Facilio apps \u2014 vendor and workstation \u2014 assigned by role.",
+        "WO lifecycle covered end-to-end including material requirements, proposals and procurement integration.",
+        "Mobile app performance and UI concerns raised; commitment to investigate with mobile team.",
+        "Work permit mgmt \u2014 document collection and customization still has gaps.",
+        "Inspection reporting issues: duplicate entries, missing evidential photos.",
+        "Auto-assignment and streamlined closure flagged as needed for efficiency."
+      ],
+      "decisions": [
+        "Facilio to be the canonical system for WO and FM tasks \u2014 full transition path agreed."
+      ],
+      "action_items": [
+        {
+          "owner": "Facilio mobile team",
+          "task": "Investigate mobile app performance & UI issues raised.",
+          "due": "Urgent"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Address inspection reporting bugs (duplicates, photo evidence).",
+          "due": "Next sprint"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Implement auto-assignment for WOs and streamline closure flow.",
+          "due": "Roadmap"
+        },
+        {
+          "owner": "Deyaar IT (DR)",
+          "task": "Coordinate user access and asset data management.",
+          "due": "Ongoing"
+        }
+      ],
+      "risks": [
+        "Mobile UX; permit workflow gaps; inspection-report accuracy; WO auto-assignment."
+      ],
+      "open_items": [
+        "Mobile team triage; DR IT for user/asset data; permit process redesign."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "70bf7e2d-1a2c-4229-8c84-71f90fdd82f3",
+      "title": "[Lunds & Byerlys x Facilio] RM Touchbase",
+      "crm_account_name": "Lunds & Byerlys",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-13T17:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Arjun (Facilio)",
+        "Basant",
+        "William Stordeur",
+        "Kevin Kungel (LFHI)",
+        "Jeffrey Carlson (LFHI)"
+      ],
+      "summary": "Touchbase refined condenser approach rule (ambient + fan speed, 3-hr persistence, defrost exclusions) and aligned on a 2-store pilot focused on alarms before predictive features.",
+      "key_points": [
+        "Refining condenser approach rule \u2014 ambient temp + fan speed instead of simple differential.",
+        "New alarm logic: ambient < limit AND fan speed > limit, persistence of 3 hours, to avoid false positives.",
+        "Periods with heavy defrost activity (>20-30%) excluded from condenser alarm logic.",
+        "'Connect to device' to be integrated into the maintenance app for unified UX.",
+        "Refrigerant compliance and asset naming gaps in the new app under investigation.",
+        "Rollout will start with 2 pilot stores; alarms first, predictive rules later."
+      ],
+      "decisions": [
+        "Two pilot stores for initial rollout, focused on alarms.",
+        "Defrost-heavy windows excluded from condenser alarm rule."
+      ],
+      "action_items": [
+        {
+          "owner": "Arjun M M",
+          "task": "Productionise updated condenser rule and validate on pilot stores.",
+          "due": "Pilot phase"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Publish weekly alarm report (RDM-style) with improved data aggregation.",
+          "due": "Weekly"
+        },
+        {
+          "owner": "Facilio mobile",
+          "task": "Embed 'connect to device' into maintenance app via work order.",
+          "due": "Roadmap"
+        }
+      ],
+      "risks": [
+        "New app refrigerant-compliance & asset naming issues need workflow adjustments."
+      ],
+      "open_items": [
+        "Pilot store readiness; mobile app rework for 'connect to device' inside WOs."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "350b83f2-0018-444d-9815-ea902692e1eb",
+      "title": "UK Lifts & Escalator - Weekly Cadence",
+      "crm_account_name": "UK Lift and Escalator",
+      "project_slug": "uk-lift-phase-1-pilot",
+      "timestamp_ist": "2026-05-13T18:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Abarna R",
+        "Krishna K",
+        "Akhila",
+        "Shasvat",
+        "Deepak Simon",
+        "Ian Smithyman",
+        "Nick Hay (UKL&E)",
+        "Simon Hay",
+        "Les Bloor",
+        "Shaun Ward"
+      ],
+      "summary": "Weekly cadence cleared a stack of quote-builder and vendor-onboarding items and accepted a new annual pre-invoicing flow. Finance module testing flagged as critical before go-live.",
+      "key_points": [
+        "Quote builder: separate total labor & material charges; 'trip allowance' \u2192 'travel rates'.",
+        "Rounding logic for base charges and travel/labor rates implemented.",
+        "Annual pre-invoicing workflow before contract activation proposed and accepted.",
+        "Inspection checklist integration into contracts and vendor onboarding complete.",
+        "Vendor rates (travel, labor) now visible during the vendor approval process.",
+        "Vendor quote \u2192 client quote conversion with markups demonstrated.",
+        "Renaming 'vendor' \u2192 'subcontractor' deemed not feasible (system naming)."
+      ],
+      "decisions": [
+        "Annual pre-invoicing workflow accepted \u2014 to be productionised.",
+        "Vendor\u2194client quote linkage to be added for traceability."
+      ],
+      "action_items": [
+        {
+          "owner": "Abarna R / team",
+          "task": "Schedule finance module testing ahead of go-live (called out as critical).",
+          "due": "Pre go-live"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Add vendor\u2194client quote linkage and vendor job-status visibility.",
+          "due": "Next sprint"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Explore flexible appointment scheduling for inspection checklists.",
+          "due": "Roadmap"
+        }
+      ],
+      "risks": [
+        "Finance module testing critical before go-live; naming convention friction."
+      ],
+      "open_items": [
+        "Finance testing slot; pilot of pre-invoicing workflow."
+      ],
+      "health_signal": "amber",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "69c930b0-7837-4208-b652-9b4573483d90",
+      "title": "AMBK x Facilio - Connected Buildings Demonstration",
+      "crm_account_name": "AMBK",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-13T18:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Praveen",
+        "Arjun",
+        "Subramaniyan",
+        "Michael Sinclair",
+        "Artjoms (AMBK)",
+        "DM",
+        "Maksims",
+        "Dmitrijs Mikojelovs"
+      ],
+      "summary": "Connected Buildings demo for AMBK covering data integration, energy, FDD and ESG. Partner asked for a tailored deck and solution menu to take to their warehouse/office/manufacturing clients.",
+      "key_points": [
+        "Data integration via APIs, BACnet, Modbus and OCR for warehouses, offices, manufacturing.",
+        "Digital twins, KPI tracking, energy savings insights, occupant comfort use cases.",
+        "Tenant energy apportionment, weather-normalized baselining, benchmarking, scoring.",
+        "FDD: suboptimal operation detection, alarms with estimated cost/energy impact.",
+        "ESG reporting \u2014 Scope 1 & 2 direct emissions, with path to indirect emissions.",
+        "Integration with AMBK's MS Dynamics FSM confirmed as a priority via API."
+      ],
+      "decisions": [
+        "AMBK to receive a tailored sales presentation + 'solution menu' to pitch onwards.",
+        "MS Dynamics FSM integration treated as priority for any AMBK client engagement."
+      ],
+      "action_items": [
+        {
+          "owner": "Praveen / Arjun",
+          "task": "Build tailored AMBK sales deck and solution menu.",
+          "due": "Next week"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Share solved use cases and customer case studies.",
+          "due": "Next week"
+        }
+      ],
+      "risks": [
+        "Downstream user hesitancy in AMBK's target clients; need to anchor economic benefit."
+      ],
+      "open_items": [
+        "AMBK to provide target client list; Facilio to deliver tailored materials & case studies."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "6f4d8afd-6fcc-4d66-a58e-bbae7a8d280c",
+      "title": "Module Demo & Config Session (Adhithyan)",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-13T20:32:20+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Adhithyan G",
+        "Brad Johns",
+        "Donn Shin"
+      ],
+      "summary": "Configuration walkthrough across PM, safety plans, dashboards, inspections, shift/attendance and assets. Auto-WO from failed inspections explicitly deferred to Phase 2; employee module to be renamed 'Users'.",
+      "key_points": [
+        "Demoed planned maintenance setup, WO generation and PM calendar.",
+        "Safety plans explained \u2014 distinct from job plan tasks.",
+        "Reviewed supervisor / technician / occupant dashboards.",
+        "Inspections configurable; auto WO from failed inspections deferred to Phase 2.",
+        "Shift & attendance demoed for check-in/check-out tracking.",
+        "Asset module \u2014 parent-child relationships and data import shown.",
+        "Employee module to be renamed to 'Users'.",
+        "Resolved past UAT feedback: UI fixes, sorting, mandatory resolution comments."
+      ],
+      "decisions": [
+        "Auto-WO-from-failed-inspection deferred to Phase 2.",
+        "Employee module to be renamed to 'Users'."
+      ],
+      "action_items": [
+        {
+          "owner": "Adhithyan G",
+          "task": "Push UI fixes, sorting and mandatory-comment changes from prior UAT.",
+          "due": "This sprint"
+        },
+        {
+          "owner": "Facilio",
+          "task": "Plan Phase 2 enhancement for auto-WO from failed inspections.",
+          "due": "Phase 2"
+        }
+      ],
+      "risks": [
+        "Space-category mapping for PMs; onboarding flow for users/assets."
+      ],
+      "open_items": [
+        "Phase 2 scoping for inspection-driven WOs."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": true
+    }
+  ]
+}
