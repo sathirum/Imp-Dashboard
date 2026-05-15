@@ -1,0 +1,738 @@
+{
+  "date": "2026-05-14",
+  "generated_at": "2026-05-14T07:00:00+05:30",
+  "total_calls": 14,
+  "calls": [
+    {
+      "call_id": "83d7139b-86bb-4efd-9263-be6796efd4f1",
+      "title": "Facilio Deyaar Refresher 03",
+      "crm_account_name": "",
+      "project_slug": "deyaar-dpm",
+      "timestamp_ist": "2026-05-14T11:41:12+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat (Facilio)",
+        "Burlington Tower (Ontegra) participants",
+        "Recorder"
+      ],
+      "summary": "Deyaar refresher #3 walked the Burlington Tower team through Facilio Workstation/Vendor apps, mobile work order flows and PPM/reactive distinctions. Adoption-lift exercise; no escalations.",
+      "key_points": [
+        "Walkthrough of Facilio Workstation and Vendor apps for work order management, asset tracking and inspections",
+        "Confirmed all 68 properties and their assets have been digitized into Facilio",
+        "Demonstrated mobile work order creation, PPM vs reactive flows, and material proposal threshold",
+        "Discussed Dynamics integration as a future possibility; users instructed to focus on Facilio for now",
+        "Covered incident reporting and inspection workflows, flagging permission/automation areas"
+      ],
+      "decisions": [
+        "Users to continue using Facilio for current operations; Dynamics integration deferred",
+        "Refresher training to continue to lift active usage"
+      ],
+      "action_items": [
+        {
+          "owner": "Ashwin Bhat",
+          "task": "Continue Deyaar refresher series; share recording / docs",
+          "due": "Ongoing"
+        }
+      ],
+      "risks": [
+        "Adoption risk if active engagement and feedback don't pick up; potential confusion if users default to Dynamics for live tasks."
+      ],
+      "open_items": [
+        "User feedback on permission tweaks and incident automation."
+      ],
+      "health_signal": "green",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "36fb99e1-f968-4824-bb85-c36b2842072c",
+      "title": "Good Hands \u2014 Admin Training",
+      "crm_account_name": "",
+      "project_slug": "good-hands-technical-services",
+      "timestamp_ist": "2026-05-14T12:00:47+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Niviya T",
+        "Paurnika Ramesh (Facilio)",
+        "Mubeen",
+        "Prashanth Kola (Good Hands)",
+        "Recorder"
+      ],
+      "summary": "Admin training on state flows, approvals and custom buttons for Good Hands. Customer engaged, no blockers \u2014 guidance to build new flows rather than edit existing ones.",
+      "key_points": [
+        "Niviya walked through state flow configuration \u2014 adding states, transitions, conditions",
+        "Prashanth asked about editing existing flows and creating custom workflows per category",
+        "Paurnika clarified that editing existing flows is discouraged; create new flows for new categories",
+        "Reviewed approval process configuration: multiple approvers, approve/reject actions, resend permissions",
+        "Covered custom buttons that transition state across modules (e.g., WO approval \u2192 inventory request)"
+      ],
+      "decisions": [
+        "Customer to create category-specific state flows rather than editing live ones",
+        "Custom buttons enabled for cross-module state transitions where needed"
+      ],
+      "action_items": [
+        {
+          "owner": "Niviya T",
+          "task": "Share configuration recording and quick-reference docs",
+          "due": "This week"
+        },
+        {
+          "owner": "Prashanth Kola",
+          "task": "Try state flow build in sandbox before applying to production",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Risk of breaking live flows if existing state flows are edited rather than cloned."
+      ],
+      "open_items": [
+        "Customer sandbox practice before applying to production."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "4357c377-7e86-4208-82db-c5df507e27ee",
+      "title": "Daily Facilio CAFM Workshops | Resolving Issues",
+      "crm_account_name": "CIT",
+      "project_slug": "cit-diriya",
+      "timestamp_ist": "2026-05-14T12:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sathya",
+        "Ananth R",
+        "Dinesh R",
+        "Magesh (Facilio); Nitish Soondur",
+        "Mohammed Nebab",
+        "Mohammad Bashaaib",
+        "Vinay Mohan",
+        "Gladson Aby",
+        "Tahir Abbas",
+        "Helder Branco",
+        "Ravish Betchoo (CIT); Chandan Dabeedeen (SCMS)"
+      ],
+      "summary": "Daily CAFM workshop did not run \u2014 CIT attendees were in another meeting. Call closed after ~35 seconds with a plan to reschedule.",
+      "key_points": [
+        "Call ended after ~35 seconds \u2014 key CIT attendees were occupied in another meeting",
+        "Dinesh asked to be pinged once Vinay was free so workshop could resume"
+      ],
+      "decisions": [
+        "Workshop effectively deferred; CIT to ping team when available"
+      ],
+      "action_items": [
+        {
+          "owner": "Nitish Soondur (CIT)",
+          "task": "Re-coordinate workshop slot when CIT team is free",
+          "due": "TBD"
+        }
+      ],
+      "risks": [],
+      "open_items": [
+        "CIT availability for rescheduled workshop."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "3df0940e-22d9-41e1-b12b-a818de48b6f1",
+      "title": "ST \u2014 Report & Dashboard Training",
+      "crm_account_name": "",
+      "project_slug": "saudi-tabreed-phase-1",
+      "timestamp_ist": "2026-05-14T12:51:08+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Arun Kumar V (Facilio); Marshed Sattam Al Hathal",
+        "Dadapeer Madar Nayak",
+        "Rogene Abello Lorica (ST)"
+      ],
+      "summary": "Report/dashboard training for Saudi Tabreed PPM & CM SLAs. Customer engaged but wanted more depth \u2014 explicit follow-up scheduled. Backend has a real PPM due-date display gap to chase down.",
+      "key_points": [
+        "Walkthrough of report & dashboard configuration for PPM and CM work orders",
+        "Reviewed SLA compliance metrics \u2014 response, attendance, fix times",
+        "Identified gaps in populating/displaying due dates for PPM WOs \u2014 needs backend investigation",
+        "Discussed regional dashboard filtering; interim workaround = add region abbreviations to site names",
+        "Customer asked for consolidated view of upcoming + current month work orders"
+      ],
+      "decisions": [
+        "Interim: encode region into site names for filtering",
+        "Backend team to investigate PPM due-date display issue",
+        "Schedule follow-up training to close remaining gaps"
+      ],
+      "action_items": [
+        {
+          "owner": "Arun Kumar V",
+          "task": "Investigate PPM due-date population on backend",
+          "due": "Next session"
+        },
+        {
+          "owner": "Arun Kumar V",
+          "task": "Schedule next training session with Marshed",
+          "due": "This week"
+        }
+      ],
+      "risks": [
+        "PPM due-date display gap; manual workaround for regional filtering increases admin overhead."
+      ],
+      "open_items": [
+        "Backend investigation on PPM due dates; customer site naming convention update."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "df187861-9d6f-4a50-9df4-b71f4070688c",
+      "title": "ENEC \u2014 BRD Scope Alignment | Office Space Management",
+      "crm_account_name": "",
+      "project_slug": "enec-workspace-management",
+      "timestamp_ist": "2026-05-14T13:33:03+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat (Facilio); Muhammad Asim Rashid",
+        "Mohammed Aljack",
+        "Ibrahim Kutty",
+        "Khuram Khurshid",
+        "Osama Ali",
+        "Shahzad Akbar (ENEC)"
+      ],
+      "summary": "ENEC scope alignment on mail, parking and office space management. Customer pressed for firm timeline \u2014 Ashwin committed to revert EOD.",
+      "key_points": [
+        "Walked mail management workflows HQ\u2192site, site\u2192HQ, external mail handling \u2014 confirmed",
+        "Mapped current manual parking-request process: forms, approvals, manual parking-layout updates",
+        "Discussed user-portal access for parking-request tracking",
+        "Explored iServices and HR system integration for seamless data flow",
+        "Touched office space management, meeting-room analytics, user-driven layout edits"
+      ],
+      "decisions": [
+        "Unified parking system desired \u2014 form, approval and layout update integrated",
+        "Auto-update parking layout on slot allocation, no manual intervention",
+        "Mail management workflows validated as-is"
+      ],
+      "action_items": [
+        {
+          "owner": "Ashwin Bhat",
+          "task": "Revert with consolidated BRD timeline by end of day",
+          "due": "Same day"
+        },
+        {
+          "owner": "ENEC team",
+          "task": "Confirm iServices/HR integration details",
+          "due": "TBD"
+        }
+      ],
+      "risks": [
+        "Tight BRD timeline; user-driven office layout edits feasibility unclear; integration scope with iServices/HR not yet sized."
+      ],
+      "open_items": [
+        "BRD timeline confirmation; iServices/HR integration scope from ENEC."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": true,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "cbf79a7d-7316-4233-98b2-07d5ccd0b832",
+      "title": "Edarat \u2014 Workshop 2 | Permit to Work",
+      "crm_account_name": "",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-14T15:36:29+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Arun Kumar V (Facilio); Mohamed Siddik",
+        "QHSE-DMM22",
+        "Melvin Van Rooyen",
+        "Muhammad Rizwan",
+        "Akram Abdalla",
+        "Saleh Alawlaqi",
+        "Fahad Ayed Alsharari (Edarat)"
+      ],
+      "summary": "Productive PTW workshop with Edarat \u2014 confirmed multi-type PTW per WO, vendor vs in-house flow, and safety officer review path.",
+      "key_points": [
+        "Refining PTW process for high-risk activities in the CAFM system",
+        "Discussed integration of RAMS and SOPs/MOPs with PTW; vendor vs in-house generation flow",
+        "Multiple PTW types per WO with type-specific prerequisites approved",
+        "Confirmed safety officer's role in PTW review and approval",
+        "Defined approval workflow for vendor-submitted PTWs"
+      ],
+      "decisions": [
+        "Allow multiple PTW types per work order with distinct prerequisites",
+        "Vendor PTWs follow defined approval workflow; in-house generated PTWs handled separately",
+        "Safety officer confirmed as PTW reviewer"
+      ],
+      "action_items": [
+        {
+          "owner": "Arun Kumar V",
+          "task": "Finalize PTW workflow design and share for sign-off",
+          "due": "Next workshop"
+        }
+      ],
+      "risks": [
+        "Complexity of multi-type PTW prerequisites; ensuring SOP/MOP attachments stay in sync."
+      ],
+      "open_items": [
+        "Customer sign-off on finalized PTW design."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "e0fa2434-1909-47b5-b0b5-a3ae758fb937",
+      "title": "Deyaar Refresher Training 04",
+      "crm_account_name": "",
+      "project_slug": "deyaar-dpm",
+      "timestamp_ist": "2026-05-14T15:49:51+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Ashwin Bhat (Facilio); Deyaar/TFM staff"
+      ],
+      "summary": "Fourth Deyaar refresher \u2014 Workstation app, WO lifecycle, PPM scheduling. Adoption-lift exercise, nothing material to flag.",
+      "key_points": [
+        "Re-established Facilio Workstation as the primary tool for TFM vendors, engineers, technicians",
+        "Walked building structure, asset hierarchy, maintenance task setup",
+        "Detailed WO lifecycle from creation through closure \u2014 technician assignment, materials, proposals",
+        "Reinforced PPM scheduling and asset-linked WO routing"
+      ],
+      "decisions": [
+        "Workstation mobile app confirmed as primary tool"
+      ],
+      "action_items": [
+        {
+          "owner": "Ashwin Bhat",
+          "task": "Continue refresher cadence; collect usage telemetry",
+          "due": "Ongoing"
+        }
+      ],
+      "risks": [
+        "Sustained adoption if users default back to old systems."
+      ],
+      "open_items": [
+        "Telemetry on active usage post-refresher series."
+      ],
+      "health_signal": "green",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "dd323ade-45d2-4fe0-b591-17ded0d5089a",
+      "title": "Daylesford UAT \u2014 Reactive Flow",
+      "crm_account_name": "Daylesford Organic",
+      "project_slug": "daylesford-phase-1",
+      "timestamp_ist": "2026-05-14T16:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Thilakh R",
+        "Inbaraj B",
+        "Lourdu Livin A",
+        "Deepak Simon (Facilio); Charlotte Bloor",
+        "Amelia Harper (Daylesford)"
+      ],
+      "summary": "Daylesford reactive flow UAT \u2014 full lifecycle demo, mandatory-attachment feedback captured, non-Facilio vendor handling discussed. Healthy UAT progression.",
+      "key_points": [
+        "End-to-end reactive flow demo: service request \u2192 WO \u2192 internal tech / external vendor \u2192 resolution",
+        "Internal tech flow includes dynamic RAMs and SLA tracking",
+        "External vendor flow covers 'require support' and notification channels",
+        "Mandatory attachment on WO resolution surfaced as UAT feedback",
+        "Discussed non-Facilio vendor handling and approval routing"
+      ],
+      "decisions": [
+        "Site manager approval sufficient for most WOs; finance software handles major approvals",
+        "Add mandatory attachment requirement on WO resolution as enhancement",
+        "Schedule ad-hoc data onboarding call for upcoming dependencies"
+      ],
+      "action_items": [
+        {
+          "owner": "Thilakh R / Inbaraj B",
+          "task": "Implement mandatory attachment on WO resolution per UAT feedback",
+          "due": "Next sprint"
+        },
+        {
+          "owner": "Lourdu Livin A",
+          "task": "Set up data onboarding call for dependent modules",
+          "due": "This week"
+        }
+      ],
+      "risks": [
+        "Non-Facilio vendor handling adds complexity to notification routing; UAT coverage for planned and reactive flows still in progress."
+      ],
+      "open_items": [
+        "Data onboarding for dependent modules; UAT signoff for reactive flow."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "af377020-e446-469f-9cca-108b1dd46b54",
+      "title": "THG Project Kickoff",
+      "crm_account_name": "THG",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-14T17:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Krishna K",
+        "Sathya",
+        "Jamal",
+        "Ian Smithyman",
+        "Subramaniyan",
+        "Vandhana",
+        "Deepak Simon (Facilio); James Bird",
+        "Moiz Khalid",
+        "Oliver Scarf",
+        "Claire Robinson",
+        "Timothy Pender (THG)"
+      ],
+      "summary": "THG implementation kickoff. Scope, methodology and governance aligned with Oliver Scarf as POC. Customer pressing for ASAP go-live; revised plan being issued, with stakeholder availability and data delays flagged as the main slippage levers.",
+      "key_points": [
+        "Kickoff to align scope, methodology and timeline for Facilio implementation at THG",
+        "Oliver Scarf designated primary POC for THG",
+        "Implementation methodology: kickoff \u2192 requirement gathering \u2192 solution alignment \u2192 BRD sign-off \u2192 configuration \u2192 UAT \u2192 go-live",
+        "Scope: portfolio, assets, service requests, planned maintenance, vendor portals",
+        "Workshop dates tentatively set for following week; revised plan to follow",
+        "Governance: weekly status updates and monthly engagement reviews"
+      ],
+      "decisions": [
+        "Oliver Scarf = primary THG POC",
+        "Phased methodology accepted; weekly status + monthly reviews adopted",
+        "Workshop slots tentatively next week, subject to revision"
+      ],
+      "action_items": [
+        {
+          "owner": "Facilio team",
+          "task": "Share project documentation and data onboarding templates",
+          "due": "Immediate"
+        },
+        {
+          "owner": "Krishna K",
+          "task": "Send revised project plan to THG",
+          "due": "This week"
+        },
+        {
+          "owner": "THG team",
+          "task": "Confirm workshop attendance and review templates",
+          "due": "Next week"
+        }
+      ],
+      "risks": [
+        "Stakeholder unavailability, data delays, decision-making lag pushing timeline. Mitigations: weekly governance, structured change management, shared ownership framework."
+      ],
+      "open_items": [
+        "Documentation/template sharing; workshop attendance confirmation; revised plan delivery."
+      ],
+      "health_signal": "amber",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "a1a79a11-6f17-4f62-90f2-a9ba731df000",
+      "title": "Facilio Project Update Recurring | Imperial Cleaning",
+      "crm_account_name": "Imperial Cleaning",
+      "project_slug": "unmatched",
+      "timestamp_ist": "2026-05-14T18:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Sudharsan",
+        "William Stordeur",
+        "Riyavarshini Arunprasad",
+        "Basant",
+        "Sathya",
+        "Krishna",
+        "Raj",
+        "Akhila",
+        "Ayshvaryalaxmi (Facilio); Sean Smith",
+        "Martha Gaviria",
+        "Millie Capri",
+        "Jeffrey Krinick",
+        "Cynthia Blas (Imperial Cleaning)"
+      ],
+      "summary": "Imperial Cleaning weekly update. Phase one is largely on track but is being held by missing Canadian region/district mapping for 26 sites \u2014 Facilio recommending a geographical API. Multiple parallel workstreams (SLA billing, schedule change, assignment rules) progressing.",
+      "key_points": [
+        "Walked status of vendor rejection reasons, invoice/credit-note netting, geolocation mobile reqs, recurring service frequencies",
+        "Regional scoping for vendor onboarding \u2014 Canadian region/district mapping missing, geo API recommended for address validation",
+        "GL code integration with BC pending Sergio's documentation (expected next day)",
+        "Service level billing implemented and in sandbox testing \u2014 detailed test case report to follow",
+        "Rejected invoice UX update \u2014 'Create Invoice' button on header with linked rejected invoice ID",
+        "Auto timesheet for vendors being considered (adoption-positive, risks noted)",
+        "Schedule change functionality near completion; assignment-rules + conflict resolution combined"
+      ],
+      "decisions": [
+        "Phase-one items prioritized before any new scope items",
+        "Use geo API for address validation as path forward on Canadian mapping",
+        "Net invoice/credit notes via combined pre-bill + post-credit-note logic"
+      ],
+      "action_items": [
+        {
+          "owner": "Sudharsan",
+          "task": "Deliver service-level billing test case report",
+          "due": "This week"
+        },
+        {
+          "owner": "Riyavarshini Arunprasad",
+          "task": "Resolve Canadian region/district mapping via geo API",
+          "due": "Next sprint"
+        },
+        {
+          "owner": "Sergio (customer side)",
+          "task": "Share GL code documentation with BC integration team",
+          "due": "Tomorrow"
+        },
+        {
+          "owner": "Akhila",
+          "task": "Demo combined assignment-rules + conflict resolution model",
+          "due": "This week"
+        },
+        {
+          "owner": "Imperial Cleaning team",
+          "task": "Confirm RFQ flow scope in next session",
+          "due": "Next session"
+        }
+      ],
+      "risks": [
+        "Canadian region/district mapping blocker; address-integration scope creep; GL code documentation dependency on Sergio."
+      ],
+      "open_items": [
+        "Canadian zip-code mapping for 26 sites; Sergio's GL code docs; sandbox test case report."
+      ],
+      "health_signal": "amber",
+      "sentiment": "mixed",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "48f817aa-7c27-4ee5-addd-ac526b87d4f3",
+      "title": "Woodman's Slow Leak Detection \u2014 Touchbase",
+      "crm_account_name": "Woodman's Food Markets",
+      "project_slug": "woodmans-market",
+      "timestamp_ist": "2026-05-14T19:00:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "William Stordeur",
+        "Arjun M M",
+        "Yasodakrishna",
+        "Shaan",
+        "Selvam",
+        "Basant",
+        "Praveen Kumar",
+        "John H (Facilio); Jordan LaBorde",
+        "Josh Branch",
+        "Dan Gregersen (Woodman's)"
+      ],
+      "summary": "Woodman's slow-leak touchbase. Clarified that 16 stores are connected but only 12 have liquid-level sensors; CO2 racks lack sensors and will limit leak detection. Stores 1 and 37 onboarding to close before next call.",
+      "key_points": [
+        "Clarified rack configurations and data availability across multiple sites",
+        "16 stores connected (vs initially assumed 12); only 12 have liquid-level sensors \u2014 aligns with project scope",
+        "Racks LT B, LT J, AC22, PRP confirmed not micro-thermal; may lack liquid-level indicators",
+        "CO2 racks (I-rack, G-rack in Beloit) lack liquid-level sensors \u2014 affects leak-detection algorithms",
+        "Agent install, controller discovery, point mapping complete for connected stores",
+        "Stores 1 and 37 onboarding targeted for completion before next call; raw alarms request"
+      ],
+      "decisions": [
+        "Proceed with leak detection for the 12 stores with liquid-level sensors",
+        "Enable raw alarms for pilot stores",
+        "Complete onboarding of stores 1 and 37 before next touchbase"
+      ],
+      "action_items": [
+        {
+          "owner": "Arjun M M / Praveen Kumar",
+          "task": "Complete onboarding of stores 1 and 37",
+          "due": "Before next call"
+        },
+        {
+          "owner": "Yasodakrishna / Selvam",
+          "task": "Enable raw alarm functionality for pilot stores",
+          "due": "Next sprint"
+        },
+        {
+          "owner": "John H / Basant",
+          "task": "Document rack configuration assumptions and gaps for customer",
+          "due": "This week"
+        }
+      ],
+      "risks": [
+        "Leak-detection algorithm coverage gap on CO2 racks without sensors; expectation mismatch on connected-store count if scope is interpreted as all 16."
+      ],
+      "open_items": [
+        "Sensor coverage on CO2 racks; completion of stores 1 and 37 onboarding."
+      ],
+      "health_signal": "amber",
+      "sentiment": "neutral",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "7ec5e0ba-6e75-4ae0-9faf-3c82a55a2dc6",
+      "title": "Discussion with Philip | Facilio",
+      "crm_account_name": "CBRE Global Workplace Solutions (GWS)",
+      "project_slug": "cbre",
+      "timestamp_ist": "2026-05-14T19:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Matt",
+        "Karthikeyan (Facilio); Philip Tachar (CBRE \u2014 Fifth Third Bank)"
+      ],
+      "summary": "Discovery call with Philip (CBRE / Fifth Third Bank). Customer wants to consolidate CMMS + Site Tools + Smartsheet on Facilio and add BMS-driven proactive maintenance. Follow-up demo to be scoped.",
+      "key_points": [
+        "Philip (CBRE / Fifth Third Bank account) exploring Facilio to consolidate CMMS + Site Tools + Smartsheet into one platform",
+        "Current fragmented approach is expensive and inefficient \u2014 particularly a previous tool's cost/effort",
+        "Discussed proactive maintenance and energy management via BMS integration with CMMS",
+        "Walked Facilio's integrated CMMS + connected buildings + capital planning + project management",
+        "Upcoming Fifth Third Bank/Burlington-area merger context surfaced"
+      ],
+      "decisions": [
+        "Next step: scoped follow-up demo with broader Fifth Third Bank stakeholders"
+      ],
+      "action_items": [
+        {
+          "owner": "Matt / Karthikeyan",
+          "task": "Send tailored capability deck and case studies to Philip",
+          "due": "This week"
+        },
+        {
+          "owner": "Matt",
+          "task": "Set up scoped follow-up demo with Fifth Third Bank stakeholders",
+          "due": "Next 1-2 weeks"
+        }
+      ],
+      "risks": [
+        "Merger-driven timing uncertainty; competitive displacement of incumbent tools."
+      ],
+      "open_items": [
+        "Stakeholder list and demo scope from Philip; deck/case studies from Facilio."
+      ],
+      "health_signal": "green",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": false
+    },
+    {
+      "call_id": "a30316e8-5172-450b-9858-e5dc77bdde32",
+      "title": "Facilio <-> MM \u2014 Catchup",
+      "crm_account_name": "Metro Maintenance, Inc.",
+      "project_slug": "metro-maintenance-phase-2",
+      "timestamp_ist": "2026-05-14T19:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "Vandhana",
+        "Sathya (Facilio); Brooke England",
+        "Renita Adams (Metro Maintenance)"
+      ],
+      "summary": "Metro Maintenance catchup: re-implementation has clearly worked and customer is happy \u2014 but KK is being moved off the dedicated night shift on Monday due to health, with a one-month gradual handover to a trained support team plus bi-weekly catch-ups to monitor.",
+      "key_points": [
+        "Re-implementation has significantly improved system usability and reduced issues; KK's training cited as highly beneficial",
+        "KK ending dedicated night-shift support by Monday due to health concerns from the night shift",
+        "Dedicated support team being trained and equipped with internal tool to take over ongoing support",
+        "KK to remain available for ad-hoc and critical issue resolution; gradual handover over next month",
+        "Dedicated email ID to be set up for urgent queries and KK contact",
+        "Bi-weekly catch-ups scheduled for the next two months to monitor transition",
+        "Jira to continue as the issue reporting channel; support team will have access"
+      ],
+      "decisions": [
+        "KK dedicated night-shift support ends Monday",
+        "Support team takes ongoing coverage; KK available on call for critical issues",
+        "Bi-weekly catch-ups for next two months",
+        "Dedicated email ID for urgent / KK-direct queries"
+      ],
+      "action_items": [
+        {
+          "owner": "Vandhana",
+          "task": "Stand up dedicated support email ID + brief customer on usage",
+          "due": "This week"
+        },
+        {
+          "owner": "Sathya / Vandhana",
+          "task": "Confirm gradual handover plan for KK over next month",
+          "due": "This week"
+        },
+        {
+          "owner": "Brooke / Renita (MM)",
+          "task": "Route urgent items to new email ID; continue Jira for tracked issues",
+          "due": "Ongoing"
+        }
+      ],
+      "risks": [
+        "Coverage gap risk during KK transition; reliance on support team's knowledge depth; KK's health."
+      ],
+      "open_items": [
+        "Support team readiness; KK availability for critical issues; bi-weekly cadence holding."
+      ],
+      "health_signal": "amber",
+      "sentiment": "positive",
+      "has_escalation": false,
+      "has_date_shift": true
+    },
+    {
+      "call_id": "24ef2507-0216-4858-8f33-3c8d4bb67aa1",
+      "title": "Woodman's Check",
+      "crm_account_name": "Woodman's Food Markets",
+      "project_slug": "woodmans-market",
+      "timestamp_ist": "2026-05-14T19:30:00+05:30",
+      "duration_minutes": null,
+      "participants": [
+        "William Stordeur",
+        "Varun Prasadd",
+        "Basant",
+        "Deepak Simon (Facilio); Josh Branch",
+        "Dan Gregersen (Woodman's)"
+      ],
+      "summary": "Woodman's operational check. Customer flagged Facilio as 'generally slow to really slow' \u2014 open product-quality complaint to chase down. Also: refrigerant cylinder \u2192 WO integration gap, store 47 asset import postponed, Oct 1 launch still on for store 47.",
+      "key_points": [
+        "Data import for new store 47 \u2014 wait for updated data before importing asset list from store 45",
+        "Recurring issue: refrigerant cylinder tracking not well integrated into work orders, causing technician confusion and compliance risk",
+        "Performance issues raised on action buttons and admin overrides \u2014 partially attributed to internet and background scripts",
+        "Vendor contact management \u2014 clarified deletion of incorrect entries and deactivation of users",
+        "Training materials for refrigerant compliance and vendor management shared and to be added to dashboards",
+        "New store 47 launch scheduled for October 1; potential on-site visit for remote monitoring setup",
+        "WOs stuck in 'waiting compliance event' status to be resolved"
+      ],
+      "decisions": [
+        "Postpone asset list import for store 47 until updated data is available",
+        "Enhance refrigerant cylinder data capture and link to WOs for compliance + usability",
+        "Add training materials to dashboards",
+        "Plan possible on-site visit for store 47 remote monitoring setup"
+      ],
+      "action_items": [
+        {
+          "owner": "Varun Prasadd",
+          "task": "Track and remediate persistent platform slowness reports",
+          "due": "Ongoing"
+        },
+        {
+          "owner": "Deepak Simon / Basant",
+          "task": "Design refrigerant cylinder \u2192 WO integration enhancement",
+          "due": "Next sprint"
+        },
+        {
+          "owner": "William Stordeur",
+          "task": "Coordinate store 47 data and Oct 1 launch readiness",
+          "due": "September"
+        },
+        {
+          "owner": "Woodman's team",
+          "task": "Provide updated store 47 data when ready",
+          "due": "Before Oct 1"
+        }
+      ],
+      "risks": [
+        "Persistent platform slowness as ongoing customer complaint; refrigerant cylinder integration gap creating compliance risk; WOs stuck in compliance-event status."
+      ],
+      "open_items": [
+        "Updated store 47 data from customer; performance investigation outcome; cylinder integration design."
+      ],
+      "health_signal": "red",
+      "sentiment": "negative",
+      "has_escalation": true,
+      "has_date_shift": true
+    }
+  ]
+}
